@@ -1,0 +1,34 @@
+{
+    "Figma" : {
+        "name" : "Figma",
+        "color" : "#F24E1E"
+    },
+    "Prezzi" : {
+        "name" : "Prezzi",
+        "color" : "#A259FF"
+    },
+    "Notion" : {
+        "name" : "Notion",
+        "color" : "#000000"
+    },
+    "Photoshop" : {
+        "name" : "Photoshop",
+        "color" : "#31A8FF"
+    },
+    "Illustrator" : {
+        "name" : "Illustrator",
+        "color" : "#FF9A00"
+    },
+    "InDesign" : {
+        "name" : "InDesign",
+        "color" : "#FF3366"
+    },
+    "XD" : {
+        "name" : "XD",
+        "color" : "#FF61F6"
+    },
+    "PowerBi" : {
+        "name" : "PowerBi",
+        "color" : "#F2C811"
+    }
+}

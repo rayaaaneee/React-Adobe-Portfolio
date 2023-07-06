@@ -1,0 +1,230 @@
+#loaderContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Définition de la police Adobe */
+@font-face{
+    font-family: 'Adobe';
+    src: url('../../font/AdobeFont/Adobe.ttf');
+}
+@font-face{
+    font-family: 'Adobe Bold';
+    src: url('../../font/AdobeFont/AdobeBold.ttf');
+}
+
+/* Définition de la police de caractère */
+#loaderContainer *{
+    color : #8a8888;
+    font-family: 'Adobe';
+}
+
+/* Définition du fond de la page et paramètres de la page */
+#backgroundLoader{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgb(249, 238, 212);
+    z-index: -1;
+}
+
+/* Design de la boite */
+#containerLoaderBox{
+    display: grid;
+    max-width: 950px;
+    height: 630px;
+    grid-template-columns: 2fr 3fr;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    z-index: 1;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
+    opacity: 0;
+}
+
+/* Disposition du titre principal et son logo*/
+#titleLoaderBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Redimensionner logo de l'image */
+#titleLoaderBox img{
+    max-width: 80px;
+    height: 80px;
+}
+
+/* Redimensionnement de l'image */
+#loaderBoxMainImg img{
+    max-width: 500px;
+}
+
+/* Redimensionner logo Adobe Creative Cloud */
+#logoCreativeCloudLoaderBox img{
+    max-width: 30px;
+}
+
+/* Definition de la police specifique a ce texte */
+#titleLoaderBox h1{
+    color : #efde90;
+    font-family: 'Adobe Bold';
+    margin-left: 12px;
+}
+
+/* Definition de la police specifique a ce texte */
+#logoCreativeCloudLoaderBox p{
+    color : #696969;
+    font-family: 'Adobe Bold';
+}
+
+/* Disposition de la partie droite de la page */
+#rightPartLoaderBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Centrer le container dans la page*/
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Disposer le logo Creative Cloud et son texte */
+#logoCreativeCloudLoaderBox {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Margin global sur la partie gauche de la page et centrer le contenu*/
+#left{
+    margin-top: 10px;
+    margin-left : 30px;
+    margin-right : 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Changer la taille des polices */
+.highfontweight {
+    font-size: 15px;
+}
+
+.lowfontweight {
+    font-size: 13px;
+}
+
+.lowfontweight2 {
+    font-size: 12px;
+}
+
+/* Mettre le texte variable en absolute */
+#dynamicTextLoaderBox{
+    position: absolute;
+    margin-top: 0px;
+}
+
+/* Appliquer la marge ici pour que ca ressemble au réel */
+#underChangeLoaderBox{
+    margin-top: 75px;
+}
+
+/* Mettre l'écart entre le logo principal Adobe PortFolio et le reste */
+.abovetext-loader-box{
+    margin-top :20px;
+}
+
+/* Désactiver le scroll sur cette page */
+body{
+    overflow: hidden;
+}
+
+/* Display none pour l'image de chargement si on est pas sur le container */
+#cursorLoaderBox{
+    width: 70px;
+    z-index: 5;
+    cursor: none;
+    display: none;
+    transition: all 0.1s ease;
+}
+
+#cursorLoaderBox .point{
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    position: absolute;
+    display: none;
+    cursor: none;
+}
+
+
+#cursorLoaderBox .p0{
+    display: block;
+    background-color: #000000;
+    margin-top: 3px;
+    margin-left: 50px;
+    cursor: none;
+}
+
+#cursorLoaderBox .p1{
+    display: block;
+    margin-top: 20px;
+    margin-left: 62px;
+    background-color: #bcc4c9;
+    cursor: none;
+}
+
+
+#cursorLoaderBox .p2{
+    display: block;
+    margin-left: 50px;
+    margin-top: 37px;
+    background-color: #9ba3a9;
+    cursor: none;
+}
+
+
+#cursorLoaderBox .p3{
+    display: block;
+    margin-left: 30px;
+    margin-top: 37px;
+    background-color: #7b808b;
+    cursor: none;
+}
+
+#cursorLoaderBox .p4{
+    display: block;
+    position: absolute;
+    margin-top: 20px;
+    margin-left:18px;
+    background-color: #5b6370;
+    cursor: none;
+}
+
+#cursorLoaderBox .p5{
+    display: block;
+    margin-left: 30px;
+    margin-top: 3px;
+    background-color: #21272f;  
+    cursor: none;
+}
+
+/* On display none le deuxieme logo Creative Cloud visible que dans les media*/
+#logomediaLoaderBox{
+    display: none;
+}

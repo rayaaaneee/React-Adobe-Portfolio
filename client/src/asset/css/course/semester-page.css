@@ -1,0 +1,407 @@
+
+#semesterPage {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#semesterPage::-webkit-scrollbar {
+    display: none;
+}
+
+#semesterPage.visible {
+    display: flex;
+}
+
+#semesterPage .background-semester-page {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(3px);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+html {
+    --cross-container-margin-semester-page: 20px;
+}
+
+#semesterPage .all-cross-container {
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    top: var(--cross-container-margin-semester-page);
+    right: var(--cross-container-margin-semester-page);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#semesterPage .cross-semester-page-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    color: white;
+    border: 1px solid rgba(221, 141, 141, 0.8);
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    transform: translateX(15vw);
+    justify-content: center;
+    align-items: center;
+}
+
+#semesterPage .cross-semester-page-container:hover {
+    border: 1px solid transparent;
+    background-color: rgba(209, 95, 95,0.8);
+    transition: 0.3s;
+}
+
+#semesterPage .cross-semester-page-container p {
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#semesterPage .semester-page-main-container {
+    margin: 20px 0;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    transform: translateX(100vw);
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0.5;
+}
+
+#semesterPage .semester-page-main-container.visible {
+    transform: none;
+    opacity: 1;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+html {
+    --semester-page-main-color: rgb(232, 190, 190);
+}
+
+#semesterPage .title-semester {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1.5vw;
+    z-index: 11;
+    font-size: 3.6vw;
+    font-weight: 300;
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+    text-decoration-color: var(--semester-page-main-color);
+    text-decoration-thickness: 0.3vw;
+    text-decoration-style: wavy;
+    text-underline-offset: 0.5vw;
+}
+
+.semester-page-title-img-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+#semesterPage .semester-page-title-img-container img {
+    width: 54px;
+    height: fit-content;
+    object-fit: cover;
+    object-position: center;
+}
+
+.semester-page-title-part {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 3vw;
+    font-weight: 100;
+    color: rgb(232, 190, 190);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    column-gap: 1.3vw;
+    margin-left: 25px;
+}
+
+.semester-page-body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    row-gap: 1.5vw;
+}
+
+.semester-page-title-part img {
+    width: 3vw;
+    height: fit-content;
+    object-fit: cover;
+    object-position: center;
+}
+
+.semester-page-content * {
+    margin: 0;
+    padding: 0;
+}
+
+.semester-part {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    row-gap: 1.5vw;
+}
+
+.semester-page-content {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    row-gap: 1.5vw;
+    color: white;
+    font-size: 1.8vw;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-top: 1vw;
+    margin-left: 12vw;
+    margin-bottom: 1vw;
+}
+
+.semester-page-content img {
+    border-radius: 30px;
+    width: 250px;
+    height: 150px;
+    box-shadow: 0 0 50px 0 rgb(0, 0, 0, 50%);
+    object-fit: cover;
+}
+
+.semester-page-content button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    padding-right: 50px;
+    border-radius: 35px;
+    font-size: 20px;
+    background-color: rgb(219 151 151 / 30%);
+    cursor: pointer;
+    color: white;
+    border: 2px solid rgb(255, 255, 255);
+    background-image: url(../../img/course/semester/view.png);
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 30px;
+    transition: background-color 0.3s;
+}
+
+.semester-page-content button:hover {
+    background-color: rgb(219 151 151 / 50%);
+}
+
+.semester-page-content-date {
+    height: 120px;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: start;
+}
+
+
+.timeline-semester-date-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.timeline-semester-date-container .timeline {
+    position: absolute;
+    top: 0;
+    width: 3px;
+    border-radius: 5px;
+    height: 105%;
+    background-color: rgb(255, 255, 255);
+}
+
+html {
+    --row-gap-date-container: 4.5vw;
+}
+
+.timeline-semester-date-container .semester-point-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: var(--row-gap-date-container);
+    position: relative;
+}
+
+.timeline-semester-date-container .semester-point-container .semester-point {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--semester-page-main-color);
+    box-shadow: 0 0 10px 0 rgb(0, 0, 0, 50%);
+}
+
+.text-semester-date-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    row-gap: calc(var(--row-gap-date-container) - 1vw);
+}
+
+.semester-school-part .semester-page-content {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 2vw;
+    align-items: center;
+    justify-content: start;;
+}
+
+.semester-school-text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    row-gap: 1.5vw;
+}
+
+#semesterPage .semester-part:last-child {
+    padding-bottom: 35px;
+}
+
+.semester-school-name {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: rgb(192, 82, 82);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 5px;
+}
+
+.semester-school-location, .semester-school-address {
+    font-size: 1.5vw;
+    font-weight: 100;
+    color: aliceblue;
+}
+
+div.semester-page-subjects {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 15;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.semester-subjects-part, .semester-specialties-part {
+    padding-bottom: 30px;
+}
+
+.semester-page-subjects .image-subject-container {
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+}
+.semester-page-subjects .image-subject-container img {
+    width: 100%;
+    height: fit-content;
+    border-radius: 30px;
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+html {
+    --leave-semester-subject-border-color: rgba(101, 101, 101, 0.2);
+}
+
+.semester-page-subjects .image-subject-container .leave-semester-subject {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, border 0.3s;
+    border: 2px solid var(--leave-semester-subject-border-color);
+}
+
+.semester-page-subjects .image-subject-container .leave-semester-subject:hover {
+    background-color: var(--leave-semester-subject-border-color);
+    border: 2px solid transparent;
+    color: white;
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.semester-page-subjects .image-subject-container .leave-semester-subject p {
+    font-size: 30px;
+    color: #727272 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+
+#semesterPage .cross-semester-page-container.hidden {
+    width: 0;
+    height: 0;
+    font-size: 0;
+    opacity: 0;
+    pointer-events: none;
+}

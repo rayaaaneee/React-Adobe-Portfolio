@@ -4,7 +4,6 @@
   "description": "React Portfolio",
   "scripts": {
     "client": "cd client && npm start",
-    "watch-client": "cd client && npm run watch",
     "server": "cd server && npm start",
     "watch-server": "cd server && npm run watch"
   },

@@ -1,0 +1,122 @@
+/* Base du menu */
+.menu {
+    list-style-type : none;
+    display: flex;
+    margin-top : 0;
+    font-weight : bold;    
+    background-color: rgba(255, 255, 255, 0.9); 
+    transition: background-color var(--general-transition-switch-mode);
+    backdrop-filter: blur(5px);
+    justify-content : flex-end;
+    height: 67px;
+    align-items: center;
+    letter-spacing: 0.4px;
+    box-shadow: 0 0 40px rgb(0 0 0 / 20%);
+}
+
+/* Disposition et personnification des items */
+.sites {
+    display : block;
+    min-width: 100px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    padding : 5px;
+}
+
+/* Ecart entre les endroits */
+.menu li {
+    display : inline;
+    padding-inline: 20px;
+}
+
+.menu .sites p {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Le bas de chaque case survolée s'agrandit de 10px mais pas le reste */
+.menu li:hover{
+    transform: translateY(2.5px);
+    border-bottom: 5px solid rgb(239, 195, 153);
+    border-radius: 3px;
+}
+
+/* Colorier en jaune aussi le texte du menu */
+.sites:hover{
+    color:rgb(239, 195, 153);
+}
+
+/* Mise en place du menu sticky */
+header{
+    position : fixed;
+    top : 0;
+    width : 100vw;
+    z-index: 2;
+}
+
+/*  Ecart du debut de page avec le menu */
+body {
+    overflow-x : hidden;
+}
+
+/* Mettre droit l'image du menu */
+.logo {
+    position: absolute;
+    max-width: 60px;
+    left: 1%;
+    width: 50px;
+    height: 50px;
+    background-image: url(../../img/header/portfolio_logo.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Mettre le titre assez bas pour qu'on puisse le voir */
+.t1 {
+    padding-top: 70px;
+}
+
+.mediamenu{
+    display: none;
+}
+
+/* Disposition de l'icone darkmode */
+
+.theme-form {
+    width: 5%;
+    height:70px;
+    margin-right: 3.2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mode-button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.3s;
+    background-image: url(../../img/header/dark-mode.png);
+    width: 40px;
+    height: 40px;
+}
+
+.mode-button:hover {
+    background-image: url(../../img/header/dark-mode-hover.png);
+}
+
+.menu .sites > p {
+    color: black;
+}
+
+.menu-logo-container {
+    width: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}

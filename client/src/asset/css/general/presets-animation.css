@@ -1,0 +1,8 @@
+*.hide:not(.project) {
+    opacity: 0;
+    scale: 0.9;
+}
+
+.project.hide {
+    opacity: 0;
+}

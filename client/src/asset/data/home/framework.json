@@ -1,0 +1,102 @@
+{
+    "Symfony" : {
+        "name" : "Symfony",
+        "color" : "#f3f3f3"
+    },
+    "Laravel" : {
+        "name" : "Laravel",
+        "color" : "#f3f3f3"
+    },
+    "CodeIgniter" : {
+        "name" : "CodeIgniter",
+        "color" : "#f3f3f3"
+    },
+    "CakePHP" : {
+        "name" : "CakePHP",
+        "color" : "#f3f3f3"
+    },
+    "Zend" : {
+        "name" : "Zend",
+        "color" : "#f3f3f3"
+    },
+    "JQuery" : {
+        "name" : "JQuery",
+        "color" : "#f3f3f3"
+    },
+    "AngularJS" : {
+        "name" : "AngularJS",
+        "color" : "#f3f3f3"
+    },
+    "ReactJS" : {
+        "name" : "ReactJS",
+        "color" : "#f3f3f3"
+    },
+    "VueJS" : {
+        "name" : "VueJS",
+        "color" : "#f3f3f3"
+    },
+    "Express" : {
+        "name" : "Express",
+        "color" : "#f3f3f3"
+    },
+    "Bootstrap" : {
+        "name" : "Bootstrap",
+        "color" : "#f3f3f3"
+    },
+    "Foundation" : {
+        "name" : "Foundation",
+        "color" : "#f3f3f3"
+    },
+    "Materialize" : {
+        "name" : "Materialize",
+        "color" : "#f3f3f3"
+    },
+    "Spring" : {
+        "name" : "Java Spring Boot",
+        "color" : "#f3f3f3"
+    },
+    ".NET" : {
+        "name" : ".NET",
+        "color" : "#f3f3f3"
+    },
+    "ASP.NET" : {
+        "name" : "ASP.NET",
+        "color" : "#f3f3f3"
+    },
+    "Django" : {
+        "name" : "Django",
+        "color" : "#f3f3f3"
+    },
+    "Flask" : {
+        "name" : "Flask",
+        "color" : "#f3f3f3"
+    },
+    "Ruby on Rails" : {
+        "name" : "Ruby on Rails",
+        "color" : "#f3f3f3"
+    },
+    "Xamarin" : {
+        "name" : "Xamarin",
+        "color" : "#f3f3f3"
+    },
+    "Ionic" : {
+        "name" : "Ionic",
+        "color" : "#f3f3f3"
+    },
+    "QT" : {
+        "name" : "QT",
+        "color" : "#f3f3f3"
+    },
+    "Cordova" : {
+        "name" : "Cordova",
+        "color" : "#f3f3f3"
+    },
+    "Electron" : {
+        "name" : "Electron",
+        "color" : "#f3f3f3"
+    },
+    "Cocoa Touch" : {
+        "name" : "Cocoa Touch",
+        "color" : "#f3f3f3"
+    }
+}

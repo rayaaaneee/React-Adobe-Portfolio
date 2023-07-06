@@ -1,0 +1,206 @@
+@media screen and (max-aspect-ratio : 3/2) and (max-width : 1024px) { 
+    /* Redimensionner les cases des projets, leur image et leur texte */ 
+    .content{ 
+        width: 220px; 
+        height: 220px; 
+    } 
+ 
+    .content p { 
+        font-size: clamp(0.8rem, 2vw, 2rem); 
+    } 
+ 
+    .content img :not(.to_link img, .to_download img){ 
+        max-width: 130px; 
+        min-width: 50px; 
+    } 
+
+    .to_link img, .to_download img{
+        width: 30px;
+    }
+
+    .to_link, .to_download{
+        margin-top: 10px;
+    }
+     
+    /* Redimensionner tout le 2 eme container qui contient le cv */ 
+    #cv-img img{ 
+        max-width: 340px; 
+        min-width: 250px; 
+    } 
+ 
+    #zoom p{ 
+        font-size: clamp(0.8rem, 2vw, 2rem); 
+    } 
+ 
+    #zoom img{ 
+        max-width: 60px; 
+        min-width: 20px; 
+    } 
+ 
+    .beforebutton{ 
+        font-size: clamp(1rem, 2vw, 2rem); 
+    } 
+ 
+    #cv-text{ 
+        row-gap: 10px; 
+    } 
+ 
+    #container-cv{ 
+        height : 600px; 
+    } 
+ 
+    .cv-button{ 
+        padding : 5px 10px; 
+        font-size: clamp(0.8rem, 2vw, 2rem); 
+    } 
+ 
+    .explicationtext{ 
+        font-size: clamp(1.5rem, 2vw, 2rem); 
+    }
+ 
+    @media screen and (max-height : 1100px ){ 
+        /* On redimensionne les cases des projets */ 
+        .content{ 
+            width: 150px; 
+            height: 150px; 
+        } 
+ 
+        .projects{ 
+            column-gap: 20px; 
+            row-gap: 14px; 
+        } 
+ 
+        .content p { 
+            font-size: clamp(0.8rem, 1vw, 1rem); 
+        } 
+ 
+        .content img:not(.to_link img, .to_download img){ 
+            max-width: 100px; 
+            max-height: 100px;
+            min-width: 30px; 
+            min-height: 30px;
+        } 
+
+        .to_link, .to_download{
+            margin-top: 0;
+        }
+
+        .to_link img, .to_download img{
+            width: 20px;
+        }
+
+        /* On redimensionne le 2eme container du cv */ 
+        #container-cv{ 
+            display: flex; 
+            /* Aligner le contenu du container */ 
+            align-items: center; 
+            /* Centrer le contenu du container */ 
+            justify-content: center; 
+            flex-direction: column-reverse; 
+            height: fit-content; 
+            row-gap: 20px; 
+            width: 90%; 
+        } 
+        #cv-img{ 
+            max-width: 250px; 
+            min-width: 200px; 
+            padding-left: 0px; 
+            margin-bottom: 15px; 
+        } 
+ 
+        #cv-text{ 
+            margin-top: 15px; 
+            row-gap: 10px; 
+            margin-bottom: 10px; 
+            padding-right : 0px; 
+        } 
+ 
+        #cv-text p{ 
+            padding-left: 15px; 
+            padding-right: 15px; 
+        } 
+ 
+        #beforebutton{ 
+            font-size: clamp(0.5rem, 2vw, 1rem); 
+            padding-left: 10px; 
+            padding-right: 10px; 
+        } 
+ 
+        #zoom{ 
+            padding-right: 15px; 
+            padding-left: 15px; 
+        } 
+
+        #cv-img img{
+            max-width: 250px;
+            min-width: 200px;
+        }
+    } 
+    @media screen and (max-width : 700px) {
+        /* Comme le menu se réduit sous 700px de largeur, on réduit l'écart entre le titre et le menu */
+        .t1{
+            padding-top: 40px;
+        }
+
+        /* On change la taille du titre */
+        .title p{
+            font-size: clamp(30px, 2vw, 40px);
+        }
+
+        #horizontal-bar2{
+            margin-bottom: 40px;
+        }
+
+        #cv{
+            row-gap: 0;
+        }
+
+        .horizontal-bars {
+            width: 37%;
+        }
+
+        .chevron {
+            width: 70px;
+        }
+
+        .card.view {
+            width: 250px;
+            height: 375px;
+        }
+
+        @media screen and (max-width:427px) {
+            .content{
+                width: 140px;
+                height: 140px;
+            }
+
+            .content p {
+                font-size: clamp(0.8rem, 1vw, 1rem);
+            }
+
+            .to_link, .to_download {
+                column-gap: 4px;
+            }
+
+            .quit-project-button {
+                width: 12vw;
+                height: 12vw;
+                font-size: 6vw;
+            }
+
+            .horizontal-bars {
+                width: 60%;
+                height: 10px;
+            }
+
+            .projects-chevrons-container .chevron {
+                width: 50px;
+            }
+
+            .card.view {
+                width: 215px;
+                height: 320px;
+            }
+        }
+    }
+}

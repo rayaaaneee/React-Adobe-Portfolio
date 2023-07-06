@@ -1,0 +1,72 @@
+{
+    "Baccalauréat" : {
+        "title" : "Baccalauréat",
+        "description" : "J'ai obtenu mon baccalauréat scientifique avec mention. J'ai eu ce bac avec les spécialités de physique-chimie et de mathématiques. Cette année m'a permis de découvrir de nouvelles matières et de me spécialiser dans les sciences. J'ai également pu apprendre à travailler en groupe et à gérer mon temps et mon travail.",
+        "specialties" : [ "Physique-Chimie", "Mathématiques" ],
+        "school_name" : "St Charles",
+        "school_location" : "Rillieux-la-Pape, 69140",
+        "school_address" : "26 Av. Victor Hugo",
+        "school_icon" : "st-charles.jpg",
+        "starting_date" : "2018-09-01",
+        "ending_date" : "2021-06-30", 
+        "icon" : "baccalaureate.png",
+        "white_icon" : "baccalaureate-white.png",
+        "subjects" : null
+    },
+    "S1" : {
+        "title" : "BUT : Semestre 1",
+        "description" : "Le premier semestre est un semestre d'introduction. Nous avons pu apprendre les bases de la programmation (algorithmique, langage C). Nous avons appris à utiliser les outils de développement (IDE, compilateur, etc...). Nous avons également appris à utiliser les outils de gestion de version en particulier Git. Les bases du développement web nous ont été enseignées (HTML, CSS).",
+        "specialties" : [],
+        "school_name" : "IUT Lyon 1",
+        "school_location" : "Villeurbanne La Doua, 69100",
+        "school_address" : "80 Bd Niels Bohr",
+        "school_icon" : "lyon1.png",
+        "starting_date" : "2021-09-03",
+        "ending_date" : "2022-01-01",
+        "icon" : "study.png",
+        "white_icon" : "study-white.png",
+        "subjects" : "s1.png"
+    },
+    "S2" : {
+        "title" : "BUT : Semestre 2",
+        "description" : "Le deuxième semestre est un semestre d'apprentissage. Nous avons pu commencer à apprendre le langage de programmation Java ainsi que vu la programmation orientée objet de manière générale, la programmation sur les bases de données (PL/SQL), ainsi que les interfaces graphiques (JavaFX, Swing). Nous avons également reçu des cours de qualité de développement logiciel (UML, tests unitaires, conventions de code, etc...), ce qui s'est avéré très utile pour la suite de la formation.",
+        "specialties" : [],
+        "starting_date" : "2022-01-01",
+        "ending_date" : "2022-06-22",
+        "school_name" : "IUT Lyon 1",
+        "school_location" : "Villeurbanne La Doua, 69100",
+        "school_address" : "80 Bd Niels Bohr",
+        "school_icon" : "lyon1.png",
+        "icon" : "study.png",
+        "white_icon" : "study-white.png",
+        "subjects" : "s2.png"
+    },
+    "S3" : {
+        "title" : "BUT : Semestre 3",
+        "description" : "Le troisième semestre est le semestre de la spécialisation. Vous devez choisir une spécialisation parmi les 3 suivantes : <br> - Réseau en alternance <br> - Administration de bases de données <br> - Développement <br> En parcours développement, j'ai pu apprendre en profondeur le langage de programmation Python ainsi que le langage JavaScript en complément du développement Web du premier semestre, ainsi que son systeme de notation : le JSON avec enfin la mise en place du back-end avec le langage PHP.",
+        "specialties" : [],
+        "starting_date" : "2022-09-05",
+        "ending_date" : "2022-02-20",
+        "school_name" : "IUT Lyon 1",
+        "school_location" : "Villeurbanne La Doua, 69100",
+        "school_address" : "80 Bd Niels Bohr",
+        "school_icon" : "lyon1.png",
+        "icon" : "study.png",
+        "white_icon" : "study-white.png",
+        "subjects" : "s3.png"
+    },
+    "S4" : {
+        "title" : "BUT : Semestre 4",
+        "description" : "Le quatrième semestre est divisé en deux parties. La première partie est une spécialisation en développement, la deuxieme est un stage de 12 semaines démarrant le 11 avril. Durant la premiere partie du semestre, nous avons pu nous consacrer au développement mobile où nous avons pu apprendre le langage de programmation Kotlin ainsi que le framework Android. Côté back-end j'ai aussi pu apprendre à utiliser le framework Symfony et découvrir plusieurs langages de programmation JavaScript (NodeJS, TypeScript, ReactJS).",
+        "specialties" : [],
+        "starting_date" : "2022-02-20",
+        "ending_date" : "2022-06-30",
+        "school_name" : "IUT Lyon 1",
+        "school_location" : "Villeurbanne La Doua, 69100",
+        "school_address" : "80 Bd Niels Bohr",
+        "school_icon" : "lyon1.png",
+        "icon" : "study.png",
+        "white_icon" : "study-white.png",
+        "subjects" : "s4.png"
+    }
+}

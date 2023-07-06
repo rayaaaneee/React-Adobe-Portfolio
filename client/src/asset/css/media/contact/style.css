@@ -1,0 +1,130 @@
+@media screen and (max-aspect-ratio : 3/2) and (max-width : 1024px) { 
+
+    #pres{
+        width : 90vw;
+    }
+
+    main{
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+    }
+
+    .pres-container, .form-container{
+        align-items: center;
+    }
+
+    #pres {
+        width: fit-content;
+    }
+
+    @media screen and (max-width : 700px ){ 
+
+        .present{
+            text-align: center;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        .required, label{
+            font-size: clamp(0.8rem, 2vw, 1rem);
+        }
+
+        .form-style{
+            width: 420px;
+            padding-left: 23px;
+            padding-right: 23px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .formulaire{
+            padding: 0;
+        }
+
+        .formulaire > form {
+            width: fit-content;
+        }
+        /* */
+        #pres{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #imgcontact{
+            width: 100px;
+        }
+
+        input, textarea{
+            margin-top: 6px;
+        }
+
+        #hasSend {
+            align-self: center;
+            justify-self: center;
+        }
+        #hasSend img{
+            width: 70px;
+            height: 70px;
+        }
+
+        #hasSend p {
+            font-size: clamp(1.3rem, 4vw, 2rem);
+        }
+
+        @media screen and (max-width : 500px) {
+            html {
+                --width-main-components: 95vw;
+            }
+            .formulaire > form {
+                width: var(--width-main-components);
+            }
+
+            .form-style {
+                width: fit-content;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #pres {
+                width: var(--width-main-components);
+            }
+            #hasSend img{
+                width: 40px;
+                height: 40px;
+            }
+
+            #hasSend p {
+                font-size: 4vw;
+            }
+
+            tbody, tr, td {
+                width: 100%;
+            }
+
+
+
+            @media screen and (max-width : 400px) {
+                .formulaire > form {
+                    width: var(--width-main-components);
+                }
+                #pres {
+                    width: var(--width-main-components);
+                }
+                #hasSend img{
+                    width: 30px;
+                    height: 30px;
+                }
+
+                #hasSend p {
+                    font-size: 3vw;
+                }
+            }
+        }
+    }
+}

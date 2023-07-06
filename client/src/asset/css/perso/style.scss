@@ -1,0 +1,118 @@
+/* Parametres du titre */
+.title {
+    &.t1 p {
+        margin-top: 60px;
+    }
+    &>h3 {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: #767676;
+    }
+}
+
+/* Disposition du contenu */
+.content {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.884);
+    transition: background-color var(--general-transition-switch-mode);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.content .title-part {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 70px;
+}
+
+.content .title-part h1 {
+    margin: 0;
+    margin-top: 20px;
+}
+
+.content .content-part {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.content .content-part .photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Deisgn de la photo */
+#photopres {
+    width: 200px;
+    border-radius: 50%;
+    margin: 20px;
+    display: flex;
+}
+
+/*Parametres du texte */
+.text {
+    font-family: "Helvetica Neue", Helvetica, Arial sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.884);
+    text-align: justify;
+    margin: 20px;
+}
+
+.text p {
+    margin-left: 15px;
+}
+
+/* Disposition et déco des iframes */
+#frames {
+    width: 100%;
+    display: grid;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    /* Centrer les iframes */
+    justify-items: center;
+
+    grid-template-columns: 1fr 1fr;
+
+    /* Ne pas utiliser la premiere et la derniere grille */
+    grid-column-start: 1;
+    grid-column-end: 2;
+    row-gap: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: background-color var(--general-transition-switch-mode);
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* Bordure sur les iframes et taille 100%*/
+#frames iframe {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    width: 100%;
+}
+
+.t2 h3 {
+    padding-bottom: 20px;
+}
+
+
+/* Barre horizontale blanche */
+.horizontal-bars {
+    width: 30%;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease, background-color var(--general-transition-switch-mode);
+    /* Centrer */
+    margin: 0 auto;
+    align-self: center;
+}
+
+#horizontal-bar1 {
+    margin-bottom: 3vw;
+}

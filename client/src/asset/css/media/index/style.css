@@ -1,0 +1,206 @@
+@media screen and (max-width : 425px) and (min-width : 300px) {
+    .about-page {
+        bottom: 10vh;
+        right: 5vw;
+        font-size: 5.5vw;
+    }
+    .footer-links a {
+        width: 11vw;
+        height: 11vw;
+    }
+    .logo  {
+        width: 115px;
+        top: 1vh;
+    }
+    .get-start {
+        top: 1vh;
+        right: 1vh;
+        width: 300px;
+        height: 110px;
+        font-size: 2.5em;
+    }
+
+    .hamburger-bar {
+        width: 100px;
+    }
+}
+
+@media screen and (max-aspect-ratio : 3/2) and (max-width : 1440px) and (min-width : 1024px) {
+
+    .media-menu {
+        display: block;
+    }
+
+    .basic-menu {
+        display: none;
+    }
+
+    .logo img {
+        width: 100%;
+    }
+
+    .footer-links a  {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .get-start {
+        top: 7vh;
+        right: 5vw;
+        width: 200px;
+        height: 80px;
+        border-radius: 60px;
+        font-size: 1.7em;
+    }
+
+    .hamburger-container {
+        right: 9.5vw;
+        width: fit-content;
+        height: 4.6vh;
+    }
+
+    .hamburger-container .hamburger-bar {
+        width: 70px;
+        height: 0.7vh;
+    }
+
+    .container > .title > h1 {
+        font-size: 13.5vw;
+    }
+
+    .subtitle {
+        margin-top: 0;
+        column-gap: 2vw;
+    }
+
+    .container > .title {
+        row-gap: 5vw;
+    }
+
+    .title > .main-bar {
+        height: 15px;
+    }
+
+    .container > .title > .subtitle > h2 {
+        font-size: 8vw;
+    }
+
+    .logo {
+        left: 3vw;
+        top: 3vw;
+    }
+
+    .vertical-bar {
+        width: 12px;
+        height: 9vw;
+    }
+
+    .menu-links {
+        width: 100vw;
+    }
+
+    .menu li a {
+        font-size: 1.7em;
+    }
+
+    .download-img {
+        width: 3.5vw;
+        height: 3.5vw;
+    }
+
+    .circle-two {
+        top: -30%;
+        left: -30%;
+    }
+
+    .about-page {
+        font-size: 3em;
+        bottom: 10vh;
+        right: 6vw;
+    }
+
+    .about-page > p::after {
+        height: 12px;
+    }
+}
+
+@media screen and (max-width : 1024px) and (min-width : 768px) {
+    .get-start {
+        top: 2vw;
+        right: 2vw;
+    }
+    .footer-links a {
+        width: 8vw;
+        height: 8vw;
+    }
+    .about-page {
+        font-size: 2em;
+        bottom: 17vh;
+        right: 2vw;
+    }
+}
+
+@media screen and (max-width : 768px) and (min-width : 600px) {
+
+    .hamburger-container {
+        position: relative;
+        height: 8.5vh;
+        z-index: 5;
+    }
+
+    .menu-links{
+        position: relative;
+        z-index: 4;
+    }
+
+    .get-start {
+        top: 12vh;
+    }
+
+    .hide-links {
+        width: 74%;
+        height: 140%;
+    }
+
+    .footer-links a {
+        width: 7vw;
+        height: 7vw;
+    }
+
+    .about-page {
+        font-size: 4vw;
+        bottom: 12vh;
+        right: 13vw;
+    }
+
+    .about-page > p::after {
+        height: 10px;
+    }
+
+    .vertical-bar {
+        width: 6px;
+    }
+}
+
+@media screen and (max-width : 600px) and (min-width : 520px){
+    .hamburger-container {
+        height: 7.5vh;
+    }
+    .get-start {
+        width: 220px;
+        height: 90px;
+        font-size: 1.9em;
+    }
+    .about-page {
+        bottom: 9vh;
+    }
+}
+
+@media screen and (max-width: 520px) and (min-width: 425px) {
+    .hamburger-container .hamburger-bar {
+        width: 90px;
+    }
+    .hamburger-container {
+        right: 11vw;
+    }
+}

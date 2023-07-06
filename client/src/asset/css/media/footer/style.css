@@ -1,0 +1,60 @@
+@media screen and (max-aspect-ratio : 3/2) and (max-width : 1024px) { 
+
+    /* On redimensionne les images */
+    #footer2 > a {
+        width: 20px;
+        height: 20px;
+    }
+
+    .redirect-about {
+        color: white;
+    }
+    @media screen and (max-height : 1100px) {
+        /* On redimensionne les elements du footer */ 
+        .redirect-about {
+            margin-left: 4vw;
+        }
+        #footer1 p{ 
+            font-size: clamp(0.5rem, 2vw, 1rem); 
+        }
+        
+        footer {
+            height: 8vh;
+        }
+
+        #footer2 {
+            margin-right: 2vw;
+        }
+
+        @media screen and (max-width : 500px) {
+            footer {
+                height: fit-content;
+            }
+            #footer1 {
+                margin-left: 2vw;
+            }
+
+            #footer2 > a {
+                width: 3.2vw;
+                height: 3.2vw;
+            }
+
+            #footer1 p {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+/* Si l'écran est plus haut que large on baisse la taille du footer */
+@media screen and (max-aspect-ratio : 2/3) and (max-width : 1024px) { 
+    footer {
+        height: 12vw;
+    }
+}
+
+@media screen and (max-width : 1440px) and (min-width : 1024px) {
+    footer {
+        height: 6vw;
+    }
+}
