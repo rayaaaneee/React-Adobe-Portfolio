@@ -1,0 +1,89 @@
+@media screen and (max-aspect-ratio : 3/2) and (max-width : 1024px) {
+    /* On desactive le logo de base pour en placer un deuxieme en bas */
+    #logo{
+        display : none;
+    }
+
+    /* On redispose le container */
+    #container{
+        display : flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 80vw;
+        height: 90vh;
+    }
+
+    /* On place les logo Creative Cloud et son texte */
+    #logomedia{
+        display: flex;
+        align-self: flex-start;
+        margin-left: 5vw;
+        align-items: center;
+        flex-direction: row;
+        column-gap: 1vw ;
+    }
+
+    /* On display flex la partie basse et on centre */
+    #right{
+        display : flex;
+        align-items: center;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    /* On définit la taille de l'image creative Cloud */
+    #logomedia img{
+        max-width: 50px;
+        min-width: 35px;
+        justify-self: start;
+    }
+
+    /* On passe aux téléphones */
+    @media screen and (max-height : 1100px ){
+        #title img{
+            max-width: 60px;
+            min-width: 30px;
+
+            max-height: 60px;
+            min-height: 30px;
+        }
+
+        #title h1{
+            font-size: clamp(1.2rem, 2vw, 2rem);
+        }
+
+        .highfontweight{
+            font-size: clamp(0.7rem, 2vw, 2rem);
+        }
+
+        .lowfontweight{
+            font-size: clamp(0.6rem, 1.5vw, 1.5rem);
+        }
+
+        .lowfontweight2{
+            font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+        }
+
+        #img img{
+            min-width: 30px;
+            max-width: 160px;
+        }
+
+        #logomedia{
+            min-width: 4px;
+        }
+
+        #logomedia img{
+            max-width: 30px;
+            min-width: 10px;
+        }
+        #logomedia p{
+            font-size: clamp(0.8rem, 1.5vw, 1.5rem);
+        }
+
+        #underChange{
+            margin-top: 50px;
+        }
+        
+    }
+}

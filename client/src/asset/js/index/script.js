@@ -73,7 +73,7 @@ let hideLinkIsBlock = true;
 
 const toggleMenuClass = () => {
     menu.classList.toggle("active");
-    
+
     if (hideLinkIsBlock) {
         hideLinks.style.display = "none";
     } else {

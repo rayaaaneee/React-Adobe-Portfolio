@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import '../asset/css/index/appearence.css';
 import '../asset/css/index/dark-style.css';
@@ -19,94 +20,123 @@ const title = 'Adobe Portfolio';
 
 const Index = () => {
 
+    const textTab = ["Rayane Merlin", "Full Stack Developper", "Designer", "IT Student (BAC +2)"];
+
+    let [element, setElement] = useState(textTab[0]);
+
     useEffect(() => {
         document.title = title;
     });
 
+    let [menuClass, setMenuClass] = useState(''); 
+    const toggleMenuClass = () => {
+        if (menuClass === '') {
+            setMenuClass('active');
+        } else {
+            setMenuClass('');
+        }
+        toggleChecked();
+    }
+
+    let [imgMenuClass, setImgMenuClass] = useState('dl-img');
+    let [checked, setChecked] = useState(false);
+
+    const toggleChecked = () => {
+        setChecked(!checked);
+    }
+
+    const colorMenuImg = () => {
+        setImgMenuClass('dl-img-hover');
+    }
+
+    const uncolorMenuImg = () => {
+        setImgMenuClass('dl-img');
+    }
+
     return (
         <>
             <header>
-                <div class="triangle border-triangle header-triangle"></div>
-                <div class="background-container">
-                    <div class="triangle triangle-red"></div>
-                    <div class="triangle triangle-orange"></div>
-                    <div class="triangle triangle-yellow"></div>
-                    <div class="circle circle-one"></div>
-                    <div class="circle circle-two"></div>
+                <div className="triangle border-triangle header-triangle"></div>
+                <div className="background-container">
+                    <div className="triangle triangle-red"></div>
+                    <div className="triangle triangle-orange"></div>
+                    <div className="triangle triangle-yellow"></div>
+                    <div className="circle circle-one"></div>
+                    <div className="circle circle-two"></div>
                 </div>
-                <nav class="menu basic-menu">
-                    <div class="logo">
+                <nav className="menu basic-menu">
+                    <div className="logo">
                         <img src={ faviconDarkTheme } alt="logo" draggable="false" />
                     </div>
-                    <ul class="menu-links">
-                        <li><a href="./?page=home">Accueil</a></li>
-                        <li><a href="./?page=course">Parcours</a></li>
-                        <li><a href="./?page=perso">Perso</a></li>
-                        <li><a href="./?page=contact">Contact</a></li>
-                        <li class="cv-download">
-                            <a href={ CV } download="CV_Rayane_Merlin.pdf" onmouseover="colorMenuImg();" onmouseleave="uncolorMenuImg();">
-                                <div class="container-cv-download">
+                    <ul className={ `menu-links ${menuClass}` }>
+                        <li><NavLink to={'/home'}>Accueil</NavLink></li>
+                        <li><NavLink to={'/course'}>Parcours</NavLink></li>
+                        <li><NavLink to={'/perso'}>Perso</NavLink></li>
+                        <li><NavLink to={'/contact'}>Contact</NavLink></li>
+                        <li className="cv-download">
+                            <a href={ CV } download="CV_Rayane_Merlin.pdf" onMouseOver={ colorMenuImg } onMouseLeave={ uncolorMenuImg }>
+                                <div className="container-cv-download">
                                     <p>C</p>
                                     <p>V</p>
-                                    <div class="download-img dl-img"></div>
+                                    <div className="download-img dl-img"></div>
                                 </div>
                             </a>
                         </li>
-                        <div class="hide-links"></div>
+                        <div className={ 'hide-links ' + (checked ? 'disabled' : '') }></div>
                     </ul>
-                    <div class="hamburger-container" onclick="check(this);toggleMenuClass();">
-                        <input type="checkbox" id="hamburger-checkbox" />
-                        <div class="hamburger-bar top-bar"></div>
-                        <div class="hamburger-bar middle-bar"></div>
-                        <div class="hamburger-bar bottom-bar"></div>
+                    <div className="hamburger-container" onClick={ toggleMenuClass }>
+                        <input type="checkbox" id="hamburger-checkbox" checked={ checked } />
+                        <div className="hamburger-bar top-bar"></div>
+                        <div className="hamburger-bar middle-bar"></div>
+                        <div className="hamburger-bar bottom-bar"></div>
                     </div>
                 </nav>
-                <a href="./?page=home" class="get-start">Découvrir</a>
+                <NavLink to={'/home'} className="get-start">Découvrir</NavLink>
             </header>
             <main>
-                <div class="container">
-                    <div class="title">
+                <div className="container">
+                    <div className="title">
                         <h1>Adobe Portfolio</h1>
-                        <div class="main-bar"></div>
-                        <div class="subtitle">
-                            <h2>Rayane Merlin</h2>{/*  Texte dynamique  */}
-                            <div class="vertical-bar"></div>
+                        <div className="main-bar"></div>
+                        <div className="subtitle">
+                            <h2>{ element }</h2>{/*  Texte dynamique  */}
+                            <div className="vertical-bar"></div>
                         </div>
                     </div>
                 </div>
             </main>
             <footer>
-                <div class="btn-switch-mode">
-                    <div class="media-dark-theme-form">
-                        <button class="dark-mode-button"/>
+                <div className="btn-switch-mode">
+                    <div className="media-dark-theme-form">
+                        <button className="dark-mode-button"/>
                     </div>
-                    <div class="media-light-theme-form">
-                        <button class="dark-mode-button"/>
+                    <div className="media-light-theme-form">
+                        <button className="dark-mode-button"/>
                     </div>
                 </div>
-                <div class="triangle border-triangle footer-triangle"></div>
-                <a href="./?page=about" class="about-page">
+                <div className="triangle border-triangle footer-triangle"></div>
+                <NavLink to={'/about'} className="about-page">
                     <p>Crédits</p>
-                </a>
-                <ul class="footer-links">
+                </NavLink>
+                <ul className="footer-links">
                     <li title="Linked In">
-                        <a class="linkedin-link" href="https://www.linkedin.com/in/rayanemerlin/" target="_blank">
+                        <a className="linkedin-link" href="https://www.linkedin.com/in/rayanemerlin/" target="_blank">
                         </a>
                     </li>
                     <li title="School Gitlab">
-                        <a class="gitlab-link" href="https://forge.univ-lyon1.fr/p2103994" target="_blank">
+                        <a className="gitlab-link" href="https://forge.univ-lyon1.fr/p2103994" target="_blank">
                         </a>
                     </li>
                     <li title="Personal Github">
-                        <a class="github-link" href="https://github.com/rayaaaneee" target="_blank">
+                        <a className="github-link" href="https://github.com/rayaaaneee" target="_blank">
                         </a>
                     </li>
                     <li title="Mail">
-                        <a class="mail-link" href="mailto:rayane.merlin8@gmail.com">
+                        <a className="mail-link" href="mailto:rayane.merlin8@gmail.com">
                         </a>
                     </li>
                     <li title="Phone">
-                        <a class="tel-link" href="tel:+33768283277">
+                        <a className="tel-link" href="tel:+33768283277">
                         </a>
                     </li>
                 </ul>
