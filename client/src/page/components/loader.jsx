@@ -140,7 +140,7 @@ const Loader = () => {
     }
 
     return (
-        <main id='loaderContainer'>
+        <main id='loaderContainer' style={{ zIndex: containerIsVisible ? "10000" : "-1" }}>
             <div id="background" className={ isBackgroundVisible ? 'visible' : '' }></div>
             <div id="container" className={ containerIsVisible ? 'visible' : '' } onMouseOver={ changeCursor } onMouseOut={ unchangeCursor }>
                 <div id="left">

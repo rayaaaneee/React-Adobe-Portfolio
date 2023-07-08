@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
-import Loader from './components/loader';
 
 import '../asset/css/index/appearence.css';
 import '../asset/css/index/dark-style.css';
 import '../asset/css/index/style.css';
-
 import '../asset/css/media/index/style.css';
 
 import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';
@@ -26,12 +24,12 @@ const Index = () => {
 
     const textTab = ["Rayane Merlin", "Full Stack Developper", "Designer", "IT Student (BAC +2)"];
 
-    let textTypeWriter = useTypewriter({
+    const [textTypeWriter] = useTypewriter({
         words: textTab,
         loop: true,
+        typeSpeed: 100,
+        deleteSpeed: 200,
     });
-
-    console.log(textTypeWriter);
 
     let [menuClass, setMenuClass] = useState(''); 
     const toggleMenuClass = () => {

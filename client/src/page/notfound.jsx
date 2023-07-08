@@ -1,9 +1,12 @@
+import Loader from '../page/components/loader';
+import HeaderComponent from '../page/components/header-component';
 
 const NotFound = () => {
     return (
-        <div>
-            <p>404 Not Found</p>
-        </div>
+        <>
+            <Loader />
+            <HeaderComponent />
+        </>
     );
 }
 

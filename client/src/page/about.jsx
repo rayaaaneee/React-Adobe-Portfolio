@@ -1,9 +1,12 @@
+import Loader from '../page/components/loader';
+import HeaderComponent from '../page/components/header-component';
 
 const About = () => {
     return (
-        <div>
-            <p>About</p>
-        </div>
+        <>
+            <Loader />
+            <HeaderComponent />
+        </>
     );
 }
 

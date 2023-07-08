@@ -5,7 +5,7 @@ export class ManageThemes {
 
     static isDarkTheme;
 
-    static getTheme = () => {
+    static getSystemTheme = () => {
 
         let isDarkTheme = false;
 
@@ -40,9 +40,13 @@ export class ManageThemes {
         return ManageThemes.isDarkTheme ? "dark" : "light";
     }
 
-    constructor(){
-        ManageThemes.getTheme();
+    static manageThemes = () => {
         ManageThemes.setTheme();
         ManageThemes.setBodyTheme();
+    }
+
+    static toggleThemes = () => {
+        ManageThemes.isDarkTheme = !ManageThemes.isDarkTheme;
+        ManageThemes.manageThemes();
     }
 }

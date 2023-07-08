@@ -1,9 +1,12 @@
+import Loader from '../page/components/loader';
+import HeaderComponent from '../page/components/header-component';
 
 const Contact = () => {
     return (
-        <div>
-            <p>Contact</p>
-        </div>
+        <>
+            <Loader />
+            <HeaderComponent />
+        </>
     );
 }
 

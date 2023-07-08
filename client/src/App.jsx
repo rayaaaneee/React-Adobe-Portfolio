@@ -5,7 +5,7 @@ import './style.css';
 
 const App = () => {
 
-  let manageThemes = new ManageThemes();
+  ManageThemes.manageThemes();
 
   return (
     <Router/>
