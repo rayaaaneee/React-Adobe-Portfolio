@@ -5,6 +5,10 @@ const Course = () => {
 
     ManageBody.changeClass('course');
 
+    useEffect(() => {
+        document.title = 'Mon parcours';
+    });
+
     return (
         <>
             <Main child={ <></> } />

@@ -5,6 +5,10 @@ const About = () => {
 
     ManageBody.changeClass('about');
 
+    useEffect(() => {
+        document.title = 'À propos';
+    });
+
     return (
         <>
             <Main child={ <></> } />

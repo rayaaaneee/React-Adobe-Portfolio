@@ -20,7 +20,9 @@ const Main = (props) => {
             <Loader />
             <HeaderComponent />
             <Backgrounds />
-            { props.child }
+            <div className="page-content" style={ props.style }>
+                { props.child }
+            </div>
             <FooterComponent />
         </>
     );

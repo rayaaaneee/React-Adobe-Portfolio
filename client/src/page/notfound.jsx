@@ -5,9 +5,18 @@ const NotFound = () => {
 
     ManageBody.changeClass('not-found');
 
+    useEffect(() => {
+        document.title = 'Page introuvable';
+    });
+
     return (
         <>
-            <Main child={ <></> } />
+            <Main child=
+            { 
+            <>
+                <h1>404</h1>
+            </> 
+            } />
         </>
     );
 }

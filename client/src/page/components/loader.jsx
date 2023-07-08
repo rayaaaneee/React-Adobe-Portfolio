@@ -89,57 +89,73 @@ const Loader = () => {
     var interval = null;
 
     const changeCursor = () => {
-        document.querySelectorAll(".point:not(.p0)").forEach(function(element){
-            element.style.scale = 1;
-        });
-        document.body.querySelector(".p0").style.scale = 1.5;
-        clearInterval(interval);
-        document.body.style.cursor = "none";
-        cursor.style.display = "block";
-        cursor.style.position = "absolute";
-        /* Le curseur est centré par rapport a la souris */
-        document.addEventListener("mousemove", function(e){
-            cursor.style.left = e.clientX-47+ "px";
-            cursor.style.top = e.clientY+-28+"px";
-        });
-
-        /* Animation du curseur */
-        var i = -1;
-        interval = setInterval(function(){
-            i++;
-            let index = i%6;
-            animateCursor(index);
-            if(i!=0)
-                if(index-1==-1)
-                    initialCursor(5);
-                else
-                    initialCursor(index-1);
-        },120);
-
-        // Au bout de 3s, on remet le curseur de base automatiquement (ca correspond au temps de disparition du loader)
-        setTimeout(function(interval){
-            window.clearInterval(interval);
-        },3000);
+        try {
+            document.querySelectorAll(".point:not(.p0)").forEach(function(element){
+                element.style.scale = 1;
+            });
+            document.body.querySelector(".p0").style.scale = 1.5;
+            clearInterval(interval);
+            document.body.style.cursor = "none";
+            cursor.style.display = "block";
+            cursor.style.position = "absolute";
+            /* Le curseur est centré par rapport a la souris */
+            document.addEventListener("mousemove", function(e){
+                cursor.style.left = e.clientX-47+ "px";
+                cursor.style.top = e.clientY+-28+"px";
+            });
+    
+            /* Animation du curseur */
+            var i = -1;
+            interval = setInterval(function(){
+                i++;
+                let index = i%6;
+                animateCursor(index);
+                if(i!=0)
+                    if(index-1==-1)
+                        initialCursor(5);
+                    else
+                        initialCursor(index-1);
+            },120);
+    
+            // Au bout de 3s, on remet le curseur de base automatiquement (ca correspond au temps de disparition du loader)
+            setTimeout(function(interval){
+                window.clearInterval(interval);
+            },3000);
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     var cursor = document.getElementById("cursor");
     // Remettre le curseur de base en place quand la souris quitte le container
     const unchangeCursor = () => {
-        clearInterval(interval);
-        document.body.style.cursor = "default";
-        cursor.style.display = "none";
+        try {
+            clearInterval(interval);
+            document.body.style.cursor = "default";
+            cursor.style.display = "none";
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     // Fonction qui prend en paramètre l'index du point a animer et l'anime
     const animateCursor = (index) => {
-        document.querySelector(".p"+index).style.scale = 1.5;
-        document.querySelector(".p"+index).style.transition = "all 0.3s";
+        try {
+            document.querySelector(".p"+index).style.scale = 1.5;
+            document.querySelector(".p"+index).style.transition = "all 0.3s";
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     // Fonction qui prend en paramètre l'index du point a remettre en place et le remet en place
     function initialCursor(index){
-        document.querySelector(".p"+index).style.scale = 1;
-        document.querySelector(".p"+index).style.transition = "all 0.3s";
+        try {
+            document.querySelector(".p"+index).style.scale = 1;
+            document.querySelector(".p"+index).style.transition = "all 0.3s";
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     if (wasPassed) {

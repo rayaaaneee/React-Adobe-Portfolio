@@ -5,10 +5,14 @@ const Contact = () => {
 
     ManageBody.changeClass('contact');
 
+    useEffect(() => {
+        document.title = 'Contact';
+    });
+
     return (
-        <>
-            <Main child={ <></> } />
-        </>
+        <Main child={
+            <></>
+        } />
     );
 }
 

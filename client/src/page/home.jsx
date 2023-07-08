@@ -5,6 +5,10 @@ const Home = () => {
 
     ManageBody.changeClass('home');
 
+    useEffect(() => {
+        document.title = 'Accueil';
+    });
+
     return (
         <>
             <Main child={ <></> } />
