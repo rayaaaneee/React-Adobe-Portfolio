@@ -1,12 +1,12 @@
-body.body-dark * {
+body#dark * {
     color: white !important;
 }
 
-body.body-dark #background {
+body#dark #background {
     background-color: #000000 !important;
 }
 
-body.body-dark #container {
+body#dark #container {
     background-color: rgb(24, 23, 23) !important;
     box-shadow: 0 0 30px 0 rgba(255, 255, 255, 0.3) !important;
 }

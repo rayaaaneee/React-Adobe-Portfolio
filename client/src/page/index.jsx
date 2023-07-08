@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTypewriter } from 'react-simple-typewriter';
+import Loader from './components/loader';
 
 import '../asset/css/index/appearence.css';
 import '../asset/css/index/dark-style.css';
@@ -16,17 +18,20 @@ import Poppins from '../asset/font/Poppins/Poppins.woff2';
 import Poppins2 from '../asset/font/Poppins/Poppins2.woff2';
 import Poppins3 from '../asset/font/Poppins/Poppins3.woff2';
 
-const title = 'Adobe Portfolio';
-
 const Index = () => {
+
+    useEffect(() => {
+        document.title = 'Adobe Portfolio';
+    });
 
     const textTab = ["Rayane Merlin", "Full Stack Developper", "Designer", "IT Student (BAC +2)"];
 
-    let [element, setElement] = useState(textTab[0]);
-
-    useEffect(() => {
-        document.title = title;
+    let textTypeWriter = useTypewriter({
+        words: textTab,
+        loop: true,
     });
+
+    console.log(textTypeWriter);
 
     let [menuClass, setMenuClass] = useState(''); 
     const toggleMenuClass = () => {
@@ -99,7 +104,7 @@ const Index = () => {
                         <h1>Adobe Portfolio</h1>
                         <div className="main-bar"></div>
                         <div className="subtitle">
-                            <h2>{ element }</h2>{/*  Texte dynamique  */}
+                            <h2>{ textTypeWriter }</h2>{/*  Texte dynamique  */}
                             <div className="vertical-bar"></div>
                         </div>
                     </div>
