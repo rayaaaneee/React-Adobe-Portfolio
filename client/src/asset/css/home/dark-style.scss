@@ -1,0 +1,68 @@
+body.home {
+    &#dark *:not(.text-project-container *, .text-project-container, .title-card, .title-page-project > p, .card-back *) {
+        color: white !important;
+    }
+    
+    
+    &#dark .page-title-part {
+        color: rgb(232, 190, 190) !important;
+    }
+    
+    &#dark .horizontal-bars {
+        background-color: #000000 !important;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+    
+    &#dark .explicationtext {
+        text-shadow:  0 0 #000, 1px 1px 0 #000, 0 1px 0 #000, -1px 1px 0 #000, -1px 0 0 #000, -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000;
+    }
+    
+    &#dark .link-btn:hover, &#dark .download-btn:hover {
+        color: rgb(234, 215, 215) !important;
+        transition: 0.2s;
+    }
+    
+    &#dark .content, &#dark #container-cv {
+        background-color: rgb(0 0 0 / 80%) !important;
+        box-shadow : 0 0 23px rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    &#dark .blackbar {
+        background-color: rgba(255, 255, 255);
+        border: 2px solid rgba(255, 255, 255);
+    }
+    
+    &#dark .cv-button {
+        background-color: rgb(40 40 40 / 80%);
+    }
+    
+    &#dark .cv-button:hover {
+        background-color: rgb(233 210 210 / 80%);
+    }
+    
+    &#dark #more {
+        background-color: rgb(29 29 29 / 80%) !important;
+    }
+    
+    html {
+        --projects-data-date-background-color-dark-theme: rgba(255, 255, 255, 0.884);
+    }
+    
+    &#dark .projects > *::before {
+        border-top: var(--projects-data-date-border-width) solid var(--projects-data-date-background-color-dark-theme);
+    }
+    
+    &#dark .projects > *::after {
+        background-color: var(--projects-data-date-background-color-dark-theme);
+        background-image: url(../../img/home/icon/calendar-black.png);
+        color: black;
+    }
+    
+    &#dark .school-competence-container .card {
+        background : rgb(0 0 0 / 80%);
+    }
+    
+    &#dark .card-top-container {
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+    }
+}

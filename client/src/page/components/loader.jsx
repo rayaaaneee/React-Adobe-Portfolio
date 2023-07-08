@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ManageThemes } from '../../functions/theme';
+import { ManageThemes } from '../../functions/manageThemes';
 
 import '../../asset/css/loader/style.css';
 import '../../asset/css/loader/media.css';
@@ -10,6 +10,8 @@ import loadIcon from '../../asset/img/loader/load.png';
 
 import faviconLightTheme from '../../asset/img/header/portfolio_logo.png';
 import faviconDarkTheme from '../../asset/img/header/dark-theme/dark_portfolio_logo.png';
+
+var wasPassed = false;
 
 const Loader = () => {
 
@@ -52,11 +54,12 @@ const Loader = () => {
             setContainerIsVisible(false);
         }, maxTime);
 
-        switch (ManageThemes.isDarkTheme) {
-            case true:
+        switch (ManageThemes.getThemeName()) {
+            case 'dark':
                 setTheme(faviconDarkTheme);
                 break;
-            case false:
+            case 'light':
+            default:
                 setTheme(faviconLightTheme);
                 break;
         }
@@ -139,54 +142,59 @@ const Loader = () => {
         document.querySelector(".p"+index).style.transition = "all 0.3s";
     }
 
-    return (
-        <main id='loaderContainer' style={{ zIndex: containerIsVisible ? "10000" : "-1" }}>
-            <div id="background" className={ isBackgroundVisible ? 'visible' : '' }></div>
-            <div id="container" className={ containerIsVisible ? 'visible' : '' } onMouseOver={ changeCursor } onMouseOut={ unchangeCursor }>
-                <div id="left">
-                    <div id="title">
-                        <img draggable="false" src={ theme } alt="PortFolio" />
-                        <h1>Adobe Portfolio</h1>
-                    </div>
-                    <div id="loader">
-                    </div>
-                    <div id="text">
-                        <div className="abovetext">
-                            <p className="highfontweight">© 1990 - 2022 Adobe. All rights reserved.</p>
-                            <p className="highfontweight">Illustration de Flore Marquin</p>
-                            <p className="lowfontweight">Illustration inspirée par le seigneur des anneaux : Les anneaux de pouvoirs. "Pour obtenir plus de détails et des informations juridiques, rendez vous sur l'écran.</p>
-                            <p id="toChange" className="highfontweight">{ texts[textIndex] }</p>
+    if (wasPassed) {
+        return (<></>);
+    } else {
+        wasPassed = false;
+        return (
+            <main id='loaderContainer' style={{ zIndex: containerIsVisible ? "10000" : "-1" }}>
+                <div id="background" className={ isBackgroundVisible ? 'visible' : '' }></div>
+                <div id="container" className={ containerIsVisible ? 'visible' : '' } onMouseOver={ changeCursor } onMouseOut={ unchangeCursor }>
+                    <div id="left">
+                        <div id="title">
+                            <img draggable="false" src={ theme } alt="PortFolio" />
+                            <h1>Adobe Portfolio</h1>
                         </div>
-                        <div className="undertext">
-
+                        <div id="loader">
                         </div>
-                        <p id="underChange" className="lowfontweight2">Russel Williams, Thomas Knoll, John Knoll, Mark Hamburg, Jackie Lincoln-O w y ang, A lan Erickson, Sarah Kong, Jerry Harris, Mike Shaw, Thomas Ruark, Yukie Takahashi, David Dobish, John Peterson, Adam Jerugim, Yuko Kagita, Foster Brereton, Meredith Payne Stotzner, Tai Luxon, Vinod Balakrishnan, David Hackel, Eric Floch, Judy Lee, Kevin Hopps, Barkin Aygun, Shanmugh Natarajan, Vishal Wadhwa, Pulkit Jindal, Quynn Megan Le, Stephen Nielson, Bob Archer, Kavana Anand, Chad Rolfs, Charles F. Rose III, Kamal Arora, Joel Baer, Metthew Neldam, Jacob Correia, Pulkit Mehta, Jesper S. Bache, Eric C hing, Dustin Passofaro, Sagar Pathak, Irina Maderych, Praveen Gelra, Vasanth Pai, Zijun Wei, Nithesh Gangadhar Salian</p>
+                        <div id="text">
+                            <div className="abovetext">
+                                <p className="highfontweight">© 1990 - 2022 Adobe. All rights reserved.</p>
+                                <p className="highfontweight">Illustration de Flore Marquin</p>
+                                <p className="lowfontweight">Illustration inspirée par le seigneur des anneaux : Les anneaux de pouvoirs. "Pour obtenir plus de détails et des informations juridiques, rendez vous sur l'écran.</p>
+                                <p id="toChange" className="highfontweight">{ texts[textIndex] }</p>
+                            </div>
+                            <div className="undertext">
+    
+                            </div>
+                            <p id="underChange" className="lowfontweight2">Russel Williams, Thomas Knoll, John Knoll, Mark Hamburg, Jackie Lincoln-O w y ang, A lan Erickson, Sarah Kong, Jerry Harris, Mike Shaw, Thomas Ruark, Yukie Takahashi, David Dobish, John Peterson, Adam Jerugim, Yuko Kagita, Foster Brereton, Meredith Payne Stotzner, Tai Luxon, Vinod Balakrishnan, David Hackel, Eric Floch, Judy Lee, Kevin Hopps, Barkin Aygun, Shanmugh Natarajan, Vishal Wadhwa, Pulkit Jindal, Quynn Megan Le, Stephen Nielson, Bob Archer, Kavana Anand, Chad Rolfs, Charles F. Rose III, Kamal Arora, Joel Baer, Metthew Neldam, Jacob Correia, Pulkit Mehta, Jesper S. Bache, Eric C hing, Dustin Passofaro, Sagar Pathak, Irina Maderych, Praveen Gelra, Vasanth Pai, Zijun Wei, Nithesh Gangadhar Salian</p>
+                        </div>
+                        <div id="logo">
+                            <img draggable="false" src={ adobeIcon } alt="Adobe" />
+                            <p>Adobe Creative Cloud</p>
+                        </div>
                     </div>
-                    <div id="logo">
-                        <img draggable="false" src={ adobeIcon } alt="Adobe" />
-                        <p>Adobe Creative Cloud</p>
+                    <div id="right">
+                        <div id="img">
+                            <img draggable="false" src={ loadIcon } alt="Adobe Portfolio" />
+                        </div>
+                        <div id="logomedia">
+                            <img draggable="false" src={ adobeIcon } alt="Adobe" />
+                            <p>Adobe Creative Cloud</p>
+                        </div>
                     </div>
                 </div>
-                <div id="right">
-                    <div id="img">
-                        <img draggable="false" src={ loadIcon } alt="Adobe Portfolio" />
-                    </div>
-                    <div id="logomedia">
-                        <img draggable="false" src={ adobeIcon } alt="Adobe" />
-                        <p>Adobe Creative Cloud</p>
-                    </div>
+                <div id="cursor" className={ containerIsVisible ? 'visible' : '' }>
+                    <div className="point p0"></div>
+                    <div className="point p1"></div>
+                    <div className="point p2"></div>
+                    <div className="point p3"></div>
+                    <div className="point p4"></div>
+                    <div className="point p5"></div>
                 </div>
-            </div>
-            <div id="cursor" className={ containerIsVisible ? 'visible' : '' }>
-                <div className="point p0"></div>
-                <div className="point p1"></div>
-                <div className="point p2"></div>
-                <div className="point p3"></div>
-                <div className="point p4"></div>
-                <div className="point p5"></div>
-            </div>
-        </main>
-    );
+            </main>
+        );
+    }
 }
 
 export default Loader;

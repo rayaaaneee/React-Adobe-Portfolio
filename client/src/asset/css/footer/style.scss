@@ -1,0 +1,97 @@
+body:not(.index) {
+    /* Parametres du footer et design du footer */
+    footer {
+        max-height: 75px;
+        position: relative;
+        background-color: rgb(255, 255, 255, 0.8);
+        transition: background-color var(--general-transition-switch-mode);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        display: grid;
+        width: 100vw;
+        height: 10vh;
+        min-height: fit-content;
+        grid-template-columns: 7fr 2fr;
+    }
+
+    #footer1 {
+        margin: 0;
+        margin-left: 40px;
+        display: flex;
+        color: black;
+        flex-direction: row;
+        column-gap: 1.5vw;
+        align-items: center;
+        justify-content: start;
+    }
+
+    #footer1>.point-footer-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100%;
+    }
+
+    #footer1>.point-footer-container>.point-footer {
+        font-size: 30px;
+        font-weight: bold;
+        color: black;
+        margin: 0;
+        padding: 0;
+    }
+
+    #footer1>.redirect-about {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        font-size: 21px;
+        font-weight: bold;
+        color: black;
+        text-decoration: none;
+        letter-spacing: 2px;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #footer2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        column-gap: 1.5vw;
+        align-items: center;
+        margin-right: 40px;
+    }
+
+    #footergithubimg,
+    #footerlinkedinimg,
+    #footermailimg,
+    #footerphoneimg {
+        width: 2.5vw;
+        height: 2.5vw;
+        max-width: 40px;
+        max-height: 40px;
+        padding: 8px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+
+    .footer-github-img {
+        background-image: url(../../img/footer/github.png);
+    }
+
+    .footer-linkedin-img {
+        background-image: url(../../img/footer/linkedin.png);
+    }
+
+    .footer-mail-img {
+        background-image: url(../../img/footer/mail.png);
+    }
+
+    .footer-phone-img {
+        background-image: url(../../img/footer/phone.png);
+    }
+}

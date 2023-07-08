@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
+import { ManageBody } from '../functions/manageBody';
 
-import '../asset/css/index/appearence.css';
-import '../asset/css/index/dark-style.css';
-import '../asset/css/index/style.css';
-import '../asset/css/media/index/style.css';
+import '../asset/css/index/appearence.scss';
+import '../asset/css/index/dark-style.scss';
+import '../asset/css/index/style.scss';
+import '../asset/css/media/index/style.scss';
 
 import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';
 import whiteFavicon from '../asset/img/favicon/favicon-light-theme.png';
@@ -15,8 +16,15 @@ import CV from '../asset/file/CV.pdf';
 import Poppins from '../asset/font/Poppins/Poppins.woff2';
 import Poppins2 from '../asset/font/Poppins/Poppins2.woff2';
 import Poppins3 from '../asset/font/Poppins/Poppins3.woff2';
+import { ManageThemes } from '../functions/manageThemes';
 
 const Index = () => {
+
+    ManageBody.changeClass('index');
+
+    const setTheme = (theme) => {
+        ManageThemes.set(theme);
+    }
 
     useEffect(() => {
         document.title = 'Adobe Portfolio';
@@ -110,10 +118,10 @@ const Index = () => {
             </main>
             <footer>
                 <div className="btn-switch-mode">
-                    <div className="media-dark-theme-form">
+                    <div className="media-dark-theme-form" onClick={ () => setTheme('dark') }>
                         <button className="dark-mode-button"/>
                     </div>
-                    <div className="media-light-theme-form">
+                    <div className="media-light-theme-form" onClick={ () => setTheme('light') }>
                         <button className="dark-mode-button"/>
                     </div>
                 </div>

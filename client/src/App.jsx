@@ -1,4 +1,4 @@
-import { ManageThemes } from './functions/theme';
+import { ManageThemes } from './functions/manageThemes';
 
 import Router from './router/router';
 import './style.css';

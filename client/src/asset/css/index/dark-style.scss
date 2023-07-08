@@ -1,0 +1,103 @@
+body.index {
+    &#dark {
+        color: #ffffff;
+    }
+
+    &#dark .background-container {
+        background-color: #000000;
+    }
+
+    &#dark .header-triangle {
+        border-top-color: #ecdfe853;
+    }
+
+    &#dark .footer-triangle {
+        border-bottom-color: #dfcbe953;
+    }
+
+    &#dark .get-start:hover {
+        background-color: #ffffff;
+        color: #30052b;
+    }
+
+    &#dark .about-page > p::after {
+        background-color: #30052b;
+    }
+
+    &#dark .about-page > p:hover::after {
+        background-color: #510548;
+    }
+
+    &#dark .circle {
+        filter: drop-shadow(0 0 3.15rem #ffffff8f);
+    }
+
+    &#dark .circle-one {
+        background-color: #9b8282d0;
+    }
+
+    &#dark .circle-two {
+        background-color: #534d5cd0;
+    }
+
+    &#dark .triangle:not(.border-triangle) {
+        filter: drop-shadow(0 0 5rem #ccb8ce94);
+    }
+
+    &#dark .triangle-orange {
+        border-bottom-color: #ffffffd0;
+    }
+
+    &#dark .triangle-red {
+        border-bottom-color: rgba(221, 181, 181, 0.816);
+    }
+
+    &#dark .triangle-yellow {
+        border-bottom-color: #d4bbd0d0;
+    }
+
+    &#dark .menu ul li a::after {
+        background-color: #ead3d3;
+    }
+
+    &#dark .menu li a:hover {
+        color: #ead3d3;
+    }
+
+    &#dark .dl-img-hover {
+        background-image: url(../../img/index/download-pink.png);
+    }
+
+    &#dark .container > .title > h1 {
+        color: #fbe9e9;
+    }
+
+    &#dark .vertical-bar {
+        background-color: #ffffff;
+    }
+
+    &#dark .btn-switch-mode button {
+        border: 1.5px solid #ffffff;
+    }
+
+    &#dark .btn-switch-mode > .media-dark-theme-form > button{
+        background-color: #d5c6d83f;
+        background-image: url(../../img/index/dark-hover.png);
+    }
+
+    &#dark .btn-switch-mode > .media-light-theme-form > button{
+        background-color: transparent;
+        background-image: url(../../img/index/light.png);
+    }
+
+    &#dark .btn-switch-mode > .media-dark-theme-form > button:hover{
+        background-color: #bb93c33f;
+        background-image: url(../../img/index/dark.png);
+    }
+
+
+    &#dark .btn-switch-mode > .media-light-theme-form > button:hover{
+        background-color: #e8dfea25;
+        background-image: url(../../img/index/light-hover.png);
+    }
+}

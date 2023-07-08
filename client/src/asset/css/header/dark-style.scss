@@ -1,0 +1,29 @@
+body:not(.index) {
+    &#dark .menu {
+        background-color: rgba(0, 0, 0, 0.9);
+        box-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
+    }
+
+    &#dark .menu li:hover{
+        border-bottom: 5px solid rgb(255, 255, 255) !important;
+        transform: translateY(2.5px);
+    }
+
+    &#dark .menu .sites > p {
+        color: white;
+    }
+
+    &#dark .logo {
+        background-image: url(../../img/header/dark-theme/dark_portfolio_logo.png);
+    }
+
+    &#dark .mode-button {
+        background-image: url(../../img/header/light-mode.png);
+        width: 40px;
+        height: 40px;
+    }
+
+    &#dark .mode-button:hover {
+        background-image: url(../../img/header/light-mode-hover.png);
+    }
+}

@@ -1,11 +1,13 @@
-import Loader from '../page/components/loader';
-import HeaderComponent from '../page/components/header-component';
+import { ManageBody } from '../functions/manageBody';
+import Main from './components/main';
 
 const About = () => {
+
+    ManageBody.changeClass('about');
+
     return (
         <>
-            <Loader />
-            <HeaderComponent />
+            <Main child={ <></> } />
         </>
     );
 }

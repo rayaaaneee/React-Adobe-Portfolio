@@ -1,0 +1,288 @@
+html {
+    --anim-duration: 250ms;
+    --background-opacity-duration: 400ms;
+}
+
+body.home {
+    .project-page-container {
+        left: 0;
+        top: 0;
+        min-height: 100%;
+        width: 100%;
+        height: fit-content;
+        z-index: 9;
+        display: none;
+        width: 100vw;
+        position: fixed;
+        height: 100vh;
+        transition: opacity var(--anim-duration) ease;
+    }
+    
+    .background-project-page {
+        background-color: rgba(0, 0, 0, 0.93);
+        backdrop-filter: blur(3px);
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity var(--background-opacity-duration) ease;
+    }
+    
+    .project-page-container::-webkit-scrollbar {
+        width: 0;
+    }
+    
+    .quit-project-button {
+        position: fixed;
+        right: 2vw;
+        top: 2vw;
+        display: flex;
+        color: white;
+        width: 70px;
+        height: 70px;
+        border: 1px solid rgba(221, 141, 141, 0.8);
+        border-radius: 50%;
+        font-size: 37px;
+        cursor: pointer;
+        transition: 0.2s;
+        justify-content: center;
+        align-items: center;
+        z-index: 11;
+        font-weight: bold;
+        transform: translateY(-20vh);
+    }
+    
+    .quit-project-button:hover {
+        border: 1px solid transparent;
+        background-color: rgba(209, 95, 95, 0.8);
+        transition: 0.2s;
+    }
+    
+    html {
+        --space-border-actual-project-viewing: 4vw;
+    }
+    
+    .actual-project-viewing {
+        position: fixed;
+        z-index: 13;
+        width: fit-content;
+        height: fit-content;
+        transition: all 3.5s;
+        bottom: var(--space-border-actual-project-viewing);
+        right: var(--space-border-actual-project-viewing);
+    }
+    
+    #content-project-container {
+        width: 12vw;
+        height: 12vw;
+        border-radius: 32.5%;
+        background-color: rgba(235, 208, 208, 0.6) !important;
+    }
+    
+    .actual-project-viewing>.content>img {
+        width: 75%;
+        height: 75%;
+        transition: all 3.5s ease-in-out;
+    }
+    
+    .actual-project-viewing>.content:hover {
+        transform: none;
+    }
+    
+    
+    html {
+        --padding-left-project-page-content : 2.5vw;
+    }
+    
+    .project-page-content {
+        position: absolute;
+        left: 0;
+        top: 2vw;
+        width: calc(100% - var(--padding-left-project-page-content));
+        padding-left: var(--padding-left-project-page-content);
+        z-index: 11;
+    }
+    
+    .title-page-project {
+        font-size: 3vw;
+        font-weight: 300;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 1.5vw;
+        z-index: 11;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 0.9vw;
+    }
+    
+    .title-page-project>p {
+        color: rgb(232, 190, 190) !important;
+    }
+    
+    .title-page-project>img {
+        margin-top: 0.2vw;
+        width: 3vw;
+        height: 3vw;
+    }
+    
+    .page-content {
+        color: white;
+        font-size: 1.8vw;
+        font-weight: 300;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+        margin-top: 1vw;
+        margin-right: calc(3vw + 70px);
+        margin-left: 5vw;
+        margin-bottom: 1vw;
+        z-index: 11;
+    }
+    
+    .project-use-desc {
+        text-align: justify;
+    }
+    
+    .project-use-desc-value {
+        padding-bottom: 1.5vw;
+    }
+    
+    .link-btn,
+    .download-btn {
+        width: fit-content;
+        color: white !important;
+        font-size: 2.8vw;
+        margin-left: 2.5vw;
+        margin-bottom: 0;
+        font-weight: 300;
+        line-height: 1.8;
+        text-decoration: underline;
+        cursor: pointer;
+        text-decoration-color: rgb(232, 190, 190);
+        text-decoration-thickness: 0.2vw;
+        text-underline-offset: 0.5vw;
+    }
+    
+    .link-btn:hover,
+    .download-btn:hover {
+        color: rgb(234, 215, 215) !important;
+        transition: 0.2s;
+    }
+    
+    .link-btn {
+        margin-bottom: 3.5vw;
+    }
+    
+    .project-size-container {
+        margin-bottom: 2vw;
+    }
+    
+    .title-project-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        column-gap: 0.9vw;
+    }
+    
+    .title-project-container>p {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 1.5vw;
+        z-index: 11;
+        font-size: 3.6vw;
+        font-weight: 300;
+        color: rgb(255, 255, 255);
+        text-decoration: underline;
+        text-decoration-color: rgb(232, 190, 190);
+        text-decoration-thickness: 0.3vw;
+        text-decoration-style: wavy;
+        text-underline-offset: 0.5vw;
+    }
+    
+    .title-project-container>img {
+        margin-top: 0.2vw;
+        width: 4vw;
+        height: 4vw;
+        margin-bottom: 0.25vw;
+    }
+    
+    .project-languages-skills {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 0.9vw;
+        margin-bottom: 1.5vw;
+    }
+    
+    .project-languages-skills>img {
+        margin-top: 0.2vw;
+        width: 2.6vw;
+        height: 2.6vw;
+        margin-bottom: 0.25vw;
+    }
+    
+    .skill-language-container>p {
+        margin: 0;
+        padding: 0;
+        font-size: 2.3vw;
+        font-weight: 100;
+        color: rgb(255, 255, 255);
+    }
+    
+    .skill-language-container {
+        width: fit-content;
+        padding: 7px 20px;
+        border-radius: 15px;
+        transition: 0.3s linear;
+        cursor: default;
+    }
+    
+    .skill-language-container:hover {
+        filter: brightness(0.85);
+        transition: 0.3s linear;
+    }
+    
+    .project-languages-skills-container {
+        margin-top: 2vw;
+        width: fit-content;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        column-gap: 2vw;
+        row-gap: 2vw;
+    }
+    
+    .project-size-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 0.6vw;
+        margin-bottom: 3vw;
+        margin-top: 0.7vw;
+        margin-left: 3.5vw;
+    }
+    
+    .project-size-container>p {
+        margin: 0;
+        padding: 0;
+        font-size: 2.3vw;
+    }
+    
+    .project-size-container>img {
+        object-fit: cover;
+        margin-top: 0.2vw;
+        width: 3vw;
+        height: 3vw;
+        margin-bottom: 0.25vw;
+    }
+    
+    .title-language-skill {
+        margin: 0;
+        padding: 0;
+    }
+}

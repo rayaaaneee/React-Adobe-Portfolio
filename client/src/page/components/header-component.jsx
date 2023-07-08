@@ -1,13 +1,12 @@
-import '../../asset/css/header/style.css';
-import '../../asset/css/header/dark-style.css';
-import '../../asset/css/media/header/style.css';
+import '../../asset/css/header/style.scss';
+import '../../asset/css/header/dark-style.scss';
+import '../../asset/css/media/header/style.scss';
 
 import { NavLink } from 'react-router-dom';
-import { ManageThemes } from '../../functions/theme';
+import { ManageThemes } from '../../functions/manageThemes';
 
 const HeaderComponent = () => {
     const changeTheme = () => {
-        console.log('Changing theme');
         ManageThemes.toggleThemes();
     }
     return (
@@ -38,7 +37,7 @@ const HeaderComponent = () => {
                         </NavLink>
                     </li>
                     <div className="theme-form">
-                        <button className="mode-button"></button>
+                        <button className="mode-button" onClick={ changeTheme }></button>
                     </div>
                 </ul>
                 <ul className="mediamenu">
@@ -49,7 +48,7 @@ const HeaderComponent = () => {
                     <NavLink className="mediasites" id="coursesite" to={"/course"}></NavLink>
                     <NavLink className="mediasites" id="personalsite" to={"/perso"}></NavLink>
                     <NavLink className="mediasites" id="contactsite" to={"/contact"}></NavLink>
-                    <button className="mode-button"></button>
+                    <button className="mode-button" onClick={ changeTheme }></button>
                 </ul>
             </nav>
         </header>

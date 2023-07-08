@@ -1,3 +1,5 @@
+import { getCookie, setCookie, removeCookie } from '../hooks/useCookies';
+
 import faviconLightTheme from '../asset/img/favicon/favicon-light-theme.png';
 import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';
 
@@ -11,7 +13,7 @@ export class ManageThemes {
 
         isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        ManageThemes.isDarkTheme = !isDarkTheme;
+        ManageThemes.isDarkTheme = isDarkTheme;
     }
 
     static setTheme = () => {
@@ -41,12 +43,30 @@ export class ManageThemes {
     }
 
     static manageThemes = () => {
-        ManageThemes.setTheme();
-        ManageThemes.setBodyTheme();
+
+        ManageThemes.getSystemTheme();
+        ManageThemes.updateTheme();
     }
 
     static toggleThemes = () => {
         ManageThemes.isDarkTheme = !ManageThemes.isDarkTheme;
-        ManageThemes.manageThemes();
+        ManageThemes.updateTheme();
+    }
+
+    static set(theme) {
+        switch(theme) {
+            case 'light':
+                ManageThemes.isDarkTheme = false;
+                break;
+            case 'dark':
+                ManageThemes.isDarkTheme = true;
+                break;
+        }
+        ManageThemes.updateTheme();
+    }
+
+    static updateTheme() {
+        ManageThemes.setTheme();
+        ManageThemes.setBodyTheme();
     }
 }

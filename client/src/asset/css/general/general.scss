@@ -1,0 +1,91 @@
+html {
+  --general-transition-switch-mode: 0.2s;
+}
+
+body:not(.index) {
+  & {
+      background: linear-gradient(to left, blanchedalmond, #f0f0f0);
+      padding:0;
+      margin:0;
+  }
+
+  /* Personnalisation du titre de page*/
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+
+  * {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  h1 {
+      text-align: center;
+  }
+
+  h3 {
+      text-align: center;
+  }
+
+  li {
+      list-style: none;
+  }
+
+  label{
+      margin-bottom: 10px;
+  }
+
+  .title p {
+    color: rgb(86 86 86 / 88%);
+  }
+
+  a:link { color: initial }          /* Liens non visités */
+  a:visited { color: initial }     /* Liens visités */
+  a:active { color: initial }       /*Liens actifs */
+
+  /* Couleur de la selection */
+  html {
+      --selection-color: white;
+      --selection-background-color: #e5c1a4;
+
+      --selection-color-dark: rgb(141, 152, 251);
+      --selection-background-color-dark: #ffffff;
+  }
+
+  & *::-moz-selection {
+    color: var(--selection-color);
+    background-color: var(--selection-background-color);
+  }
+
+  & *::selection {
+    color: var(--selection-color);
+    background-color: var(--selection-background-color);
+  }
+
+  &#dark * {
+    color: white;
+  }
+
+  &#dark {
+    background : rgb(46 45 45);
+  }
+
+  &#dark *::-moz-selection {
+    color: var(--selection-color-dark);
+    background-color: var(--selection-background-color-dark);
+  }
+
+  &#dark *::selection {
+    color: var(--selection-color-dark);
+    background-color: var(--selection-background-color-dark);
+  }
+
+  &#dark .title p {
+    color : rgb(228 209 209 / 88%) !important;
+  }
+}

@@ -1,0 +1,27 @@
+body:not(.index) {
+    &#dark footer {
+        background-color: rgb(0 0 0 / 90%);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+    
+    &#dark #footer1>.point-footer-container>.point-footer {
+        color: rgb(255, 255, 255) !important;
+    }
+    
+    
+    &#dark #footergithubimg {
+        background-image: url(../../img/footer/github-white.png);
+    }
+    
+    &#dark #footerlinkedinimg {
+        background-image: url(../../img/footer/linkedin-white.png);
+    }
+    
+    &#dark #footermailimg {
+        background-image: url(../../img/footer/mail-white.png);
+    }
+    
+    &#dark #footerphoneimg {
+        background-image: url(../../img/footer/phone-white.png);
+    }
+}
