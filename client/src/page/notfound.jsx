@@ -1,4 +1,5 @@
 import { ManageBody } from '../functions/manageBody';
+import { useEffect } from 'react';
 import Main from './components/main';
 
 const NotFound = () => {
@@ -13,9 +14,7 @@ const NotFound = () => {
         <>
             <Main child=
             { 
-            <>
                 <h1>404</h1>
-            </> 
             } />
         </>
     );

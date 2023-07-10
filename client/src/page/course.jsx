@@ -1,5 +1,6 @@
 import { ManageBody } from '../functions/manageBody';
 import Main from './components/main';
+import { useEffect } from 'react';
 
 const Course = () => {
 

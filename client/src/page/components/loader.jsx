@@ -15,6 +15,8 @@ var wasPassed = false;
 
 const Loader = () => {
 
+    window.scrollTo(0, 0);
+
     /* Déclaration du tableau de texte */
     var texts = [
         "Lecture des préférences...",
@@ -48,10 +50,15 @@ const Loader = () => {
     let [theme, setTheme] = useState();
 
     useEffect(() => {
+    document.body.style.overflowY = "hidden";
+    }, []);
+
+    useEffect(() => {
 
         setContainerIsVisible(true);
         setTimeout(() => {
             setContainerIsVisible(false);
+            document.body.style.overflowY = "auto";
         }, maxTime);
 
         switch (ManageThemes.getThemeName()) {
@@ -80,10 +87,10 @@ const Loader = () => {
     });
 
     const disappearBackgroundTime = maxTime/1.5;
-    let [isBackgroundVisible, setBackgroundVisible] = useState(true);
+    let [isBackgroundVisible, setIsBackgroundVisible] = useState(true);
 
     setTimeout(() => {
-        setBackgroundVisible(false);
+        setIsBackgroundVisible(false);
     }, disappearBackgroundTime);
 
     var interval = null;

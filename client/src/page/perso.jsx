@@ -1,4 +1,5 @@
 import { ManageBody } from '../functions/manageBody';
+import { useEffect } from 'react';
 import Main from './components/main';
 
 import '../asset/css/perso/style.scss';
