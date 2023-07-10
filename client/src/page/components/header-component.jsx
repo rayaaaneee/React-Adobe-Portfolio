@@ -5,10 +5,29 @@ import '../../asset/css/media/header/style.scss';
 import { NavLink } from 'react-router-dom';
 import { ManageThemes } from '../../functions/manageThemes';
 
-const HeaderComponent = () => {
+const switchImages = (images, darkImages, states) => {
+    switch (ManageThemes.isDarkTheme) {
+        case true:
+            for (let i = 0; i < states.length; i++) {
+                states[i](darkImages[i]);
+            }
+            break;
+        case false:
+            for (let i = 0; i < states.length; i++) {
+                states[i](images[i]);
+            }
+        default:
+            break;
+    }
+}
+
+const HeaderComponent = (props) => {
+
     const changeTheme = () => {
         ManageThemes.toggleThemes();
+        switchImages(props.images, props.darkImages, props.states);
     }
+
     return (
         <header>
             <nav id="menu-container">

@@ -18,7 +18,7 @@ const Main = (props) => {
     return (
         <>
             <Loader />
-            <HeaderComponent />
+            <HeaderComponent page={ props.page } images={ props.images } darkImages={ props.darkImages } states={ props.states } />
             <Backgrounds />
             <div className="page-content" style={ props.style }>
                 { props.child }
