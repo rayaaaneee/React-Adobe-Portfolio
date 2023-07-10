@@ -1,14 +1,19 @@
 import { ManageBody } from '../functions/manageBody';
 import { useEffect } from 'react';
+import { animateApparition } from '../functions/apparition';
 import Main from './components/main';
 
 import '../asset/css/perso/style.scss';
 import '../asset/css/perso/dark-style.scss';
 import '../asset/css/media/perso/style.scss';
 
+import Musics from '../asset/data/perso/music.json';
+
 import photoPerso from '../asset/img/perso/img.png';
 
 const Perso = () => {
+
+    useEffect(() => {animateApparition()}, []);;
 
     ManageBody.changeClass('perso');
 
@@ -44,7 +49,11 @@ const Perso = () => {
                     </div>
                     <article id="music" onMouseOver={ () => {} } onMouseLeave={ () => {} }>
                         <div id="frames">
-                                <iframe className="animate" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style={{ maxWidth: '500px',overflow: 'hidden', background: 'transparent' }} sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="okay"></iframe>
+                        { Musics.map((music) => {
+                            return (
+                                <iframe className="animate" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style={{ maxWidth: '500px',overflow: 'hidden', background: 'transparent' }} sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src={ music }></iframe>
+                                );
+                        }) }
                         </div>
                     </article>
                     <div className="title t3">

@@ -14,9 +14,6 @@ import faviconDarkTheme from '../../asset/img/header/dark-theme/dark_portfolio_l
 var wasPassed = false;
 
 const Loader = () => {
-
-    window.scrollTo(0, 0);
-
     /* Déclaration du tableau de texte */
     var texts = [
         "Lecture des préférences...",

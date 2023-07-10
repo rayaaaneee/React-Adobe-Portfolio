@@ -1,5 +1,6 @@
 import { ManageBody } from '../functions/manageBody';
 import { ManageThemes } from '../functions/manageThemes';
+import { animateApparition } from '../functions/apparition';
 import Main from './components/main';
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -15,6 +16,8 @@ import darkAboutImg from '../asset/img/about/about-white.png';
 
 const About = () => {
 
+    animateApparition();
+
     ManageBody.changeClass('about');
 
     useEffect(() => {
@@ -27,7 +30,6 @@ const About = () => {
     const states = [setPrivicyImgState, setAboutImgState];
     const images = [privacyImg, aboutImg];
     const darkImages = [darkPrivacyImg, darkAboutImg];
-    
 
     return (
         <Main child={
@@ -63,7 +65,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
-        } images={ images } darkImages={ darkImages } states={ states} />
+        } images={ images } darkImages={ darkImages } states={ states } />
     );
 }
 
