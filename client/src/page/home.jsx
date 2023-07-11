@@ -17,7 +17,6 @@ import '../asset/css/media/home/frame-cv.scss';
 
 import competenceJson from '../asset/data/home/competence.json';
 import frameworkJson from '../asset/data/home/framework.json';
-import languageJson from '../asset/data/home/language.json';
 import projectJson from '../asset/data/home/project.json';
 import schoolCompetenceJson from '../asset/data/home/school_competence.json';
 
@@ -46,6 +45,7 @@ const Home = () => {
         let projectObject = new Project(project);
         projectsObjects.unshift(projectObject);
     });
+    console.log(projectsObjects);
 
     let schoolCompetenceObjects = [];
     schoolCompetenceJson.competences.forEach(school_competence => {

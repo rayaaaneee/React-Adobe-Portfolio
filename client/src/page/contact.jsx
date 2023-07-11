@@ -73,7 +73,7 @@ const Contact = () => {
                                             </label>
                                         </td>
                                         <td>
-                                            <textarea name="message" className="long field-textarea" required placeholder="Voici mon message.." maxlength="300" oninput="getNbCharsLeft(this);" onfocus="appearCharsLeft();" onblur="disappearCharsLeft();"></textarea>
+                                            <textarea name="message" className="long field-textarea" required placeholder="Voici mon message.." maxLength="300" onInput="getNbCharsLeft(this);" onFocus="appearCharsLeft();" onBlur="disappearCharsLeft();"></textarea>
                                             <div className="nb-chars-left">
                                                 <p className="to-modify">nb chars</p>
                                                 <p className="nb-chars-left-text">caractères restants</p>
@@ -90,7 +90,7 @@ const Contact = () => {
                                         <td></td>
                                         <td className="input-container">
                                             <input type="submit" name="send-message" value="Envoyer" />
-                                            <input type="reset" value="Réinitialiser" onclick="initNbCharsLeft();" />
+                                            <input type="reset" value="Réinitialiser" onClick="initNbCharsLeft();" />
                                         </td>
                                     </tr>
                                 </table>

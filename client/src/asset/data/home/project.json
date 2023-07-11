@@ -191,7 +191,7 @@
             "is_link" : false,
             "link" : "",
             "image" : null,
-            "date" : "now",
+            "date" : "07-2023",
             "languages" : ["ReactJS", "Typescript", "HTML", "CSS", "NodeJS"],
             "uses_skills" : false,
             "uses_languages" : true,

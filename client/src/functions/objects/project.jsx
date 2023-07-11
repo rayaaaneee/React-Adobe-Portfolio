@@ -1,3 +1,5 @@
+import { ManageLanguages } from '../manageLanguages';
+
 const PATH_IMAGES = "images/";
 const PATH_PROJECTS = "images/";
 
@@ -20,45 +22,40 @@ export class Project
     #projectFile;
 
     #endDate;
-    #languages = [];
+    #languages;
 
     constructor(project)
     {
-/* 
-        manageLanguages = ManageLanguages.getInstance(); */
+        this.#id = project.id;
+        this.#title = project.title;
+        this.#useDescription = project.use_desc;
+        this.#projectDescription = project.project_desc;
+        this.#image = project.image;
+        this.#icon = project.icon;
+        this.#isDownload = project.is_download;
+        this.#isLink = project.is_link;
+        this.#projectLink = project.link;
+        this.#projectFile = project.file;
 
-        this.id = project.id;
-        this.title = project.title;
-        this.useDescription = project.use_desc;
-        this.projectDescription = project.project_desc;
-        this.image = project.image;
-        this.icon = project.icon;
-        this.isDownload = project.is_download;
-        this.isLink = project.is_link;
-        this.projectLink = project.link;
-        this.projectFile = project.file;
+        this.#endDate = new Date();
+        let [month, year] = project.date.split("-");
+        this.#endDate = new Date(parseInt(year), 0, parseInt(month));
 
-        if (project.date === "now"){
-            this.endDate = new Date(Date.now());
-        } else {
-            this.endDate = new Date();
-            let [month, year] = project.date.split("-");
-            this.endDate = new Date(parseInt(year), 0, parseInt(month));
-        }
+        this.#usesSkills = project.uses_skills;
+        this.#usesLanguages = project.uses_languages;
 
-        this.usesSkills = project.uses_skills;
-        this.usesLanguages = project.uses_languages;
+        this.#languages = new Array();
 
-        /* project.languages.forEach(language => {
-            tmp_language = strtoupper(language);
-            this.languages[] = manageLanguages.getLanguage(tmp_language);
-        }); */
+        project.languages.forEach(language => {
+            let objectLanguage = ManageLanguages.getLanguage(language);
+            this.#languages.push(objectLanguage);
+        });
     }
 
     getTypeImageName()
     {
         let result = null;
-        if (this.isLink) {
+        if (this.#isLink) {
             result = "link";
         } else {
             result = "download";
@@ -73,27 +70,27 @@ export class Project
 
     getId()
     {
-        return this.id;
+        return this.#id;
     }
 
     getTitle()
     {
-        return this.title;
+        return this.#title;
     }
 
     getUseDescription()
     {
-        return this.useDescription;
+        return this.#useDescription;
     }
 
     getDescription()
     {
-        return this.projectDescription;
+        return this.#projectDescription;
     }
 
     getIcon()
     {
-        return this.icon;
+        return this.#icon;
     }
 
     getIconPath(filename)
@@ -103,18 +100,18 @@ export class Project
 
     isDownload()
     {
-        return this.isDownload;
+        return this.#isDownload;
     }
 
     isLink()
     {
-        return this.isLink;
+        return this.#isLink;
     }
 
     getLink()
     {
-        if (this.isLink) {
-            return PATH_PROJECTS . this.projectLink;
+        if (this.#isLink) {
+            return PATH_PROJECTS . this.#projectLink;
         } else {
             return null;
         }
@@ -122,8 +119,8 @@ export class Project
 
     getFile()
     {
-        if (this.isDownload) {
-            return PATH_PROJECTS . this.projectFile;
+        if (this.#isDownload) {
+            return PATH_PROJECTS . this.#projectFile;
         } else {
             return null;
         }
@@ -131,8 +128,8 @@ export class Project
 
     getFileSize()
     {
-        if (this.isDownload) {
-            let path = PATH_PROJECTS . this.projectFile;
+        if (this.#isDownload) {
+            let path = PATH_PROJECTS . this.#projectFile;
             /* let size = filesize(path) */;
             let size = size / 1000000;
             return Math.round(size, 2);
@@ -143,35 +140,35 @@ export class Project
 
     getImage()
     {
-        return this.image;
+        return this.#image;
     }
 
     getDate()
     {
-        return this.endDate;
+        return this.#endDate;
     }
 
     getFormatDate()
     {
-        const day = String(this.endDate.getDate()).padStart(2, '0');
-        const month = String(this.endDate.getMonth() + 1).padStart(2, '0');
-        const year = String(this.endDate.getFullYear());
+        const day = String(this.#endDate.getDate()).padStart(2, '0');
+        const month = String(this.#endDate.getMonth() + 1).padStart(2, '0');
+        const year = String(this.#endDate.getFullYear());
 
         return `${day}/${year}`;
     }
 
     getLanguages()
     {
-        return this.languages;
+        return this.#languages;
     }
 
     usesSkills()
     {
-        return this.usesSkills;
+        return this.#usesSkills;
     }
 
     usesLanguages()
     {
-        return this.usesLanguages;
+        return this.#usesLanguages;
     }
 }
