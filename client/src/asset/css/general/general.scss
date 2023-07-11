@@ -1,6 +1,4 @@
-html {
-  --general-transition-switch-mode: 0.2s;
-}
+$general-transition-switch-mode: 0.2s;
 
 body:not(.index) {
   & {
@@ -49,22 +47,20 @@ body:not(.index) {
   a:active { color: initial }       /*Liens actifs */
 
   /* Couleur de la selection */
-  html {
-      --selection-color: white;
-      --selection-background-color: #e5c1a4;
 
-      --selection-color-dark: rgb(141, 152, 251);
-      --selection-background-color-dark: #ffffff;
-  }
+  $selection-color: white;
+  $selection-background-color: #e5c1a4;
+  $selection-color-dark: rgb(141, 152, 251);
+  $selection-background-color-dark: #ffffff;
 
   & *::-moz-selection {
-    color: var(--selection-color);
-    background-color: var(--selection-background-color);
+    color: $selection-color;
+    background-color: $selection-background-color;
   }
 
   & *::selection {
-    color: var(--selection-color);
-    background-color: var(--selection-background-color);
+    color: $selection-color;
+    background-color: $selection-background-color;
   }
 
   &#dark * {
@@ -76,13 +72,13 @@ body:not(.index) {
   }
 
   &#dark *::-moz-selection {
-    color: var(--selection-color-dark);
-    background-color: var(--selection-background-color-dark);
+    color: $selection-color-dark;
+    background-color: $selection-background-color-dark;
   }
 
   &#dark *::selection {
-    color: var(--selection-color-dark);
-    background-color: var(--selection-background-color-dark);
+    color: $selection-color-dark;
+    background-color: $selection-background-color-dark;
   }
 
   &#dark .title p {

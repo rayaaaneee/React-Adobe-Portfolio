@@ -44,16 +44,15 @@ body.home {
         background-color: rgb(29 29 29 / 80%) !important;
     }
     
-    html {
-        --projects-data-date-background-color-dark-theme: rgba(255, 255, 255, 0.884);
-    }
+    $projects-data-date-background-color-dark-theme: rgba(255, 255, 255, 0.884);
+    $projects-data-date-border-width: 9px;
     
     &#dark .projects > *::before {
-        border-top: var(--projects-data-date-border-width) solid var(--projects-data-date-background-color-dark-theme);
+        border-top: $projects-data-date-border-width solid $projects-data-date-background-color-dark-theme;
     }
     
     &#dark .projects > *::after {
-        background-color: var(--projects-data-date-background-color-dark-theme);
+        background-color: $projects-data-date-background-color-dark-theme;
         background-image: url(../../img/home/icon/calendar-black.png);
         color: black;
     }

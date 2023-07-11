@@ -37,7 +37,15 @@ export class Project
         this.isLink = project.is_link;
         this.projectLink = project.link;
         this.projectFile = project.file;
-        this.endDate = new Date(project.date);
+
+        if (project.date === "now"){
+            this.endDate = new Date(Date.now());
+        } else {
+            this.endDate = new Date();
+            let [month, year] = project.date.split("-");
+            this.endDate = new Date(parseInt(year), 0, parseInt(month));
+        }
+
         this.usesSkills = project.uses_skills;
         this.usesLanguages = project.uses_languages;
 
@@ -145,7 +153,11 @@ export class Project
 
     getFormatDate()
     {
-        return this.endDate.format('m/Y');
+        const day = String(this.endDate.getDate()).padStart(2, '0');
+        const month = String(this.endDate.getMonth() + 1).padStart(2, '0');
+        const year = String(this.endDate.getFullYear());
+
+        return `${day}/${year}`;
     }
 
     getLanguages()

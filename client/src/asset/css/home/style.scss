@@ -1,3 +1,5 @@
+$general-transition-switch-mode: 0.2s;
+
 body.home {
   /* Placer les projets dans la page, créer automatiquement l'ecart entre les cases et entre les colomnes*/
   .projects-chevrons-container {
@@ -78,7 +80,7 @@ body.home {
     border-radius: 15px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.5s, transform 0.5s,
-      background-color var(--general-transition-switch-mode);
+      background-color $general-transition-switch-mode;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -151,7 +153,7 @@ body.home {
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease,
-      background-color var(--general-transition-switch-mode);
+      background-color $general-transition-switch-mode;
   }
 
   #horizontal-bar2 {
@@ -180,7 +182,7 @@ body.home {
   /* Mise en place du conteneur en grid avec les deux articles */
   #container-cv {
     background-color: rgba(255, 255, 255, 0.801);
-    transition: background-color var(--general-transition-switch-mode);
+    transition: background-color $general-transition-switch-mode;
     width: 1100px;
     height: 700px;
     border-radius: 15px;
@@ -256,12 +258,11 @@ body.home {
   }
 
   /* Barre noire au dessus et au dessous des textes */
-  html {
-    --black-bar-width: 85%;
-  }
+
+  $black-bar-width: 85%;
 
   .blackbar {
-    width: var(--black-bar-width);
+    width: $black-bar-width;
     height: 1px;
     background-color: #000;
     border-radius: 10px;
@@ -326,27 +327,25 @@ body.home {
   }
 
   /* Afficher la date par dessus les projets */
-  html {
-    --projects-data-date-border-width: 9px;
-    --projects-data-date-transition: 0.3s;
-    --projects-data-date-after-dist-top: -20%;
-    --projects-data-date-height: 40px;
-    --projects-data-date-background-color: rgba(0, 0, 0, 0.884);
-  }
+  $projects-data-date-border-width: 9px;
+  $projects-data-date-transition: 0.3s;
+  $projects-data-date-after-dist-top: -20%;
+  $projects-data-date-height: 40px;
+  $projects-data-date-background-color: rgba(0, 0, 0, 0.884);
 
   .projects > *::before {
     content: "";
-    border-left: var(--projects-data-date-border-width) solid transparent;
-    border-right: var(--projects-data-date-border-width) solid transparent;
-    border-top: var(--projects-data-date-border-width) solid
-      var(--projects-data-date-background-color);
+    border-left: $projects-data-date-border-width solid transparent;
+    border-right: $projects-data-date-border-width solid transparent;
+    border-top: $projects-data-date-border-width solid
+      $projects-data-date-background-color;
     position: absolute;
     z-index: 1;
     top: calc(
-      var(--projects-data-date-after-dist-top) + var(--projects-data-date-height)
+      $projects-data-date-after-dist-top + $projects-data-date-height
     );
     opacity: 0;
-    transition: var(--projects-data-date-transition);
+    transition: $projects-data-date-transition;
     pointer-events: none;
   }
 
@@ -355,9 +354,9 @@ body.home {
     content: attr(data-date);
     position: absolute;
     z-index: 1;
-    top: var(--projects-data-date-after-dist-top);
+    top: $projects-data-date-after-dist-top;
     font-size: 20px;
-    background-color: var(--projects-data-date-background-color);
+    background-color: $projects-data-date-background-color;
     padding-right: 25px;
     padding-left: 45px;
     background-image: url(../../img/home/icon/calendar.png);
@@ -366,23 +365,23 @@ body.home {
     background-size: 20px;
     color: white;
     width: fit-content;
-    height: var(--projects-data-date-height);
+    height: $projects-data-date-height;
     border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: var(--projects-data-date-transition);
+    transition: $projects-data-date-transition;
     pointer-events: none;
   }
 
   .projects > *:hover::before {
     opacity: 1;
-    transition: var(--projects-data-date-transition);
+    transition: $projects-data-date-transition;
   }
 
   .projects > *:hover::after {
     opacity: 1;
-    transition: var(--projects-data-date-transition);
+    transition: $projects-data-date-transition;
   }
 
   #realisation {
@@ -411,16 +410,16 @@ body.home {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 30px;
     transform-style: preserve-3d;
-    --rotate-y: 0deg;
+    $rotate-y: 0deg;
     perspective: 1000px;
     perspective-origin: top;
     position: relative;
     padding: 20px;
     cursor: pointer;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    transform: rotateY(var(--rotate-y));
+    transform: rotateY($rotate-y);
     transition: scale 0.8s, transform 0.3s,
-      background-color var(--general-transition-switch-mode);
+      background-color $general-transition-switch-mode;
   }
 
   .card:hover {
@@ -435,7 +434,7 @@ body.home {
   }
 
   .school-competence-container .card.clicked {
-    --rotate-y: 180deg;
+    $rotate-y: 180deg;
   }
 
   .school-competence-container .card.clicked .card-front {
@@ -475,15 +474,14 @@ body.home {
     justify-content: center;
   }
 
-  html {
-    --size-circle: 100px;
-    --size-circle-border: 50%;
-  }
+  $size-circle: 100px;
+  $size-circle-border: 50%;
+  
 
   .card .card-top-container > div {
-    width: var(--size-circle);
-    height: var(--size-circle);
-    border-radius: var(--size-circle-border);
+    width: $size-circle;
+    height: $size-circle;
+    border-radius: $size-circle-border;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -506,9 +504,9 @@ body.home {
   }
 
   .card .card-back .card-top-container img {
-    width: var(--size-circle);
-    height: var(--size-circle);
-    border-radius: var(--size-circle-border);
+    width: $size-circle;
+    height: $size-circle;
+    border-radius: $size-circle-border;
     object-fit: cover;
   }
 

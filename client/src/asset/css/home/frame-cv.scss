@@ -146,13 +146,11 @@ body.home {
     }
 
     /* Créer la barre blanche de séparation entre CV et le text*/
-    html {
-        --cv-bar-width: 75%;
-    }
+        $cv-bar-width: 75%;
     .framecv-bar{
         display: flex;
         justify-self: center;
-        width: var(--cv-bar-width);
+        width: $cv-bar-width;
         height: 5px;
         background-color: white;
         border-radius: 5px;
@@ -218,17 +216,15 @@ body.home {
 
     /* Pour l'animation d'ouverture et de fermeture*/
 
-    html {
-        --anim-duration-frame-cv : 150ms;
-    }
+    $anim-duration-frame-cv : 150ms;
 
     #container > *:not(#buttons, #informations), #container-cv-text-bar {
-        transition: transform var(--anim-duration-frame-cv) ease;
+        transition: transform $anim-duration-frame-cv ease;
         transform: translateX(-110vw);
     }
 
     #buttons {
-        transition: transform var(--anim-duration-frame-cv) ease-in-out;
+        transition: transform $anim-duration-frame-cv ease-in-out;
         transform: translateX(15vw);
     }
 }

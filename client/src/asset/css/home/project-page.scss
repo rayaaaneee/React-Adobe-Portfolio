@@ -1,7 +1,5 @@
-html {
-    --anim-duration: 250ms;
-    --background-opacity-duration: 400ms;
-}
+$anim-duration: 250ms;
+$background-opacity-duration: 400ms;
 
 body.home {
     .project-page-container {
@@ -15,7 +13,7 @@ body.home {
         width: 100vw;
         position: fixed;
         height: 100vh;
-        transition: opacity var(--anim-duration) ease;
+        transition: opacity $anim-duration ease;
     }
     
     .background-project-page {
@@ -28,7 +26,7 @@ body.home {
         left: 0;
         z-index: -1;
         opacity: 0;
-        transition: opacity var(--background-opacity-duration) ease;
+        transition: opacity $background-opacity-duration ease;
     }
     
     .project-page-container::-webkit-scrollbar {
@@ -60,10 +58,8 @@ body.home {
         background-color: rgba(209, 95, 95, 0.8);
         transition: 0.2s;
     }
-    
-    html {
-        --space-border-actual-project-viewing: 4vw;
-    }
+
+    $space-border-actual-project-viewing: 4vw;
     
     .actual-project-viewing {
         position: fixed;
@@ -71,8 +67,8 @@ body.home {
         width: fit-content;
         height: fit-content;
         transition: all 3.5s;
-        bottom: var(--space-border-actual-project-viewing);
-        right: var(--space-border-actual-project-viewing);
+        bottom: $space-border-actual-project-viewing;
+        right: $space-border-actual-project-viewing;
     }
     
     #content-project-container {
@@ -92,17 +88,14 @@ body.home {
         transform: none;
     }
     
-    
-    html {
-        --padding-left-project-page-content : 2.5vw;
-    }
+    $padding-left-project-page-content : 2.5vw;
     
     .project-page-content {
         position: absolute;
         left: 0;
         top: 2vw;
-        width: calc(100% - var(--padding-left-project-page-content));
-        padding-left: var(--padding-left-project-page-content);
+        width: calc(100% - $padding-left-project-page-content);
+        padding-left: $padding-left-project-page-content;
         z-index: 11;
     }
     
@@ -140,7 +133,6 @@ body.home {
         margin-right: calc(3vw + 70px);
         margin-left: 5vw;
         margin-bottom: 1vw;
-        z-index: 11;
     }
     
     .project-use-desc {

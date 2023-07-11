@@ -32,7 +32,7 @@ const Home = () => {
 
     useEffect(() => {animateApparition()}, []);;
 
-    const [zoomImgStage, setZoomImg] = useState(zoomImg);
+    const [zoomImgState, setZoomImg] = useState(zoomImg);
 
     const images = [zoomImg];
     const darkImages = [darkZoomImg];
@@ -44,7 +44,7 @@ const Home = () => {
     let projectsObjects = [];
     projectJson.projects.forEach(project => {
         let projectObject = new Project(project);
-        projectsObjects.push(projectObject);
+        projectsObjects.unshift(projectObject);
     });
 
     let schoolCompetenceObjects = [];
@@ -59,6 +59,7 @@ const Home = () => {
     const colorBar = (i) => {}
     const uncolorBar = (i) => {}
 
+    const openProjectPage = () => {}
     const closeProjectPage = () => {}
     const openPage = () => {}
     const closePage = () => {}
@@ -76,10 +77,30 @@ const Home = () => {
                   </div>
                   <div className="horizontal-bars animate" id="horizontal-bar1"></div>
                   <div className="projects-chevrons-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron left">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron left animate">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                     </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron right">
+                    <article className="projects">
+                    { projectsObjects.map((project, i) => (
+                      <div
+                        className="main-container animate"
+                        onMouseOver={ () => colorBar(1) }
+                        onMouseLeave={ () => uncolorBar(1) }
+                        onClick={ () => openProjectPage() }
+                        data-date={ project.getFormatDate() }
+                        key={i}
+                      >
+                        <div className="content" onMouseOver={ () => { growImg(i) }} onMouseLeave={ () => { shrinkImg(i) }} >
+                            <div className="to_download">
+                                <p>{ project.getTitle() }</p>
+                                <img src="<?= $project->getTypeImagePath($theme->getImagePath($project->getTypeImageName())); ?>" draggable="false" />
+                            </div>
+                            <img src="<?= $project->getIconPath($theme->getImagePath($project->getIcon())) ?>" class="workslogos" draggable="false" />
+                        </div>
+                    </div>
+                    ))}
+                    </article>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron right animate">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
                   </div>
@@ -129,7 +150,7 @@ const Home = () => {
                     </div>
                   </div>
               </article>
-              <h2 className="explicationtext">Vous trouverez ici mes projets importants, qu'ils soient scolaire ou faits de mon côté. <br/>Il vous suffit de cliquer pour les télécharger.</h2>
+              <h2 className="explicationtext">Vous trouverez ici mes projets importants, qu'ils soient scolaires ou faits de mon côté. <br/>Il vous suffit de cliquer pour les télécharger.</h2>
               <article id="cv">
                   <div className="title t2" id="secondmid">
                     <p>Mon CV</p>
@@ -189,7 +210,7 @@ const Home = () => {
                       <div className="blackbar"></div>
                       <div id="zoom">
                         <p>N'hésitez pas à cliquer sur l'image du C.V pour zoomer, cela vous permettra de le visionner dans sa qualité optimale sans avoir besoin de le télécharger.</p>
-                        <img draggable="false" src={ zoomImgStage } alt="zoom" />
+                        <img draggable="false" src={ zoomImgState } alt="zoom" />
                       </div>
                       <p className="beforebutton">Vous pouvez télécharger mon CV actuel au format pdf en cliquant sur le bouton ci-dessous.</p>
                       <a href="<?= PATH_FILES; ?>CV.pdf" download="CV_Rayane_Merlin.pdf"><button className="cv-button">Télécharger</button></a>
@@ -203,12 +224,12 @@ const Home = () => {
                   </div>
                   <div className="horizontal-bars animate" id="horizontal-bar3"></div>
                   <div className="school-competence-container">
-                    {schoolCompetenceObjects.map((competence, i) => (
+                    { schoolCompetenceObjects.map((competence, i) => (
                       <div className="card animate" key={i}>
                         <div className="card-front">
                           <div className="linear-gradient-circle-container card-top-container">
                             <div className="linear-gradient-circle" style={{ background: competence.getGradient() }}>
-                              <img src={ '../asset/img/home/card/' + competence.getImage() } alt="" />
+                              <img src={ require(`../asset/img/home/card/${competence.getImage()}`) } alt="" />
                             </div>
                           </div>
                           <h1 className="title-card" style={{ color: competence.getTitleColor() }}>
