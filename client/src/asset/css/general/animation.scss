@@ -1,4 +1,6 @@
 body:not(.index) {
+    $black-bar-width: 85%;
+
     .view:not(.blackbar, .framecv-bar) {
         -webkit-animation: fadeIn 0.5s;
         animation: fadeIn 0.5s;
@@ -24,9 +26,7 @@ body:not(.index) {
         width: 0;
     }
     
-    html {
-        --initial-bar-width-before-animation: calc(var(--black-bar-width) - 50%);
-    }
+    $initial-bar-width-before-animation: calc($black-bar-width - 50%);
     
     #container-cv-text-bar.view .framecv-bar{
         -webkit-animation: growCvBar 0.5s;
@@ -34,7 +34,7 @@ body:not(.index) {
     }
     
     #container-cv-text-bar.hide .framecv-bar{
-        width: var(--initial-bar-width-before-animation);
+        width: $initial-bar-width-before-animation;
     }
     
     @keyframes growBar {
@@ -43,18 +43,18 @@ body:not(.index) {
         }
     
         100% {
-            width: var(--black-bar-width);
+            width: $black-bar-width;
         }
     }
     
-    @keyframes growCvBar {
+/*     @keyframes growCvBar {
         0% {
-            width: var(--initial-bar-width-before-animation);
+            width: $initial-bar-width-before-animation;
         }
         100% {
-            width: var(--cv-bar-width);
+            width: $cv-bar-width;
         }
-    }
+    } */
     
     @keyframes fadeInNoScale {
         0% {

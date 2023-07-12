@@ -22,9 +22,8 @@ const Contact = () => {
     return (
         <Main child={
             <article id="formContainer">
-{/*                 <div className="alert-container">
-                </div> */}
-                <main>
+                <div className="alert-container"></div>
+                <main id='contactPage'>
                     <div className="pres-container">
                         <div id="pres" className="animate">
                             <img draggable="false" src={ contactImg } id="imgcontact" />
@@ -99,7 +98,7 @@ const Contact = () => {
                     </div>
                 </main>
             </article>
-        } />
+        } images={[]} darkImages={[]} states={[]} />
     );
 }
 

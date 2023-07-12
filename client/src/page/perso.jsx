@@ -64,7 +64,7 @@ const Perso = () => {
 
                 </article>
             </> 
-            } />
+            } images={[]} darkImages={[]} states={[]} />
         </>
     );
 }

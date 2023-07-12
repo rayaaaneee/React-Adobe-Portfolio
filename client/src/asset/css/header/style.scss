@@ -40,11 +40,10 @@ body:not(.index) {
         transform: translateY(2.5px);
         border-bottom: 5px solid rgb(239, 195, 153);
         border-radius: 3px;
-    }
 
-    /* Colorier en jaune aussi le texte du menu */
-    .sites:hover{
-        color:rgb(239, 195, 153);
+        p {
+            color: rgb(239, 195, 153);
+        }
     }
 
     /* Mise en place du menu sticky */

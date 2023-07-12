@@ -8,7 +8,6 @@ import '../../asset/css/general/dark-background.scss';
 import '../../asset/css/general/dark-scrollbar.scss';
 import '../../asset/css/general/error.scss';
 import '../../asset/css/general/general.scss';
-import '../../asset/css/general/loader-frame.scss';
 import '../../asset/css/general/presets-animation.scss';
 import '../../asset/css/general/scrollbar.scss';
 

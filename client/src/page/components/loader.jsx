@@ -47,7 +47,7 @@ const Loader = () => {
     let [theme, setTheme] = useState();
 
     useEffect(() => {
-    document.body.style.overflowY = "hidden";
+        document.body.style.overflowY = "hidden";
     }, []);
 
     useEffect(() => {
@@ -55,7 +55,7 @@ const Loader = () => {
         setContainerIsVisible(true);
         setTimeout(() => {
             setContainerIsVisible(false);
-            document.body.style.overflowY = "auto";
+            document.body.style.removeProperty('overflow-y');
         }, maxTime);
 
         switch (ManageThemes.getThemeName()) {
@@ -153,7 +153,7 @@ const Loader = () => {
     }
 
     // Fonction qui prend en paramètre l'index du point a remettre en place et le remet en place
-    function initialCursor(index){
+    const initialCursor = (index) => {
         try {
             document.querySelector(".p"+index).style.scale = 1;
             document.querySelector(".p"+index).style.transition = "all 0.3s";

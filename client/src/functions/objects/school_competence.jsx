@@ -49,11 +49,6 @@ export class SchoolCompetence
         return this.infoIcon;
     }
 
-    getInfoIconPath()
-    {
-        return "home/card/" + this.infoIcon;
-    }
-
     getBottomColor()
     {
         return this.bottomColor;

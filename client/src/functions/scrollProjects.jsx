@@ -1,5 +1,5 @@
 
-class scrollProjects {
+export class ScrollProjects {
 
     gap;
 
@@ -43,7 +43,7 @@ class scrollProjects {
 
     #scrollRight = () => {
         this.#projectsContainer.scrollLeft += this.gap;
-        if (this.#projectsContainer.scrollLeft === this.#projectsContainer.scrollWidth - this.#projectsContainer.offsetWidth) {
+        if (this.#projectsContainer.scrollLeft >= this.#projectsContainer.scrollWidth - this.#projectsContainer.offsetWidth - 5) {
             this.#chevrons.right.classList.add('alert');
             setTimeout(() => {
                 this.#chevrons.right.classList.remove('alert');
@@ -60,5 +60,3 @@ class scrollProjects {
         }, 300);
     }
 }
-
-new scrollProjects();

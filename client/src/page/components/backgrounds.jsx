@@ -1,4 +1,13 @@
+import { moveBackgrounds, Parallax } from '../../functions/moveBackgrounds';
+import { useEffect } from 'react';
+
 const Backgrounds = () => {
+
+    /* useEffect(() => {
+        moveBackgrounds();
+        Parallax.bind();
+    }, []); */
+
     return (
         <>
             <div id="background1" className="background" speedparallax="0.02" speedtranslate="0.6"></div>

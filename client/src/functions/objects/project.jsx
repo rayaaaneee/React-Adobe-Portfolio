@@ -1,4 +1,5 @@
 import { ManageLanguages } from '../manageLanguages';
+import { useState } from 'react';
 
 const PATH_IMAGES = "images/";
 const PATH_PROJECTS = "images/";
@@ -23,6 +24,11 @@ export class Project
 
     #endDate;
     #languages;
+
+    #stateImg = null;
+
+    #reactIcon = null;
+    #darkReactIcon = null;
 
     constructor(project)
     {
@@ -50,6 +56,22 @@ export class Project
             let objectLanguage = ManageLanguages.getLanguage(language);
             this.#languages.push(objectLanguage);
         });
+    }
+
+    setReactIcon(img) {
+        this.#reactIcon = img;
+    }
+
+    setDarkReactIcon(img) {
+        this.#darkReactIcon = img;
+    }
+
+    getReactIcon() {
+        return this.#reactIcon;
+    }
+
+    getDarkReactIcon() {
+        return this.#darkReactIcon;
     }
 
     getTypeImageName()
@@ -91,11 +113,6 @@ export class Project
     getIcon()
     {
         return this.#icon;
-    }
-
-    getIconPath(filename)
-    {
-        return PATH_IMAGES + "home/project-logos/" + filename;
     }
 
     isDownload()

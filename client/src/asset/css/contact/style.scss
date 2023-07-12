@@ -154,7 +154,7 @@ body.contact {
     text-align: justify;
   }
   /* Flex des principaux elements de la page */
-  main {
+  main#contactPage {
     width: 100%;
     margin-top : 100px;
     display: grid;
@@ -273,12 +273,12 @@ body.contact {
   }
 
   /* On met le container principal en de l'erreur en fixed */
-/*   .alert-container {
+  .alert-container {
     position: fixed;
     top: 10px;
     right: 0;
     z-index: 10000;
     width: fit-content;
     height: fit-content;
-  } */
+  }
 }

@@ -392,7 +392,7 @@ body.home {
   }
 
   .school-competence-container {
-    width: 85%;
+    width: 90%;
     height: fit-content;
     display: flex;
     flex-direction: row;
@@ -410,14 +410,13 @@ body.home {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 30px;
     transform-style: preserve-3d;
-    $rotate-y: 0deg;
     perspective: 1000px;
     perspective-origin: top;
     position: relative;
     padding: 20px;
     cursor: pointer;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    transform: rotateY($rotate-y);
+    transform: rotateY(0deg);
     transition: scale 0.8s, transform 0.3s,
       background-color $general-transition-switch-mode;
   }
@@ -434,7 +433,7 @@ body.home {
   }
 
   .school-competence-container .card.clicked {
-    $rotate-y: 180deg;
+    transform: rotateY(180deg);
   }
 
   .school-competence-container .card.clicked .card-front {

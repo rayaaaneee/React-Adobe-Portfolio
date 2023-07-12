@@ -1,21 +1,22 @@
-//Faire bouger les backgrounds horizontalement
-
-var background1 = document.getElementById("background1");
-var background2 = document.getElementById("background2");
-var background3 = document.getElementById("background3");
-
-//Déclaration de la vitesse
-var speed1 = parseFloat(background1.getAttribute("speedtranslate"));
-var speed2 = parseFloat(background2.getAttribute("speedtranslate"));
-var speed3 = parseFloat(background3.getAttribute("speedtranslate"));
-
-// Déclaration et initialisation de la position initiale
-var x1 = 0; 
-var x2 = 0;
-var x3 = 0;
-
+// One lance l'animation en appelant la fonction moveBackground
 // On appelle la fonction moveBackground toutes les 50ms qui déplace les background de 0.4px et 0.7px
-const moveBackground = function () {
+export const moveBackgrounds = () => {
+    //Faire bouger les backgrounds horizontalement
+
+    var background1 = document.getElementById("background1");
+    var background2 = document.getElementById("background2");
+    var background3 = document.getElementById("background3");
+
+    //Déclaration de la vitesse
+    var speed1 = parseFloat(background1.getAttribute("speedtranslate"));
+    var speed2 = parseFloat(background2.getAttribute("speedtranslate"));
+    var speed3 = parseFloat(background3.getAttribute("speedtranslate"));
+
+    // Déclaration et initialisation de la position initiale
+    var x1 = 0; 
+    var x2 = 0;
+    var x3 = 0;
+
     setInterval(() => {
         //On décremente la position par la vitese
         x1 -= speed1 * parseFloat(speed1);
@@ -29,10 +30,8 @@ const moveBackground = function () {
     }, 50);
 }
 
-// One lance l'animation en appelant la fonction moveBackground
-moveBackground();
-
-class Parallax {
+// Appeler la méthode bind() pour lancer l'effect
+export class Parallax {
     constructor(element) {
         this.element = element;
         this.ratio = parseFloat(element.getAttribute('speedparallax'));
@@ -58,5 +57,3 @@ class Parallax {
         this.element.style.transform = `translateY(${this.x}px)`;
     }
 }
-
-Parallax.bind();

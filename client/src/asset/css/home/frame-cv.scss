@@ -1,6 +1,6 @@
 body.home {
     /* Définir le background de la page */
-    #background { 
+    #backgroundCV { 
         background-color: rgba(0, 0, 0, 0.92);
         backdrop-filter: blur(3px);
         position: fixed;
@@ -218,7 +218,7 @@ body.home {
 
     $anim-duration-frame-cv : 150ms;
 
-    #container > *:not(#buttons, #informations), #container-cv-text-bar {
+    #containerFrameCV > *:not(#buttons, #informations), #container-cv-text-bar {
         transition: transform $anim-duration-frame-cv ease;
         transform: translateX(-110vw);
     }

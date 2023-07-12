@@ -1,10 +1,13 @@
 import Main from './components/main';
 import { ManageBody } from '../functions/manageBody';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 import { Project } from '../functions/objects/project';
 import { SchoolCompetence } from '../functions/objects/school_competence';
 import { animateApparition } from '../functions/apparition';
+import { ScrollProjects } from '../functions/scrollProjects';
+import { animateCards } from '../functions/3dEffectCard';
+import { baseName, replaceTag } from '../functions/homeFunctions';
 
 import '../asset/css/home/style.scss';
 import '../asset/css/home/frame-cv.scss';
@@ -20,52 +23,75 @@ import frameworkJson from '../asset/data/home/framework.json';
 import projectJson from '../asset/data/home/project.json';
 import schoolCompetenceJson from '../asset/data/home/school_competence.json';
 
-import zoomImg from '../asset/img/home/icon/zoom.png'
-import darkZoomImg from '../asset/img/home/icon/zoom-white.png'
+import zoomImg from '../asset/img/home/icon/zoom.png';
+import darkZoomImg from '../asset/img/home/icon/zoom-white.png';
+import downloadImg from '../asset/img/home/icon/black-download.png';
+import darkDownloadImg from '../asset/img/home/icon/white-download.png';
+import linkImg from '../asset/img/home/icon/black-link.png';
+import darkLinkImg from '../asset/img/home/icon/white-link.png';
 
 import cvImg from '../asset/file/CV.png';
+import cvPdf from '../asset/file/CV.pdf';
 
 const Home = () => {
 
     ManageBody.changeClass('home');
 
-    useEffect(() => {animateApparition()}, []);;
+    useEffect(() => { animateApparition() }, []);;
 
     const [zoomImgState, setZoomImg] = useState(zoomImg);
+    const [downloadImgState, setDownloadImg] = useState(downloadImg);
+    const [linkImgState, setLinkImg] = useState(linkImg);
 
-    const images = [zoomImg];
-    const darkImages = [darkZoomImg];
-    const states  = [setZoomImg];
+    const images = [zoomImg, downloadImg, linkImg];
+    const darkImages = [darkZoomImg, darkDownloadImg, darkLinkImg];
+    const states  = [setZoomImg, setDownloadImg, setLinkImg];
 
     useEffect(() => {
         document.title = 'Accueil';
     });
+
     let projectsObjects = [];
     projectJson.projects.forEach(project => {
-        let projectObject = new Project(project);
-        projectsObjects.unshift(projectObject);
+      let projectObject = new Project(project);
+
+      let projectIconImg = require('../asset/img/home/project-logos/' + projectObject.getIcon() + '.png');
+      let projectIconImgDark = require('../asset/img/home/project-logos/' + projectObject.getIcon() + '-white.png');
+
+      projectObject.setReactIcon(projectIconImg);
+      projectObject.setDarkReactIcon(projectIconImgDark);
+
+      projectsObjects.unshift(projectObject);
+
     });
-    console.log(projectsObjects);
 
     let schoolCompetenceObjects = [];
     schoolCompetenceJson.competences.forEach(school_competence => {
         let schoolCompetenceObject = new SchoolCompetence(school_competence);
         schoolCompetenceObjects.push(schoolCompetenceObject);
     });
-
-    const growImg = (i) => {}
-    const shrinkImg = (i) => {}
-
-    const colorBar = (i) => {}
-    const uncolorBar = (i) => {}
+  
+    const growImg = () => {}
+  
+    const shrinkImg = () => {}
+  
+    const colorBar = () => {}
+  
+    const uncolorBar = () => {}
 
     const openProjectPage = () => {}
     const closeProjectPage = () => {}
+
     const openPage = () => {}
     const closePage = () => {}
     const printPDF = () => {}
     const showInformations = () => {}
     const hideInformations = () => {}
+
+    useEffect(() => {
+      new ScrollProjects();
+      animateCards();
+    });
 
     return (
       <>
@@ -93,9 +119,9 @@ const Home = () => {
                         <div className="content" onMouseOver={ () => { growImg(i) }} onMouseLeave={ () => { shrinkImg(i) }} >
                             <div className="to_download">
                                 <p>{ project.getTitle() }</p>
-                                <img src="<?= $project->getTypeImagePath($theme->getImagePath($project->getTypeImageName())); ?>" draggable="false" />
+                                <img src={ project.isLink() ? linkImgState : downloadImgState } draggable="false" />
                             </div>
-                            <img src="<?= $project->getIconPath($theme->getImagePath($project->getIcon())) ?>" class="workslogos" draggable="false" />
+                            <img src={ project.getReactIcon() } class="workslogos" draggable="false" />
                         </div>
                     </div>
                     ))}
@@ -161,15 +187,15 @@ const Home = () => {
                       <img src={ cvImg } alt="cv" data-lightbox="CV_Rayane_Merlin.png" data-title="Voici mon C.V actuel, celui-ci est amené à être modifié mais restera à jour sur le site." draggable="false" />
                     </div>
                     <div id="framecv-visible">
-                      <div id="container">
+                      <div id="containerFrameCV">
                         <div id="imgcv">
                           <img draggable="false" src="<?= PATH_FILES; ?>CV.png" alt="photo" />
                         </div>
                         <div id="buttons">
-                          <div id="cross" onClick={closePage}>
+                          <div id="cross" onClick={ closePage() }>
                             <p>x</p>
                           </div>
-                          <div id="print" onClick={printPDF}>
+                          <div id="print" onClick={ printPDF() }>
                             <img draggable="false" id="imgbutton" src="<?= home/frame-cv/print.png" />
                           </div>
                           <a href="<?= PATH_FILES; ?>CV.pdf" download="CV_Rayane_Merlin.pdf">
@@ -204,7 +230,7 @@ const Home = () => {
                         </div>
                         <div className="framecv-bar"></div>
                       </div>
-                      <div id="background"></div>
+                      <div id="backgroundCV"></div>
                     </div>
                     <div id="cv-text">
                       <div className="blackbar"></div>
@@ -213,7 +239,7 @@ const Home = () => {
                         <img draggable="false" src={ zoomImgState } alt="zoom" />
                       </div>
                       <p className="beforebutton">Vous pouvez télécharger mon CV actuel au format pdf en cliquant sur le bouton ci-dessous.</p>
-                      <a href="<?= PATH_FILES; ?>CV.pdf" download="CV_Rayane_Merlin.pdf"><button className="cv-button">Télécharger</button></a>
+                      <a href={ cvPdf } download="CV_Rayane_Merlin.pdf"><button className="cv-button">Télécharger</button></a>
                       <div className="blackbar"></div>
                     </div>
                   </div>
@@ -241,7 +267,7 @@ const Home = () => {
                         </div>
                         <div className="card-back">
                           <div className="info-icon-container card-top-container">
-                            <img src={competence.getInfoIconPath()} draggable="false" />
+                            <img src={ require('../asset/img/home/card/' + competence.getInfoIcon()) } draggable="false" />
                           </div>
                           <h2 className="card-back-title" style={{ color: competence.getTitleColor() }}>
                             {competence.getTitle()} c'est :
