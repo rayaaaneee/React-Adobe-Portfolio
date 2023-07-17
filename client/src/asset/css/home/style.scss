@@ -94,6 +94,14 @@ body.home {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &:hover {
+      .content {
+        img.workslogos {
+          scale: 1.2;
+        }
+      }
+    }
   }
 
   .container-seemore-project {
@@ -123,7 +131,7 @@ body.home {
     line-height: 1.1;
     letter-spacing: 1px;
     color: #000;
-    font-weight: bolder;
+    font-weight: bold;
   }
 
   /* Mise en place du hover */
@@ -217,7 +225,7 @@ body.home {
     line-height: 1.1;
     letter-spacing: 1px;
     color: #000;
-    font-weight: bolder;
+    font-weight: bold;
   }
 
   /* Changer la taille de l'image et son curseur*/
@@ -313,7 +321,7 @@ body.home {
     line-height: 1.1;
     letter-spacing: 1px;
     color: #000;
-    font-weight: bolder;
+    font-weight: bold;
   }
 
   .hidden {

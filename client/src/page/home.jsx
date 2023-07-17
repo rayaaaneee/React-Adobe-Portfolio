@@ -22,6 +22,7 @@ import competenceJson from '../asset/data/home/competence.json';
 import frameworkJson from '../asset/data/home/framework.json';
 import projectJson from '../asset/data/home/project.json';
 import schoolCompetenceJson from '../asset/data/home/school_competence.json';
+import cvInformationsJson from '../asset/data/home/cv-info.json';
 
 import zoomImg from '../asset/img/home/icon/zoom.png';
 import darkZoomImg from '../asset/img/home/icon/zoom-white.png';
@@ -82,11 +83,35 @@ const Home = () => {
     const openProjectPage = () => {}
     const closeProjectPage = () => {}
 
-    const openPage = () => {}
-    const closePage = () => {}
-    const printPDF = () => {}
-    const showInformations = () => {}
-    const hideInformations = () => {}
+    let [cvContainerIsVisible, setCvContainerIsVisible] = useState(false);
+
+    let frameCvRef = useRef(null);
+
+    var [cvVisibilityChanged, setCvVisibilityChanged] = useState(false);
+    useEffect(() => {
+      if (cvContainerIsVisible) {
+        document.body.style.overflow = 'hidden';
+        frameCvRef.current.classList.add('visible');
+        setCvVisibilityChanged(true);
+      } else if (cvVisibilityChanged) {
+        frameCvRef.current.classList.add('hidden');
+        frameCvRef.current.classList.remove('visible');
+        setTimeout(() => {
+          document.body.style.removeProperty('overflow');
+          frameCvRef.current.classList.remove('hidden');
+        }, 150);
+      }
+    }, [cvContainerIsVisible]);
+
+    useEffect(() => {
+      frameCvRef.current.classList.remove('hidden');
+    }, []);
+
+    var [isCvInformationsVisible, setCvInformationsVisible] = useState(false);
+
+    const printPDF = () => {
+      /* window.open('../asset/file/CV.pdf', "_blank").print(); */
+    }
 
     useEffect(() => {
       new ScrollProjects();
@@ -183,42 +208,50 @@ const Home = () => {
                   </div>
                   <div className="horizontal-bars animate" id="horizontal-bar2"></div>
                   <div id="container-cv" className="animate" onMouseOver={colorBar(2)} onMouseLeave={ uncolorBar(2) }>
-                    <div id="cv-img" onClick={openPage}>
+                    <div id="cv-img" onClick={() => {
+                      setCvContainerIsVisible(true);
+                    }}>
                       <img src={ cvImg } alt="cv" data-lightbox="CV_Rayane_Merlin.png" data-title="Voici mon C.V actuel, celui-ci est amené à être modifié mais restera à jour sur le site." draggable="false" />
                     </div>
-                    <div id="framecv-visible">
+                    <div id="framecv-visible" ref={frameCvRef}>
                       <div id="containerFrameCV">
                         <div id="imgcv">
-                          <img draggable="false" src="<?= PATH_FILES; ?>CV.png" alt="photo" />
+                          <img draggable="false" src={cvImg} alt="photo" />
                         </div>
                         <div id="buttons">
-                          <div id="cross" onClick={ closePage() }>
+                          <div id="cross" onClick={() =>{
+                            setCvContainerIsVisible(false);
+                          }}>
                             <p>x</p>
                           </div>
                           <div id="print" onClick={ printPDF() }>
-                            <img draggable="false" id="imgbutton" src="<?= home/frame-cv/print.png" />
+                            <img draggable="false" id="imgbutton" src={require('../asset/img/home/frame-cv/print.png')} />
                           </div>
-                          <a href="<?= PATH_FILES; ?>CV.pdf" download="CV_Rayane_Merlin.pdf">
+                          <a href={cvPdf} download="CV_Rayane_Merlin.pdf">
                             <div id="download">
-                              <img draggable="false" id="imgbutton" src="<?= home/frame-cv/download.png" alt="dl" />
+                              <img draggable="false" id="imgbutton" src={require('../asset/img/home/frame-cv/download.png')} alt="dl" />
                             </div>
                           </a>
-                          <div id="infos" onClick={showInformations} onMouseLeave={hideInformations}>
-                            <img draggable="false" id="imgbutton" src="<?= home/frame-cv/infos.png" alt="" />
+                          <div id="infos" onClick={() => {
+                            setCvInformationsVisible(!isCvInformationsVisible)
+                          }} onMouseLeave={() => {
+                            setCvInformationsVisible(false);
+                          }}>
+                            <img draggable="false" id="imgbutton" src={require('../asset/img/home/frame-cv/infos.png')} alt="" />
                           </div>
                         </div>
-                        <div id="informations">
+                        <div id="informations" className={isCvInformationsVisible? 'visible' : ''}>
                           <div id="title">
-                            <p></p>
+                            <p>{cvInformationsJson.name}</p>
                           </div>
                           <div id="size">
-                            <p></p>
+                            <p>Taille : {cvInformationsJson.size}</p>
                           </div>
                           <div id="date">
-                            <p></p>
+                            <p>Modification : {cvInformationsJson.date}</p>
                           </div>
                           <div id="type">
-                            <p></p>
+                            <p>Type : {cvInformationsJson.type}</p>
                           </div>
                         </div>
                       </div>
