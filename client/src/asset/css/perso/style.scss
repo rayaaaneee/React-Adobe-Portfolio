@@ -1,3 +1,5 @@
+$general-transition-switch-mode: 0.2s;
+
 body.perso {
     /* Parametres du titre */
     .title {
@@ -16,7 +18,7 @@ body.perso {
         display: flex;
         flex-direction: column;
         background-color: rgba(255, 255, 255, 0.884);
-        transition: background-color var(--general-transition-switch-mode);
+        transition: background-color $general-transition-switch-mode;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     }
 
@@ -84,7 +86,7 @@ body.perso {
         grid-column-end: 2;
         row-gap: 30px;
         background-color: rgba(255, 255, 255, 0.8);
-        transition: background-color var(--general-transition-switch-mode);
+        transition: background-color $general-transition-switch-mode;
         padding-top: 40px;
         padding-bottom: 40px;
     }
@@ -108,7 +110,7 @@ body.perso {
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        transition: box-shadow 0.3s ease, background-color var(--general-transition-switch-mode);
+        transition: box-shadow 0.3s ease, background-color $general-transition-switch-mode;
         /* Centrer */
         margin: 0 auto;
         align-self: center;

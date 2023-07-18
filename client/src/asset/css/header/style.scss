@@ -1,3 +1,5 @@
+$general-transition-switch-mode: 0.2s;
+
 body:not(.index) {
     /* Base du menu */
     .menu {
@@ -6,7 +8,7 @@ body:not(.index) {
         margin-top : 0;
         font-weight : bold;    
         background-color: rgba(255, 255, 255, 0.9); 
-        transition: background-color var(--general-transition-switch-mode);
+        transition: background-color $general-transition-switch-mode;
         backdrop-filter: blur(5px);
         justify-content : flex-end;
         height: 67px;

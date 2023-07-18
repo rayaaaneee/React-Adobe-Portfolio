@@ -1,3 +1,5 @@
+$general-transition-switch-mode: 0.2s;
+
 .hidden {
     display: none;
 }

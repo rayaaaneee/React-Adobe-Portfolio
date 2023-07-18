@@ -1,10 +1,12 @@
+$general-transition-switch-mode: 0.2s;
+
 body:not(.index) {
     /* Parametres du footer et design du footer */
     footer {
         max-height: 75px;
         position: relative;
         background-color: rgb(255, 255, 255, 0.8);
-        transition: background-color var(--general-transition-switch-mode);
+        transition: background-color $general-transition-switch-mode;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
         display: grid;
         width: 100vw;

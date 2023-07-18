@@ -1,3 +1,5 @@
+$general-transition-switch-mode: 0.2s;
+
 body.contact {
     .form-style {
       width: 400px;
@@ -100,7 +102,7 @@ body.contact {
     grid-template-rows: 1fr 1.2fr;
     align-items: center;
     background-color: rgb(226, 197, 197, 0.8);
-    transition: background-color var(--general-transition-switch-mode);
+    transition: background-color $general-transition-switch-mode;
     box-shadow: 0 0 30px rgba(0,0,0,0.1); 
     border-radius: 20px;
   }
@@ -288,7 +290,7 @@ body.contact {
     padding: 40px;
     width: fit-content;
     background-color: rgba(255,255,255,0.8);
-    transition: background-color var(--general-transition-switch-mode);
+    transition: background-color $general-transition-switch-mode;
     backdrop-filter: blur(3px);
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0,0,0,0.2); 
