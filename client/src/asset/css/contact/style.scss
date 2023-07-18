@@ -11,13 +11,14 @@ body.contact {
   .form-style .required{
       color:#ff0000;
     }
-  .form-style input[type=submit], .form-style input[type=reset]{
+  .form-style input.orange-buttons{
       background: rgb(235, 177, 89);
       padding: 8px 15px 8px 15px;
       border: none;
       color: #fff;
+      text-align: center;
     }
-    .form-style input[type=submit]:hover, .form-style input[type=reset]:hover{
+    .form-style input.orange-buttons:hover, .form-style input.orange-buttons:hover{
       background: rgb(236, 140, 84);
       box-shadow:none;
       -moz-box-shadow:none;
@@ -41,7 +42,6 @@ body.contact {
     }
     .form-style .long{
       width: 100%;
-      margin: 10px auto,
     }
     
     .form-style input[type=text]:focus, 
@@ -50,8 +50,10 @@ body.contact {
       box-shadow: 0 0 0 4px rgb(232, 181, 39);
     } 
     .error{
-      color: white;
-      background-color:#8F2D56;
+      color: rgb(227, 153, 100);
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 30px;
     }
 
     td {
@@ -200,48 +202,68 @@ body.contact {
     opacity: 0;
     transition: opacity 0.4s, transform 0.1s;
     cursor: default;
-  }
 
-  .nb-chars-left > p {
-    font-size: 15.5px;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.884);
-  }
+    &.visible {
+      opacity: 1;
+    }
 
-  .nb-chars-left > .to-modify {
-    margin : 0 0 0 1vw;
-  }
+    & > p {
+      font-size: 15.5px;
+      font-weight: bold;
+      color: rgba(0, 0, 0, 0.884);
+    }
 
-  .nb-chars-left > .nb-chars-left-text {
-    margin : 0;
-  }
+    & > .to-modify {
+      margin : 0 0 0 1vw;
+      display: none;
 
-  /* Animation du nombre de caractères restants */
-  .spinner {
-    width: fit-content;
-    text-align: center;
-    transform: translateY(18%);
-  }
+      &.visible {
+        display: block;
+      }
+    }
 
-  .spinner > div {
-    width: 18px;
-    height: 18px;
-    background-color: rgb(0, 0, 0);
+    & > .nb-chars-left-text {
+      margin : 0;
+      transition: transform 0.1s ease-in;
 
-    border-radius: 100%;
-    display: inline-block;
-    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-  }
+      &.scale {
+        transform: scale(1.05);
+      }
+    }
 
-  .spinner .bounce1 {
-    -webkit-animation-delay: -0.32s;
-    animation-delay: -0.32s;
-  }
+    .spinner {
+      width: fit-content;
+      text-align: center;
+      transform: translateY(18%);
+      transition: opacity 0.2s;
+      opacity: 0;
 
-  .spinner .bounce2 {
-    -webkit-animation-delay: -0.16s;
-    animation-delay: -0.16s;
+      &.visible { 
+        opacity: 1;
+      }
+
+      & > div {
+        width: 18px;
+        height: 18px;
+        background-color: rgb(0, 0, 0);
+
+        border-radius: 100%;
+        display: inline-block;
+        -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+        animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      }
+
+      .bounce1 {
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
+      }
+
+      .bounce2 {
+        -webkit-animation-delay: -0.16s;
+        animation-delay: -0.16s;
+      }
+    }
+
   }
 
   @-webkit-keyframes sk-bouncedelay {

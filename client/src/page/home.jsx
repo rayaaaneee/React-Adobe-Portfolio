@@ -92,6 +92,7 @@ const Home = () => {
       if (cvContainerIsVisible) {
         document.body.style.overflow = 'hidden';
         frameCvRef.current.classList.add('visible');
+        frameCvRef.current.scrollTo(0, 0);
         setCvVisibilityChanged(true);
       } else if (cvVisibilityChanged) {
         frameCvRef.current.classList.add('hidden');
@@ -255,7 +256,7 @@ const Home = () => {
                           </div>
                         </div>
                       </div>
-                      <div id="container-cv-text-bar" className="animate">
+                      <div id="container-cv-text-bar">
                         <div className="framecv-bar"></div>
                         <div id="framecv-text">
                           <p>À savoir : <br/><br/> Voici mon CV, celui-ci est amené à être modifié avec le temps, dans quelques mois il sera différent. <br/>

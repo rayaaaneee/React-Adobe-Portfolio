@@ -14,6 +14,7 @@ import '../../asset/css/general/scrollbar.scss';
 import Backgrounds from "./backgrounds";
 
 const Main = (props) => {
+
     return (
         <>
             {/* <Loader /> */}
