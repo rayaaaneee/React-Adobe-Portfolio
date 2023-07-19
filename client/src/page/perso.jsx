@@ -13,7 +13,11 @@ import photoPerso from '../asset/img/perso/img.png';
 
 const Perso = () => {
 
-    useEffect(() => {animateApparition()}, []);;
+    useEffect(() => {animateApparition()}, []);
+
+    useEffect(() => {
+        window.scrollTo({ top: 0 });
+    }, []);
 
     ManageBody.changeClass('perso');
 

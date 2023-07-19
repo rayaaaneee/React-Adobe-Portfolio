@@ -1,13 +1,14 @@
 import Main from './components/main';
 import { ManageBody } from '../functions/manageBody';
+import { ManageThemes } from '../functions/manageThemes';
 import { useEffect, useState, useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
 
 import { Project } from '../functions/objects/project';
 import { SchoolCompetence } from '../functions/objects/school_competence';
 import { animateApparition } from '../functions/apparition';
 import { ScrollProjects } from '../functions/scrollProjects';
 import { animateCards } from '../functions/3dEffectCard';
-import { baseName, replaceTag } from '../functions/homeFunctions';
 
 import '../asset/css/home/style.scss';
 import '../asset/css/home/frame-cv.scss';
@@ -40,9 +41,9 @@ const Home = () => {
 
     useEffect(() => { animateApparition() }, []);;
 
-    const [zoomImgState, setZoomImg] = useState(zoomImg);
-    const [downloadImgState, setDownloadImg] = useState(downloadImg);
-    const [linkImgState, setLinkImg] = useState(linkImg);
+    const [zoomImgState, setZoomImg] = useState(ManageThemes.isDarkTheme ? darkZoomImg : zoomImg);
+    const [downloadImgState, setDownloadImg] = useState(ManageThemes.isDarkTheme ? darkDownloadImg : downloadImg);
+    const [linkImgState, setLinkImg] = useState(ManageThemes.isDarkTheme ? darkLinkImg : linkImg);
 
     const images = [zoomImg, downloadImg, linkImg];
     const darkImages = [darkZoomImg, darkDownloadImg, darkLinkImg];
@@ -108,11 +109,25 @@ const Home = () => {
       frameCvRef.current.classList.remove('hidden');
     }, []);
 
+    useEffect(() => {
+      window.scrollTo({ top: 0 });
+    }, []);
+
     var [isCvInformationsVisible, setCvInformationsVisible] = useState(false);
 
-    const printPDF = () => {
-      /* window.open('../asset/file/CV.pdf', "_blank").print(); */
+    const handlePrintPdf = () => {
+      window.open(cvPdf).print();
     }
+
+    /* let cvImgRef = useRef(null);
+    const handlePrintPdf = useReactToPrint({
+      content: () => cvImgRef.current,
+      contentStyle: `
+        width: 100vw;
+        height: 100vh;
+        background-color: blue;
+      `,
+    }); */
 
     useEffect(() => {
       new ScrollProjects();
@@ -147,7 +162,7 @@ const Home = () => {
                                 <p>{ project.getTitle() }</p>
                                 <img src={ project.isLink() ? linkImgState : downloadImgState } draggable="false" />
                             </div>
-                            <img src={ project.getReactIcon() } class="workslogos" draggable="false" />
+                            <img src={ ManageThemes.isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } imgLightTheme={project.getReactIcon()} imgDarkTheme={project.getDarkReactIcon()} class="workslogos" draggable="false" />
                         </div>
                     </div>
                     ))}
@@ -225,7 +240,7 @@ const Home = () => {
                           }}>
                             <p>x</p>
                           </div>
-                          <div id="print" onClick={ printPDF() }>
+                          <div id="print" onClick={ handlePrintPdf }>
                             <img draggable="false" id="imgbutton" src={require('../asset/img/home/frame-cv/print.png')} />
                           </div>
                           <a href={cvPdf} download="CV_Rayane_Merlin.pdf">

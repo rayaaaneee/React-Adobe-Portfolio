@@ -19,6 +19,22 @@ const switchImages = (images, darkImages, states) => {
         default:
             break;
     }
+
+    invertImages(document.querySelectorAll('[imgLightTheme][imgDarkTheme]'));
+}
+
+const invertImages = (images) => {
+    images.forEach(image => {
+        switch(ManageThemes.isDarkTheme) {
+            case true :
+                image.src = image.getAttribute('imgDarkTheme');
+                break;
+            default :
+            case false :
+                image.src = image.getAttribute('imgLightTheme');
+                break;
+        }
+    });
 }
 
 const HeaderComponent = (props) => {

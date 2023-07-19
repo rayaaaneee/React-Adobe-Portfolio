@@ -10,8 +10,13 @@ const Course = () => {
     ManageBody.changeClass('course');
 
     useEffect(() => {
+        window.scrollTo({ top: 0 });
+    }, []);
+
+    useEffect(() => {
         document.title = 'Mon parcours';
     });
+
 
     return (
         <>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ManageThemes } from '../../functions/manageThemes';
+import { ManageLoader } from '../../functions/manageLoader';
 
 import '../../asset/css/loader/style.css';
 import '../../asset/css/loader/media.css';
@@ -162,10 +163,11 @@ const Loader = () => {
         }
     }
 
-    if (wasPassed) {
+    if (ManageLoader.wasPageLoaded) {
         return (<></>);
+        ManageLoader.wasPageLoaded = false;
     } else {
-        wasPassed = false;
+        ManageLoader.wasPageLoaded = true;
         return (
             <main id='loaderContainer' style={{ zIndex: containerIsVisible ? "10000" : "-1" }}>
                 <div id="background" className={ isBackgroundVisible ? 'visible' : '' }></div>

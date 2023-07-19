@@ -24,6 +24,10 @@ const About = () => {
         document.title = 'À propos';
     });
 
+    useEffect(() => {
+        window.scrollTo({ top: 0 });
+    }, []);
+
     const [privacyImgState, setPrivicyImgState] = useState(privacyImg);
     const [aboutImgState, setAboutImgState] = useState(aboutImg);
 

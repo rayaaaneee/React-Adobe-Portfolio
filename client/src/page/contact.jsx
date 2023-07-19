@@ -20,6 +20,10 @@ const Contact = () => {
         document.title = 'Contact';
     });
 
+    useEffect(() => {
+        window.scrollTo({ top: 0 });
+    }, []);
+
     let nameInput = useRef(null);
     let emailInput = useRef(null);
     let messageInput = useRef(null);
@@ -66,18 +70,14 @@ const Contact = () => {
     let nbCharsLeftSpinnerRef = useRef(null);
 
     const textareaMaxLength = 300;
-    useEffect(() => {
-        charsLeftToModifyRef.current.innerHTML = textareaMaxLength;
-    }, []);
 
     let oldNbCharsLeft;
     const getNbCharsLeft = () => {
-
         // On recupère le nombre de caractères max et on le soustrait au nombre de caractères actuel
         let nbCharsLeft = textareaMaxLength - messageInput.current.value.length;
 
-        if (nbCharsLeft < 0) {
-            messageInput.current.value = messageInput.current.value.substring(0, textareaMaxLength - 1);
+        if (nbCharsLeft <= 0) {
+            messageInput.current.value = messageInput.current.value.substring(0, textareaMaxLength);
             nbCharsLeft = 0;
         }
 
@@ -85,8 +85,6 @@ const Contact = () => {
 
         charsLeftToModifyRef.current.classList.add('visible');
         nbCharsLeftSpinnerRef.current.classList.add('visible');
-
-        /* animateScaleCharsLeftText(); */
 
         if (nbCharsLeft == 0) {
             nbCharsLeftTextRef.current.innerHTML = "• Aucun caractère restant";
@@ -102,7 +100,6 @@ const Contact = () => {
         }
 
         oldNbCharsLeft = nbCharsLeft;
-
         changeColorNbCharsLeft();
     }
 
@@ -192,9 +189,9 @@ const Contact = () => {
                                             <textarea ref={messageInput} name="message" className="long field-textarea" required placeholder="Voici mon message.." onInput={getNbCharsLeft} onFocus={appearCharsLeft} onBlur={disappearCharsLeft}></textarea>
                                             <span ref={errormsgRef} className="error" id="errormsg"></span>
                                             <div ref={nbCharsLeftContainerRef} className="nb-chars-left">
-                                                <p className="to-modify" ref={charsLeftToModifyRef}>nb chars</p>
+                                                <p className="to-modify visible" ref={charsLeftToModifyRef}>{textareaMaxLength}</p>
                                                 <p ref={nbCharsLeftTextRef} className="nb-chars-left-text">caractères restants</p>
-                                                <div className="spinner" ref={nbCharsLeftSpinnerRef}>
+                                                <div className="spinner visible" ref={nbCharsLeftSpinnerRef}>
                                                     <div className="bounce1 bounce"></div>
                                                     <div className="bounce2 bounce"></div>
                                                     <div className="bounce3 bounce"></div>
