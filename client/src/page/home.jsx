@@ -103,7 +103,7 @@ const Home = () => {
           frameCvRef.current.classList.remove('hidden');
         }, 150);
       }
-    }, [cvContainerIsVisible]);
+    }, [cvContainerIsVisible, cvVisibilityChanged]);
 
     useEffect(() => {
       frameCvRef.current.classList.remove('hidden');

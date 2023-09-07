@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 
 const Backgrounds = () => {
 
-    /* useEffect(() => {
+    useEffect(() => {
         moveBackgrounds();
         Parallax.bind();
-    }, []); */
+    }, []);
 
     return (
         <>

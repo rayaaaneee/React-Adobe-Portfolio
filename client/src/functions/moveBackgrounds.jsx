@@ -13,20 +13,28 @@ export const moveBackgrounds = () => {
     var speed3 = parseFloat(background3.getAttribute("speedtranslate"));
 
     // Déclaration et initialisation de la position initiale
-    var x1 = 0; 
-    var x2 = 0;
-    var x3 = 0;
+    let xs = [0, 0, 0];
+
+    // Récupérer la largeur de chaque background
+    var widths = [background1.offsetWidth, background2.offsetWidth, background3.offsetWidth];
 
     setInterval(() => {
         //On décremente la position par la vitese
-        x1 -= speed1 * parseFloat(speed1);
-        x2 -= speed2 * parseFloat(speed2);
-        x3 -= speed3 * parseFloat(speed3);
+        xs[0] -= speed1 * parseFloat(speed1);
+        xs[1] -= speed2 * parseFloat(speed2);
+        xs[2] -= speed3 * parseFloat(speed3);
+
+        // Si le background est sorti de l'écran, on le remet à sa position initiale
+        for (let i = 0; i < 3; i++) {
+            if (xs[i] <= -widths[i]) {
+                xs[i] = 0;
+            }
+        }
 
         //On applique la nouvelle position
-        background1.style.backgroundPosition = x1 + "px center";
-        background2.style.backgroundPosition = x2 + "px center";
-        background3.style.backgroundPosition = x3 + "px center";
+        background1.style.backgroundPosition = xs[0] + "px center";
+        background2.style.backgroundPosition = xs[1] + "px center";
+        background3.style.backgroundPosition = xs[2] + "px center";
     }, 50);
 }
 

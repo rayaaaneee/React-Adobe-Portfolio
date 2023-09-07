@@ -101,7 +101,7 @@ body.contact {
     display: grid;
     grid-template-rows: 1fr 1.2fr;
     align-items: center;
-    background-color: rgb(226, 197, 197, 0.8);
+    background-color: rgb(210 168 135 / 80%);
     transition: background-color $general-transition-switch-mode;
     box-shadow: 0 0 30px rgba(0,0,0,0.1); 
     border-radius: 20px;

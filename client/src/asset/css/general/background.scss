@@ -4,8 +4,8 @@ body:not(.index) {
     /* Créer les deux backgrounds orange*/
     #background1 {
         background-image: url(../../img/backgrounds/background1.png);
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         position: fixed;
         bottom : -35vh;
     }
@@ -13,8 +13,8 @@ body:not(.index) {
     /* Créer les deux backgrounds jaune*/
     #background2 {
         background-image: url(../../img/backgrounds/background2.png);
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         position: fixed;
         bottom : -40vh;
         display: grid;
@@ -23,8 +23,8 @@ body:not(.index) {
     /* Créer le background nuage */
     #background3 {
         background-image: url(../../img/backgrounds/background3.png);
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         position: fixed;
         bottom : 7vh;
         display: grid;
@@ -38,11 +38,11 @@ body:not(.index) {
     /* Coller les fonds d'écran au bas de la page */
     #background1, #background2, #background3 {
         background-repeat: repeat-x;
-        background-size: cover;
+        background-size: contain;
         z-index: -1;
     }
 
-    .background {
+/*     .background {
         transition: $general-transition-switch-mode;
-    }
+    } */
 }

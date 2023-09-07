@@ -12,26 +12,26 @@ import loadIcon from '../../asset/img/loader/load.png';
 import faviconLightTheme from '../../asset/img/header/portfolio_logo.png';
 import faviconDarkTheme from '../../asset/img/header/dark-theme/dark_portfolio_logo.png';
 
-var wasPassed = false;
-
 const Loader = () => {
     /* Déclaration du tableau de texte */
     var texts = [
         "Lecture des préférences...",
-        "Recherche des modules externes...",
-        "Recherche des paramètres prédéfinis...",
+        /* "Recherche des modules externes...", */
+        /* "Recherche des paramètres prédéfinis...", */
         "Initialisation des outils...",
-        "Initialisation...",
-        "Initialisation de l'extensibilité universelle...",
-        "Initialisation des composants partagés...",
-        "Initialisation d'AXE...",
+        /* "Initialisation...", */
+        /* "Initialisation de l'extensibilité universelle...", */
+        /* "Initialisation des composants partagés...", */
+        /* "Initialisation d'AXE...", */
         "Chargement de la palette...",
-        "Recherche de [...]...",
-        "Lecture des paramètres de couleurs...",
+        /* "Recherche de [...]...", */
+        /* "Lecture des paramètres de couleurs...", */
         "Création des tables de conversion des couleurs...",
         "Lecture des pinceaux...",
-        "Démarrage des modules externes...",
-        "SP Substance Suite",
+        /* "Démarrage des modules externes...", */
+        "Chargement .",
+        "Chargement . .",
+        "Chargement . . .",
     ];
 
     //Balise texte à modifier
@@ -40,7 +40,7 @@ const Loader = () => {
     //Case du tableau de textes a afficher
     var i = 0;
 
-    var maxTime = 2200;
+    var maxTime = 1300;
 
     let textDuration = parseInt(maxTime / ( texts.length ));
 
@@ -163,60 +163,54 @@ const Loader = () => {
         }
     }
 
-    if (ManageLoader.wasPageLoaded) {
-        return (<></>);
-        ManageLoader.wasPageLoaded = false;
-    } else {
-        ManageLoader.wasPageLoaded = true;
-        return (
-            <main id='loaderContainer' style={{ zIndex: containerIsVisible ? "10000" : "-1" }}>
-                <div id="background" className={ isBackgroundVisible ? 'visible' : '' }></div>
-                <div id="container" className={ containerIsVisible ? 'visible' : '' } onMouseOver={ changeCursor } onMouseOut={ unchangeCursor }>
-                    <div id="left">
-                        <div id="title">
-                            <img draggable="false" src={ theme } alt="PortFolio" />
-                            <h1>Adobe Portfolio</h1>
-                        </div>
-                        <div id="loader">
-                        </div>
-                        <div id="text">
-                            <div className="abovetext">
-                                <p className="highfontweight">© 1990 - 2022 Adobe. All rights reserved.</p>
-                                <p className="highfontweight">Illustration de Flore Marquin</p>
-                                <p className="lowfontweight">Illustration inspirée par le seigneur des anneaux : Les anneaux de pouvoirs. "Pour obtenir plus de détails et des informations juridiques, rendez vous sur l'écran.</p>
-                                <p id="toChange" className="highfontweight">{ texts[textIndex] }</p>
-                            </div>
-                            <div className="undertext">
-    
-                            </div>
-                            <p id="underChange" className="lowfontweight2">Russel Williams, Thomas Knoll, John Knoll, Mark Hamburg, Jackie Lincoln-O w y ang, A lan Erickson, Sarah Kong, Jerry Harris, Mike Shaw, Thomas Ruark, Yukie Takahashi, David Dobish, John Peterson, Adam Jerugim, Yuko Kagita, Foster Brereton, Meredith Payne Stotzner, Tai Luxon, Vinod Balakrishnan, David Hackel, Eric Floch, Judy Lee, Kevin Hopps, Barkin Aygun, Shanmugh Natarajan, Vishal Wadhwa, Pulkit Jindal, Quynn Megan Le, Stephen Nielson, Bob Archer, Kavana Anand, Chad Rolfs, Charles F. Rose III, Kamal Arora, Joel Baer, Metthew Neldam, Jacob Correia, Pulkit Mehta, Jesper S. Bache, Eric C hing, Dustin Passofaro, Sagar Pathak, Irina Maderych, Praveen Gelra, Vasanth Pai, Zijun Wei, Nithesh Gangadhar Salian</p>
-                        </div>
-                        <div id="logo">
-                            <img draggable="false" src={ adobeIcon } alt="Adobe" />
-                            <p>Adobe Creative Cloud</p>
-                        </div>
+    ManageLoader.wasPageLoaded = true;
+    return (
+        <main id='loaderContainer' style={{ zIndex: containerIsVisible ? "10000" : "-1" }}>
+            <div id="background" className={ isBackgroundVisible ? 'visible' : '' }></div>
+            <div id="container" className={ containerIsVisible ? 'visible' : '' } onMouseOver={ changeCursor } onMouseOut={ unchangeCursor }>
+                <div id="left">
+                    <div id="title">
+                        <img draggable="false" src={ theme } alt="PortFolio" />
+                        <h1>Adobe Portfolio</h1>
                     </div>
-                    <div id="right">
-                        <div id="img">
-                            <img draggable="false" src={ loadIcon } alt="Adobe Portfolio" />
-                        </div>
-                        <div id="logomedia">
-                            <img draggable="false" src={ adobeIcon } alt="Adobe" />
-                            <p>Adobe Creative Cloud</p>
-                        </div>
+                    <div id="loader">
                     </div>
-                </div>
-                <div id="cursor" className={ containerIsVisible ? 'visible' : '' }>
-                    <div className="point p0"></div>
-                    <div className="point p1"></div>
-                    <div className="point p2"></div>
-                    <div className="point p3"></div>
-                    <div className="point p4"></div>
-                    <div className="point p5"></div>
-                </div>
-            </main>
-        );
-    }
-}
+                    <div id="text">
+                        <div className="abovetext">
+                            <p className="highfontweight">© 1990 - 2022 Adobe. All rights reserved.</p>
+                            <p className="highfontweight">Illustration de Flore Marquin</p>
+                            <p className="lowfontweight">Illustration inspirée par le seigneur des anneaux : Les anneaux de pouvoirs. "Pour obtenir plus de détails et des informations juridiques, rendez vous sur l'écran.</p>
+                            <p id="toChange" className="highfontweight">{ texts[textIndex] }</p>
+                        </div>
+                        <div className="undertext">
 
+                        </div>
+                        <p id="underChange" className="lowfontweight2">Russel Williams, Thomas Knoll, John Knoll, Mark Hamburg, Jackie Lincoln-O w y ang, A lan Erickson, Sarah Kong, Jerry Harris, Mike Shaw, Thomas Ruark, Yukie Takahashi, David Dobish, John Peterson, Adam Jerugim, Yuko Kagita, Foster Brereton, Meredith Payne Stotzner, Tai Luxon, Vinod Balakrishnan, David Hackel, Eric Floch, Judy Lee, Kevin Hopps, Barkin Aygun, Shanmugh Natarajan, Vishal Wadhwa, Pulkit Jindal, Quynn Megan Le, Stephen Nielson, Bob Archer, Kavana Anand, Chad Rolfs, Charles F. Rose III, Kamal Arora, Joel Baer, Metthew Neldam, Jacob Correia, Pulkit Mehta, Jesper S. Bache, Eric C hing, Dustin Passofaro, Sagar Pathak, Irina Maderych, Praveen Gelra, Vasanth Pai, Zijun Wei, Nithesh Gangadhar Salian</p>
+                    </div>
+                    <div id="logo">
+                        <img draggable="false" src={ adobeIcon } alt="Adobe" />
+                        <p>Adobe Creative Cloud</p>
+                    </div>
+                </div>
+                <div id="right">
+                    <div id="img">
+                        <img draggable="false" src={ loadIcon } alt="Adobe Portfolio" />
+                    </div>
+                    <div id="logomedia">
+                        <img draggable="false" src={ adobeIcon } alt="Adobe" />
+                        <p>Adobe Creative Cloud</p>
+                    </div>
+                </div>
+            </div>
+            <div id="cursor" className={ containerIsVisible ? 'visible' : '' }>
+                <div className="point p0"></div>
+                <div className="point p1"></div>
+                <div className="point p2"></div>
+                <div className="point p3"></div>
+                <div className="point p4"></div>
+                <div className="point p5"></div>
+            </div>
+        </main>
+    );
+}    
 export default Loader;
