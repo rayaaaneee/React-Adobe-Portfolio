@@ -81,8 +81,28 @@ const Home = () => {
   
     const uncolorBar = () => {}
 
-    const openProjectPage = () => {}
-    const closeProjectPage = () => {}
+    let [projectPageIsVisible, setProjectPageIsVisible] = useState(false);
+    let projectPageRef = useRef(null);
+    useEffect(() => {
+        if (projectPageIsVisible) {
+            document.body.style.overflowY = "hidden";
+            projectPageRef.current.scrollTo(0, 0);
+            projectPageRef.current.classList.add('visible');
+        } else {
+            document.body.style.removeProperty('overflow-y');
+            projectPageRef.current.classList.remove('visible');
+        }
+    }, [projectPageIsVisible]);
+
+    let [currentProject, setCurrentProject] = useState(null);
+    const openProjectPage = (project) => {
+        setProjectPageIsVisible(true);
+        setCurrentProject(project);
+    }
+    
+    const closeProjectPage = () => {
+        setProjectPageIsVisible(false);
+    }
 
     let [cvContainerIsVisible, setCvContainerIsVisible] = useState(false);
 
@@ -153,7 +173,7 @@ const Home = () => {
                         className="main-container animate"
                         onMouseOver={ () => colorBar(1) }
                         onMouseLeave={ () => uncolorBar(1) }
-                        onClick={ () => openProjectPage() }
+                        onClick={ () => openProjectPage(project) }
                         data-date={ project.getFormatDate() }
                         key={i}
                       >
@@ -171,15 +191,15 @@ const Home = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
                   </div>
-                  <div className="project-page-container">
+                  <div ref={projectPageRef} className="project-page-container">
                     <div className="project-page">
                       <div className="project-page-content">
                         <div className="title-project-container">
-                          <img className="link-or-download" src="<?= home/icon/white-link.png" draggable="false" />
-                          <p className="title-project"></p>
+                          {/* <img className="link-or-download" src="<?= home/icon/white-link.png" draggable="false" /> */}
+                          <p className="title-project">{currentProject ? currentProject.getTitle() : ''}</p>
                         </div>
                         <div className="project-languages-skills title-page-project">
-                          <img src="<?= home/icon/skills.png" draggable="false" />
+                          {/* <img src="<?= home/icon/skills.png" draggable="false" /> */}
                           <p className="title-language-skill">Compétences :</p>
                         </div>
                         <div className="project-languages-skills-container page-content">
@@ -189,22 +209,26 @@ const Home = () => {
                         </div>
                         <div className="project-desc text-project-container">
                           <div className="project-desc-text title-page-project">
-                            <img src="<?= home/icon/desc-icon-pink.png" draggable="false" />
+                            {/* <img src="<?= home/icon/desc-icon-pink.png" draggable="false" /> */}
                             <p>Description :</p>
                           </div>
-                          <p className="project-desc-value page-content"></p>
+                          <p className="project-desc-value page-content">
+                            {currentProject ? currentProject.getDescription() : ''}
+                          </p>
                         </div>
                         <div className="project-use-desc text-project-container">
                           <div className="project-use-desc-text title-page-project">
-                            <img src="<?= home/icon/use-desc-icon-pink.png" draggable="false" />
+                            {/* <img src="<?= home/icon/use-desc-icon-pink.png" draggable="false" /> */}
                             <p>Utilisation :</p>
                           </div>
-                          <p className="project-use-desc-value page-content"></p>
+                          <p className="project-use-desc-value page-content">
+                            {currentProject ? currentProject.getUseDescription() : ''}
+                          </p>
                         </div>
                         <a href="" className="link-btn title-page-project" target="_blank"></a>
                         <a href="" className="download-btn title-page-project" download></a>
                         <div className="project-size-container text-project-container">
-                          <img src="<?= home/icon/white-memory-icon.png" draggable="false" />
+                          {/* <img src="<?= home/icon/white-memory-icon.png" draggable="false" /> */}
                           <p className="page-content">Taille du fichier :</p>
                           <p className="project-size-value page-content"></p>
                           <p className="page-content">Mo</p>
