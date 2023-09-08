@@ -1,4 +1,4 @@
-import { ManageLanguages } from '../manageLanguages';
+import { ManageLanguages } from '../functions/manageLanguages';
 import { useState } from 'react';
 
 const PATH_IMAGES = "images/";
@@ -13,7 +13,7 @@ export class Project
     #projectDescription;
     #image;
     #icon;
-    #usesSkills;
+    #usesCompetences;
     #usesLanguages;
 
     #isDownload;
@@ -24,6 +24,7 @@ export class Project
 
     #endDate;
     #languages;
+    #competences;
 
     #stateImg = null;
 
@@ -47,7 +48,7 @@ export class Project
         let [month, year] = project.date.split("-");
         this.#endDate = new Date(parseInt(year), 0, parseInt(month));
 
-        this.#usesSkills = project.uses_skills;
+        this.#usesCompetences = project.uses_skills;
         this.#usesLanguages = project.uses_languages;
 
         this.#languages = new Array();
@@ -179,12 +180,17 @@ export class Project
         return this.#languages;
     }
 
-    usesSkills()
+    getCompetences()
     {
-        return this.#usesSkills;
+        return this.#competences;
     }
 
-    usesLanguages()
+    hasCompetences()
+    {
+        return this.#usesCompetences;
+    }
+
+    hasLanguages()
     {
         return this.#usesLanguages;
     }

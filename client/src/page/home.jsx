@@ -4,8 +4,8 @@ import { ManageThemes } from '../functions/manageThemes';
 import { useEffect, useState, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
-import { Project } from '../functions/objects/project';
-import { SchoolCompetence } from '../functions/objects/school_competence';
+import { Project } from '../objects/project';
+import { SchoolCompetence } from '../objects/school_competence';
 import { animateApparition } from '../functions/apparition';
 import { ScrollProjects } from '../functions/scrollProjects';
 import { animateCards } from '../functions/3dEffectCard';
@@ -31,6 +31,11 @@ import downloadImg from '../asset/img/home/icon/black-download.png';
 import darkDownloadImg from '../asset/img/home/icon/white-download.png';
 import linkImg from '../asset/img/home/icon/black-link.png';
 import darkLinkImg from '../asset/img/home/icon/white-link.png';
+import skills from '../asset/img/home/icon/skills.png';
+import languages from '../asset/img/home/icon/language.png';
+import descriptionIcon from '../asset/img/home/icon/desc-icon-pink.png';
+import useDescriptionIcon from '../asset/img/home/icon/use-desc-icon-pink.png';
+import whiteMemoryIcon from '../asset/img/home/icon/white-memory-icon.png';
 
 import cvImg from '../asset/file/CV.png';
 import cvPdf from '../asset/file/CV.pdf';
@@ -180,9 +185,9 @@ const Home = () => {
                         <div className="content" onMouseOver={ () => { growImg(i) }} onMouseLeave={ () => { shrinkImg(i) }} >
                             <div className="to_download">
                                 <p>{ project.getTitle() }</p>
-                                <img src={ project.isLink() ? linkImgState : downloadImgState } draggable="false" />
+                                <img alt='download-link' src={ project.isLink() ? linkImgState : downloadImgState } draggable="false" />
                             </div>
-                            <img src={ ManageThemes.isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } imgLightTheme={project.getReactIcon()} imgDarkTheme={project.getDarkReactIcon()} class="workslogos" draggable="false" />
+                            <img alt='project-icon' src={ ManageThemes.isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } imgLightTheme={project.getReactIcon()} imgDarkTheme={project.getDarkReactIcon()} class="workslogos" draggable="false" />
                         </div>
                     </div>
                     ))}
@@ -195,21 +200,49 @@ const Home = () => {
                     <div className="project-page">
                       <div className="project-page-content">
                         <div className="title-project-container">
-                          {/* <img className="link-or-download" src="<?= home/icon/white-link.png" draggable="false" /> */}
+                          <img alt='link-or-download' className="link-or-download" src={currentProject.isLink() ? darkLinkImg : darkDownloadImg } draggable="false" />
                           <p className="title-project">{currentProject ? currentProject.getTitle() : ''}</p>
                         </div>
-                        <div className="project-languages-skills title-page-project">
-                          {/* <img src="<?= home/icon/skills.png" draggable="false" /> */}
-                          <p className="title-language-skill">Compétences :</p>
-                        </div>
-                        <div className="project-languages-skills-container page-content">
-                          <div className="skill-language-container template hidden">
-                            <p></p>
-                          </div>
-                        </div>
+                        {currentProject ? (currentProject.hasCompetences() ? 
+                          <>
+                            <div className="project-competences-skills title-page-project">
+                              <img src={ skills } alt='competences-icone' draggable="false" />
+                              <p className="title-competences-skill">Compétences :</p>
+                            </div>
+                            <div className="project-competences-skills-container page-content">
+                              {currentProject.getCompetences().map((competence) => {
+                                return (
+                                  <div className="skill-competence-container template" style={{backgroundColor: competence.color}}>
+                                    <p>{competence.name}</p>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </>
+                        : '') : ''}
+                        {currentProject ? (currentProject.hasLanguages() ? 
+                          <>
+                            <div className="project-languages-skills title-page-project">
+                              <img src={ languages } alt='langages-icones' draggable="false" />
+                              <p className="title-language-skill">Langages :</p>
+                            </div>
+                            <div className="project-languages-skills-container page-content">
+                              {currentProject.getLanguages().map((language) => {
+                                return (
+                                  <div className="skill-language-container template" style={{backgroundColor: language.color}}>
+                                    <p>{language.name}</p>
+                                  </div>
+                                );
+                              })}
+                              <div className="skill-language-container template">
+                                <p></p>
+                              </div>
+                            </div>
+                          </>
+                        : '') : '' }
                         <div className="project-desc text-project-container">
                           <div className="project-desc-text title-page-project">
-                            {/* <img src="<?= home/icon/desc-icon-pink.png" draggable="false" /> */}
+                            <img src={ descriptionIcon } alt="icone-description" draggable="false" />
                             <p>Description :</p>
                           </div>
                           <p className="project-desc-value page-content">
@@ -218,7 +251,7 @@ const Home = () => {
                         </div>
                         <div className="project-use-desc text-project-container">
                           <div className="project-use-desc-text title-page-project">
-                            {/* <img src="<?= home/icon/use-desc-icon-pink.png" draggable="false" /> */}
+                            <img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
                             <p>Utilisation :</p>
                           </div>
                           <p className="project-use-desc-value page-content">
@@ -228,7 +261,7 @@ const Home = () => {
                         <a href="" className="link-btn title-page-project" target="_blank"></a>
                         <a href="" className="download-btn title-page-project" download></a>
                         <div className="project-size-container text-project-container">
-                          {/* <img src="<?= home/icon/white-memory-icon.png" draggable="false" /> */}
+                          <img src={ whiteMemoryIcon } alt="mémoire-icone" draggable="false" />
                           <p className="page-content">Taille du fichier :</p>
                           <p className="project-size-value page-content"></p>
                           <p className="page-content">Mo</p>
