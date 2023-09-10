@@ -20,7 +20,6 @@ import '../asset/css/media/home/project-page.scss';
 import '../asset/css/media/home/frame-cv.scss';
 
 import competenceJson from '../asset/data/home/competence.json';
-import frameworkJson from '../asset/data/home/framework.json';
 import projectJson from '../asset/data/home/project.json';
 import schoolCompetenceJson from '../asset/data/home/school_competence.json';
 import cvInformationsJson from '../asset/data/home/cv-info.json';
@@ -159,6 +158,33 @@ const Home = () => {
       animateCards();
     });
 
+    const currentProjectViewingRef = useRef(null);
+    useEffect(() => {
+      var growing = true;
+      const animateProjectViewing = () => {
+        switch(growing){
+            case true:
+                currentProjectViewingRef.current.classList.add('animate');
+/*                 currentProjectViewingRef.current.querySelector("img").style.transform = "scale(1)";
+                currentProjectViewingRef.current.style.transform = "scale(0.9)"; */
+                break;
+            case false:
+                currentProjectViewingRef.current.classList.remove('animate');
+/*                 currentProjectViewingRef.current.querySelector("img").style.transform = "scale(0.85)";
+                currentProjectViewingRef.current.style.removeProperty('transform'); */
+                break;
+            default:
+                break;
+        } 
+        growing = !growing;
+      }
+      let intervalAnimationCurrentProjectViewing = setInterval(animateProjectViewing, 3000);
+
+      return () => {
+        clearInterval(intervalAnimationCurrentProjectViewing);
+      }
+    });
+
     return (
       <>
             <Main child={
@@ -196,35 +222,21 @@ const Home = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
                   </div>
+                  {/* Page des projets */}
                   <div ref={projectPageRef} className="project-page-container">
                     <div className="project-page">
                       <div className="project-page-content">
                         <div className="title-project-container">
-                          <img alt='link-or-download' className="link-or-download" src={currentProject.isLink() ? darkLinkImg : darkDownloadImg } draggable="false" />
+                          <img alt='link-or-download' className="link-or-download" src={currentProject ? (currentProject.isLink() ? darkLinkImg : darkDownloadImg) : '' } draggable="false" />
                           <p className="title-project">{currentProject ? currentProject.getTitle() : ''}</p>
                         </div>
-                        {currentProject ? (currentProject.hasCompetences() ? 
-                          <>
-                            <div className="project-competences-skills title-page-project">
-                              <img src={ skills } alt='competences-icone' draggable="false" />
-                              <p className="title-competences-skill">Compétences :</p>
-                            </div>
-                            <div className="project-competences-skills-container page-content">
-                              {currentProject.getCompetences().map((competence) => {
-                                return (
-                                  <div className="skill-competence-container template" style={{backgroundColor: competence.color}}>
-                                    <p>{competence.name}</p>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </>
-                        : '') : ''}
                         {currentProject ? (currentProject.hasLanguages() ? 
                           <>
                             <div className="project-languages-skills title-page-project">
                               <img src={ languages } alt='langages-icones' draggable="false" />
-                              <p className="title-language-skill">Langages :</p>
+                              <p className="title-language-skill">Langage{
+                                currentProject.getLanguages().length > 1 ? 's' : ''
+                              } :</p>
                             </div>
                             <div className="project-languages-skills-container page-content">
                               {currentProject.getLanguages().map((language) => {
@@ -234,12 +246,28 @@ const Home = () => {
                                   </div>
                                 );
                               })}
-                              <div className="skill-language-container template">
-                                <p></p>
-                              </div>
                             </div>
                           </>
                         : '') : '' }
+                        {currentProject ? (currentProject.hasCompetences() ? 
+                          <>
+                            <div className="project-languages-skills title-page-project">
+                              <img src={ skills } alt='languages-icone' draggable="false" />
+                              <p className="title-languages-skill">Compétence{
+                                currentProject.getCompetences().length > 1 ? 's' : ''
+                              } :</p>
+                            </div>
+                            <div className="project-languages-skills-container page-content">
+                              {currentProject.getCompetences().map((competence) => {
+                                return (
+                                  <div className="skill-language-container template" style={{backgroundColor: competence.color}}>
+                                    <p>{competence.name}</p>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </>
+                        : '') : ''}
                         <div className="project-desc text-project-container">
                           <div className="project-desc-text title-page-project">
                             <img src={ descriptionIcon } alt="icone-description" draggable="false" />
@@ -249,17 +277,34 @@ const Home = () => {
                             {currentProject ? currentProject.getDescription() : ''}
                           </p>
                         </div>
-                        <div className="project-use-desc text-project-container">
-                          <div className="project-use-desc-text title-page-project">
-                            <img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
-                            <p>Utilisation :</p>
-                          </div>
-                          <p className="project-use-desc-value page-content">
-                            {currentProject ? currentProject.getUseDescription() : ''}
-                          </p>
-                        </div>
-                        <a href="" className="link-btn title-page-project" target="_blank"></a>
-                        <a href="" className="download-btn title-page-project" download></a>
+                      
+                        { currentProject ? 
+                          (currentProject.hasUseDescription() ? 
+                              <div className="project-use-desc text-project-container">
+                                <div className="project-use-desc-text title-page-project">
+                                  <img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
+                                  <p>Utilisation :</p>
+                                </div>
+                                <p className="project-use-desc-value page-content">
+                                  {currentProject ? currentProject.getUseDescription() : ''}
+                                </p>
+                              </div>
+                            : 
+                              ''
+                          ) : '' 
+                        }
+                        { currentProject ? (currentProject.isLink() ?
+                          <a href={ currentProject.getLink() } className="link-btn title-page-project" rel='noreferrer' target="_blank">Consulter {currentProject.getTitle()}</a>
+                          :
+                          ''
+                          ) 
+                        : ''}
+                        { currentProject ? (currentProject.isDownload() ?
+                           <a href={ currentProject.getFile() } className="download-btn title-page-project" download>Télécharger {currentProject.getFileName()}</a>
+                           :
+                          ''
+                          ) 
+                        : ''}
                         <div className="project-size-container text-project-container">
                           <img src={ whiteMemoryIcon } alt="mémoire-icone" draggable="false" />
                           <p className="page-content">Taille du fichier :</p>
@@ -268,13 +313,17 @@ const Home = () => {
                         </div>
                         <div className="background-project-page"></div>
                       </div>
-                      <div className="quit-project-button" onClick={closeProjectPage}>
+                      <div title='Quitter' className="quit-project-button" onClick={closeProjectPage}>
                         <p>X</p>
                       </div>
                     </div>
+                    <a href={ "ok" } className='current-project-viewing' ref={currentProjectViewingRef}>
+                      <img className='img-current-project-viewing' src={ currentProject ? currentProject.getDarkReactIcon() : '' } alt='project-icon' draggable="false" />
+                    </a>
                   </div>
               </article>
               <h2 className="explicationtext">Vous trouverez ici mes projets importants, qu'ils soient scolaires ou faits de mon côté. <br/>Il vous suffit de cliquer pour les télécharger.</h2>
+              {/* Page du CV */}
               <article id="cv">
                   <div className="title t2" id="secondmid">
                     <p>Mon CV</p>
@@ -292,7 +341,7 @@ const Home = () => {
                           <img draggable="false" src={cvImg} alt="photo" />
                         </div>
                         <div id="buttons">
-                          <div id="cross" onClick={() =>{
+                          <div id="cross" title='Quitter' onClick={() =>{
                             setCvContainerIsVisible(false);
                           }}>
                             <p>x</p>

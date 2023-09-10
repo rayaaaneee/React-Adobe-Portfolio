@@ -41,14 +41,6 @@
             "color" : "#89e051"
         },
         {
-            "name" : "Photoshop",
-            "color" : "#2d6bb1"
-        },
-        {
-            "name" : "Illustrator",
-            "color" : "#ff9a00"
-        },
-        {
             "name" : "Figma",
             "color" : "#f24e1e"
         },
@@ -143,6 +135,14 @@
         {
             "name" : "Firebase",
             "color" : "#FFCA28"
+        },
+        {
+            "name" : "Java Spring Boot",
+            "color" : "#f3f3f3"
+        },
+        {
+            "name" : "ASP.NET",
+            "color" : "#f3f3f3"
         }
     ]
 }

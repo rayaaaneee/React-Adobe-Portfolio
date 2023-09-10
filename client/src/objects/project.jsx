@@ -1,8 +1,7 @@
 import { ManageLanguages } from '../functions/manageLanguages';
-import { useState } from 'react';
+import { ManageCompetences } from '../functions/manageCompetences';
 
-const PATH_IMAGES = "images/";
-const PATH_PROJECTS = "images/";
+const PATH_PROJECTS = "../asset/project/";
 
 export class Project
 {
@@ -19,8 +18,8 @@ export class Project
     #isDownload;
     #isLink;
 
-    #projectLink;
-    #projectFile;
+    #link;
+    #file;
 
     #endDate;
     #languages;
@@ -41,21 +40,28 @@ export class Project
         this.#icon = project.icon;
         this.#isDownload = project.is_download;
         this.#isLink = project.is_link;
-        this.#projectLink = project.link;
-        this.#projectFile = project.file;
+        this.#link = project.link;
+        this.#file = project.file;
 
         this.#endDate = new Date();
         let [month, year] = project.date.split("-");
         this.#endDate = new Date(parseInt(year), 0, parseInt(month));
 
-        this.#usesCompetences = project.uses_skills;
-        this.#usesLanguages = project.uses_languages;
+        this.#usesCompetences = project.competences.length > 0;
+        this.#usesLanguages = project.languages.length > 0;
 
         this.#languages = new Array();
 
         project.languages.forEach(language => {
             let objectLanguage = ManageLanguages.getLanguage(language);
             this.#languages.push(objectLanguage);
+        });
+
+        this.#competences = new Array();
+
+        project.competences.forEach(competence => {
+            let objectCompetence = ManageCompetences.getCompetence(competence);
+            this.#competences.push(objectCompetence);
         });
     }
 
@@ -84,11 +90,6 @@ export class Project
             result = "download";
         }
         return result;
-    }
-
-    getTypeImagePath(name)
-    {
-        return PATH_IMAGES + "home/icon/" + name;
     }
 
     getId()
@@ -129,7 +130,7 @@ export class Project
     getLink()
     {
         if (this.#isLink) {
-            return PATH_PROJECTS . this.#projectLink;
+            return ;
         } else {
             return null;
         }
@@ -138,7 +139,16 @@ export class Project
     getFile()
     {
         if (this.#isDownload) {
-            return PATH_PROJECTS . this.#projectFile;
+            return ;
+        } else {
+            return null;
+        }
+    }
+
+    getFileName()
+    {
+        if (this.#isDownload) {
+            return this.#file;
         } else {
             return null;
         }
@@ -147,10 +157,6 @@ export class Project
     getFileSize()
     {
         if (this.#isDownload) {
-            let path = PATH_PROJECTS . this.#projectFile;
-            /* let size = filesize(path) */;
-            let size = size / 1000000;
-            return Math.round(size, 2);
         } else {
             return null;
         }
@@ -168,11 +174,10 @@ export class Project
 
     getFormatDate()
     {
-        const day = String(this.#endDate.getDate()).padStart(2, '0');
-        const month = String(this.#endDate.getMonth() + 1).padStart(2, '0');
+        const month = String(this.#endDate.getDate()).padStart(2, '0');
         const year = String(this.#endDate.getFullYear());
 
-        return `${day}/${year}`;
+        return `${month}/${year}`;
     }
 
     getLanguages()
@@ -193,5 +198,10 @@ export class Project
     hasLanguages()
     {
         return this.#usesLanguages;
+    }
+
+    hasUseDescription()
+    {
+        return this.#useDescription != null;
     }
 }

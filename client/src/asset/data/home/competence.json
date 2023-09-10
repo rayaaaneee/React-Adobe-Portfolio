@@ -1,34 +1,64 @@
 {
-    "Figma" : {
-        "name" : "Figma",
-        "color" : "#F24E1E"
-    },
-    "Prezzi" : {
-        "name" : "Prezzi",
-        "color" : "#A259FF"
-    },
-    "Notion" : {
-        "name" : "Notion",
-        "color" : "#000000"
-    },
-    "Photoshop" : {
-        "name" : "Photoshop",
-        "color" : "#31A8FF"
-    },
-    "Illustrator" : {
-        "name" : "Illustrator",
-        "color" : "#FF9A00"
-    },
-    "InDesign" : {
-        "name" : "InDesign",
-        "color" : "#FF3366"
-    },
-    "XD" : {
-        "name" : "XD",
-        "color" : "#FF61F6"
-    },
-    "PowerBi" : {
-        "name" : "PowerBi",
-        "color" : "#F2C811"
-    }
+    "competences" : [
+        {
+            "name" : "Figma",
+            "color" : "#F24E1E"
+        },
+        {
+            "name" : "Prezzi",
+            "color" : "#A259FF"
+        },
+        {
+            "name" : "Notion",
+            "color" : "#000000"
+        },
+        {
+            "name" : "Photoshop",
+            "color" : "#31A8FF"
+        },
+        {
+            "name" : "Illustrator",
+            "color" : "#FF9A00"
+        },
+        {
+            "name" : "InDesign",
+            "color" : "#FF3366"
+        },
+        {
+            "name" : "XD",
+            "color" : "#FF61F6"
+        },
+        {
+            "name" : "PowerBi",
+            "color" : "#F2C811"
+        },
+        {
+            "name" : "PowerPoint",
+            "color" : "#D0453E"
+        },
+        {
+            "name" : "Excel",
+            "color" : "#217346"
+        },
+        {
+            "name" : "Word",
+            "color" : "#2B579A"
+        },
+        {
+            "name" : "Outlook",
+            "color" : "#0078D4"
+        },
+        {
+            "name" : "AWS",
+            "color" : "#FF9900"
+        },
+        {
+            "name" : "Azure",
+            "color" : "#0089D6"
+        },
+        {
+            "name" : "Git",
+            "color" : "#F05032"
+        }
+    ]
 }
