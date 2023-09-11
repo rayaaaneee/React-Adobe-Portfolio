@@ -39,12 +39,15 @@ body:not(.index) {
 
     /* Le bas de chaque case survolée s'agrandit de 10px mais pas le reste */
     .menu li:hover{
+
+        $hover-color: black;
+
         transform: translateY(2.5px);
-        border-bottom: 5px solid rgb(239, 195, 153);
+        border-bottom: 5px solid $hover-color;
         border-radius: 3px;
 
         p {
-            color: rgb(239, 195, 153);
+            color: $hover-color;
         }
     }
 

@@ -25,7 +25,7 @@ const About = () => {
     });
 
     useEffect(() => {
-        window.scrollTo({ top: 0 });
+        document.body.scrollTo(0, 0);
     }, []);
 
     const [privacyImgState, setPrivicyImgState] = useState(privacyImg);

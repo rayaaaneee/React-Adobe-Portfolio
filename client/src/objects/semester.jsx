@@ -41,7 +41,7 @@ export class Semester
 
         tmp_result = [];
         semesters.forEach(semester => {
-            tmp_result[] = semester;
+            tmp_result.push(semester);
         });
         return tmp_result;
     }

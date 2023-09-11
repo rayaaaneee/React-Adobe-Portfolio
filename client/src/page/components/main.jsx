@@ -20,7 +20,7 @@ const Main = (props) => {
             {/* <Loader /> */}
             <HeaderComponent page={ props.page } images={ props.images } darkImages={ props.darkImages } states={ props.states } />
             <Backgrounds />
-            <div className="page-content" style={ props.style }>
+            <div id="pageContent" style={ props.style }>
                 { props.child }
             </div>
             <FooterComponent />

@@ -90,8 +90,8 @@ body.home {
             border-radius: 32.5%;
             background-color: rgba(235, 208, 208, 0.6) !important;
             box-shadow: 1px 0 0 0 rgba(235, 208, 208, 0.6);
-            transition: transform 3.5s ease-in-out;
-    
+            transition: scale 3.5s ease-in-out;
+            scale: 0.95;
             & > img {
                 width: 75%;
                 height: 75%;
@@ -100,7 +100,7 @@ body.home {
             }
 
             &.animate {
-                transform: scale(1.05);
+                scale: 1.05;
                 box-shadow: 0 0 0 0 rgba(235, 208, 208, 0.6);
 
                 & > img {
@@ -145,9 +145,10 @@ body.home {
         .project-page-content {
             position: absolute;
             left: 0;
-            top: 2vw;
+            top: 0;
             width: calc(100% - $padding-left-project-page-content);
             padding-left: $padding-left-project-page-content;
+            padding-top: $padding-left-project-page-content;
             z-index: 11;
         }
         

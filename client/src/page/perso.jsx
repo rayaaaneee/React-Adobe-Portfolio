@@ -16,7 +16,7 @@ const Perso = () => {
     useEffect(() => {animateApparition()}, []);
 
     useEffect(() => {
-        window.scrollTo({ top: 0 });
+        document.body.scrollTo(0, 0);
     }, []);
 
     ManageBody.changeClass('perso');

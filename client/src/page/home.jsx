@@ -87,10 +87,11 @@ const Home = () => {
 
     let [projectPageIsVisible, setProjectPageIsVisible] = useState(false);
     let projectPageRef = useRef(null);
+    let projectPageContentRef = useRef(null);
     useEffect(() => {
         if (projectPageIsVisible) {
             document.body.style.overflowY = "hidden";
-            projectPageRef.current.scrollTo(0, 0);
+            projectPageContentRef.current.scrollTo(0, 0);
             projectPageRef.current.classList.add('visible');
         } else {
             document.body.style.removeProperty('overflow-y');
@@ -134,8 +135,8 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-      window.scrollTo({ top: 0 });
-    }, []);
+      document.getElementById('pageContent').scrollTo({top: 0});
+    });
 
     var [isCvInformationsVisible, setCvInformationsVisible] = useState(false);
 
@@ -225,7 +226,7 @@ const Home = () => {
                   {/* Page des projets */}
                   <div ref={projectPageRef} className="project-page-container">
                     <div className="project-page">
-                      <div className="project-page-content">
+                      <div className="project-page-content" ref={projectPageContentRef} >
                         <div className="title-project-container">
                           <img alt='link-or-download' className="link-or-download" src={currentProject ? (currentProject.isLink() ? darkLinkImg : darkDownloadImg) : '' } draggable="false" />
                           <p className="title-project">{currentProject ? currentProject.getTitle() : ''}</p>
