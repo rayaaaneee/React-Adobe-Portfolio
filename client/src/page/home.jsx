@@ -214,7 +214,7 @@ const Home = () => {
                                 <p>{ project.getTitle() }</p>
                                 <img alt='download-link' src={ project.isLink() ? linkImgState : downloadImgState } draggable="false" />
                             </div>
-                            <img alt='project-icon' src={ ManageThemes.isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } imgLightTheme={project.getReactIcon()} imgDarkTheme={project.getDarkReactIcon()} class="workslogos" draggable="false" />
+                            <img alt='project-icon' src={ ManageThemes.isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } imgLightTheme={project.getReactIcon()} imgDarkTheme={project.getDarkReactIcon()} className="workslogos" draggable="false" />
                         </div>
                     </div>
                     ))}

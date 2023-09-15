@@ -4,10 +4,6 @@ body:not(.index) {
 
   overflow-y: auto;
 
-  &.no-scroll {
-    overflow-y: hidden;
-  }
-
   & {
       background: linear-gradient(to left, blanchedalmond, #f0f0f0);
       padding:0;

@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useContext, useState, useEffect, useRef } from 'react';
 import { ManageThemes } from '../../functions/manageThemes';
+import wasLoaderShowed from '../../functions/wasLoaderShowed';
 
 import '../../asset/css/loader/style.scss';
 import '../../asset/css/loader/media.scss';
@@ -13,6 +14,7 @@ import faviconDarkTheme from '../../asset/img/header/dark-theme/dark_portfolio_l
 
 const Loader = () => {
 
+    const {wasLoader, setWasLoader} = useContext(wasLoaderShowed);
     var [isLoading, setIsLoading] = useState(true);
 
     let point0 = useRef(null);
@@ -35,19 +37,10 @@ const Loader = () => {
     /* Déclaration du tableau de texte */
     var texts = [
         "Lecture des préférences...",
-        /* "Recherche des modules externes...", */
-        /* "Recherche des paramètres prédéfinis...", */
         "Initialisation des outils...",
-        /* "Initialisation...", */
-        /* "Initialisation de l'extensibilité universelle...", */
-        /* "Initialisation des composants partagés...", */
-        /* "Initialisation d'AXE...", */
         "Chargement de la palette...",
-        /* "Recherche de [...]...", */
-        /* "Lecture des paramètres de couleurs...", */
         "Création des tables de conversion des couleurs...",
         "Lecture des pinceaux...",
-        /* "Démarrage des modules externes...", */
         "Chargement .",
         "Chargement . .",
         "Chargement . . .",
@@ -59,24 +52,19 @@ const Loader = () => {
     //Case du tableau de textes a afficher
     var i = 0;
 
-    var maxTime = 1300;
+    var maxTime = 2000;
 
     let textDuration = parseInt(maxTime / ( texts.length ));
 
     let [containerIsVisible, setContainerIsVisible] = useState(false);
     let [theme, setTheme] = useState();
 
-    document.body.classList.add('no-scroll');
-
     const disappearBackgroundTime = maxTime/1.5;
     let [isBackgroundVisible, setIsBackgroundVisible] = useState(true);
 
-    const followCursor = (e) => {
-        cursor.current.style.left = e.clientX-47+ "px";
-        cursor.current.style.top = e.clientY-28+"px";
-    };
-    
     useEffect(() => {
+
+        document.body.classList.add('no-scroll');
 
         let intervalText = setInterval(() => {
             if (texts.length === textIndex) {
@@ -89,31 +77,33 @@ const Loader = () => {
         // Animer le curseur
         let cursorIndex = 0;
         let intervalCursor = setInterval(() => {
-        
             let index = (cursorIndex)%6;
             let previousIndex = (cursorIndex-1)%6;
 
-            points[index].classList.add('loading');
+            points[index] && (points[index].classList.add('loading'));
             if (previousIndex === -1) {
                 previousIndex = 5;
             }
-            points[previousIndex].classList.remove('loading');
+            points[previousIndex] && (points[previousIndex].classList.remove('loading'));
 
             cursorIndex++;
         }, 100);
 
-        let timeoutBackgroundVisible = setTimeout(() => {
+        setTimeout(() => {
             setIsBackgroundVisible(false);
         }, disappearBackgroundTime);
         
-        let timeoutContainerInvisible = setTimeout(() => {
+        setTimeout(() => {
             setContainerIsVisible(false);
-            setTimeout(() => {
-                clearInterval(intervalCursor);
-                setIsLoading(false);
-                document.body.classList.remove('no-scroll');
-            }, 300);
         }, maxTime);
+
+        setTimeout(() => {
+            clearInterval(intervalCursor);
+            setIsLoading(false);
+            setWasLoader(true);
+            document.removeEventListener("mousemove", followCursor);
+            document.body.classList.remove('no-scroll');
+        }, maxTime + 300);
 
         setContainerIsVisible(true);
         
@@ -132,18 +122,20 @@ const Loader = () => {
         return () => {
             clearInterval(intervalText);
             clearInterval(intervalCursor);
-            clearTimeout(timeoutBackgroundVisible);
-            clearTimeout(timeoutContainerInvisible)
-            document.removeEventListener("mousemove", followCursor);
         }
-    });
+    },[]);
+
+    const followCursor = (e) => {
+        cursor.current && (cursor.current.style.left = e.clientX-47+ "px");
+        cursor.current && (cursor.current.style.top = e.clientY-28+"px");
+    };
 
     const changeCursor = () => {
-        cursor.current.classList.add('visible');
+        cursor.current && (cursor.current.classList.add('visible'));
     }
 
     const unchangeCursor = () => {
-        cursor.current.classList.remove('visible');
+        cursor.current && (cursor.current.classList.remove('visible'));
     }
 
     return (
@@ -151,7 +143,7 @@ const Loader = () => {
             { isLoading ? (
                 <main id='loaderContainer' style={{ zIndex: containerIsVisible ? "10000" : "-1" }}>
                     <div id="background" className={ isBackgroundVisible ? 'visible' : '' }></div>
-                    <div id="container" className={ containerIsVisible ? 'visible' : '' } onMouseOver={ changeCursor } onMouseOut={ unchangeCursor }>
+                    <div id="container" className={ containerIsVisible ? 'visible' : 'hidden' } onMouseOver={ changeCursor } onMouseOut={ unchangeCursor }>
                         <div id="left">
                             <div id="title">
                                 <img draggable="false" src={ theme } alt="PortFolio" />
@@ -167,7 +159,6 @@ const Loader = () => {
                                     <p id="toChange" className="highfontweight">{ texts[textIndex] }</p>
                                 </div>
                                 <div className="undertext">
-
                                 </div>
                                 <p id="underChange" className="lowfontweight2">Russel Williams, Thomas Knoll, John Knoll, Mark Hamburg, Jackie Lincoln-O w y ang, A lan Erickson, Sarah Kong, Jerry Harris, Mike Shaw, Thomas Ruark, Yukie Takahashi, David Dobish, John Peterson, Adam Jerugim, Yuko Kagita, Foster Brereton, Meredith Payne Stotzner, Tai Luxon, Vinod Balakrishnan, David Hackel, Eric Floch, Judy Lee, Kevin Hopps, Barkin Aygun, Shanmugh Natarajan, Vishal Wadhwa, Pulkit Jindal, Quynn Megan Le, Stephen Nielson, Bob Archer, Kavana Anand, Chad Rolfs, Charles F. Rose III, Kamal Arora, Joel Baer, Metthew Neldam, Jacob Correia, Pulkit Mehta, Jesper S. Bache, Eric C hing, Dustin Passofaro, Sagar Pathak, Irina Maderych, Praveen Gelra, Vasanth Pai, Zijun Wei, Nithesh Gangadhar Salian</p>
                             </div>
@@ -195,10 +186,10 @@ const Loader = () => {
                         <div ref={point5} className="point p5"></div>
                     </div>
                 </main>
-            ) :
+                ) :
                 <></> 
             }
         </>
     );
-}    
+}
 export default Loader;

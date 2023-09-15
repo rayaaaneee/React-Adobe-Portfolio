@@ -43,6 +43,6 @@ body:not(.index) {
     }
 
     .background {
-        transition: $general-transition-switch-mode;
+        transition: all $general-transition-switch-mode ease;
     }
 }

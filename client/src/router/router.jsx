@@ -7,7 +7,6 @@ import Contact from "../page/contact";
 import About from "../page/about";
 import Perso from "../page/perso";
 import NotFound from "../page/notfound";
-import { useEffect } from "react";
 
 const Router = () => {
     return (

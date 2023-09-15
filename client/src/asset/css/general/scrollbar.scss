@@ -1,4 +1,9 @@
 body:not(.index) {
+
+    &.no-scroll {
+        overflow-y: hidden;
+    }
+
     /* Browser : Firefox, Chrome */
     &::-webkit-scrollbar {
         width: 10px;

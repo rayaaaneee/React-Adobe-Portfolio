@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
 import { ManageBody } from '../functions/manageBody';
+import wasLoaderShowed from '../functions/wasLoaderShowed';
 
 import '../asset/css/index/appearence.scss';
 import '../asset/css/index/dark-style.scss';
@@ -13,12 +14,12 @@ import whiteFavicon from '../asset/img/favicon/favicon-light-theme.png';
 
 import CV from '../asset/file/CV.pdf';
 
-import Poppins from '../asset/font/Poppins/Poppins.woff2';
-import Poppins2 from '../asset/font/Poppins/Poppins2.woff2';
-import Poppins3 from '../asset/font/Poppins/Poppins3.woff2';
 import { ManageThemes } from '../functions/manageThemes';
 
 const Index = () => {
+
+    const {wasLoader, setWasLoader} = useContext(wasLoaderShowed);
+    setWasLoader(false);
 
     ManageBody.changeClass('index');
 
