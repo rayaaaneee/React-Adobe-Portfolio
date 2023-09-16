@@ -42,7 +42,7 @@ const Perso = () => {
                                 <p>Je suis un étudiant de 19 ans, passionné par l'informatique et les nouvelles technologies. Actuellement en deuxième année de BUT informatique, je souhaite poursuivre mes études dans le domaine du développement et du design.</p>
                             </div>
                             <div className="photo">
-                                <img draggable="false" src={ photoPerso } id="photopres" />
+                                <img alt='Photo' draggable="false" src={ photoPerso } id="photopres" />
                             </div>
                         </div>
                     </div>
@@ -53,10 +53,10 @@ const Perso = () => {
                     </div>
                     <article id="music" onMouseOver={ () => {} } onMouseLeave={ () => {} }>
                         <div id="frames">
-                        { Musics.map((music) => {
+                        { Musics.map((music, index) => {
                             return (
-                                <iframe className="animate" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style={{ maxWidth: '500px',overflow: 'hidden', background: 'transparent' }} sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src={ music }></iframe>
-                                );
+                                <iframe key={index} className="animate" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameBorder="0" height="175" style={{ maxWidth: '500px',overflow: 'hidden', background: 'transparent' }} sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src={ music }></iframe>
+                            );
                         }) }
                         </div>
                     </article>

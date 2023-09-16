@@ -13,10 +13,10 @@ const switchImages = (images, darkImages, states) => {
             }
             break;
         case false:
+        default:
             for (let i = 0; i < states.length; i++) {
                 states[i](images[i]);
             }
-        default:
             break;
     }
 
@@ -44,6 +44,10 @@ const HeaderComponent = (props) => {
         switchImages(props.images, props.darkImages, props.states);
     }
 
+    const memorizeBackgroundsPosition = () => {
+        console.log("ok");
+    }
+
     return (
         <header>
             <nav id="menu-container">
@@ -52,22 +56,22 @@ const HeaderComponent = (props) => {
                         <div className="logo"></div>
                     </NavLink>
                     <li>
-                        <NavLink className="sites s1" to={"/home"}>
+                        <NavLink onClick={ memorizeBackgroundsPosition } className="sites s1" to={"/home"}>
                             <p id="text1">ACCUEIL</p>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className="sites s2" to={"/course"}>
+                        <NavLink onClick={ memorizeBackgroundsPosition } className="sites s2" to={"/course"}>
                             <p id="text2">PARCOURS</p>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className="sites s3" to={"/perso"}>
+                        <NavLink onClick={ memorizeBackgroundsPosition } className="sites s3" to={"/perso"}>
                             <p id="text3">PERSO</p>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className="sites s4" to={"/contact"}>
+                        <NavLink onClick={ memorizeBackgroundsPosition } className="sites s4" to={"/contact"}>
                             <p id="text4">CONTACT</p>
                         </NavLink>
                     </li>

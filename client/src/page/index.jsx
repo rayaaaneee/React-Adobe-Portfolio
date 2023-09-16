@@ -31,7 +31,7 @@ const Index = () => {
         document.title = 'Adobe Portfolio';
     });
 
-    const textTab = ["Rayane Merlin", "Full Stack Developper", "Designer", "IT Student (BAC +2)"];
+    const textTab = ["Rayane Merlin", "Full Stack Developper", "Designer", "IT Student (BAC +3)"];
 
     const [textTypeWriter] = useTypewriter({
         words: textTab,
