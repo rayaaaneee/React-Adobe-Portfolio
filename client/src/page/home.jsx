@@ -39,7 +39,7 @@ import whiteMemoryIcon from '../asset/img/home/icon/white-memory-icon.png';
 import cvImg from '../asset/file/CV.png';
 import cvPdf from '../asset/file/CV.pdf';
 
-const Home = () => {
+const Home = ({ isDarkTheme }) => {
 
     ManageBody.changeClass('home');
 
@@ -188,8 +188,6 @@ const Home = () => {
 
     return (
       <>
-            <Main child={
-              <>
               <article id="main">
                   <div className="title t1" id="firstmid">
                     <p>Mes projets</p>
@@ -436,8 +434,6 @@ const Home = () => {
                     ))}
                   </div>
                 </article>
-                </>
-              } images={ images } darkImages={ darkImages } states={ states }  />
           </>
     );
 }

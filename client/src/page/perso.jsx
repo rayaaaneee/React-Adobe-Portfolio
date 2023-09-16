@@ -11,6 +11,18 @@ import Musics from '../asset/data/perso/music.json';
 
 import photoPerso from '../asset/img/perso/img.png';
 
+const getAge = (birthDate) => {
+    const today = new Date();
+    const birthDateTab = birthDate.split('/');
+    const birthDateObject = new Date(birthDateTab[2], birthDateTab[1] - 1, birthDateTab[0]);
+    let age = today.getFullYear() - birthDateObject.getFullYear();
+    const m = today.getMonth() - birthDateObject.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDateObject.getDate())) {
+        age--;
+    }
+    return age;
+}
+
 const Perso = () => {
 
     useEffect(() => {animateApparition()}, []);
@@ -25,10 +37,10 @@ const Perso = () => {
         document.title = 'Qui suis-je ?';
     });
 
+    let age = getAge('02/05/2003')
+
     return (
         <>
-            <Main child={ 
-            <>
                 <div className="title t1">
                         <p>Perso</p>
                     </div>
@@ -39,7 +51,7 @@ const Perso = () => {
                         </div>
                         <div className="content-part">
                             <div className="text">
-                                <p>Je suis un étudiant de 19 ans, passionné par l'informatique et les nouvelles technologies. Actuellement en deuxième année de BUT informatique, je souhaite poursuivre mes études dans le domaine du développement et du design.</p>
+                                <p>Je suis un étudiant de { age } ans, passionné par l'informatique et les nouvelles technologies. Actuellement en deuxième année de BUT informatique, je souhaite poursuivre mes études dans le domaine du développement et du design.</p>
                             </div>
                             <div className="photo">
                                 <img alt='Photo' draggable="false" src={ photoPerso } id="photopres" />
@@ -55,8 +67,8 @@ const Perso = () => {
                         <div id="frames">
                         { Musics.map((music, index) => {
                             return (
-                                <iframe key={index} className="animate" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameBorder="0" height="175" style={{ maxWidth: '500px',overflow: 'hidden', background: 'transparent' }} sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src={ music }></iframe>
-                            );
+                                <iframe className="animate" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style={{ maxWidth: '500px',overflow: 'hidden', background: 'transparent' }} sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src={ music }></iframe>
+                                );
                         }) }
                         </div>
                     </article>
@@ -67,8 +79,6 @@ const Perso = () => {
                     <article id="references">
 
                 </article>
-            </> 
-            } images={[]} darkImages={[]} states={[]} />
         </>
     );
 }

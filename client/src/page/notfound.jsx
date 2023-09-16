@@ -19,10 +19,7 @@ const NotFound = () => {
 
     return (
         <>
-            <Main child=
-            { 
                 <h1>404</h1>
-            } />
         </>
     );
 }

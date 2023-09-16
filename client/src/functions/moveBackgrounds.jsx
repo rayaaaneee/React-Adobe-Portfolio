@@ -24,13 +24,6 @@ export const moveBackgrounds = () => {
         xs[1] -= speed2 * parseFloat(speed2);
         xs[2] -= speed3 * parseFloat(speed3);
 
-        // Si le background est sorti de l'écran, on le remet à sa position initiale
-        for (let i = 0; i < 3; i++) {
-            if (xs[i] <= -widths[i]) {
-                xs[i] = 0;
-            }
-        }
-
         //On applique la nouvelle position
         background1.style.backgroundPosition = xs[0] + "px center";
         background2.style.backgroundPosition = xs[1] + "px center";

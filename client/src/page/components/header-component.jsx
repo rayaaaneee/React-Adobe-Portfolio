@@ -41,7 +41,7 @@ const HeaderComponent = (props) => {
 
     const changeTheme = () => {
         ManageThemes.toggleThemes();
-        switchImages(props.images, props.darkImages, props.states);
+        /* switchImages(props.images, props.darkImages, props.states); */
     }
 
     const memorizeBackgroundsPosition = () => {

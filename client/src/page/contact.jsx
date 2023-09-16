@@ -137,13 +137,12 @@ const Contact = () => {
     }
 
     return (
-        <Main child={
             <article id="formContainer">
                 <div className="alert-container"></div>
                 <main id='contactPage'>
                     <div className="pres-container">
                         <div id="pres" className="animate">
-                            <img draggable="false" alt='Contact logo' src={ contactImg } id="imgcontact" />
+                            <img draggable="false" src={ contactImg } id="imgcontact" alt="Contact Icon" />
                             <h3 className="present">Pour tout contact, vous pouvez aussi passer par cette page.<br/>
                                 Pour cela, c'est très simple : <br/>
                                 • Rentrez le nom / pseudonyme sous lequel vous enverrez le message<br/>
@@ -212,7 +211,6 @@ const Contact = () => {
                     </div>
                 </main>
             </article>
-        } images={[]} darkImages={[]} states={[]} />
     );
 }
 

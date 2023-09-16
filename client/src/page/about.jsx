@@ -36,8 +36,7 @@ const About = () => {
     const darkImages = [darkPrivacyImg, darkAboutImg];
 
     return (
-        <Main child={
-            <div className="main-container">
+            <div className="main-container animate">
                 <div className="content">
                     <div className="privacy">
                     <div className="title-container title-container-first-child">
@@ -69,7 +68,6 @@ const About = () => {
                     </div>
                 </div>
             </div>
-        } images={ images } darkImages={ darkImages } states={ states } />
     );
 }
 
