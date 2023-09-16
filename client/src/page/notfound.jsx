@@ -10,10 +10,6 @@ const NotFound = () => {
     ManageBody.changeClass('not-found');
 
     useEffect(() => {
-        document.body.scrollTo(0, 0);
-    }, []);
-
-    useEffect(() => {
         document.title = 'Page introuvable';
     });
 

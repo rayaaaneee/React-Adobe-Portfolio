@@ -134,10 +134,6 @@ const Home = ({ isDarkTheme }) => {
       frameCvRef.current.classList.remove('hidden');
     }, []);
 
-    useEffect(() => {
-      document.getElementById('pageContent').scrollTo({top: 0});
-    });
-
     var [isCvInformationsVisible, setCvInformationsVisible] = useState(false);
 
     const handlePrintPdf = () => {

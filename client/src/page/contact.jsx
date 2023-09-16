@@ -20,10 +20,6 @@ const Contact = () => {
         document.title = 'Contact';
     });
 
-    useEffect(() => {
-        document.body.scrollTo(0, 0);
-    }, []);
-
     let nameInput = useRef(null);
     let emailInput = useRef(null);
     let messageInput = useRef(null);
