@@ -10,10 +10,6 @@ const Course = () => {
     ManageBody.changeClass('course');
 
     useEffect(() => {
-        document.body.scrollTo(0, 0);
-    }, []);
-
-    useEffect(() => {
         document.title = 'Mon parcours';
     });
 
