@@ -13,10 +13,10 @@ const switchImages = (images, darkImages, states) => {
             }
             break;
         case false:
+        default:
             for (let i = 0; i < states.length; i++) {
                 states[i](images[i]);
             }
-        default:
             break;
     }
 
@@ -41,7 +41,7 @@ const HeaderComponent = (props) => {
 
     const changeTheme = () => {
         ManageThemes.toggleThemes();
-        switchImages(props.images, props.darkImages, props.states);
+        /* switchImages(props.images, props.darkImages, props.states); */
     }
 
     return (

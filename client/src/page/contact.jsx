@@ -137,13 +137,12 @@ const Contact = () => {
     }
 
     return (
-        <Main child={
             <article id="formContainer">
                 <div className="alert-container"></div>
                 <main id='contactPage'>
                     <div className="pres-container">
                         <div id="pres" className="animate">
-                            <img draggable="false" src={ contactImg } id="imgcontact" />
+                            <img draggable="false" src={ contactImg } id="imgcontact" alt="Contact Icon" />
                             <h3 className="present">Pour tout contact, vous pouvez aussi passer par cette page.<br/>
                                 Pour cela, c'est très simple : <br/>
                                 • Rentrez le nom / pseudonyme sous lequel vous enverrez le message<br/>
@@ -164,7 +163,7 @@ const Contact = () => {
                                             </label>
                                         </td>
                                         <td>
-                                            <input ref={nameInput} type="text" name="name" className="long" required placeholder="Nom Prénom" />
+                                            <input readOnly ref={nameInput} type="text" name="name" className="long" required placeholder="Nom Prénom" />
                                             <span ref={errornameRef} className="error" id="errorname"></span>
                                         </td>
                                     </tr>
@@ -175,7 +174,7 @@ const Contact = () => {
                                             </label>
                                         </td>
                                         <td>
-                                            <input ref={emailInput} type="email" name="email" className="long" required placeholder="example@mail.com" />
+                                            <input readOnly ref={emailInput} type="email" name="email" className="long" required placeholder="example@mail.com" />
                                             <span ref={erroremailRef} className="error" id="erroremail"></span>
                                         </td>
                                     </tr>
@@ -202,8 +201,8 @@ const Contact = () => {
                                     <tr>
                                         <td></td>
                                         <td className="input-container">
-                                            <input className="orange-buttons" value="Envoyer" onClick={validateForm} />
-                                            <input className="orange-buttons"  type="reset" value="Réinitialiser" />
+                                            <input readOnly className="orange-buttons" value="Envoyer" onClick={validateForm} />
+                                            <input readOnly className="orange-buttons"  type="reset" value="Réinitialiser" />
                                         </td>
                                     </tr>
                                 </table>
@@ -212,7 +211,6 @@ const Contact = () => {
                     </div>
                 </main>
             </article>
-        } images={[]} darkImages={[]} states={[]} />
     );
 }
 

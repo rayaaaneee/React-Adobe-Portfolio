@@ -20,7 +20,6 @@ const Course = () => {
 
     return (
         <>
-            <Main child={ <></> } />
         </>
     );
 }

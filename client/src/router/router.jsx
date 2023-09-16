@@ -7,19 +7,22 @@ import Contact from "../page/contact";
 import About from "../page/about";
 import Perso from "../page/perso";
 import NotFound from "../page/notfound";
+import Main from "../page/components/main";
 
 const Router = () => {
     return (
         <BrowserRouter>
-            <Routes>
-              <Route path={'/'} element={<Index/>} />
-              <Route path={'/home'} element={<Home/>} />
-              <Route path={'/course'} element={<Course/>} />
-              <Route path={'/contact'} element={<Contact/>} />
-              <Route path={'/about'} element={<About/>} />
-              <Route path={'/perso'} element={<Perso/>} />
-              <Route path={'*'} element={<NotFound/>} />
-            </Routes>
+            <Main>
+                <Routes>
+                    <Route path={'/'} element={<Index/>} />
+                    <Route path={'/home'} element={<Home />} />
+                    <Route path={'/course'} element={<Course />} />
+                    <Route path={'/contact'} element={<Contact />} />
+                    <Route path={'/about'} element={<About />} />
+                    <Route path={'/perso'} element={<Perso />} />
+                    <Route path={'*'} element={<NotFound />} />
+                </Routes>
+            </Main>
         </BrowserRouter>
     );
 }

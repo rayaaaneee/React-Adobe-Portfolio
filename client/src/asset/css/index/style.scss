@@ -23,9 +23,7 @@ body.index {
         src: url('../../font/AdobeFont/AdobeBold.ttf') format('truetype');
     }
 
-    html {
-        --general-transition-switch-mode: 0.2s;
-    }
+    $general-transition-switch-mode: 0.2s;
 
     & * {
         margin: 0;
@@ -40,7 +38,7 @@ body.index {
         width: 100vw;
         height: 100%;
         background-color: rgb(255, 255, 255);
-        transition: background-color var(--general-transition-switch-mode);
+        transition: background-color $general-transition-switch-mode;
     }
 
     /* Triangles équilateraux */
@@ -49,7 +47,7 @@ body.index {
         width: 0;
         height: 0;
         filter: drop-shadow(0 0 5rem #000);
-        transition: border-bottom var(--general-transition-switch-mode);
+        transition: border-bottom $general-transition-switch-mode;
     }
 
     .triangle-red {
@@ -87,7 +85,7 @@ body.index {
         border-radius: 50%;
         filter: drop-shadow(0 0 3.15rem #000);
         z-index: -4;
-        transition: background-color var(--general-transition-switch-mode);
+        transition: background-color $general-transition-switch-mode;
     }
 
     .circle-one {
@@ -353,7 +351,7 @@ body.index {
         color: #fbf6e9;
         text-shadow: 0 0 2.15rem #00000093;
         font-family: 'AdobeBold';
-        transition: color var(--general-transition-switch-mode);
+        transition: color $general-transition-switch-mode;
     }
 
     .container>.title>.subtitle>h2 {
