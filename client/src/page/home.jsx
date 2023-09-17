@@ -1,8 +1,9 @@
-import Main from './components/main';
+import { useContext, useEffect, useState, useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import themeContext from '../functions/themeContext';
+
 import { ManageBody } from '../functions/manageBody';
 import { ManageThemes } from '../functions/manageThemes';
-import { useEffect, useState, useRef } from 'react';
-import { useReactToPrint } from 'react-to-print';
 
 import { Project } from '../objects/project';
 import { SchoolCompetence } from '../objects/school_competence';
@@ -39,19 +40,13 @@ import whiteMemoryIcon from '../asset/img/home/icon/white-memory-icon.png';
 import cvImg from '../asset/file/CV.png';
 import cvPdf from '../asset/file/CV.pdf';
 
-const Home = ({ isDarkTheme }) => {
+const Home = () => {
 
     ManageBody.changeClass('home');
 
-    useEffect(() => { animateApparition() }, []);;
+    useEffect(() => { animateApparition() }, []);
 
-    const [zoomImgState, setZoomImg] = useState(ManageThemes.isDarkTheme ? darkZoomImg : zoomImg);
-    const [downloadImgState, setDownloadImg] = useState(ManageThemes.isDarkTheme ? darkDownloadImg : downloadImg);
-    const [linkImgState, setLinkImg] = useState(ManageThemes.isDarkTheme ? darkLinkImg : linkImg);
-
-    const images = [zoomImg, downloadImg, linkImg];
-    const darkImages = [darkZoomImg, darkDownloadImg, darkLinkImg];
-    const states  = [setZoomImg, setDownloadImg, setLinkImg];
+    const { isDarkTheme, setIsDarkTheme } = useContext(themeContext);
 
     useEffect(() => {
         document.title = 'Accueil';
@@ -162,13 +157,9 @@ const Home = ({ isDarkTheme }) => {
         switch(growing){
             case true:
                 currentProjectViewingRef.current.classList.add('animate');
-/*                 currentProjectViewingRef.current.querySelector("img").style.transform = "scale(1)";
-                currentProjectViewingRef.current.style.transform = "scale(0.9)"; */
                 break;
             case false:
                 currentProjectViewingRef.current.classList.remove('animate');
-/*                 currentProjectViewingRef.current.querySelector("img").style.transform = "scale(0.85)";
-                currentProjectViewingRef.current.style.removeProperty('transform'); */
                 break;
             default:
                 break;
@@ -206,9 +197,14 @@ const Home = ({ isDarkTheme }) => {
                         <div className="content" onMouseOver={ () => { growImg(i) }} onMouseLeave={ () => { shrinkImg(i) }} >
                             <div className="to_download">
                                 <p>{ project.getTitle() }</p>
-                                <img alt='download-link' src={ project.isLink() ? linkImgState : downloadImgState } draggable="false" />
+                                <img alt='download-link' src={ 
+                                  project.isLink() ? 
+                                    isDarkTheme ? darkLinkImg : linkImg 
+                                      :
+                                    isDarkTheme ? darkDownloadImg : downloadImg
+                                  } draggable="false" />
                             </div>
-                            <img alt='project-icon' src={ ManageThemes.isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } imglighttheme={project.getReactIcon()} imgdarktheme={project.getDarkReactIcon()} className="workslogos" draggable="false" />
+                            <img alt='project-icon' src={ isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } className="workslogos" draggable="false" />
                         </div>
                     </div>
                     ))}
@@ -313,7 +309,7 @@ const Home = ({ isDarkTheme }) => {
                       </div>
                     </div>
                     <a href={ "ok" } className='current-project-viewing' ref={currentProjectViewingRef}>
-                      <img className='img-current-project-viewing' src={ currentProject ? currentProject.getDarkReactIcon() : '' } alt='project-icon' draggable="false" />
+                      <img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
                     </a>
                   </div>
               </article>
@@ -386,7 +382,7 @@ const Home = ({ isDarkTheme }) => {
                       <div className="blackbar"></div>
                       <div id="zoom">
                         <p>N'hésitez pas à cliquer sur l'image du C.V pour zoomer, cela vous permettra de le visionner dans sa qualité optimale sans avoir besoin de le télécharger.</p>
-                        <img draggable="false" src={ zoomImgState } alt="zoom" />
+                        <img draggable="false" src={ isDarkTheme ? darkZoomImg : zoomImg } alt="zoom" />
                       </div>
                       <p className="beforebutton">Vous pouvez télécharger mon CV actuel au format pdf en cliquant sur le bouton ci-dessous.</p>
                       <a href={ cvPdf } download="CV_Rayane_Merlin.pdf"><button className="cv-button">Télécharger</button></a>

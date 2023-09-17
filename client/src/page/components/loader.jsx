@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect, useRef } from 'react';
 import { ManageThemes } from '../../functions/manageThemes';
-import wasLoaderShowed from '../../functions/wasLoaderShowed';
+import loaderContext from '../../functions/loaderContext';
 
 import '../../asset/css/loader/style.scss';
 import '../../asset/css/loader/media.scss';
@@ -14,7 +14,7 @@ import faviconDarkTheme from '../../asset/img/header/dark-theme/dark_portfolio_l
 
 const Loader = () => {
 
-    const {wasLoader, setWasLoader} = useContext(wasLoaderShowed);
+    const {wasLoaderShowed, setWasLoaderShowed} = useContext(loaderContext);
     var [isLoading, setIsLoading] = useState(true);
 
     let point0 = useRef(null);
@@ -100,7 +100,7 @@ const Loader = () => {
         setTimeout(() => {
             clearInterval(intervalCursor);
             setIsLoading(false);
-            setWasLoader(true);
+            setWasLoaderShowed(true);
             document.removeEventListener("mousemove", followCursor);
             document.body.classList.remove('no-scroll');
         }, maxTime + 300);

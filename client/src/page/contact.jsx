@@ -1,7 +1,6 @@
 import { animateApparition } from '../functions/apparition';
 import { ManageBody } from '../functions/manageBody';
 import { useEffect, useRef } from 'react';
-import Main from './components/main';
 
 import '../asset/css/contact/style.scss';
 import '../asset/css/contact/dark-style.scss';
@@ -197,7 +196,7 @@ const Contact = () => {
                                     <tr>
                                         <td></td>
                                         <td className="input-container">
-                                            <input readOnly className="orange-buttons" value="Envoyer" onClick={validateForm} />
+                                            <input readOnly className="orange-buttons" value="Envoyer" onClick={ validateForm } />
                                             <input readOnly className="orange-buttons"  type="reset" value="Réinitialiser" />
                                         </td>
                                     </tr>

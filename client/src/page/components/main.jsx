@@ -1,8 +1,10 @@
-import { useContext, useState, cloneElement } from "react";
+import { useContext, useEffect } from "react";
+import themeContext from "../../functions/themeContext";
 import FooterComponent from "./footer-component";
 import HeaderComponent from "./header-component";
 import Loader from "./loader";
-import wasLoaderShowed from "../../functions/wasLoaderShowed";
+
+import loaderContext from "../../functions/loaderContext";
 
 import "../../asset/css/general/animation.scss";
 import "../../asset/css/general/background.scss";
@@ -18,35 +20,30 @@ import { useLocation } from "react-router-dom";
 
 const Main = ({ children }) => {
   // Si le loader a déjà été chargé on ne l'affiche pas
-  const { wasLoader, setWasLoader } = useContext(wasLoaderShowed);
-
-  window.scrollTo(0, 0);
+  const { wasLoaderShowed, setWasLoaderShowed } = useContext(loaderContext);
+  const { isDarkTheme, setIsDarkTheme } = useContext(themeContext);
 
   // Récupérer l'url de la page actuelle
   const url = useLocation().pathname;
   let isRootPage = url === "/";
 
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
-
-  let clonedElement = cloneElement(children, { isDarkTheme: isDarkTheme });
-
   return (
     <>
       {isRootPage ? (
-        <>{clonedElement}</>
+        <>{ children }</>
       ) : (
         <>
-          {!wasLoader && (
+          {!wasLoaderShowed && (
             <>
               {/* <div style={{ backgroundColor : "black", height: "100vh", width: "100vw", zIndex: 10 }}></div> */}
               <Loader />
             </>
           )}
-          <HeaderComponent /* page={ props.page } images={ props.images } darkImages={ props.darkImages } states={ props.states } */ isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme}
+          <HeaderComponent /* page={ props.page } images={ props.images } darkImages={ props.darkImages } states={ props.states } */
           />
           <Backgrounds />
           <div id="pageContent" /* style={ props.style } */>
-            {clonedElement}
+            { children }
           </div>
           <FooterComponent />
         </>

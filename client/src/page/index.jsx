@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
 import { ManageBody } from '../functions/manageBody';
-import wasLoaderShowed from '../functions/wasLoaderShowed';
 
 import '../asset/css/index/appearence.scss';
 import '../asset/css/index/dark-style.scss';
@@ -16,10 +15,12 @@ import CV from '../asset/file/CV.pdf';
 
 import { ManageThemes } from '../functions/manageThemes';
 
+import loaderContext from '../functions/loaderContext';
+
 const Index = () => {
 
-    const {wasLoader, setWasLoader} = useContext(wasLoaderShowed);
-    setWasLoader(false);
+    const {wasLoaderShowed, setWasLoaderShowed} = useContext(loaderContext);
+    setWasLoaderShowed(false);
 
     ManageBody.changeClass('index');
 
