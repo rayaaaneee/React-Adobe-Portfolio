@@ -23,6 +23,8 @@ const Main = ({ children }) => {
   const { wasLoaderShowed, setWasLoaderShowed } = useContext(loaderContext);
   const { isDarkTheme, setIsDarkTheme } = useContext(themeContext);
 
+  window.scrollTo(0, 0);
+
   // Récupérer l'url de la page actuelle
   const url = useLocation().pathname;
   let isRootPage = url === "/";

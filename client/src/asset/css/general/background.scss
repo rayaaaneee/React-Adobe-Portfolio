@@ -1,4 +1,4 @@
-$general-transition-switch-mode: 0.2s;
+$general-transition-switch-mode: 0.15s;
 
 body:not(.index) {
   /* Créer les deux backgrounds orange*/
@@ -45,7 +45,7 @@ body:not(.index) {
     z-index: -1;
   }
 
-  /*     .background {
+      .background {
         transition: all $general-transition-switch-mode ease;
-    } */
+    }
 }
