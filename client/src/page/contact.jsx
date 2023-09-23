@@ -1,4 +1,4 @@
-import { animateApparition } from '../functions/apparition';
+import { animateApparition } from '../functions/appearence';
 import { ManageBody } from '../functions/manageBody';
 import { useEffect, useRef } from 'react';
 

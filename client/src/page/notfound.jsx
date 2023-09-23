@@ -1,7 +1,6 @@
 import { ManageBody } from '../functions/manageBody';
 import { useEffect } from 'react';
-import { animateApparition } from '../functions/apparition';
-import Main from './components/main';
+import { animateApparition } from '../functions/appearence';
 
 const NotFound = () => {
 

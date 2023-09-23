@@ -1,6 +1,5 @@
-import { animateApparition } from '../functions/apparition';
+import { animateApparition } from '../functions/appearence';
 import { ManageBody } from '../functions/manageBody';
-import Main from './components/main';
 import { useEffect } from 'react';
 
 const Course = () => {

@@ -1,5 +1,4 @@
-import { useContext, useEffect } from "react";
-import themeContext from "../../functions/themeContext";
+import { useContext } from "react";
 import FooterComponent from "./footer-component";
 import HeaderComponent from "./header-component";
 import Loader from "./loader";
@@ -20,8 +19,7 @@ import { useLocation } from "react-router-dom";
 
 const Main = ({ children }) => {
   // Si le loader a déjà été chargé on ne l'affiche pas
-  const { wasLoaderShowed, setWasLoaderShowed } = useContext(loaderContext);
-  const { isDarkTheme, setIsDarkTheme } = useContext(themeContext);
+  const { wasLoaderShowed } = useContext(loaderContext);
 
   window.scrollTo(0, 0);
 
@@ -41,8 +39,7 @@ const Main = ({ children }) => {
               <Loader />
             </>
           )}
-          <HeaderComponent /* page={ props.page } images={ props.images } darkImages={ props.darkImages } states={ props.states } */
-          />
+          <HeaderComponent/>
           <Backgrounds />
           <div id="pageContent" /* style={ props.style } */>
             { children }

@@ -1,13 +1,11 @@
 import { useContext, useEffect, useState, useRef } from 'react';
-import { useReactToPrint } from 'react-to-print';
 import themeContext from '../functions/themeContext';
 
 import { ManageBody } from '../functions/manageBody';
-import { ManageThemes } from '../functions/manageThemes';
 
 import { Project } from '../objects/project';
 import { SchoolCompetence } from '../objects/school_competence';
-import { animateApparition } from '../functions/apparition';
+import { animateApparition } from '../functions/appearence';
 import { ScrollProjects } from '../functions/scrollProjects';
 import { animateCards } from '../functions/3dEffectCard';
 
@@ -46,7 +44,7 @@ const Home = () => {
 
     useEffect(() => { animateApparition() }, []);
 
-    const { isDarkTheme, setIsDarkTheme } = useContext(themeContext);
+    const { isDarkTheme } = useContext(themeContext);
 
     useEffect(() => {
         document.title = 'Accueil';
@@ -108,6 +106,12 @@ const Home = () => {
 
     let frameCvRef = useRef(null);
 
+    let cvPdfIframe = useRef(null);
+    const handlePrintPdf = () => {
+      cvPdfIframe.current.contentWindow.focus();
+      cvPdfIframe.current.contentWindow.print();
+    }
+
     var [cvVisibilityChanged, setCvVisibilityChanged] = useState(false);
     useEffect(() => {
       if (cvContainerIsVisible) {
@@ -130,10 +134,6 @@ const Home = () => {
     }, []);
 
     var [isCvInformationsVisible, setCvInformationsVisible] = useState(false);
-
-    const handlePrintPdf = () => {
-      window.open(cvPdf).print();
-    }
 
     /* let cvImgRef = useRef(null);
     const handlePrintPdf = useReactToPrint({
@@ -176,6 +176,8 @@ const Home = () => {
     return (
       <>
               <article id="main">
+                  {/* On met le CV dans le rendu, caché dans l'HTML pour s'en servir en cas d'impression */}
+                  <iframe ref={cvPdfIframe} src={cvPdf} className="hidden"></iframe>
                   <div className="title t1" id="firstmid">
                     <p>Mes projets</p>
                   </div>
