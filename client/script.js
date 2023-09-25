@@ -17,7 +17,7 @@ const colorBar = (index) =>{
 const DownloadOrLink = (element) => {
     let bool = false;
     parseInt(element.querySelector(".project-is-link").innerHTML) == 1 ? bool = true : bool = false;
-    if(bool){
+    if(bool) {
         element.setAttribute("_blank", "");
     } else {
         element.target = "download";
@@ -56,7 +56,6 @@ const replaceTag = (element, typeNode) => {
     a.setAttribute('onmouseover',that.getAttribute('onmouseover'));
     a.setAttribute('onmouseout',that.getAttribute('onmouseout'));
     a.setAttribute('onmouseleave',that.getAttribute('onmouseleave'));
-    
 
   // move all elements in the other container.
   while(that.firstChild) {

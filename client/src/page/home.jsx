@@ -83,12 +83,16 @@ const Home = () => {
     let projectPageContentRef = useRef(null);
     useEffect(() => {
         if (projectPageIsVisible) {
-            document.body.style.overflowY = "hidden";
             projectPageContentRef.current.scrollTo(0, 0);
+            document.body.style.overflowY = "hidden";
             projectPageRef.current.classList.add('visible');
         } else {
-            document.body.style.removeProperty('overflow-y');
+            projectPageRef.current.classList.add('hidden');
             projectPageRef.current.classList.remove('visible');
+            setTimeout(() => {
+              document.body.style.removeProperty('overflow-y');
+              projectPageRef.current.classList.remove('hidden');
+            }, 400);
         }
     }, [projectPageIsVisible]);
 
@@ -134,16 +138,6 @@ const Home = () => {
     }, []);
 
     var [isCvInformationsVisible, setCvInformationsVisible] = useState(false);
-
-    /* let cvImgRef = useRef(null);
-    const handlePrintPdf = useReactToPrint({
-      content: () => cvImgRef.current,
-      contentStyle: `
-        width: 100vw;
-        height: 100vh;
-        background-color: blue;
-      `,
-    }); */
 
     useEffect(() => {
       new ScrollProjects();
@@ -232,9 +226,9 @@ const Home = () => {
                               } :</p>
                             </div>
                             <div className="project-languages-skills-container page-content">
-                              {currentProject.getLanguages().map((language) => {
+                              {currentProject.getLanguages().map((language, index) => {
                                 return (
-                                  <div className="skill-language-container template" style={{backgroundColor: language.color}}>
+                                  <div key={index} className="skill-language-container template" style={{backgroundColor: language.color}}>
                                     <p>{language.name}</p>
                                   </div>
                                 );
@@ -251,9 +245,9 @@ const Home = () => {
                               } :</p>
                             </div>
                             <div className="project-languages-skills-container page-content">
-                              {currentProject.getCompetences().map((competence) => {
+                              {currentProject.getCompetences().map((competence, index) => {
                                 return (
-                                  <div className="skill-language-container template" style={{backgroundColor: competence.color}}>
+                                  <div key={index} className="skill-language-container template" style={{backgroundColor: competence.color}}>
                                     <p>{competence.name}</p>
                                   </div>
                                 );

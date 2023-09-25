@@ -3,11 +3,11 @@ require('dotenv').config();
 
 const app = express();
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT;
 
 app.use(express.json);
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.send({
         'status': 'success',
         'message': 'Hello World!'
