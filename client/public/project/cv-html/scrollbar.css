@@ -1,0 +1,79 @@
+/* google chrome & safari */
+
+/* Couleur de fond */
+body::-webkit-scrollbar-track {
+    background-color: rgb(230, 230, 230);
+}
+
+/* Couleur de la barre */
+body::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: #512E5F;
+}
+
+/* Hover de la scroll bar */
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #5f2e3d;
+}
+
+/* firefox */
+
+/* Couleur de fond */
+body {
+    scrollbar-color: #512E5F rgb(230, 230, 230);
+    scrollbar-width: thin;
+}
+
+/* Couleur de la barre */
+body::-moz-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: #512E5F;
+}
+
+/* Hover de la scroll bar */
+body::-moz-scrollbar-thumb:hover {
+    background-color: #5f2e3d;
+}
+
+/* Couleur de fond */
+body::-moz-scrollbar-track {
+    background-color: rgb(230, 230, 230);
+}
+
+/* Edge */
+
+/* Couleur de fond */
+body::-ms-scrollbar-track {
+    background-color: rgb(230, 230, 230);
+}
+
+/* Couleur de la barre */
+body::-ms-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: #512E5F;
+}
+
+/* Hover de la scroll bar */
+body::-ms-scrollbar-thumb:hover {
+    background-color: #5f2e3d;
+}
+
+/* Opera */
+
+/* Couleur de fond */
+body::-o-scrollbar-track {
+    background-color: rgb(230, 230, 230);
+}
+
+/* Couleur de la barre */
+body::-o-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: #512E5F;
+}
+
+/* Hover de la scroll bar */
+body::-o-scrollbar-thumb:hover {
+    background-color: #5f2e3d;
+}
+
+

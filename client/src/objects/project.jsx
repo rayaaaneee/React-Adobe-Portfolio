@@ -130,7 +130,7 @@ export class Project
     getLink()
     {
         if (this.#isLink) {
-            return ;
+            return this.#link;
         } else {
             return null;
         }
@@ -139,7 +139,7 @@ export class Project
     getFile()
     {
         if (this.#isDownload) {
-            return ;
+            return this.#file;
         } else {
             return null;
         }

@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import themeContext from '../functions/themeContext';
 
 import { ManageBody } from '../functions/manageBody';
@@ -100,6 +101,11 @@ const Home = () => {
     const openProjectPage = (project) => {
         setProjectPageIsVisible(true);
         setCurrentProject(project);
+        if (project.isLink()) {
+          currentProjectViewingRef.current.setAttribute('target', '_blank');
+        } else {
+          currentProjectViewingRef.current.removeAttribute('target');
+        }
     }
     
     const closeProjectPage = () => {
@@ -264,7 +270,6 @@ const Home = () => {
                             {currentProject ? currentProject.getDescription() : ''}
                           </p>
                         </div>
-                      
                         { currentProject ? 
                           (currentProject.hasUseDescription() ? 
                               <div className="project-use-desc text-project-container">
@@ -281,13 +286,13 @@ const Home = () => {
                           ) : '' 
                         }
                         { currentProject ? (currentProject.isLink() ?
-                          <a href={ currentProject.getLink() } className="link-btn title-page-project" rel='noreferrer' target="_blank">Consulter {currentProject.getTitle()}</a>
+                          <a href={ `/project/${currentProject.getLink()}` } className="link-btn title-page-project" rel='noreferrer' target="_blank">Consulter {currentProject.getTitle()}</a>
                           :
                           ''
                           ) 
                         : ''}
                         { currentProject ? (currentProject.isDownload() ?
-                           <a href={ currentProject.getFile() } className="download-btn title-page-project" download>Télécharger {currentProject.getFileName()}</a>
+                           <a href={ `/project/${currentProject.getFile()}` } className="download-btn title-page-project" download>Télécharger {currentProject.getFileName()}</a>
                            :
                           ''
                           ) 
@@ -304,7 +309,13 @@ const Home = () => {
                         <p>X</p>
                       </div>
                     </div>
-                    <a href={ "ok" } className='current-project-viewing' ref={currentProjectViewingRef}>
+                    <a href={ (currentProject? (currentProject.isLink()?
+                          `/project/${currentProject.getLink()}` 
+                            :
+                          `/project/${currentProject.getFile()}`)
+                          :
+                          null)
+                        } className='current-project-viewing' ref={currentProjectViewingRef}>
                       <img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
                     </a>
                   </div>

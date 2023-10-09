@@ -1,0 +1,163 @@
+/* On change la police d'écriture du CV */
+:not(p) {
+  font-family: Poppins, sans-serif;
+}
+
+/* Initialisation de la couleur de fond du CV en un dégradé */
+body{
+  background-image: linear-gradient(beige ,#e6ccff);
+  margin:0;
+  padding:0;
+  padding-right: 10vw;
+  padding-left:10vw;
+  
+}
+
+/* On fait une grid au niveau du header, la ou sont contenus la photo sticky et le menu de navigation, pour justement
+pouvoir les placer au bon endroit sans trop se compliquer la tache.*/
+header{
+    display: grid;
+    grid-template-columns: 1fr 3fr 5fr 1fr;
+    justify-content: center;
+    /*cette position est importante car elle rend les éléments sticky tout en les faisant sortir du flux html (absolute)*/
+    position: fixed;
+    /* ces deux modifications sont importantes car elles modifient le header de manière a bien situer la photo */
+    top: 15px;
+    width: 100%;
+}
+
+/* séparation du contenu en deux principales colonnes verticales */
+main{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-content: center;
+    width: 80vw;
+
+}
+
+/* on définit les propriétés de la photo, sa position, sa taille, son emplacement dans la grid.  */
+.photo {
+  position : relative;
+  width: 250px;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  justify-self: center;
+  transform: translateX(2vw);
+  /* création bordure colorée */
+  border-radius: 40%;
+  border-style: solid;
+  border-width: 0px;
+  border-right-color: #512E5F;
+  border-left-color: white;
+  border-top-color: transparent;
+  border-bottom-color:transparent ;
+  box-sizing: border-box;
+  transition : all 0.3s ease;
+  z-index: 2;
+}
+
+/* Lorsque la photo sera survolée, elle augmentera de taille
+Une transition sera également mise en place (1 seconde) */
+.photo:hover{
+  /* Augmentation de la taille de la photo en :hover */
+  width: 280px;
+  /* Modification de la bordure de la photo en :hover */
+/*   border-radius: 100%;
+  border-style: solid;
+  border-width: 30px;
+  border-right-color: #512E5F;
+  border-left-color: white;
+  border-top-color: white;
+  border-bottom-color: #512E5F ; */
+  transition: all 0.3s ease; 
+}
+
+/* On définit la taille des h1 */
+h1 {
+  font-size: xx-large;
+}
+
+/* On définit la taille des h2 */
+h2 {
+  font-size: larger ;
+}
+
+/* On définit la taille des h3 */
+h3 {
+  font-size: medium;
+}
+
+/* On définit la taille des h3 */
+h4 {
+  font-size: small;
+}
+
+/* On définit la taille des h3 */
+h5 {
+  font-size: x-small;
+}
+
+/* On supprime les ronds contenus à côté de tous les li (menus) */
+li {
+    list-style-type: none;
+}
+
+
+  
+/* On définit la taille et la position des images du menu vertical */
+ img.verticalmenu{
+   width: 70px;
+   transition : all 0.5s ease;
+}
+
+/* Ici on crée le menu de navigation qui fait naviguer l'utilisateur sur toutes les parties du CV sans avoir 
+besoin de scroller.  */
+.verticalmenu:hover{
+  width: 90px;
+  transition: all 0.5s ease;
+  border-radius: 20%;
+}
+
+/* Permet que lorsque l'on clique sur les menus de navigation, le changement se fait pas intantanement 
+mais va simuler un scroll. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* On positionne les items de navigation sur le bord droit du site web, verticalement (grace au flex direction) */
+header nav {
+  flex-direction: column;
+  display: flex;
+  width: auto;
+  position: fixed;
+  right: 2%;
+}
+
+.vertical-bar{
+  height: 1700%;
+  position: absolute;
+  background-color: #512E5F;
+  margin-left: 77vw;
+  width: 15px;
+  bottom : 15px;
+}
+
+/*Changez les parametres par défaut des couleurs des liens de redirections */
+a:link { color: initial; }          /* Liens non visités */
+a:visited { color: initial; }     /* Liens visités */
+a:hover { background: initial; }  /* Liens survolés */
+a:active { color: initial; } 
+
+/* On définit la taille et la position des images du menu horizontal */
+.menu { 
+  z-index : 3;
+}
+
+/* On change la police du menu horintal*/
+.sites {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
