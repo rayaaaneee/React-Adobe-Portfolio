@@ -8,6 +8,6 @@ function displayMessageSent($bool)
          <img src="$img" draggable="false">
          <p>Votre message a bien été envoyé !</p>
       </div> 
-HTML;
+    HTML;
     }
 }

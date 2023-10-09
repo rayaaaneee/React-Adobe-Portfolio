@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import themeContext from '../functions/themeContext';
 
 import { ManageBody } from '../functions/manageBody';
@@ -9,6 +8,7 @@ import { SchoolCompetence } from '../objects/school_competence';
 import { animateApparition } from '../functions/appearence';
 import { ScrollProjects } from '../functions/scrollProjects';
 import { animateCards } from '../functions/3dEffectCard';
+import { animateImageLoading } from '../functions/animateImageLoading';
 
 import '../asset/css/home/style.scss';
 import '../asset/css/home/frame-cv.scss';
@@ -43,7 +43,10 @@ const Home = () => {
 
     ManageBody.changeClass('home');
 
-    useEffect(() => { animateApparition() }, []);
+    useEffect(() => { 
+      animateApparition();
+      animateImageLoading();
+     }, []);
 
     const { isDarkTheme } = useContext(themeContext);
 
@@ -81,6 +84,12 @@ const Home = () => {
 
     let [projectPageIsVisible, setProjectPageIsVisible] = useState(false);
     let projectPageRef = useRef(null);
+    useEffect(() => {
+      projectPageRef.current.style.display = 'none';
+      setTimeout(() => {
+        projectPageRef.current.style.removeProperty('display');
+      }, 400);
+    }, []);
     let projectPageContentRef = useRef(null);
     useEffect(() => {
         if (projectPageIsVisible) {
@@ -107,7 +116,7 @@ const Home = () => {
           currentProjectViewingRef.current.removeAttribute('target');
         }
     }
-    
+
     const closeProjectPage = () => {
         setProjectPageIsVisible(false);
     }
@@ -206,7 +215,7 @@ const Home = () => {
                                     isDarkTheme ? darkDownloadImg : downloadImg
                                   } draggable="false" />
                             </div>
-                            <img alt='project-icon' src={ isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } className="workslogos" draggable="false" />
+                            <img alt='project-icon' src={ isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } className="workslogos onloading" draggable="false" />
                         </div>
                     </div>
                     ))}

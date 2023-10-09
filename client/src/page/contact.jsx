@@ -1,4 +1,5 @@
 import { animateApparition } from '../functions/appearence';
+import { animateImageLoading } from '../functions/animateImageLoading';
 import { ManageBody } from '../functions/manageBody';
 import { useEffect, useRef } from 'react';
 
@@ -11,7 +12,10 @@ import { ManageThemes } from '../functions/manageThemes';
 
 const Contact = () => {
 
-    useEffect(() => {animateApparition()}, []);;
+    useEffect(() => {
+        animateApparition();
+        animateImageLoading();
+    }, []);;
 
     ManageBody.changeClass('contact');
 
@@ -137,7 +141,7 @@ const Contact = () => {
                 <main id='contactPage'>
                     <div className="pres-container">
                         <div id="pres" className="animate">
-                            <img draggable="false" src={ contactImg } id="imgcontact" alt="Contact Icon" />
+                            <img draggable="false" className='onloading' src={ contactImg } id="imgcontact" alt="Contact Icon" />
                             <h3 className="present">Pour tout contact, vous pouvez aussi passer par cette page.<br/>
                                 Pour cela, c'est très simple : <br/>
                                 • Rentrez le nom / pseudonyme sous lequel vous enverrez le message<br/>

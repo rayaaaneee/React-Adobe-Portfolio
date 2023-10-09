@@ -1,6 +1,7 @@
 import { ManageBody } from '../functions/manageBody';
 import { useEffect } from 'react';
 import { animateApparition } from '../functions/appearence';
+import { animateImageLoading } from '../functions/animateImageLoading';
 
 import '../asset/css/perso/style.scss';
 import '../asset/css/perso/dark-style.scss';
@@ -24,7 +25,10 @@ const getAge = (birthDate) => {
 
 const Perso = () => {
 
-    useEffect(() => {animateApparition()}, []);
+    useEffect(() => {
+        animateApparition();
+        animateImageLoading();
+    }, []);
 
     ManageBody.changeClass('perso');
 
@@ -49,7 +53,7 @@ const Perso = () => {
                                 <p>Je suis un étudiant de { age } ans, passionné par l'informatique et les nouvelles technologies. Actuellement en deuxième année de BUT informatique, je souhaite poursuivre mes études dans le domaine du développement et du design.</p>
                             </div>
                             <div className="photo">
-                                <img alt='Photo' draggable="false" src={ photoPerso } id="photopres" />
+                                <img alt='Photo' className='onloading' draggable="false" src={ photoPerso } id="photopres" />
                             </div>
                         </div>
                     </div>

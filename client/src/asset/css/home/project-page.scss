@@ -115,15 +115,17 @@ body.home {
                 }
             }
 
-            *:not(.background-project-page) {
-                animation: translateY forwards 0.3s;
-
-                @keyframes translateY {
-                    from {
-                        transform: translateY(0);
-                    }
-                    to {
-                        transform: translateY(100vh);
+            .project-page-content {
+                *:not(.background-project-page) {
+                    animation: translateY forwards 0.3s;
+    
+                    @keyframes translateY {
+                        from {
+                            transform: translateY(0);
+                        }
+                        to {
+                            transform: translateY(100vh);
+                        }
                     }
                 }
             }

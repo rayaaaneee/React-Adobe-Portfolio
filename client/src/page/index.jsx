@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
 import { ManageBody } from '../functions/manageBody';
+import { animateImageLoading } from '../functions/animateImageLoading';
 
 import '../asset/css/index/appearence.scss';
 import '../asset/css/index/dark-style.scss';
