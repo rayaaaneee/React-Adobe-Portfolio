@@ -73,14 +73,10 @@ const Loader = () => {
         }, 200);
 
         // Animer le curseur
-        let cursorIndex = 0;
+        let cursorIndex = 1;
         let intervalCursor = setInterval(() => {
             let index = (cursorIndex)%6;
             let previousIndex = (cursorIndex-1)%6;
-
-            if (previousIndex === -1) {
-                previousIndex = 5;
-            }
 
             points[index].current.classList.add('loading');
             points[previousIndex].current.classList.remove('loading');

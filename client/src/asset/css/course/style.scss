@@ -1,5 +1,7 @@
 body.course {
     $general-transition-switch-mode: 0.2s;
+    $color-bottom-and-clicked-project-dark-theme : #dfcace;
+    $color-bottom-and-clicked-project: #d5baaf;
 
     .hidden {
         display: none;
@@ -36,13 +38,11 @@ body.course {
         z-index: -1;
     }
     
-    html {
-        --margin-background-position: 20%;
-    }
+    $margin-background-position: 20%;
     
     @keyframes moveLight {
         0% {
-            background-position-y: calc(0% - var(--margin-background-position));
+            background-position-y: calc(0% - $margin-background-position);
             opacity: 0.3;
         }
     
@@ -59,7 +59,7 @@ body.course {
         }
     
         100% {
-            background-position-y: calc(100% + var(--margin-background-position));
+            background-position-y: calc(100% + $margin-background-position);
             opacity: 0.3;
         }
     }
@@ -94,17 +94,15 @@ body.course {
         flex-direction: column;
         row-gap: 0px;
     }
-    
-    html{
-        --size-project: 400px;
-        --border-radius-project: 20px;
-    }
+
+    $size-project: 400px;
+    $border-radius-project: 20px;
     
     .project{
-        width: var(--size-project);
-        height: var(--size-project);
+        width: $size-project;
+        height: $size-project;
         background-color:rgba(255, 255, 255, 0.7);
-        border-radius: var(--border-radius-project);
+        border-radius: $border-radius-project;
         display: flex;
         flex-direction: column;
         row-gap: 15px;
@@ -131,7 +129,7 @@ body.course {
         align-items: center;
         height: 300px;
         width: 100%;
-        border-radius: 0 0 var(--border-radius-project) var(--border-radius-project);
+        border-radius: 0 0 $border-radius-project $border-radius-project;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -147,13 +145,13 @@ body.course {
         background-color: 239, 195, 153;
         rotate: 173deg;
         z-index: -1;
-        background-color: var(--color-bottom-and-clicked-project);
+        background-color: $color-bottom-and-clicked-project;
     }
-    
+
     .title-project {
         margin: 0;
     }
-    
+
     .title-project-container {
         display: flex;
         flex-direction: row;
@@ -200,35 +198,33 @@ body.course {
         -moz-animation: none;
         -webkit-animation: none;
     }
-    
-    html {
-        --arrow-size: 35px;
-        --proportional-arrow-size: 0.85;
-    }
-    
+
+    $arrow-size: 35px;
+    $proportional-arrow-size: 0.85;
+
     .title-project-container .arrow-container .arrow.active {
-        width: var(--arrow-size);
-        height: var(--arrow-size);
+        width: $arrow-size;
+        height: $arrow-size;
         transition: 0.3s;
         animation: arrow-fade 1.5s ease-in-out infinite forwards, arrow 1.5s ease-in-out infinite forwards;
     }
     
     @keyframes arrow {
         0% {
-            width: calc(var(--arrow-size) * var(--proportional-arrow-size));
-            height: calc(var(--arrow-size) * var(--proportional-arrow-size));
+            width: calc($arrow-size) * $proportional-arrow-size;
+            height: calc($arrow-size) * $proportional-arrow-size;
             opacity: 0;
         }
     
         50% {
-            width: var(--arrow-size);
-            height: var(--arrow-size);
+            width: $arrow-size;
+            height: $arrow-size;
             opacity: 1;
         }
     
         100% {
-            width: calc(var(--arrow-size) * var(--proportional-arrow-size));
-            height: calc(var(--arrow-size) * var(--proportional-arrow-size));
+            width: calc($arrow-size) * $proportional-arrow-size;
+            height: calc($arrow-size) * $proportional-arrow-size;
             opacity: 0;
         }
     }
@@ -241,13 +237,9 @@ body.course {
         height: 40px;
         width: 40px;
     }
-    
-    html {
-        --color-bottom-and-clicked-project: #d5baaf;
-    }
-    
+
     .project.selected {
-        background-color: var(--color-bottom-and-clicked-project);
+        background-color: $color-bottom-and-clicked-project;
     }
     
     #points {
@@ -257,14 +249,12 @@ body.course {
         margin-top: 117vh;
         z-index: 0;
     }
-     
-    html {
-        --point-width : 30px;
-    }
-    
+
+    $point-width : 30px;
+
     .point{
-        height: var(--point-width);
-        width: var(--point-width);
+        height: $point-width;
+        width: $point-width;
         border-radius: 50%;
         box-shadow: 0 0 5px 0 rgb(0, 0, 0);
         background: linear-gradient(160deg, transparent 60%, rgba(0,0,0,1) 40%);
@@ -278,13 +268,13 @@ body.course {
     .point:hover, .point.selected{
         transition: 0.3s;
         box-shadow: 0 0 10px 0 rgb(0, 0, 0);
-        background: linear-gradient(160deg, transparent 60%, var(--color-bottom-and-clicked-project) 40%);
+        background: linear-gradient(160deg, transparent 60%, $color-bottom-and-clicked-project) 40%;
         backdrop-filter: blur(10px);
     }
     
     .point-container {
-        width: var(--point-width);
-        height: var(--point-width);
+        width: $point-width;
+        height: $point-width;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -351,7 +341,7 @@ body.course {
         padding: 30px;
         border-radius: 20px;
         color: white;
-        transition: background-color var(--general-transition-switch-mode)
+        transition: background-color $general-transition-switch-mode;
     }
     
     p.explain-text {
@@ -389,30 +379,25 @@ body.course {
     .explain-container * {
         margin: 0;
     }
-    
-    html {
-        --explain-medal-img-width: 90px;
-    }
+
+    $explain-medal-img-width: 90px;
+
     .explain-container .explain .medal-img {
-        width: var(--explain-medal-img-width);
+        width: $explain-medal-img-width;
         filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
         height: fit-content;
         position: absolute;
-        top: calc(-1 * var(--explain-medal-img-width) / 3);
-        left: calc(-1 * var(--explain-medal-img-width) / 2.5);
+        top: calc(-1 * $explain-medal-img-width / 3);
+        left: calc(-1 * $explain-medal-img-width / 2.5);
     }
-    
-    /* https://codepen.io/z-/pen/BoyXKr */
-    
-    html {
-        --view-height: 190px;
-    }
-    
+
+    $view-height: 190px;
+
     div#view {
-        width: var(--size-project);
-        height: var(--view-height);
+        width: $size-project;
+        height: $view-height;
         position: absolute;
-        top: calc(var(--view-height) * -1);
+        top: calc($view-height) * -1;
         opacity: 0;
     }
     

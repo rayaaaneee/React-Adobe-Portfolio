@@ -35,17 +35,15 @@ body.course {
         opacity: 0;
         transition: opacity 0.5s;
     }
-    
-    html {
-        --cross-container-margin-semester-page: 20px;
-    }
-    
+
+    $cross-container-margin-semester-page: 20px;
+
     #semesterPage .all-cross-container {
         width: 70px;
         height: 70px;
         position: fixed;
-        top: var(--cross-container-margin-semester-page);
-        right: var(--cross-container-margin-semester-page);
+        top: $cross-container-margin-semester-page;
+        right: $cross-container-margin-semester-page;
         z-index: 3;
         display: flex;
         flex-direction: column;
@@ -101,11 +99,9 @@ body.course {
         opacity: 1;
         transition: transform 0.3s, opacity 0.3s;
     }
-    
-    html {
-        --semester-page-main-color: rgb(232, 190, 190);
-    }
-    
+
+    $semester-page-main-color: rgb(232, 190, 190);
+
     #semesterPage .title-semester {
         margin: 0;
         padding: 0;
@@ -115,7 +111,7 @@ body.course {
         font-weight: 300;
         color: rgb(255, 255, 255);
         text-decoration: underline;
-        text-decoration-color: var(--semester-page-main-color);
+        text-decoration-color: $semester-page-main-color;
         text-decoration-thickness: 0.3vw;
         text-decoration-style: wavy;
         text-underline-offset: 0.5vw;
@@ -260,7 +256,7 @@ body.course {
     }
     
     html {
-        --row-gap-date-container: 4.5vw;
+        $row-gap-date-container: 4.5vw;
     }
     
     .timeline-semester-date-container .semester-point-container {
@@ -270,7 +266,7 @@ body.course {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        row-gap: var(--row-gap-date-container);
+        row-gap: $row-gap-date-container;
         position: relative;
     }
     
@@ -278,7 +274,7 @@ body.course {
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        background-color: var(--semester-page-main-color);
+        background-color: $semester-page-main-color;
         box-shadow: 0 0 10px 0 rgb(0, 0, 0, 50%);
     }
     
@@ -289,7 +285,7 @@ body.course {
         flex-direction: column;
         align-items: start;
         justify-content: center;
-        row-gap: calc(var(--row-gap-date-container) - 1vw);
+        row-gap: calc($row-gap-date-container - 1vw);
     }
     
     .semester-school-part .semester-page-content {
@@ -359,11 +355,9 @@ body.course {
         max-height: 90vh;
         object-fit: contain;
     }
-    
-    html {
-        --leave-semester-subject-border-color: rgba(101, 101, 101, 0.2);
-    }
-    
+
+    $leave-semester-subject-border-color: rgba(101, 101, 101, 0.2);
+
     .semester-page-subjects .image-subject-container .leave-semester-subject {
         position: absolute;
         top: 15px;
@@ -378,11 +372,11 @@ body.course {
         justify-content: center;
         cursor: pointer;
         transition: background-color 0.3s, border 0.3s;
-        border: 2px solid var(--leave-semester-subject-border-color);
+        border: 2px solid $leave-semester-subject-border-color;
     }
     
     .semester-page-subjects .image-subject-container .leave-semester-subject:hover {
-        background-color: var(--leave-semester-subject-border-color);
+        background-color: $leave-semester-subject-border-color;
         border: 2px solid transparent;
         color: white;
         transition: background-color 0.3s, border 0.3s;
