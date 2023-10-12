@@ -2,7 +2,7 @@ import { animateApparition } from '../functions/appearence';
 import { animateImageLoading } from '../functions/animateImageLoading';
 import { ManageBody } from '../functions/manageBody';
 import { useEffect, useRef } from 'react';
-import { distanceMiddle, getNewScale, isInSide, isInFivePercentSide, initHeight, barCentered, height, initialX, bordersScreen, margin } from '../functions/coursePageFunctions';
+import { main, distanceMiddle, getNewScale, isInSide, isInFivePercentSide, initHeight, colorPoint, uncolorPoint, modifyScale, setPoints, setSemesters, barCentered, setBarCentered, height, initialX, bordersScreen, margin, isSelect, lastSemesterId, pointRotation } from '../functions/coursePageFunctions';
 
 import medalImg from '../asset/img/course/medal-white.png'
 
@@ -21,12 +21,14 @@ const Course = () => {
         animateApparition();
         animateImageLoading();
         document.title = 'Mon parcours';
+        setPoints(points.current);
+        setSemesters(semestersRef.current);
+        main();
         return () => {
             document.removeEventListener('scroll', onScroll);
             document.removeEventListener('resize', initHeight);
         }
     }, []);
-    initHeight();
     document.addEventListener('resize', initHeight);
 
     ManageBody.changeClass('course');
@@ -35,8 +37,7 @@ const Course = () => {
 
     let timelineRef = useRef(null);
     let points = useRef([]);
-
-    let pointRotation = new Array();
+    let semestersRef = useRef([]);
 
     // Si l'utilisateur clique sur "Consulter", on retire le hash de l'url
     const clearUrl = () => {
@@ -49,10 +50,10 @@ const Course = () => {
     const onScroll = () => {
         // Mouvement de la barre
         if (window.scrollY < height) {
-            barCentered = false;
+            setBarCentered(false);
             let translateValue = (height - (window.scrollY) * 1.7);
             if (translateValue < 0) {
-                barCentered = true;
+                setBarCentered(true);
                 translateValue = 0;
             }
             timelineRef.current.style.transform = "translateY(" + translateValue + "px)";
@@ -83,6 +84,11 @@ const Course = () => {
         });
     }
 
+    const openSemesterPage = (semester) => {}
+    const closeSemesterPage = (semester) => {}
+    const openImageSemester = () => {}
+    const closeImageSemester = () => {}
+
     document.addEventListener('scroll', onScroll);
 
     return (
@@ -108,7 +114,7 @@ const Course = () => {
                     <div id="points">
                         {semesters.map((semester, i) => {
                             return (
-                                <div ref={ div => (points.current[i] = div) } className="point-container" dataDate={ semester.formatStartingDate() }>
+                                <div ref={ point => (points.current[i] = point) } className="point-container" dataDate={ semester.formatStartingDate() }>
                                     <div className="point" id={`p${i + 1}`}></div>
                                 </div>
                             );
@@ -118,12 +124,12 @@ const Course = () => {
                         <div id="view"></div>
                         { semesters.map((semester, i) => {
                             return (
-                                <div className="project animate" id={`proj${i + 1}`} onMouseOver="colorButtonsAssociateToProject(this);" onClick="onclickProject(this)" onMouseOut="uncolorButtonsAssociateToProject(this)">
+                                <div className="project animate" id={`proj${i + 1}`} ref={ semester => (semestersRef.current[i] = semester) }/* onMouseOver={ colorButtonsAssociateToProject(this) } onClick={ onclickProject(this) } onMouseOut={ uncolorButtonsAssociateToProject(this) } */>
                                     <div className="title-project-container">
                                         <img src={ semester.getIcon() } alt="icon-study" draggable="false" />
                                         <h1 className="title-project">{ semester.title }</h1>
                                         <div className="arrow-container">
-                                            <div className="arrow" onClick="openSemesterPage(this, event);"></div>
+                                            <div className="arrow" onClick={ () => openSemesterPage(semester) }></div>
                                         </div>
                                     </div>
                                     <p className="project-description">{ semester.description }</p>
@@ -193,21 +199,21 @@ const Course = () => {
                             </div>
                             <div className="semester-page-content">
                                 <p className="semester-page-subject">Ici sont les matières étudiées et les coefficients de ces mêmes matières .</p>
-                                <button onClick="openImageSemester();">Voir les matières</button>
+                                <button onClick={ openImageSemester() }>Voir les matières</button>
                             </div>
                         </div>
                     </div>
                     <div className="semester-page-subjects">
                         <div className="image-subject-container">
                             <img src="" className="semester-page-subjects-image" alt="subjects" draggable="false" />
-                            <div className="leave-semester-subject" onClick="closeImageSemester();">
+                            <div className="leave-semester-subject" onClick={ closeImageSemester }>
                                 <p>X</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="all-cross-container">
-                    <div className="cross-semester-page-container" onClick="closeSemesterPage();">
+                    <div className="cross-semester-page-container" onClick={ closeSemesterPage }>
                         <p>X</p>
                     </div>
                 </div>

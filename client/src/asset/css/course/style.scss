@@ -215,10 +215,9 @@ body.course {
             backdrop-filter: blur(4px);
             margin-bottom: 100px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: background-color 0.3s;
 
             &:not(.selected):hover{
-                transition: 0.3s;
                 backdrop-filter: blur(7px);
                 background-color:rgb(235 217 210 / 45%);
             }
