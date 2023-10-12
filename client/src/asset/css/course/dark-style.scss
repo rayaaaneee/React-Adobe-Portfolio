@@ -17,24 +17,36 @@ body.course#dark {
         color : rgb(232, 190, 190) !important;
     }
     
-    .explain-container .explain {
-        background-color : rgb(218 198 198 / 70%);
+    .explain-container {
+        .explain {
+            background-color : rgb(218 198 198 / 70%);
+        }
     }
 
     $color-bottom-and-clicked-project-dark-theme : #dfcace;
     
-    .project.selected {
-        background-color : $color-bottom-and-clicked-project-dark-theme;
+    .project {
+        &.selected {
+            background-color : $color-bottom-and-clicked-project-dark-theme;
+        }
+
+        &:not(.selected) {
+            &:hover {
+                background-color:rgba(245, 239, 239, 0.7);
+            }
+        }
+
+        .bottom-project-container {
+            .bottom-project {
+                background-color: $color-bottom-and-clicked-project-dark-theme;
+            }
+        }
+
+        * {
+            color: black !important;
+        }
     }
-    
-    .project:not(.selected):hover {
-        background-color:rgba(245, 239, 239, 0.7);
-    }
-    
-    .project .bottom-project-container .bottom-project {
-        background-color: $color-bottom-and-clicked-project-dark-theme;
-    }
-    
+
     .point:hover, .body-dark .point.selected {
         background : linear-gradient(160deg, transparent 60%, rgb(230, 209, 209) 40%);
     }
@@ -45,10 +57,6 @@ body.course#dark {
     
     .explain-container .explain a:hover {
         background-color: rgb(236 205 205 / 70%);
-    }
-    
-    .project * {
-        color: black !important;
     }
     
     .point-container::after {

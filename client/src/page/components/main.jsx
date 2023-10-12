@@ -26,11 +26,12 @@ const Main = ({ children }) => {
   // Récupérer l'url de la page actuelle
   const url = useLocation().pathname;
   let isRootPage = url === "/";
+  let isCoursePage = url.includes("/course");
 
   return (
     <>
       {isRootPage ? (
-        <>{ children }</>
+        <>{children}</>
       ) : (
         <>
           {!wasLoaderShowed && (
@@ -39,12 +40,12 @@ const Main = ({ children }) => {
               <Loader />
             </>
           )}
-          <HeaderComponent/>
+          <HeaderComponent />
           <Backgrounds />
           <div id="pageContent" /* style={ props.style } */>
-            { children }
+            {children}
           </div>
-          <FooterComponent />
+          {!isCoursePage && <FooterComponent />}
         </>
       )}
     </>
