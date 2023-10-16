@@ -22,7 +22,6 @@ export class Semester
         this.startingDate = new Date(semester.starting_date);
         this.endingDate = new Date(semester.ending_date);
         this.icon = semester.icon;
-        console.log(this.icon);
         this.whiteIcon = semester.white_icon;
         this.schoolIcon = semester.school_icon;
         this.specialties = semester.specialties;

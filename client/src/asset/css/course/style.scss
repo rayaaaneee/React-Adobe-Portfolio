@@ -215,7 +215,7 @@ body.course {
             backdrop-filter: blur(4px);
             margin-bottom: 100px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 2.5s ease-in-out;
 
             &:not(.selected):hover{
                 backdrop-filter: blur(7px);
@@ -394,7 +394,7 @@ body.course {
         align-items: center;
 
         &::after {
-            content: attr(dataDate);
+            content: attr(datadate);
             position: absolute;
             margin-bottom: 100px;
             backdrop-filter: blur(2px);

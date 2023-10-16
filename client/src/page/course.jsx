@@ -2,7 +2,7 @@ import { animateApparition } from '../functions/appearence';
 import { animateImageLoading } from '../functions/animateImageLoading';
 import { ManageBody } from '../functions/manageBody';
 import { useEffect, useRef } from 'react';
-import { main, distanceMiddle, getNewScale, isInSide, isInFivePercentSide, initHeight, colorPoint, uncolorPoint, modifyScale, setPoints, setSemesters, barCentered, setBarCentered, height, initialX, bordersScreen, margin, isSelect, lastSemesterId, pointRotation } from '../functions/coursePageFunctions';
+import { main, distanceMiddle, getNewScale, isInSide, isInFivePercentSide, initHeight, colorButtonsAssociateToSemester, uncolorButtonsAssociateToSemester, onclickSemester, colorPoint, uncolorPoint, modifyScale, setPoints, setSemesters, barCentered, setBarCentered, height, bordersScreen, margin, isSelect, lastSemesterId, pointRotation, intervalMoveSemesters } from '../functions/coursePageFunctions';
 
 import medalImg from '../asset/img/course/medal-white.png'
 
@@ -27,9 +27,9 @@ const Course = () => {
         return () => {
             document.removeEventListener('scroll', onScroll);
             document.removeEventListener('resize', initHeight);
+            clearInterval(intervalMoveSemesters);
         }
     }, []);
-    document.addEventListener('resize', initHeight);
 
     ManageBody.changeClass('course');
 
@@ -89,6 +89,7 @@ const Course = () => {
     const openImageSemester = () => {}
     const closeImageSemester = () => {}
 
+    document.addEventListener('resize', initHeight);
     document.addEventListener('scroll', onScroll);
 
     return (
@@ -114,8 +115,8 @@ const Course = () => {
                     <div id="points">
                         {semesters.map((semester, i) => {
                             return (
-                                <div ref={ point => (points.current[i] = point) } className="point-container" dataDate={ semester.formatStartingDate() }>
-                                    <div className="point" id={`p${i + 1}`}></div>
+                                <div ref={ point => (points.current[i] = point) } className="point-container" datadate={ semester.formatStartingDate() }>
+                                    <div className="point" id={`p${i}`}></div>
                                 </div>
                             );
                         })}
@@ -124,7 +125,7 @@ const Course = () => {
                         <div id="view"></div>
                         { semesters.map((semester, i) => {
                             return (
-                                <div className="project animate" id={`proj${i + 1}`} ref={ semester => (semestersRef.current[i] = semester) }/* onMouseOver={ colorButtonsAssociateToProject(this) } onClick={ onclickProject(this) } onMouseOut={ uncolorButtonsAssociateToProject(this) } */>
+                                <div className="project animate" id={`proj${i}`} initial-x={ (Math.floor(Math.random() * 20) - 10) } ref={ semester => (semestersRef.current[i] = semester) } onMouseOver={ () => colorButtonsAssociateToSemester(i) } onClick={ () => onclickSemester(i) } onMouseOut={ () => uncolorButtonsAssociateToSemester(i) }>
                                     <div className="title-project-container">
                                         <img src={ semester.getIcon() } alt="icon-study" draggable="false" />
                                         <h1 className="title-project">{ semester.title }</h1>
@@ -132,7 +133,7 @@ const Course = () => {
                                             <div className="arrow" onClick={ () => openSemesterPage(semester) }></div>
                                         </div>
                                     </div>
-                                    <p className="project-description">{ semester.description }</p>
+                                    <p className="project-description" dangerouslySetInnerHTML={{ __html : semester.description }}></p>
                                     <div className="bottom-project-container">
                                         <div className="bottom-project"></div>
                                     </div>

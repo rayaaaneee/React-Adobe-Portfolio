@@ -3,7 +3,6 @@ export const setBarCentered = (bool) => {
     barCentered = bool;
 }
 export let height = null;
-export let initialX = [];
 export let pointRotation = [];
 export let bordersScreen = null;
 export let margin = null;
@@ -89,29 +88,33 @@ const modifyScale = (element, newscale) => {
     element.style.transform = tmp.split("scale(")[0] + "scale(" + scale + ")";
 }
 
-const colorButtonsAssociateToSemester = (semester) => {
+export const colorButtonsAssociateToSemester = (i) => {
+    let semester = semesters[i];
     let nbPoint = semester.id.replace("proj", "");
     let point = document.querySelector("#p" + nbPoint);
     colorPoint(point);
 }
 
-const uncolorButtonsAssociateToSemester = (semester) => {
-    if (!isSelect || semester.id != lastSemesterId) {
+export const uncolorButtonsAssociateToSemester = (i) => {
+    let semester = semesters[i];
+    if (!isSelect || (semester.id !== lastSemesterId)) {
         let nbPoint = semester.id.replace("proj", "");
         let point = document.querySelector("#p" + nbPoint);
         uncolorPoint(point);
     }
 }
 
-const onclickSemester = (semester) => {
+export const onclickSemester = (i) => {
+    let semester = semesters[i];
+    let point = points[i];
+    console.log(isSelect)
     if (!isSelect) {
         lastSemesterId = semester.id;
 
         isSelect = true;
 
         semester.classList.add("selected");
-        let nbPoint = semester.id.replace("proj", "");
-        let point = document.querySelector("#p" + nbPoint);
+
         semester.querySelector(".arrow-container .arrow").classList.add("active");
 
         colorPoint(point);
@@ -139,8 +142,8 @@ const onclickSemester = (semester) => {
 const disclickSemester = (semester) => {
     semester.classList.remove("selected");
 
-    let nbPoint = semester.id.replace("proj", "");
-    let point = document.querySelector("#p" + nbPoint);
+    let nbPoint = parseInt(semester.id.replace("proj", ""));
+    let point = points[nbPoint];
 
     uncolorPoint(point);
 
@@ -151,6 +154,7 @@ const disclickSemester = (semester) => {
 
 // Fonction qui permet de faire défiler les points
 const moveSemesters = (time = 50) => {
+
     let i = Math.floor(Math.random() * semesters.length);
 
     let timeInterval = time;
@@ -162,7 +166,6 @@ const moveSemesters = (time = 50) => {
         while (wasPassed.includes(i)) {
             i = Math.floor(Math.random() * semesters.length);
         }
-
         wasPassed.push(i);
 
         let semester = semesters[i];
@@ -174,6 +177,7 @@ const moveSemesters = (time = 50) => {
         let X = null;
         let scale = null;
         let rotate = null;
+
         if (semester.id === lastSemesterId)
             scale = addToScale;
         else
@@ -210,23 +214,24 @@ const moveSemesters = (time = 50) => {
                 rotate = rotate / 7;
             }
         }
-        let newX = initialX[i] + X;
-        let translate = "translateX(" + (newX) + "vw) translateY(" + Y + "vh) scale(" + scale + ") rotate(" + rotate + "deg)";
-        semester.style.transform = translate;
+        let newX = parseInt(semester.getAttribute("initial-x")) + X;
+        let semesterStyle = "translateX(" + (newX) + "vw) translateY(" + Y + "vh) scale(" + scale + ") rotate(" + rotate + "deg)";
+        semester.style.transform = semesterStyle;
 
-        if (i === semesters.length - 1) {
+        if (wasPassed.length === semesters.length) {
             clearInterval(intervalAnimation);
-            i = 0;
         }
-        i++;
+
     }, timeInterval);
 }
 
+export let intervalMoveSemesters = null;
+
 export const main = () => {
-    for (var i = 0; i < points.length; i++) {
+    for (let i = 0; i < points.length; i++) {
         pointRotation.push(160);
     }
     initHeight();
     moveSemesters(1);
-    setInterval(moveSemesters, 1000);
+    intervalMoveSemesters = setInterval(moveSemesters, 3000);
 }
