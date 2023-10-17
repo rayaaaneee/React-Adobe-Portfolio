@@ -1,11 +1,11 @@
 body.course {
 
     $general-transition-switch-mode: 0.2s;
-    $color-bottom-and-clicked-project-dark-theme : #dfcace;
-    $color-bottom-and-clicked-project: #d5baaf;
+    $color-bottom-and-clicked-semester-dark-theme : #dfcace;
+    $color-bottom-and-clicked-semester: #d5baaf;
     $margin-background-position: 20%;
-    $size-project: 400px;
-    $border-radius-project: 20px;
+    $size-semester: 400px;
+    $border-radius-semester: 20px;
     $arrow-size: 35px;
     $proportional-arrow-size: 0.85;
     $point-width : 30px;
@@ -111,7 +111,7 @@ body.course {
         display: none;
     }
     
-    #parallax-projects{
+    #parallax-semesters{
         height: 100vh;
         width: 100vw;
     }
@@ -183,7 +183,7 @@ body.course {
         }
     }
 
-    #projects{
+    #semesters{
         width: fit-content;
         align-self: center;
         margin-right: 35vw;
@@ -196,18 +196,18 @@ body.course {
         row-gap: 0px;
 
         div#view {
-            width: $size-project;
+            width: $size-semester;
             height: $view-height;
             position: absolute;
             top: calc($view-height) * -1;
             opacity: 0;
         }
 
-        .project{
-            width: $size-project;
-            height: $size-project;
+        .semester{
+            width: $size-semester;
+            height: $size-semester;
             background-color:rgba(255, 255, 255, 0.7);
-            border-radius: $border-radius-project;
+            border-radius: $border-radius-semester;
             display: flex;
             flex-direction: column;
             row-gap: 15px;
@@ -227,22 +227,22 @@ body.course {
             }
 
             &.selected {
-                background-color: $color-bottom-and-clicked-project;
+                background-color: $color-bottom-and-clicked-semester;
             }
 
-            .bottom-project-container {
+            .bottom-semester-container {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 height: 300px;
                 width: 100%;
-                border-radius: 0 0 $border-radius-project $border-radius-project;
+                border-radius: 0 0 $border-radius-semester $border-radius-semester;
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 overflow: hidden;
 
-                .bottom-project {
+                .bottom-semester {
                     position: absolute;
                     bottom: -123px;
                     left: 0px;
@@ -251,20 +251,20 @@ body.course {
                     background-color: 239, 195, 153;
                     rotate: 173deg;
                     z-index: -1;
-                    background-color: $color-bottom-and-clicked-project;
+                    background-color: $color-bottom-and-clicked-semester;
                 }
             }
 
-            .project-description {
+            .semester-description {
                 text-align: justify;
             }
         }
 
-        .title-project {
+        .title-semester {
             margin: 0;
         }
 
-        .title-project-container {
+        .title-semester-container {
             display: flex;
             flex-direction: row;
             column-gap: 10px;
@@ -366,56 +366,59 @@ body.course {
         margin-top: 117vh;
         z-index: 0;
 
-        .point{
-            height: $point-width;
+        
+        .point-container {
             width: $point-width;
-            border-radius: 50%;
-            box-shadow: 0 0 5px 0 rgb(0, 0, 0);
-            background: linear-gradient(160deg, transparent 60%, rgba(0,0,0,1) 40%);
-            backdrop-filter: blur(5px);
-            transition: box-shadow 0.3s;
-            cursor: pointer;
-            position: relative;
-            z-index: 0;
+            height: $point-width;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            &:hover, &.selected {
-                box-shadow: 0 0 10px 0 rgb(0, 0, 0);
-                background: linear-gradient(160deg, transparent 60%, $color-bottom-and-clicked-project 40%);
-                backdrop-filter: blur(10px);
+            &::after {
+                content: attr(datadate);
+                position: absolute;
+                margin-bottom: 100px;
+                backdrop-filter: blur(2px);
+                background-color: rgba(0, 0, 0, 0.6);
+                background-image: url(../../img/course/calendar.png);
+                background-repeat: no-repeat;
+                background-position-x: 90%;
+                background-position-y: center;
+                background-size: 20px;
+                border-radius: 5px;
+                color: white;
+                font-weight: 500;
+                padding: 7px 40px 7px 10px;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.25s;
             }
-        }
-    }
 
-    .point-container {
-        width: $point-width;
-        height: $point-width;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+            &:hover::after, &.focus::after {
+                opacity: 1;
+                transition: opacity 0.25s;
+            }
 
-        &::after {
-            content: attr(datadate);
-            position: absolute;
-            margin-bottom: 100px;
-            backdrop-filter: blur(2px);
-            background-color: rgba(0, 0, 0, 0.6);
-            background-image: url(../../img/course/calendar.png);
-            background-repeat: no-repeat;
-            background-position-x: 90%;
-            background-position-y: center;
-            background-size: 20px;
-            border-radius: 5px;
-            color: white;
-            font-weight: 500;
-            padding: 7px 40px 7px 10px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.25s;
-        }
+            &:hover, &.focus {
+                .point {
+                    box-shadow: 0 0 10px 0 rgb(0, 0, 0);
+                    background: linear-gradient(160deg, transparent 60%, $color-bottom-and-clicked-semester 40%);
+                    backdrop-filter: blur(10px);
+                }
+            }
 
-        &:hover::after, &.focus::after {
-            opacity: 1;
-            transition: opacity 0.25s;
+            .point{
+                height: $point-width;
+                width: $point-width;
+                border-radius: 50%;
+                box-shadow: 0 0 5px 0 rgb(0, 0, 0);
+                background: linear-gradient(160deg, transparent 60%, rgba(0,0,0,1) 40%);
+                backdrop-filter: blur(5px);
+                transition: box-shadow 0.3s;
+                cursor: pointer;
+                position: relative;
+                z-index: 0;
+            }
         }
     }
 }

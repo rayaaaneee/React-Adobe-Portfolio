@@ -7,7 +7,7 @@ export let pointRotation = [];
 export let bordersScreen = null;
 export let margin = null;
 export let isSelect = false;
-export let lastSemesterId = null;
+export let lastSemesterIndex = null;
 export let addToScale = 0;
 
 let points;
@@ -67,17 +67,11 @@ export const isInFivePercentSide = (pointMarginTop) => {
 }
 
 const colorPoint = (point) => {
-    point.classList.add("selected");
-    point.style.boxShadow = "0 0 10px 0 rgb(0, 0, 0)";
-    point.style.backdropFilter = "blur(10px)";
-    point.parentNode.classList.add("focus");
+    point.classList.add("focus");
 }
 
 const uncolorPoint = (point) => {
-    point.classList.remove("selected");
-    point.style.removeProperty("box-shadow");
-    point.style.removeProperty("backdrop-filter");
-    point.parentNode.classList.remove("focus");
+    point.classList.remove("focus");
 }
 
 const modifyScale = (element, newscale) => {
@@ -89,17 +83,13 @@ const modifyScale = (element, newscale) => {
 }
 
 export const colorButtonsAssociateToSemester = (i) => {
-    let semester = semesters[i];
-    let nbPoint = semester.id.replace("proj", "");
-    let point = document.querySelector("#p" + nbPoint);
+    let point = points[i];
     colorPoint(point);
 }
 
 export const uncolorButtonsAssociateToSemester = (i) => {
-    let semester = semesters[i];
-    if (!isSelect || (semester.id !== lastSemesterId)) {
-        let nbPoint = semester.id.replace("proj", "");
-        let point = document.querySelector("#p" + nbPoint);
+    if (!isSelect || (i !== lastSemesterIndex)) {
+        let point = points[i];
         uncolorPoint(point);
     }
 }
@@ -107,9 +97,8 @@ export const uncolorButtonsAssociateToSemester = (i) => {
 export const onclickSemester = (i) => {
     let semester = semesters[i];
     let point = points[i];
-    console.log(isSelect)
     if (!isSelect) {
-        lastSemesterId = semester.id;
+        lastSemesterIndex = i;
 
         isSelect = true;
 
@@ -120,34 +109,36 @@ export const onclickSemester = (i) => {
         colorPoint(point);
 
         let onclickScale = 0.05;
-        modifyScale(point, -onclickScale);
+        modifyScale(point.querySelector(".point"), -onclickScale);
         modifyScale(semester, onclickScale);
         addToScale = onclickScale;
 
     } else {
-        let lastsemester = document.querySelector("#" + lastSemesterId);
-        if (lastSemesterId === semester.id) {
-            disclickSemester(semester);
+        let lastsemester = semesters[lastSemesterIndex];
+        if (lastSemesterIndex === i) {
+            disclickSemester(i);
             isSelect = false;
-            lastSemesterId = null;
+            lastSemesterIndex = null;
         } else {
-            disclickSemester(lastsemester);
+            disclickSemester(lastSemesterIndex);
             isSelect = false;
-            onclickSemester(semester);
+            onclickSemester(i);
         }
         lastsemester.querySelector(".arrow-container .arrow").classList.remove("active");
     }
 }
 
-const disclickSemester = (semester) => {
+const disclickSemester = (i) => {
+
+    let semester = semesters[i];
+
     semester.classList.remove("selected");
 
-    let nbPoint = parseInt(semester.id.replace("proj", ""));
-    let point = points[nbPoint];
+    let point = points[i];
 
     uncolorPoint(point);
 
-    modifyScale(point, 0.1);
+    modifyScale(point.querySelector(".point"), 0.1);
     modifyScale(semester, -0.05);
     addToScale = 0;
 }
@@ -178,7 +169,7 @@ const moveSemesters = (time = 50) => {
         let scale = null;
         let rotate = null;
 
-        if (semester.id === lastSemesterId)
+        if (i === lastSemesterIndex)
             scale = addToScale;
         else
             scale = 0;

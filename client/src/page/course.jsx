@@ -1,8 +1,10 @@
 import { animateApparition } from '../functions/appearence';
 import { animateImageLoading } from '../functions/animateImageLoading';
 import { ManageBody } from '../functions/manageBody';
-import { useEffect, useRef } from 'react';
-import { main, distanceMiddle, getNewScale, isInSide, isInFivePercentSide, initHeight, colorButtonsAssociateToSemester, uncolorButtonsAssociateToSemester, onclickSemester, colorPoint, uncolorPoint, modifyScale, setPoints, setSemesters, barCentered, setBarCentered, height, bordersScreen, margin, isSelect, lastSemesterId, pointRotation, intervalMoveSemesters } from '../functions/coursePageFunctions';
+import { useEffect, useRef, useState } from 'react';
+import { main, distanceMiddle, getNewScale, isInSide, initHeight, colorButtonsAssociateToSemester, 
+uncolorButtonsAssociateToSemester, onclickSemester, setPoints, setSemesters, setBarCentered, 
+height, margin, pointRotation, intervalMoveSemesters } from '../functions/coursePageFunctions';
 
 import medalImg from '../asset/img/course/medal-white.png'
 
@@ -66,26 +68,44 @@ const Course = () => {
         points.current.forEach((point, index) => {
 
             let scrollValue = window.scrollY;
-            pointMarginTop = point.offsetTop - scrollValue + margin;
+            pointMarginTop = point.querySelector(".point").offsetTop - scrollValue + margin;
 
             // if (index == 2) if (isInFivePercentSide(pointMarginTop)) console.log("in");
 
             if (isInSide(pointMarginTop)) {
-                point.parentNode.style.opacity = 0;
+                point.style.opacity = 0;
             } else {
-                point.parentNode.style.opacity = 1;
+                point.style.opacity = 1;
             }
 
             let distanceMid = distanceMiddle(pointMarginTop);
 
             // Plus le point est proche du milieu de l'écran, plus il est grand
             pointRotation[index] = -pointMarginTop / 3;
-            point.style.transform = "rotate(" + pointRotation[index] + "deg) scale(" + getNewScale(distanceMid) + ")";
+            point.querySelector(".point").style.transform = "rotate(" + pointRotation[index] + "deg) scale(" + getNewScale(distanceMid) + ")";
         });
     }
 
-    const openSemesterPage = (semester) => {}
-    const closeSemesterPage = (semester) => {}
+    const [semesterPageIsOpen, setSemesterPageIsOpen] = useState(false);
+    const [currentSemester, setCurrentSemester] = useState(null);
+
+    useEffect(() => {
+        if (semesterPageIsOpen) {
+
+        } else {
+
+        }
+    }, [semesterPageIsOpen]);
+
+    const openSemesterPage = (semester) => {
+        setSemesterPageIsOpen(true);
+        setCurrentSemester(semester);
+    }
+    const closeSemesterPage = () => {
+        setSemesterPageIsOpen(false);
+        setCurrentSemester(null);
+    }
+
     const openImageSemester = () => {}
     const closeImageSemester = () => {}
 
@@ -109,33 +129,35 @@ const Course = () => {
                     </a>
                 </div>
             </div>
-            <article id="parallax-projects">
+            <article id="parallax-semesters">
                 <div ref={ timelineRef } id="timeline" style={{transform: "translateY(100vh)"}}></div>
                 <div id="fordisplay">
                     <div id="points">
                         {semesters.map((semester, i) => {
                             return (
                                 <div ref={ point => (points.current[i] = point) } className="point-container" datadate={ semester.formatStartingDate() }>
-                                    <div className="point" id={`p${i}`}></div>
+                                    <div className="point"></div>
                                 </div>
                             );
                         })}
                     </div>
-                    <div id="projects">
+                    <div id="semesters">
                         <div id="view"></div>
                         { semesters.map((semester, i) => {
                             return (
-                                <div className="project animate" id={`proj${i}`} initial-x={ (Math.floor(Math.random() * 20) - 10) } ref={ semester => (semestersRef.current[i] = semester) } onMouseOver={ () => colorButtonsAssociateToSemester(i) } onClick={ () => onclickSemester(i) } onMouseOut={ () => uncolorButtonsAssociateToSemester(i) }>
-                                    <div className="title-project-container">
+                                <div className="semester animate" initial-x={ (Math.floor(Math.random() * 20) - 10) } ref={ semester => (semestersRef.current[i] = semester) } onMouseOver={ () => colorButtonsAssociateToSemester(i) } onClick={ () => onclickSemester(i) } onMouseOut={ () => uncolorButtonsAssociateToSemester(i) }>
+                                    <div className="title-semester-container">
                                         <img src={ semester.getIcon() } alt="icon-study" draggable="false" />
-                                        <h1 className="title-project">{ semester.title }</h1>
+                                        <h1 className="title-semester">{ semester.title }</h1>
                                         <div className="arrow-container">
-                                            <div className="arrow" onClick={ () => openSemesterPage(semester) }></div>
+                                            <div className="arrow" onClick={ (event) => 
+                                                { event.stopPropagation(); openSemesterPage(semester); } 
+                                            }></div>
                                         </div>
                                     </div>
-                                    <p className="project-description" dangerouslySetInnerHTML={{ __html : semester.description }}></p>
-                                    <div className="bottom-project-container">
-                                        <div className="bottom-project"></div>
+                                    <p className="semester-description" dangerouslySetInnerHTML={{ __html : semester.description }}></p>
+                                    <div className="bottom-semester-container">
+                                        <div className="bottom-semester"></div>
                                     </div>
                                 </div>
                             );
@@ -147,7 +169,7 @@ const Course = () => {
                 <div className="semester-page-main-container">
                     <div className="semester-page-title-img-container">
                         <img className="semester-page-img" alt="icon-study" draggable="false" />
-                        <p className="title-semester"></p>
+                        <p className="title-semester">{ currentSemester && currentSemester.title }</p>
                     </div>
                     <div className="semester-page-body">
                         <div className="semester-part semester-date-part">
@@ -164,8 +186,8 @@ const Course = () => {
                                     </div>
                                 </div>
                                 <div className="text-semester-date-container">
-                                    <p className="semester-page-starting-date">Date de début ou quoi</p>
-                                    <p className="semester-page-ending-date">Date de fin ou quoi</p>
+                                    <p className="semester-page-starting-date">{ currentSemester && currentSemester.formatStartingDate() }</p>
+                                    <p className="semester-page-ending-date">{ currentSemester && currentSemester.formatEndingDate() }</p>
                                 </div>
                             </div>
                         </div>
@@ -177,9 +199,9 @@ const Course = () => {
                             <div className="semester-page-content">
                                 <img className="semester-school-img" alt="school-icon" draggable="false" src="" />
                                 <div className="semester-school-text">
-                                    <h3 className="semester-school-name"></h3>
-                                    <p className="semester-school-location"></p>
-                                    <p className="semester-school-address"></p>
+                                    <h3 className="semester-school-name">{ currentSemester && currentSemester.schoolName }</h3>
+                                    <p className="semester-school-location">{ currentSemester && currentSemester.schoolLocation }</p>
+                                    <p className="semester-school-address">{ currentSemester && currentSemester.schoolAddress }</p>
                                 </div>
                             </div>
                         </div>
