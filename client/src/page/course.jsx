@@ -3,7 +3,7 @@ import { animateImageLoading } from '../functions/animateImageLoading';
 import { ManageBody } from '../functions/manageBody';
 import { useEffect, useRef, useState } from 'react';
 import { main, distanceMiddle, getNewScale, isInSide, initHeight, colorButtonsAssociateToSemester, 
-uncolorButtonsAssociateToSemester, onclickSemester, setPoints, setSemesters, setBarCentered, 
+uncolorButtonsAssociateToSemester, onclickSemester, setPointsContainers, setSemesters, setBarCentered, 
 height, margin, pointRotation, intervalMoveSemesters } from '../functions/coursePageFunctions';
 
 import medalImg from '../asset/img/course/medal-white.png'
@@ -23,7 +23,7 @@ const Course = () => {
         animateApparition();
         animateImageLoading();
         document.title = 'Mon parcours';
-        setPoints(points.current);
+        setPointsContainers(pointsContainers.current);
         setSemesters(semestersRef.current);
         main();
         return () => {
@@ -38,7 +38,7 @@ const Course = () => {
     let semesters = Semester.processRow(semesterJson);
 
     let timelineRef = useRef(null);
-    let points = useRef([]);
+    let pointsContainers = useRef([]);
     let semestersRef = useRef([]);
 
     // Si l'utilisateur clique sur "Consulter", on retire le hash de l'url
@@ -65,7 +65,7 @@ const Course = () => {
 
         // Modifications des points
         let pointMarginTop = null;
-        points.current.forEach((point, index) => {
+        pointsContainers.current.forEach((point, index) => {
 
             let scrollValue = window.scrollY;
             pointMarginTop = point.querySelector(".point").offsetTop - scrollValue + margin;
@@ -135,7 +135,7 @@ const Course = () => {
                     <div id="points">
                         {semesters.map((semester, i) => {
                             return (
-                                <div ref={ point => (points.current[i] = point) } className="point-container" datadate={ semester.formatStartingDate() }>
+                                <div ref={ point => (pointsContainers.current[i] = point) } className="point-container" datadate={ semester.formatStartingDate() }>
                                     <div className="point"></div>
                                 </div>
                             );
