@@ -10,7 +10,7 @@ export class Semester
     schoolIconPath;
     schoolLocation;
     schoolAddress;
-    subjects;
+    matters;
     specialties;
     startingDate;
     endingDate;
@@ -25,7 +25,7 @@ export class Semester
         this.whiteIcon = semester.white_icon;
         this.schoolIcon = semester.school_icon;
         this.specialties = semester.specialties;
-        this.subjects = semester.subjects;
+        this.matters = semester.subjects;
         this.schoolName = semester.school_name;
         this.schoolLocation = semester.school_location;
         this.schoolAddress = semester.school_address;
@@ -53,12 +53,24 @@ export class Semester
         return this.specialties.length > 0;
     }
 
-    hasSubjects()
+    hasMatters()
     {
-        return this.subjects != null;
+        return this.matters != null;
     }
 
     getIcon() {
         return require('../asset/img/course/' + this.icon);
+    }
+
+    getWhiteIcon() {
+        return require('../asset/img/course/' + this.whiteIcon);
+    }
+
+    getSchoolIcon() {
+        return require('../asset/img/course/semester/' + this.schoolIcon);
+    }
+
+    getMattersImg() {
+        return require('../asset/img/course/semester/' + this.matters);
     }
 }

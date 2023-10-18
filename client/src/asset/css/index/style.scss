@@ -498,8 +498,10 @@ body.index {
         background-image: url(../../img/index/download.png);
     }
 
-    .dl-img-hover {
-        background-image: url(../../img/index/download-hover.png);
+    .container-cv-download:hover {
+        .dl-img {
+            background-image: url(../../img/index/download-hover.png);
+        }
     }
 
     .footer-links {

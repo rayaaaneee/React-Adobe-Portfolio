@@ -6,7 +6,11 @@ import { main, distanceMiddle, getNewScale, isInSide, initHeight, colorButtonsAs
 uncolorButtonsAssociateToSemester, onclickSemester, setPoints, setSemesters, setBarCentered, 
 height, margin, pointRotation, intervalMoveSemesters } from '../functions/coursePageFunctions';
 
-import medalImg from '../asset/img/course/medal-white.png'
+import medalImg from '../asset/img/course/medal-white.png';
+import dateImg from '../asset/img/course/calendar-pink.png';
+import specialtiesImg from '../asset/img/course/specialties-pink.png';
+import schoolImg from '../asset/img/course/school-pink.png';
+import matterImg from '../asset/img/course/tab.png';
 
 import '../asset/css/course/style.scss';
 import '../asset/css/course/semester-page.scss';
@@ -22,6 +26,9 @@ const Course = () => {
     useEffect(() => {
         animateApparition();
         animateImageLoading();
+    }, []);
+
+    useEffect(() => {
         document.title = 'Mon parcours';
         setPoints(points.current);
         setSemesters(semestersRef.current);
@@ -31,15 +38,15 @@ const Course = () => {
             document.removeEventListener('resize', initHeight);
             clearInterval(intervalMoveSemesters);
         }
-    }, []);
+    });
 
     ManageBody.changeClass('course');
 
-    let semesters = Semester.processRow(semesterJson);
+    const semesters = Semester.processRow(semesterJson);
 
-    let timelineRef = useRef(null);
-    let points = useRef([]);
-    let semestersRef = useRef([]);
+    const timelineRef = useRef(null);
+    const points = useRef([]);
+    const semestersRef = useRef([]);
 
     // Si l'utilisateur clique sur "Consulter", on retire le hash de l'url
     const clearUrl = () => {
@@ -89,11 +96,19 @@ const Course = () => {
     const [semesterPageIsOpen, setSemesterPageIsOpen] = useState(false);
     const [currentSemester, setCurrentSemester] = useState(null);
 
+    const semesterPage = useRef(null);
+    const crossSemesterPage = useRef(null);
+    const semesterPageSubjectsContainer = useRef(null);
+
     useEffect(() => {
         if (semesterPageIsOpen) {
-
+            animateImageLoading();
+            document.body.style.overflow = "hidden";
+            semesterPage.current.classList.add("visible");
         } else {
-
+            setCurrentSemester(null);
+            semesterPage.current.classList.remove("visible");
+            document.body.style.removeProperty("overflow");
         }
     }, [semesterPageIsOpen]);
 
@@ -103,11 +118,16 @@ const Course = () => {
     }
     const closeSemesterPage = () => {
         setSemesterPageIsOpen(false);
-        setCurrentSemester(null);
     }
 
-    const openImageSemester = () => {}
-    const closeImageSemester = () => {}
+    const openImageSemester = () => {
+        crossSemesterPage.current.classList.add("hidden");
+        semesterPageSubjectsContainer.current.classList.add("visible");
+    }
+    const closeImageSemester = () => {
+        crossSemesterPage.current.classList.remove("hidden");
+        semesterPageSubjectsContainer.current.classList.remove("visible");
+    }
 
     document.addEventListener('resize', initHeight);
     document.addEventListener('scroll', onScroll);
@@ -165,82 +185,95 @@ const Course = () => {
                     </div>
                 </div>
             </article>
-            <article id="semesterPage">
-                <div className="semester-page-main-container">
-                    <div className="semester-page-title-img-container">
-                        <img className="semester-page-img" alt="icon-study" draggable="false" />
-                        <p className="title-semester">{ currentSemester && currentSemester.title }</p>
-                    </div>
-                    <div className="semester-page-body">
-                        <div className="semester-part semester-date-part">
-                            <div className="semester-page-date semester-page-title-part">
-                                <img src="PATH_IMAGES;course/calendar-pink.png" alt="calendar" draggable="false" />
-                                <div className="page-title-part"> Dates : </div>
+            <article ref={ semesterPage } id="semesterPage">
+                { currentSemester && (
+                    <>
+                        <div className="semester-page-main-container">
+                            <div className="semester-page-title-img-container">
+                                <img className="semester-page-img" alt="icon-study" draggable="false" src={ currentSemester.getWhiteIcon() } />
+                                <p className="title-semester">{ currentSemester.title }</p>
                             </div>
-                            <div className="semester-page-content semester-page-content-date">
-                                <div className="timeline-semester-date-container">
-                                    <div className="timeline"></div>
-                                    <div className="semester-point-container">
-                                        <div className="semester-point"></div>
-                                        <div className="semester-point"></div>
+                            <div className="semester-page-body">
+                                <div className="semester-part semester-date-part">
+                                    <div className="semester-page-date semester-page-title-part">
+                                        <img src={ dateImg } alt='date-icon' draggable="false" />
+                                        <div className="page-title-part"> Dates : </div>
+                                    </div>
+                                    <div className="semester-page-content semester-page-content-date">
+                                        <div className="timeline-semester-date-container">
+                                            <div className="timeline"></div>
+                                            <div className="semester-point-container">
+                                                <div className="semester-point"></div>
+                                                <div className="semester-point"></div>
+                                            </div>
+                                        </div>
+                                        <div className="text-semester-date-container">
+                                            <p className="semester-page-starting-date">{ currentSemester.formatStartingDate() }</p>
+                                            <p className="semester-page-ending-date">{ currentSemester.formatEndingDate() }</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="text-semester-date-container">
-                                    <p className="semester-page-starting-date">{ currentSemester && currentSemester.formatStartingDate() }</p>
-                                    <p className="semester-page-ending-date">{ currentSemester && currentSemester.formatEndingDate() }</p>
+                                <div className="semester-part semester-school-part">
+                                    <div className="semester-page-school semester-page-title-part">
+                                        <img src={ schoolImg } alt="school-icon" draggable="false" />
+                                        <div className="page-title-part"> Ecole : </div>
+                                    </div>
+                                    <div className="semester-page-content">
+                                        <img className="semester-school-img onloading" alt="school-icon" draggable="false" src={ currentSemester.getSchoolIcon() } />
+                                        <div className="semester-school-text">
+                                            <h3 className="semester-school-name">{ currentSemester.schoolName }</h3>
+                                            <p className="semester-school-location">{ currentSemester.schoolLocation }</p>
+                                            <p className="semester-school-address">{ currentSemester.schoolAddress }</p>
+                                        </div>
+                                    </div>
                                 </div>
+                                { currentSemester.hasSpecialties() && (
+                                    <div className="semester-part semester-specialties-part">
+                                        <div className="semester-page-specialties semester-page-title-part">
+                                            <img src={ specialtiesImg } alt='specialties-icon' draggable="false" />
+                                            <div className="page-title-part"> Spécialités : </div>
+                                        </div>
+                                        <div className="semester-page-content">
+                                            { currentSemester.specialties.map((specialty) => {
+                                                return (
+                                                    <p className="semester-page-specialty">• { specialty }</p>
+                                                );
+                                            } ) }
+                                        </div>
+                                    </div>
+                                ) }
+                                { currentSemester.hasMatters() && (
+                                    <div className="semester-part semester-subjects-part">
+                                        <div className="semester-page-tab semester-page-title-part">
+                                            <img src={ matterImg } alt="matters-icon" draggable="false" />
+                                            <div className="page-title-part"> Matières : </div>
+                                        </div>
+                                        <div className="semester-page-content">
+                                            <p className="semester-page-subject">Ici sont les matières étudiées et les coefficients de ces mêmes matières .</p>
+                                            <button onClick={ openImageSemester }>Voir les matières</button>
+                                        </div>
+                                    </div>
+                                ) }
                             </div>
-                        </div>
-                        <div className="semester-part semester-school-part">
-                            <div className="semester-page-school semester-page-title-part">
-                                <img src="PATH_IMAGES;course/school-pink.png" alt="school-icon" draggable="false" />
-                                <div className="page-title-part"> Ecole : </div>
-                            </div>
-                            <div className="semester-page-content">
-                                <img className="semester-school-img" alt="school-icon" draggable="false" src="" />
-                                <div className="semester-school-text">
-                                    <h3 className="semester-school-name">{ currentSemester && currentSemester.schoolName }</h3>
-                                    <p className="semester-school-location">{ currentSemester && currentSemester.schoolLocation }</p>
-                                    <p className="semester-school-address">{ currentSemester && currentSemester.schoolAddress }</p>
+                            { currentSemester.hasMatters() && (
+                                <div ref={ semesterPageSubjectsContainer } className="semester-page-subjects">
+                                    <div className="image-subject-container">
+                                        <img src={ currentSemester.getMattersImg() } className="semester-page-subjects-image" alt="subjects" draggable="false" />
+                                        <div className="leave-semester-subject" onClick={ closeImageSemester }>
+                                            <p>X</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            ) }
                         </div>
-                        <div className="semester-part semester-specialties-part">
-                            <div className="semester-page-specialties semester-page-title-part">
-                                <img src="PATH_IMAGES;course/specialties-pink.png" alt="specialty-icon" draggable="false" />
-                                <div className="page-title-part"> Spécialités : </div>
-                            </div>
-                            <div className="semester-page-content">
-                                <p className="semester-page-specialty"></p>
-                                <p className="semester-page-specialty"></p>
-                            </div>
-                        </div>
-                        <div className="semester-part semester-subjects-part">
-                            <div className="semester-page-tab semester-page-title-part">
-                                <img src="PATH_IMAGES;course/tab.png" alt="tab-icon" draggable="false" />
-                                <div className="page-title-part"> Matières : </div>
-                            </div>
-                            <div className="semester-page-content">
-                                <p className="semester-page-subject">Ici sont les matières étudiées et les coefficients de ces mêmes matières .</p>
-                                <button onClick={ openImageSemester() }>Voir les matières</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="semester-page-subjects">
-                        <div className="image-subject-container">
-                            <img src="" className="semester-page-subjects-image" alt="subjects" draggable="false" />
-                            <div className="leave-semester-subject" onClick={ closeImageSemester }>
+                        <div className="all-cross-container">
+                            <div ref={ crossSemesterPage } className="cross-semester-page-container" onClick={ () => closeSemesterPage() }>
                                 <p>X</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div className="all-cross-container">
-                    <div className="cross-semester-page-container" onClick={ closeSemesterPage }>
-                        <p>X</p>
-                    </div>
-                </div>
-                <div className="background-semester-page"></div>
+                        <div className="background-semester-page"></div>
+                    </>
+                ) }
             </article>
         </>
     );

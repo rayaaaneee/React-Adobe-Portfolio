@@ -28,6 +28,21 @@ body.course {
 
         &.visible {
             display: flex;
+
+            .background-semester-page {
+                opacity: 1;
+            }
+
+            .semester-page-main-container {
+                transform: none;
+                opacity: 1;
+            }
+
+            .all-cross-container {
+                .cross-semester-page-container {
+                    transform: none;
+                }
+            }
         }
 
         .background-semester-page {
@@ -331,8 +346,13 @@ body.course {
             font-weight: 100;
             color: aliceblue;
         }
+        
+        .semester-subjects-part, .semester-specialties-part {
+            padding-bottom: 30px;
+        }
+        
+        .semester-page-subjects {
 
-        div.semester-page-subjects {
             width: 100%;
             height: 100%;
             display: none;
@@ -344,13 +364,10 @@ body.course {
             left: 0;
             z-index: 15;
             background-color: rgba(0, 0, 0, 0.8);
-        }
 
-        .semester-subjects-part, .semester-specialties-part {
-            padding-bottom: 30px;
-        }
-
-        .semester-page-subjects {
+            &.visible {
+                display: flex;
+            }
 
             .image-subject-container {
                 height: fit-content;
