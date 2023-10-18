@@ -10,9 +10,9 @@ export let isSelect = false;
 export let lastSemesterIndex = null;
 export let addToScale = 0;
 
-let points;
-export const setPoints = (pointsTmp) => {
-    points = pointsTmp
+let pointsContainers;
+export const setPointsContainers = (pointsContainersTmp) => {
+    pointsContainers = pointsContainersTmp
 }
 let semesters;
 export const setSemesters = (semestersTmp) => {
@@ -83,20 +83,20 @@ const modifyScale = (element, newscale) => {
 }
 
 export const colorButtonsAssociateToSemester = (i) => {
-    let point = points[i];
+    let point = pointsContainers[i];
     colorPoint(point);
 }
 
 export const uncolorButtonsAssociateToSemester = (i) => {
     if (!isSelect || (i !== lastSemesterIndex)) {
-        let point = points[i];
+        let point = pointsContainers[i];
         uncolorPoint(point);
     }
 }
 
 export const onclickSemester = (i) => {
     let semester = semesters[i];
-    let point = points[i];
+    let point = pointsContainers[i];
     if (!isSelect) {
         lastSemesterIndex = i;
 
@@ -134,7 +134,7 @@ const disclickSemester = (i) => {
 
     semester.classList.remove("selected");
 
-    let point = points[i];
+    let point = pointsContainers[i];
 
     uncolorPoint(point);
 
@@ -219,7 +219,7 @@ const moveSemesters = (time = 50) => {
 export let intervalMoveSemesters = null;
 
 export const main = () => {
-    for (let i = 0; i < points.length; i++) {
+    for (let i = 0; i < pointsContainers.length; i++) {
         pointRotation.push(160);
     }
     initHeight();
