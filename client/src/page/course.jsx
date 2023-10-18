@@ -26,19 +26,20 @@ const Course = () => {
     useEffect(() => {
         animateApparition();
         animateImageLoading();
-    }, []);
-
-    useEffect(() => {
+        
         document.title = 'Mon parcours';
         setPointsContainers(pointsContainers.current);
         setSemesters(semestersRef.current);
         main();
+        
+        document.addEventListener('resize', initHeight);
+        document.addEventListener('scroll', onScroll);
         return () => {
+            clearInterval(intervalMoveSemesters);
             document.removeEventListener('scroll', onScroll);
             document.removeEventListener('resize', initHeight);
-            clearInterval(intervalMoveSemesters);
         }
-    });
+    }, []);
 
     ManageBody.changeClass('course');
 
@@ -102,7 +103,6 @@ const Course = () => {
 
     useEffect(() => {
         if (semesterPageIsOpen) {
-            animateImageLoading();
             document.body.style.overflow = "hidden";
             semesterPage.current.classList.add("visible");
         } else {
@@ -128,9 +128,6 @@ const Course = () => {
         crossSemesterPage.current.classList.remove("hidden");
         semesterPageSubjectsContainer.current.classList.remove("visible");
     }
-
-    document.addEventListener('resize', initHeight);
-    document.addEventListener('scroll', onScroll);
 
     return (
         <>
@@ -219,7 +216,7 @@ const Course = () => {
                                         <div className="page-title-part"> Ecole : </div>
                                     </div>
                                     <div className="semester-page-content">
-                                        <img className="semester-school-img onloading" alt="school-icon" draggable="false" src={ currentSemester.getSchoolIcon() } />
+                                        <img className="semester-school-img" alt="school-icon" draggable="false" src={ currentSemester.getSchoolIcon() } />
                                         <div className="semester-school-text">
                                             <h3 className="semester-school-name">{ currentSemester.schoolName }</h3>
                                             <p className="semester-school-location">{ currentSemester.schoolLocation }</p>
