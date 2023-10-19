@@ -2,9 +2,10 @@ import { animateApparition } from '../functions/appearence';
 import { animateImageLoading } from '../functions/animateImageLoading';
 import { ManageBody } from '../functions/manageBody';
 import { useEffect, useRef, useState } from 'react';
+import { useConditionalEffect } from '../functions/useConditionalEffect';
 import { main, distanceMiddle, getNewScale, isInSide, initHeight, colorButtonsAssociateToSemester, 
 uncolorButtonsAssociateToSemester, onclickSemester, setPointsContainers, setSemesters, setBarCentered, 
-height, margin, pointRotation, intervalMoveSemesters } from '../functions/coursePageFunctions';
+height, margin, pointRotation, intervalMoveSemesters, intervalAnimation } from '../functions/coursePageFunctions';
 
 import medalImg from '../asset/img/course/medal-white.png';
 import dateImg from '../asset/img/course/calendar-pink.png';
@@ -36,6 +37,7 @@ const Course = () => {
         document.addEventListener('scroll', onScroll);
         return () => {
             clearInterval(intervalMoveSemesters);
+            clearInterval(intervalAnimation);
             document.removeEventListener('scroll', onScroll);
             document.removeEventListener('resize', initHeight);
         }
@@ -78,8 +80,6 @@ const Course = () => {
             let scrollValue = window.scrollY;
             pointMarginTop = point.querySelector(".point").offsetTop - scrollValue + margin;
 
-            // if (index == 2) if (isInFivePercentSide(pointMarginTop)) console.log("in");
-
             if (isInSide(pointMarginTop)) {
                 point.style.opacity = 0;
             } else {
@@ -101,14 +101,18 @@ const Course = () => {
     const crossSemesterPage = useRef(null);
     const semesterPageSubjectsContainer = useRef(null);
 
-    useEffect(() => {
+    useConditionalEffect(() => {
         if (semesterPageIsOpen) {
             document.body.style.overflow = "hidden";
             semesterPage.current.classList.add("visible");
         } else {
-            setCurrentSemester(null);
+            semesterPage.current.classList.add("hidden");
             semesterPage.current.classList.remove("visible");
-            document.body.style.removeProperty("overflow");
+            setTimeout(() => {
+                document.body.style.removeProperty("overflow");
+                semesterPage.current.classList.remove("hidden");
+                setCurrentSemester(null);
+            }, 400);
         }
     }, [semesterPageIsOpen]);
 

@@ -9,6 +9,7 @@ import { animateApparition } from '../functions/appearence';
 import { ScrollProjects } from '../functions/scrollProjects';
 import { animateCards } from '../functions/3dEffectCard';
 import { animateImageLoading } from '../functions/animateImageLoading';
+import { useConditionalEffect } from '../functions/useConditionalEffect';
 
 import '../asset/css/home/style.scss';
 import '../asset/css/home/frame-cv.scss';
@@ -91,7 +92,8 @@ const Home = () => {
       }, 400);
     }, []);
     let projectPageContentRef = useRef(null);
-    useEffect(() => {
+
+    useConditionalEffect(() => {
         if (projectPageIsVisible) {
             projectPageContentRef.current.scrollTo(0, 0);
             document.body.style.overflowY = "hidden";
@@ -102,7 +104,7 @@ const Home = () => {
             setTimeout(() => {
               document.body.style.removeProperty('overflow-y');
               projectPageRef.current.classList.remove('hidden');
-            }, 400);
+            }, 500);
         }
     }, [projectPageIsVisible]);
 
@@ -132,7 +134,7 @@ const Home = () => {
     }
 
     var [cvVisibilityChanged, setCvVisibilityChanged] = useState(false);
-    useEffect(() => {
+    useConditionalEffect(() => {
       if (cvContainerIsVisible) {
         document.body.style.overflow = 'hidden';
         frameCvRef.current.classList.add('visible');

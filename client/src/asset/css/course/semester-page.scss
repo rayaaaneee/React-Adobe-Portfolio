@@ -27,20 +27,81 @@ body.course {
         }
 
         &.visible {
-            display: flex;
+
+            & {
+                display: flex;
+            }
 
             .background-semester-page {
-                opacity: 1;
+                opacity: 0;
+                animation: 0.3s appear 0.1s forwards;
+
+                @keyframes appear {
+                    to {
+                        opacity: 1;
+                    }
+                }
+
             }
 
             .semester-page-main-container {
-                transform: none;
                 opacity: 1;
+                animation: 0.3s unTransform forwards;
+            }
+
+            .all-cross-container {
+                .cross-semester-page-container {
+                    animation: 0.3s unTransform 0.2s forwards;
+                }
+            }
+
+            @keyframes unTransform {
+                to {
+                    transform: none;
+                }
+            }
+        }
+
+        &.hidden {
+
+            & {
+                display: flex;
+            }
+
+            .background-semester-page {
+                opacity: 1;
+                animation: 0.3s disappear 0.1s forwards;
+
+                @keyframes disappear {
+                    to {
+                        opacity: 0;
+                    }
+                }
+            }
+
+            .semester-page-main-container {
+                opacity: 1;
+                transform: none;
+                animation: 0.3s disappearTransformOpacity forwards;
+
+                @keyframes disappearTransformOpacity {
+                    to {
+                        /* opacity: 0.5; */
+                        transform: translateX(100vw);
+                    }
+                }
             }
 
             .all-cross-container {
                 .cross-semester-page-container {
                     transform: none;
+                    animation: 0.3s transformX forwards;
+
+                    @keyframes transformX {
+                        to {
+                            transform: translateX(15vw);
+                        }
+                    }
                 }
             }
         }

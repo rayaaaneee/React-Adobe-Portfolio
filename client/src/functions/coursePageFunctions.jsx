@@ -9,6 +9,7 @@ export let margin = null;
 export let isSelect = false;
 export let lastSemesterIndex = null;
 export let addToScale = 0;
+export let intervalAnimation = null;
 
 let pointsContainers;
 export const setPointsContainers = (pointsContainersTmp) => {
@@ -152,7 +153,7 @@ const moveSemesters = (time = 50) => {
 
     let wasPassed = [];
 
-    let intervalAnimation = setInterval(() => {
+    intervalAnimation = setInterval(() => {
 
         while (wasPassed.includes(i)) {
             i = Math.floor(Math.random() * semesters.length);
