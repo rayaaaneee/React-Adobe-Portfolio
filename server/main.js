@@ -1,19 +1,18 @@
-const express = require('express');
+var express = require('express');
+var cors = require('cors');
 require('dotenv').config();
-
-const app = express();
-
-const PORT = process.env.PORT;
-
-app.use(express.json);
-
-app.get('/api', (req, res) => {
-    res.send({
-        'status': 'success',
-        'message': 'Hello World!'
-    });
+var app = express();
+var port = process.env.PORT || 3000;
+app.use(cors(port));
+app.get('/', function (req, res) {
+    res.json({ message: 'hello world' });
 });
-
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
+app.get('/send/:message', function (req, res) {
+    console.log(req.params.message);
+});
+app.post('/send', function (req, res) {
+    console.log(req.query);
+});
+app.listen(port, function () {
+    console.log("Server is listening on port ".concat(port));
 });

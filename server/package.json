@@ -4,16 +4,19 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js",
-    "watch": "nodemon main.js"
+    "start": "ts-node main.js",
+    "watch": "tsc -w main.ts",
+    "build": "tsc main.ts"
   },
   "author": "Rayane Merlin",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1"
   }
 }
