@@ -1,6 +1,8 @@
 import { animateApparition } from '../functions/appearence';
 import { animateImageLoading } from '../functions/animateImageLoading';
+import { sendMessage } from '../functions/message';
 import { ManageBody } from '../functions/manageBody';
+
 import { useEffect, useRef } from 'react';
 
 import '../asset/css/contact/style.scss';
@@ -10,8 +12,11 @@ import '../asset/css/media/contact/style.scss';
 import contactImg from '../asset/img/contact/contact.png';
 import { ManageThemes } from '../functions/manageThemes';
 
+
 const Contact = () => {
 
+    sendMessage();
+    
     useEffect(() => {
         animateApparition();
         animateImageLoading();
