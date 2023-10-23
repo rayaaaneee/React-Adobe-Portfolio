@@ -2,7 +2,7 @@ import { ManageBody } from '../functions/manageBody';
 import { animateApparition } from '../functions/appearence';
 import { NavLink } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
-import themeContext from '../functions/themeContext';
+import themeContext from '../functions/contexts/themeContext';
 
 import '../asset/css/about/style.scss';
 import '../asset/css/about/dark-style.scss';

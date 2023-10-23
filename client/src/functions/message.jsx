@@ -7,7 +7,8 @@ export const sendMessage = async (message) => {
             }
         });
         return response.status;
-    } catch (error) {
-        console.error(error);
+    } catch (e) {
+        // 103 : Connexion au serveur impossible
+        return 103;
     }
 }

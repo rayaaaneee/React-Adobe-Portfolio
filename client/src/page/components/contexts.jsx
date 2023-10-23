@@ -1,5 +1,5 @@
-import loaderContext from '../../functions/loaderContext';
-import themeContext from '../../functions/themeContext';
+import loaderContext from '../../functions/contexts/loaderContext';
+import themeContext from '../../functions/contexts/themeContext';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 

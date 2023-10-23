@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useRef } from 'react';
-import themeContext from '../functions/themeContext';
+import themeContext from '../functions/contexts/themeContext';
 
 import { ManageBody } from '../functions/manageBody';
 

@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
 import { ManageBody } from '../functions/manageBody';
-import { animateImageLoading } from '../functions/animateImageLoading';
 
 import '../asset/css/index/appearence.scss';
 import '../asset/css/index/dark-style.scss';
@@ -10,13 +9,12 @@ import '../asset/css/index/style.scss';
 import '../asset/css/media/index/style.scss';
 
 import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';
-import whiteFavicon from '../asset/img/favicon/favicon-light-theme.png';
 
 import CV from '../asset/file/CV.pdf';
 
 import { ManageThemes } from '../functions/manageThemes';
 
-import loaderContext from '../functions/loaderContext';
+import loaderContext from '../functions/contexts/loaderContext';
 
 const Index = () => {
 

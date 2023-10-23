@@ -3,7 +3,9 @@ import { animateImageLoading } from '../functions/animateImageLoading';
 import { sendMessage } from '../functions/message';
 import { ManageBody } from '../functions/manageBody';
 
-import { useEffect, useRef } from 'react';
+import { ModalMessage } from './components/modalMessage';
+
+import { useEffect, useRef, useState } from 'react';
 
 import '../asset/css/contact/style.scss';
 import '../asset/css/contact/dark-style.scss';
@@ -15,8 +17,6 @@ import { ManageThemes } from '../functions/manageThemes';
 
 const Contact = () => {
 
-    sendMessage();
-    
     useEffect(() => {
         animateApparition();
         animateImageLoading();
@@ -36,9 +36,25 @@ const Contact = () => {
     let erroremailRef = useRef(null);
     let errormsgRef = useRef(null);
 
+    const [sendIsSuccess, setSendIsSuccess] = useState(null);
+    const sendAnswers = {
+        success : "Votre message a bien été envoyé !", 
+        error : "Une erreur est survenue lors de l'envoi de votre message."
+    }
+
+    const trySend = (message) => {
+        sendMessage()
+        .then((response) => {
+
+            let isSuccess = (response === 200);
+
+            setSendIsSuccess(isSuccess);
+
+        })
+    }
+
     const validateForm = () => {
 
-        let result = true;
         let firsterror = null;
 
         errornameRef.current.innerHTML = "";
@@ -47,7 +63,6 @@ const Contact = () => {
 
         if (nameInput.current.value == "") {
             errornameRef.current.innerHTML = "• Veuillez entrez un nom valide";
-            result = false;
             if (!firsterror) firsterror = nameInput.current;
         }
 
@@ -55,17 +70,17 @@ const Contact = () => {
         if (!emailPattern.test(emailInput.current.value)) {
             erroremailRef.current.innerHTML = "• Veuillez entrez une adresse mail valide";
             if (!firsterror) firsterror = emailInput.current;
-            result = false;
         }
 
         if (messageInput.current.value == "") {
             errormsgRef.current.innerHTML = "• Veuillez entrez un message valide";
             if (!firsterror) firsterror = messageInput.current;
-            result = false;
         }
-        if (firsterror) firsterror.focus();
 
-        return result;
+        if (firsterror) firsterror.focus();
+        else {
+            trySend(messageInput.current.value);
+        }
     }
 
     let nbCharsLeftContainerRef = useRef(null);
@@ -141,6 +156,10 @@ const Contact = () => {
     }
 
     return (
+        <>
+            { sendIsSuccess !== null && (
+                <ModalMessage isSuccess={ sendIsSuccess } closeModal={ () => setSendIsSuccess(null) } messages={ sendAnswers } />
+            ) }
             <article id="formContainer">
                 <div className="alert-container"></div>
                 <main id='contactPage'>
@@ -157,8 +176,7 @@ const Contact = () => {
                     </div>
                     <div className="form-container">
                         <div className="formulaire animate">
-                            <form method="post" id="sendMessageForm">
-                                <input type="hidden" name="instant-request" value="true" />
+                            <form id="sendMessageForm">
                                 <table className="form-style">
                                     <tr>
                                         <td>
@@ -167,7 +185,7 @@ const Contact = () => {
                                             </label>
                                         </td>
                                         <td>
-                                            <input readOnly ref={nameInput} type="text" name="name" className="long" required placeholder="Nom Prénom" />
+                                            <input ref={nameInput} type="text" name="name" className="long" required placeholder="Nom Prénom" />
                                             <span ref={errornameRef} className="error" id="errorname"></span>
                                         </td>
                                     </tr>
@@ -178,7 +196,7 @@ const Contact = () => {
                                             </label>
                                         </td>
                                         <td>
-                                            <input readOnly ref={emailInput} type="email" name="email" className="long" required placeholder="example@mail.com" />
+                                            <input ref={emailInput} type="email" name="email" className="long" required placeholder="example@mail.com" />
                                             <span ref={erroremailRef} className="error" id="erroremail"></span>
                                         </td>
                                     </tr>
@@ -215,6 +233,7 @@ const Contact = () => {
                     </div>
                 </main>
             </article>
+        </>
     );
 }
 

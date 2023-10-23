@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect, useRef } from 'react';
 import { ManageThemes } from '../../functions/manageThemes';
 import { animateImageLoading } from '../../functions/animateImageLoading';
-import loaderContext from '../../functions/loaderContext';
+import loaderContext from '../../functions/contexts/loaderContext';
 
 import '../../asset/css/loader/style.scss';
 import '../../asset/css/loader/media.scss';

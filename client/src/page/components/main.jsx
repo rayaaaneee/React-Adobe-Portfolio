@@ -3,13 +3,12 @@ import FooterComponent from "./footer-component";
 import HeaderComponent from "./header-component";
 import Loader from "./loader";
 
-import loaderContext from "../../functions/loaderContext";
+import loaderContext from "../../functions/contexts/loaderContext";
 
 import "../../asset/css/general/animation.scss";
 import "../../asset/css/general/background.scss";
 import "../../asset/css/general/dark-background.scss";
 import "../../asset/css/general/dark-scrollbar.scss";
-import "../../asset/css/general/error.scss";
 import "../../asset/css/general/general.scss";
 import "../../asset/css/general/presets-animation.scss";
 import "../../asset/css/general/scrollbar.scss";
