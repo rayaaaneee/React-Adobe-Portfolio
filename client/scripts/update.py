@@ -86,6 +86,6 @@ def write():
         print("File modified")
 
 
-# Fonction main du programme
+# Fonction principale du programme
 if __name__ == "__main__":
     write()

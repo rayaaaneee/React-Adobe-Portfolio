@@ -15,7 +15,7 @@ import faviconDarkTheme from '../../asset/img/header/dark-theme/dark_portfolio_l
 
 const Loader = () => {
 
-    const {wasLoaderShowed, setWasLoaderShowed} = useContext(loaderContext);
+    const {setWasLoaderShowed} = useContext(loaderContext);
     var [isLoading, setIsLoading] = useState(true);
 
     var points = [
@@ -42,11 +42,13 @@ const Loader = () => {
     ];
 
     //Balise texte à modifier
-    var [textIndex, setTextIndex] = useState(0);
+    const [textIndex, setTextIndex] = useState(0);
 
-    var maxTime = 2000;
+    let maxTime = 2300;
+    const timeToAppearTexts = 200;
 
-    let textDuration = parseInt(maxTime / ( texts.length ));
+
+    let textDuration = parseInt((maxTime + timeToAppearTexts) / ( texts.length ));
 
     let [containerIsVisible, setContainerIsVisible] = useState(false);
     let [theme, setTheme] = useState();
@@ -61,16 +63,15 @@ const Loader = () => {
         document.body.classList.add('no-scroll');
 
         setTimeout(() => {
-            let textIndexTmp = 0;
             let intervalText = setInterval(() => {
-                if (texts.length === textIndexTmp) {
+                if (texts.length - 1 === textIndex) {
+                    console.log(texts.length - 1, textIndex);
                     clearInterval(intervalText);
                 } else {
-                    setTextIndex(textIndexTmp + 1);
-                    textIndexTmp++;
+                    setTextIndex(i => i + 1);
                 }
             }, textDuration);
-        }, 200);
+        }, timeToAppearTexts);
 
         // Animer le curseur
         let cursorIndex = 1;
@@ -90,7 +91,7 @@ const Loader = () => {
 
         setTimeout(() => {
             setContainerIsVisible(false);
-        }, maxTime);
+        }, maxTime - 300);
 
         setTimeout(() => {
             clearInterval(intervalCursor);
@@ -98,7 +99,7 @@ const Loader = () => {
             setWasLoaderShowed(true);
             document.removeEventListener("mousemove", followCursor);
             document.body.classList.remove('no-scroll');
-        }, maxTime + 300);
+        }, maxTime);
 
         setContainerIsVisible(true);
 
@@ -117,7 +118,7 @@ const Loader = () => {
         return () => {
             clearInterval(intervalCursor);
         }
-    },[]);
+    }, []);
 
     const followCursor = (e) => {
         cursor.current && (cursor.current.style.left = e.clientX-47+ "px");

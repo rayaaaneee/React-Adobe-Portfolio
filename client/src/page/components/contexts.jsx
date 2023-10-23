@@ -36,7 +36,7 @@ const Contexts = ({ children }) => {
         <>
             <loaderContext.Provider value={loaderValue} >
                 <themeContext.Provider value={themeValue} >
-                { children }
+                    { children }
                 </themeContext.Provider>
             </loaderContext.Provider>
         </>
