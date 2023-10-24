@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { animateApparition } from '../functions/appearence';
 import { animateImageLoading } from '../functions/animateImageLoading';
 
+import { Music } from './components/perso/music';
 import '../asset/css/perso/style.scss';
 import '../asset/css/perso/dark-style.scss';
 import '../asset/css/media/perso/style.scss';
@@ -64,9 +65,9 @@ const Perso = () => {
                     </div>
                     <article id="music" onMouseOver={ () => {} } onMouseLeave={ () => {} }>
                         <div id="frames">
-                        { Musics.map((music, index) => {
+                        { Musics.map((link, index) => {
                             return (
-                                <iframe className="animate" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style={{ maxWidth: '500px',overflow: 'hidden', background: 'transparent' }} sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src={ music }></iframe>
+                                <Music link={ link } key={ index } />
                                 );
                         }) }
                         </div>
