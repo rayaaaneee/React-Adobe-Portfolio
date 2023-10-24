@@ -3,7 +3,7 @@ import { animateImageLoading } from '../functions/animateImageLoading';
 import { sendMessage } from '../functions/message';
 import { ManageBody } from '../functions/manageBody';
 
-import { ModalMessage } from './components/modalMessage';
+import { ModalMessage } from './components/modal-message';
 
 import { useEffect, useRef, useState } from 'react';
 
@@ -53,7 +53,13 @@ const Contact = () => {
         })
     }
 
-    const validateForm = () => {
+    const isEmpty = (string) => {
+        return string.trim() === "";
+    }
+
+    const validateForm = (e) => {
+
+        e.preventDefault();
 
         let firsterror = null;
 
@@ -61,7 +67,7 @@ const Contact = () => {
         erroremailRef.current.innerHTML = "";
         errormsgRef.current.innerHTML = "";
 
-        if (nameInput.current.value == "") {
+        if (isEmpty(nameInput.current.value)) {
             errornameRef.current.innerHTML = "• Veuillez entrez un nom valide";
             if (!firsterror) firsterror = nameInput.current;
         }
@@ -72,7 +78,7 @@ const Contact = () => {
             if (!firsterror) firsterror = emailInput.current;
         }
 
-        if (messageInput.current.value == "") {
+        if (isEmpty(messageInput.current.value)) {
             errormsgRef.current.innerHTML = "• Veuillez entrez un message valide";
             if (!firsterror) firsterror = messageInput.current;
         }
@@ -80,6 +86,7 @@ const Contact = () => {
         if (firsterror) firsterror.focus();
         else {
             trySend(messageInput.current.value);
+            e.currentTarget.form.reset();
         }
     }
 
@@ -105,13 +112,13 @@ const Contact = () => {
         charsLeftToModifyRef.current.classList.add('visible');
         nbCharsLeftSpinnerRef.current.classList.add('visible');
 
-        if (nbCharsLeft == 0) {
+        if (nbCharsLeft === 0) {
             nbCharsLeftTextRef.current.innerHTML = "• Aucun caractère restant";
             charsLeftToModifyRef.current.classList.remove('visible');
             nbCharsLeftSpinnerRef.current.classList.remove('visible');
             animateScale(nbCharsLeft, oldNbCharsLeft);
         } else {
-            if (nbCharsLeft == 1) {
+            if (nbCharsLeft === 1) {
                 nbCharsLeftTextRef.current.innerHTML = "caractère restant";
             } else {
                 nbCharsLeftTextRef.current.innerHTML = "caractères restants";
@@ -223,7 +230,7 @@ const Contact = () => {
                                     <tr>
                                         <td></td>
                                         <td className="input-container">
-                                            <input readOnly className="orange-buttons" value="Envoyer" onClick={ validateForm } />
+                                            <input type="submit" readOnly className="orange-buttons" value="Envoyer" onClick={ validateForm } />
                                             <input readOnly className="orange-buttons"  type="reset" value="Réinitialiser" />
                                         </td>
                                     </tr>
