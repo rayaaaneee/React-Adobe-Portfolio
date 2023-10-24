@@ -83,12 +83,12 @@ const modifyScale = (element, newscale) => {
     element.style.transform = tmp.split("scale(")[0] + "scale(" + scale + ")";
 }
 
-export const colorButtonsAssociateToSemester = (i) => {
+export const colorPointAssociateToSemester = (i) => {
     let point = pointsContainers[i];
     colorPoint(point);
 }
 
-export const uncolorButtonsAssociateToSemester = (i) => {
+export const uncolorPointAssociateToSemester = (i) => {
     if (!isSelect || (i !== lastSemesterIndex)) {
         let point = pointsContainers[i];
         uncolorPoint(point);

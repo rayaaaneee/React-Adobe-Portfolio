@@ -5,16 +5,16 @@ import '../../asset/css/modal/message-modal.scss';
 
 // Utiliser createPortal pour afficher le modal
 
-export const ModalMessage = (props) => {
+export const ModalMessage = ({ isSuccess, messages, closeModal }) => {
 
     // Durée de l'animation en secondes
     const modalDuration = 4;
 
-    let modalStatus = props.isSuccess ? "success" : "error";
+    let modalStatus = isSuccess ? "success" : "error";
 
     const modalRef = useRef(null);
 
-    const message = props.isSuccess ? (props.messages.success) : (props.messages.error);
+    const message = isSuccess ? (messages.success) : (messages.error);
     let crossClicked = false;
 
     const crossClick = () => {
@@ -22,7 +22,7 @@ export const ModalMessage = (props) => {
             crossClicked = true;
             modalRef.current.classList.add('fade-out');
             setTimeout(() => {
-                props.closeModal();
+                closeModal();
             }, 200);
         }
     }

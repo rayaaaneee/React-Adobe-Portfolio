@@ -3,13 +3,16 @@ import themeContext from '../functions/contexts/themeContext';
 
 import { ManageBody } from '../functions/manageBody';
 
-import { Project } from '../objects/project';
+import { Project as ProjectObject } from '../objects/project';
 import { SchoolCompetence } from '../objects/school_competence';
 import { animateApparition } from '../functions/appearence';
 import { ScrollProjects } from '../functions/scrollProjects';
 import { animateCards } from '../functions/3dEffectCard';
 import { animateImageLoading } from '../functions/animateImageLoading';
 import { useConditionalEffect } from '../functions/useConditionalEffect';
+
+import { CompetenceCard } from './components/home/competence-card';
+import { Project } from './components/home/project';
 
 import '../asset/css/home/style.scss';
 import '../asset/css/home/frame-cv.scss';
@@ -57,7 +60,7 @@ const Home = () => {
 
     let projectsObjects = [];
     projectJson.projects.forEach(project => {
-      let projectObject = new Project(project);
+      let projectObject = new ProjectObject(project);
 
       let projectIconImg = require('../asset/img/home/project-logos/' + projectObject.getIcon() + '.png');
       let projectIconImgDark = require('../asset/img/home/project-logos/' + projectObject.getIcon() + '-white.png');
@@ -199,27 +202,13 @@ const Home = () => {
                     </svg>
                     <article className="projects">
                     { projectsObjects.map((project, i) => (
-                      <div
-                        className="main-container animate"
-                        onMouseOver={ () => colorBar(1) }
-                        onMouseLeave={ () => uncolorBar(1) }
-                        onClick={ () => openProjectPage(project) }
-                        data-date={ project.getFormatDate() }
-                        key={i}
-                      >
-                        <div className="content" onMouseOver={ () => { growImg(i) }} onMouseLeave={ () => { shrinkImg(i) }} >
-                            <div className="to_download">
-                                <p>{ project.getTitle() }</p>
-                                <img alt='download-link' src={ 
-                                  project.isLink() ? 
-                                    isDarkTheme ? darkLinkImg : linkImg 
-                                      :
-                                    isDarkTheme ? darkDownloadImg : downloadImg
-                                  } draggable="false" />
-                            </div>
-                            <img alt='project-icon' src={ isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } className="workslogos onloading" draggable="false" />
-                        </div>
-                    </div>
+                      <Project project={ project } key={i} colorBar={ () => colorBar(1) } 
+                      uncolorBar={ () => uncolorBar(1) } 
+                      openProjectPage={ () => openProjectPage(project) } 
+                      shrinkImg={ () => shrinkImg(i) } growImg={ () => { growImg(i) } } 
+                      isDarkTheme={isDarkTheme} darkLinkImg={darkLinkImg} 
+                      darkDownloadImg={darkDownloadImg} linkImg={linkImg} 
+                      downloadImg={downloadImg} />
                     ))}
                     </article>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron right animate">
@@ -415,32 +404,7 @@ const Home = () => {
                   <div className="horizontal-bars animate" id="horizontal-bar3"></div>
                   <div className="school-competence-container">
                     { schoolCompetenceObjects.map((competence, i) => (
-                      <div className="card animate" key={i}>
-                        <div className="card-front">
-                          <div className="linear-gradient-circle-container card-top-container">
-                            <div className="linear-gradient-circle" style={{ background: competence.getGradient() }}>
-                              <img src={ require(`../asset/img/home/card/${competence.getImage()}`) } alt="" />
-                            </div>
-                          </div>
-                          <h1 className="title-card" style={{ color: competence.getTitleColor() }}>
-                            • {competence.getTitle()}
-                          </h1>
-                          <div className="card-bottom-container">
-                            <div className="card-bottom" style={{ backgroundColor: competence.getBottomColor() }}></div>
-                          </div>
-                        </div>
-                        <div className="card-back">
-                          <div className="info-icon-container card-top-container">
-                            <img src={ require('../asset/img/home/card/' + competence.getInfoIcon()) } draggable="false" />
-                          </div>
-                          <h2 className="card-back-title" style={{ color: competence.getTitleColor() }}>
-                            {competence.getTitle()} c'est :
-                          </h2>
-                          <p className="card-description" style={{ color: competence.getTitleColor() }}>
-                            {competence.getDescription()}
-                          </p>
-                        </div>
-                      </div>
+                      <CompetenceCard competence={ competence } key={i} />
                     ))}
                   </div>
                 </article>

@@ -3,9 +3,12 @@ import { animateImageLoading } from '../functions/animateImageLoading';
 import { ManageBody } from '../functions/manageBody';
 import { useEffect, useRef, useState } from 'react';
 import { useConditionalEffect } from '../functions/useConditionalEffect';
-import { main, distanceMiddle, getNewScale, isInSide, initHeight, colorButtonsAssociateToSemester, 
-uncolorButtonsAssociateToSemester, onclickSemester, setPointsContainers, setSemesters, setBarCentered, 
+import { main, distanceMiddle, getNewScale, isInSide, initHeight, colorPointAssociateToSemester, 
+uncolorPointAssociateToSemester, onclickSemester, setPointsContainers, setSemesters, setBarCentered, 
 height, margin, pointRotation, intervalMoveSemesters, intervalAnimation } from '../functions/coursePageFunctions';
+
+import { Semester } from './components/course/semester';
+import { Point } from './components/course/point';
 
 import medalImg from '../asset/img/course/medal-white.png';
 import dateImg from '../asset/img/course/calendar-pink.png';
@@ -17,7 +20,7 @@ import '../asset/css/course/style.scss';
 import '../asset/css/course/semester-page.scss';
 import '../asset/css/course/dark-style.scss';
 
-import { Semester } from '../objects/semester';
+import { Semester as SemesterObject } from '../objects/semester';
 
 import semesterJson from '../asset/data/course/semester.json';
 
@@ -45,7 +48,7 @@ const Course = () => {
 
     ManageBody.changeClass('course');
 
-    const semesters = Semester.processRow(semesterJson);
+    const semesters = SemesterObject.processRow(semesterJson);
 
     let timelineRef = useRef(null);
     let pointsContainers = useRef([]);
@@ -156,9 +159,8 @@ const Course = () => {
                     <div id="points">
                         {semesters.map((semester, i) => {
                             return (
-                                <div ref={ point => (pointsContainers.current[i] = point) } className="point-container" datadate={ semester.formatStartingDate() }>
-                                    <div className="point"></div>
-                                </div>
+                                <Point ref={ point => (pointsContainers.current[i] = point )} 
+                                semester={ semester } key={ i } />
                             );
                         })}
                     </div>
@@ -166,21 +168,13 @@ const Course = () => {
                         <div id="view"></div>
                         { semesters.map((semester, i) => {
                             return (
-                                <div className="semester animate" initial-x={ (Math.floor(Math.random() * 20) - 10) } ref={ semester => (semestersRef.current[i] = semester) } onMouseOver={ () => colorButtonsAssociateToSemester(i) } onClick={ () => onclickSemester(i) } onMouseOut={ () => uncolorButtonsAssociateToSemester(i) }>
-                                    <div className="title-semester-container">
-                                        <img src={ semester.getIcon() } alt="icon-study" draggable="false" />
-                                        <h1 className="title-semester">{ semester.title }</h1>
-                                        <div className="arrow-container">
-                                            <div className="arrow" onClick={ (event) => 
-                                                { event.stopPropagation(); openSemesterPage(semester); } 
-                                            }></div>
-                                        </div>
-                                    </div>
-                                    <p className="semester-description" dangerouslySetInnerHTML={{ __html : semester.description }}></p>
-                                    <div className="bottom-semester-container">
-                                        <div className="bottom-semester"></div>
-                                    </div>
-                                </div>
+                                <Semester semester={ semester } key={ i }
+                                ref={ semester => (semestersRef.current[i] = semester) } 
+                                clickSemester={ () => onclickSemester(i) } 
+                                colorPoint={ () => colorPointAssociateToSemester(i) } 
+                                uncolorPoint={ () => uncolorPointAssociateToSemester(i) } 
+                                openSemesterPage={ (event) => { event.stopPropagation(); openSemesterPage(semester); } 
+                                } />
                             );
                         }) }
                     </div>

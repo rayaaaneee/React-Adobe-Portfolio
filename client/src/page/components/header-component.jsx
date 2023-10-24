@@ -7,7 +7,7 @@ import '../../asset/css/media/header/style.scss';
 
 import themeContext from '../../functions/contexts/themeContext';
 
-const HeaderComponent = (props) => {
+const HeaderComponent = () => {
 
     const { isDarkTheme, setIsDarkTheme } = useContext(themeContext);
 
