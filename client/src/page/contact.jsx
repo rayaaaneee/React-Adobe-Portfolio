@@ -5,7 +5,7 @@ import { ManageBody } from '../functions/manageBody';
 
 import { ModalMessage } from './components/modal-message';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import '../asset/css/contact/style.scss';
 import '../asset/css/contact/dark-style.scss';
@@ -87,80 +87,74 @@ const Contact = () => {
         else {
             trySend(messageInput.current.value);
             e.currentTarget.form.reset();
+            setNbChars(0);
         }
     }
-
-    let nbCharsLeftContainerRef = useRef(null);
-    let charsLeftToModifyRef = useRef(null);
-    let nbCharsLeftTextRef = useRef(null);
-    let nbCharsLeftSpinnerRef = useRef(null);
 
     const textareaMaxLength = 300;
 
-    let oldNbCharsLeft;
-    const getNbCharsLeft = () => {
-        // On recupère le nombre de caractères max et on le soustrait au nombre de caractères actuel
-        let nbCharsLeft = textareaMaxLength - messageInput.current.value.length;
+    let oldNbChars = 0;
 
-        if (nbCharsLeft <= 0) {
-            messageInput.current.value = messageInput.current.value.substring(0, textareaMaxLength);
-            nbCharsLeft = 0;
+    const switchNbCharsText = (charsLeft) => {
+        let text;
+        switch (charsLeft) {
+            case 0:
+                text = "• Aucun caractère restant";
+                break;
+            case 1:
+                text = "caractère restant";
+                break;
+            default:
+                text = `caractères restants`;
+                break;
         }
-
-        charsLeftToModifyRef.current.innerHTML = nbCharsLeft;
-
-        charsLeftToModifyRef.current.classList.add('visible');
-        nbCharsLeftSpinnerRef.current.classList.add('visible');
-
-        if (nbCharsLeft === 0) {
-            nbCharsLeftTextRef.current.innerHTML = "• Aucun caractère restant";
-            charsLeftToModifyRef.current.classList.remove('visible');
-            nbCharsLeftSpinnerRef.current.classList.remove('visible');
-            animateScale(nbCharsLeft, oldNbCharsLeft);
-        } else {
-            if (nbCharsLeft === 1) {
-                nbCharsLeftTextRef.current.innerHTML = "caractère restant";
-            } else {
-                nbCharsLeftTextRef.current.innerHTML = "caractères restants";
-            }
-        }
-
-        oldNbCharsLeft = nbCharsLeft;
-        changeColorNbCharsLeft();
+        return text;
     }
 
-    const animateScale = (nbCharsLeft, oldNbCharsLeft) => {
-        if (nbCharsLeft === 0 && oldNbCharsLeft === 0) {
-            nbCharsLeftTextRef.current.classList.add('scale');
+    const handleChars = (e) => {
+        // On recupère le nombre de caractères max et on le soustrait au nombre de caractères actuel
+        
+        if (messageInput.current.value.length > textareaMaxLength) {
+            messageInput.current.value = messageInput.current.value.substring(0, textareaMaxLength);
+        }
+        
+        oldNbChars = nbChars;
+        setNbChars(messageInput.current.value.length);
+    }
+
+    const [isScalingCharsLeft, setIsScalingCharsLeft] = useState(false);
+    const animateScale = () => {
+        console.log(nbChars, textareaMaxLength, oldNbChars);
+        if (nbChars === textareaMaxLength && oldNbChars === textareaMaxLength) {
+            setIsScalingCharsLeft(true);
             setTimeout(() => {
-                nbCharsLeftTextRef.current.classList.remove('scale');
+                setIsScalingCharsLeft(false);
             }, 100);
         }
     }
 
-    const changeColorNbCharsLeft = () => {
+    const [charsLeftColor, setCharsLeftColor] = useState('rgb(0, 0, 0)');
+    const changeColorNbCharsLeft = (newNbCharsLeft) => {
         // Plus le nombre de caractères restants est faible, plus la couleur est rouge
-        let color = null;
+        let redShade = null;
         if (ManageThemes.isDarkTheme) {
-            color = Math.round(0 + charsLeftToModifyRef.current.innerHTML * 255 / 300);
+            redShade = Math.round(newNbCharsLeft * (255 / 300));
         } else {
-            color = Math.round(255 - charsLeftToModifyRef.current.innerHTML * 255 / 300);
+            redShade = Math.round(255 - newNbCharsLeft * (255 / 300));
         }
-    
-        charsLeftToModifyRef.current.style.color = `rgb(${color}, 0, 0)`;
-        nbCharsLeftTextRef.current.style.color = `rgb(${color}, 0, 0)`;
-        nbCharsLeftSpinnerRef.current.querySelectorAll('div').forEach((element) => {
-            element.style.backgroundColor = `rgb(${color}, 0, 0)`;
-        });
+
+        setCharsLeftColor(`rgb(${redShade}, 0, 0)`);
     }
 
-    const appearCharsLeft = () => {
-        nbCharsLeftContainerRef.current.classList.add('visible');
-    }
+    const [isAppearCharsLeft, setIsAppearCharsLeft] = useState(false);
 
-    const disappearCharsLeft = () => {
-        nbCharsLeftContainerRef.current.classList.remove('visible');
-    }
+    const [nbChars, setNbChars] = useState(0);
+    const nbCharsLeft = useMemo(() => {
+        let newNbCharsLeft = textareaMaxLength - nbChars;
+        changeColorNbCharsLeft(newNbCharsLeft); 
+        animateScale();
+        return newNbCharsLeft;
+    }, [nbChars]);
 
     return (
         <>
@@ -184,57 +178,44 @@ const Contact = () => {
                     <div className="form-container">
                         <div className="formulaire animate">
                             <form id="sendMessageForm">
-                                <table className="form-style">
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                Votre nom <span className="required">*</span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <input ref={nameInput} type="text" name="name" className="long" required placeholder="Nom Prénom" />
-                                            <span ref={errornameRef} className="error" id="errorname"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                Votre adresse e-mail <span className="required">*</span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <input ref={emailInput} type="email" name="email" className="long" required placeholder="example@mail.com" />
-                                            <span ref={erroremailRef} className="error" id="erroremail"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                Message <span className="required">*</span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <textarea ref={messageInput} name="message" className="long field-textarea" required placeholder="Voici mon message.." onInput={getNbCharsLeft} onFocus={appearCharsLeft} onBlur={disappearCharsLeft}></textarea>
-                                            <span ref={errormsgRef} className="error" id="errormsg"></span>
-                                            <div ref={nbCharsLeftContainerRef} className="nb-chars-left">
-                                                <p className="to-modify visible" ref={charsLeftToModifyRef}>{textareaMaxLength}</p>
-                                                <p ref={nbCharsLeftTextRef} className="nb-chars-left-text">caractères restants</p>
-                                                <div className="spinner visible" ref={nbCharsLeftSpinnerRef}>
-                                                    <div className="bounce1 bounce"></div>
-                                                    <div className="bounce2 bounce"></div>
-                                                    <div className="bounce3 bounce"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td className="input-container">
-                                            <input type="submit" readOnly className="orange-buttons" value="Envoyer" onClick={ validateForm } />
-                                            <input readOnly className="orange-buttons"  type="reset" value="Réinitialiser" />
-                                        </td>
-                                    </tr>
-                                </table>
+
+                                <div className='input-container'>
+                                    <label htmlFor='name'>
+                                        Votre nom <span className="required">*</span>
+                                    </label>
+                                    <input ref={nameInput} type="text" name="name" required placeholder="Nom Prénom" maxLength="50" />
+                                    <span ref={errornameRef} className="error" id="errorname"></span>
+                                </div>
+
+                                <div className='input-container'>
+                                    <label htmlFor='email'>
+                                        Votre adresse e-mail <span className="required">*</span>
+                                    </label>
+                                    <input ref={emailInput} type="email" name="email" required placeholder="example@mail.com" maxLength="50" />
+                                    <span ref={erroremailRef} className="error" id="erroremail"></span>
+                                </div>
+
+                                <div className='input-container'>
+                                    <label htmlFor='name'>
+                                        Message <span className="required">*</span>
+                                    </label>
+                                    <textarea ref={messageInput} name="message" required placeholder="Voici mon message.." onInput={ handleChars } onFocus={() => setIsAppearCharsLeft(true) } onBlur={ () => setIsAppearCharsLeft(false) }></textarea>
+                                    <span ref={errormsgRef} className="error" id="errormsg"></span>
+                                    <div className={`nb-chars-left ${ isAppearCharsLeft && 'visible'}`}>
+                                        <p className="to-modify" style={{ color: charsLeftColor}}>{ nbCharsLeft > 0 && nbCharsLeft }</p>
+                                        <p className={`nb-chars-left-text ${isScalingCharsLeft && 'scale'}`} style={{ color: charsLeftColor}}>{ switchNbCharsText( nbCharsLeft ) }</p>
+                                        <div className="spinner">
+                                            <div className="bounce1 bounce" style={{ backgroundColor: charsLeftColor}}></div>
+                                            <div className="bounce2 bounce" style={{ backgroundColor: charsLeftColor}}></div>
+                                            <div className="bounce3 bounce" style={{ backgroundColor: charsLeftColor}}></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="buttons-container">
+                                    <input type="submit" readOnly className="orange-buttons" value="Envoyer" onClick={ validateForm } />
+                                    <input readOnly className="orange-buttons"  type="reset" value="Réinitialiser" />
+                                </div>
                             </form>
                         </div>
                     </div>

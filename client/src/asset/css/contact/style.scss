@@ -1,91 +1,93 @@
 $general-transition-switch-mode: 0.2s;
 
 body.contact {
-    .form-style {
+    form {
       width: 400px;
-      padding: 10px 20px;
-    }
-  .form-style td {
-      padding: 0;
-      display: block;
-      list-style: none;
-    }
-  .form-style .required{
-      color:#ff0000;
-    }
-  .form-style input.orange-buttons{
-      background: rgb(235, 177, 89);
-      padding: 8px 15px 8px 15px;
-      border: none;
-      color: #fff;
-      text-align: center;
-    }
-    .form-style input.orange-buttons:hover, .form-style input.orange-buttons:hover{
-      background: rgb(236, 140, 84);
-      box-shadow:none;
-      -moz-box-shadow:none;
-      -webkit-box-shadow:none;
-      color: white;
-    }
-    .form-style .field-textarea{
-      height: 100px;
-      resize: none;
-    }
-    .form-style input[type=text], 
-    .form-style input[type=email],
-    textarea{
-      box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      border:1px solid #BEBEBE;
-      padding: 7px;
-      margin:0px;
-      outline: none;  
-    }
-    .form-style .long{
-      width: 100%;
-    }
-    
-    .form-style input[type=text]:focus, 
-    .form-style input[type=email]:focus,
-    .form-style textarea:focus{
-      box-shadow: 0 0 0 4px rgb(232, 181, 39);
-    } 
-    .error{
-      color: rgb(227, 153, 100);
-      font-size: 13px;
-      font-weight: 500;
-      margin-top: 30px;
-    }
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
 
-    td {
-      margin-bottom: 10px;
-    }
+      .required{
+          color:#ff0000;
+      }
 
-    label {
-      font-weight: bold;
+      .buttons-container {
+        input {
+            transition: background-color 0.4s ease-in-out;
+            background: rgb(235, 177, 89);
+            padding: 8px 15px 8px 15px;
+            border: none;
+            color: #fff;
+            text-align: center;
+
+            &:hover {
+                background: rgb(236, 140, 84);
+                box-shadow:none;
+                -moz-box-shadow:none;
+                -webkit-box-shadow:none;
+                color: white;
+            }
+          }
+      }
+
+      .input-container {
+
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        label {
+          font-weight: bold;
+          margin: 0;
+        }
+
+        textarea{
+          height: 100px;
+          resize: none;
+        }
+
+        input, textarea{
+          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          padding: 7px;
+          margin:0px;
+          width: 100%;
+          backdrop-filter: blur(15px);
+          border: none;
+          outline: none;
+          border-radius: 10px;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          $boxShadowColor: rgb(232, 181, 39);
+          &:focus {
+            animation: appearShadow 0.3s forwards;
+            @keyframes appearShadow {
+              from {
+                box-shadow: 0 0 0 0 $boxShadowColor;
+              }
+              to {
+                box-shadow: 0 0 0 2.5px $boxShadowColor;
+              }
+            }
+          }
+        }
+      }
+      .error{
+        color: rgb(227, 153, 100);
+        font-size: 13px;
+        font-weight: 500;
+      }
     }
 
     /* Centrer le formulaire */
     .formulaire > form {
       width: 400px;
       margin: 0 auto;
-    }
-
-    /* Style des champs du formulaire */
-    input, textarea {
-      width: 100%;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      background-color: #fff;
-      box-sizing: border-box;
-      margin-top: 6px;
-      resize: vertical;
-    }
-
-    input {
-      margin-bottom: 16px;
     }
 
   /* Définition case rose avec texte */
@@ -186,8 +188,12 @@ body.contact {
     align-items: start;
   }
 
-  .input-container > input {
+  .buttons-container > input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
     cursor: pointer;
+    margin-bottom: 16px;
   }
 
   /* On met un ecart entre le footer et le reste */
@@ -219,11 +225,7 @@ body.contact {
 
     & > .to-modify {
       margin : 0 0 0 1vw;
-      display: none;
-
-      &.visible {
-        display: block;
-      }
+      display: block;
     }
 
     & > .nb-chars-left-text {
@@ -240,11 +242,7 @@ body.contact {
       text-align: center;
       transform: translateY(18%);
       transition: opacity 0.2s;
-      opacity: 0;
-
-      &.visible { 
-        opacity: 1;
-      }
+      opacity: 1;
 
       & > div {
         width: 18px;
@@ -255,6 +253,21 @@ body.contact {
         display: inline-block;
         -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
         animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      }
+
+      @-webkit-keyframes sk-bouncedelay {
+        0%, 80%, 100% { -webkit-transform: scale(0) }
+        40% { -webkit-transform: scale(0.7) }
+      }
+    
+      @keyframes sk-bouncedelay {
+        0%, 80%, 100% { 
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        } 40% { 
+          -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+        }
       }
 
       .bounce1 {
@@ -268,21 +281,6 @@ body.contact {
       }
     }
 
-  }
-
-  @-webkit-keyframes sk-bouncedelay {
-    0%, 80%, 100% { -webkit-transform: scale(0) }
-    40% { -webkit-transform: scale(0.7) }
-  }
-
-  @keyframes sk-bouncedelay {
-    0%, 80%, 100% { 
-      -webkit-transform: scale(0);
-      transform: scale(0);
-    } 40% { 
-      -webkit-transform: scale(0.7);
-      transform: scale(0.7);
-    }
   }
 
   /* Ajout cas blanche autour du formulaire */

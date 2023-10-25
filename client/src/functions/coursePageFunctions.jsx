@@ -20,6 +20,11 @@ export const setSemesters = (semestersTmp) => {
     semesters = semestersTmp
 }
 
+let timeline;
+export const setTimeline = (timelineTmp) => {
+    timeline = timelineTmp
+}
+
 export const initHeight = () => {
     height = window.innerHeight;
     bordersScreen = (height / 20);
@@ -226,4 +231,39 @@ export const main = () => {
     initHeight();
     moveSemesters(1);
     intervalMoveSemesters = setInterval(moveSemesters, 3000);
+}
+
+export const onScroll = () => {
+    // Mouvement de la barre
+    if (window.scrollY < height) {
+        setBarCentered(false);
+        let translateValue = (height - (window.scrollY) * 1.7);
+        if (translateValue < 0) {
+            setBarCentered(true);
+            translateValue = 0;
+        }
+        timeline.style.transform = "translateY(" + translateValue + "px)";
+    } else {
+        timeline.removeAttribute("style");
+    }
+
+    // Modifications des points
+    let pointMarginTop = null;
+    pointsContainers.forEach((point, index) => {
+
+        let scrollValue = window.scrollY;
+        pointMarginTop = point.querySelector(".point").offsetTop - scrollValue + margin;
+
+        if (isInSide(pointMarginTop)) {
+            point.style.opacity = 0;
+        } else {
+            point.style.opacity = 1;
+        }
+
+        let distanceMid = distanceMiddle(pointMarginTop);
+
+        // Plus le point est proche du milieu de l'écran, plus il est grand
+        pointRotation[index] = -pointMarginTop / 3;
+        point.querySelector(".point").style.transform = "rotate(" + pointRotation[index] + "deg) scale(" + getNewScale(distanceMid) + ")";
+    });
 }

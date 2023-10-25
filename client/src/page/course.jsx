@@ -3,9 +3,8 @@ import { animateImageLoading } from '../functions/animateImageLoading';
 import { ManageBody } from '../functions/manageBody';
 import { useEffect, useRef, useState } from 'react';
 import { useConditionalEffect } from '../functions/useConditionalEffect';
-import { main, distanceMiddle, getNewScale, isInSide, initHeight, colorPointAssociateToSemester, 
-uncolorPointAssociateToSemester, onclickSemester, setPointsContainers, setSemesters, setBarCentered, 
-height, margin, pointRotation, intervalMoveSemesters, intervalAnimation } from '../functions/coursePageFunctions';
+import { main, initHeight, colorPointAssociateToSemester, 
+uncolorPointAssociateToSemester, onclickSemester, setPointsContainers, setSemesters, setTimeline, intervalMoveSemesters, intervalAnimation, onScroll } from '../functions/coursePageFunctions';
 
 import { Semester } from './components/course/semester';
 import { Point } from './components/course/point';
@@ -34,6 +33,7 @@ const Course = () => {
         document.title = 'Mon parcours';
         setPointsContainers(pointsContainers.current);
         setSemesters(semestersRef.current);
+        setTimeline(timelineRef.current);
         main();
 
         document.addEventListener('resize', initHeight);
@@ -60,41 +60,6 @@ const Course = () => {
             // Remplacement du hash dans l'URL affichée dans la barre d'adresse
             window.history.replaceState(null, null, window.location.href.split('#')[0]);
         }, 0);
-    }
-
-    const onScroll = () => {
-        // Mouvement de la barre
-        if (window.scrollY < height) {
-            setBarCentered(false);
-            let translateValue = (height - (window.scrollY) * 1.7);
-            if (translateValue < 0) {
-                setBarCentered(true);
-                translateValue = 0;
-            }
-            timelineRef.current.style.transform = "translateY(" + translateValue + "px)";
-        } else {
-            timelineRef.current.removeAttribute("style");
-        }
-
-        // Modifications des points
-        let pointMarginTop = null;
-        pointsContainers.current.forEach((point, index) => {
-
-            let scrollValue = window.scrollY;
-            pointMarginTop = point.querySelector(".point").offsetTop - scrollValue + margin;
-
-            if (isInSide(pointMarginTop)) {
-                point.style.opacity = 0;
-            } else {
-                point.style.opacity = 1;
-            }
-
-            let distanceMid = distanceMiddle(pointMarginTop);
-
-            // Plus le point est proche du milieu de l'écran, plus il est grand
-            pointRotation[index] = -pointMarginTop / 3;
-            point.querySelector(".point").style.transform = "rotate(" + pointRotation[index] + "deg) scale(" + getNewScale(distanceMid) + ")";
-        });
     }
 
     const [semesterPageIsOpen, setSemesterPageIsOpen] = useState(false);

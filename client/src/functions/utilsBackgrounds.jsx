@@ -60,14 +60,14 @@ export class Parallax {
 
     x;
 
-    onScroll;
+    onScrollListener;
 
     constructor(element) {
         this.element = element;
         this.ratio = parseFloat(element.getAttribute('speedparallax'));
         this.x = 0;
-        this.onScroll = this.onScroll.bind(this);
-        document.addEventListener('scroll', this.onScroll);
+        this.onScrollListener = this.onScrollListener.bind(this);
+        document.addEventListener('scroll', this.onScrollListener);
     }
 
     /** 
@@ -82,12 +82,12 @@ export class Parallax {
     /**
      * @param {Event} event - Scroll event
      */
-    onScroll = () => {
+    onScrollListener = () => {
         this.x = window.scrollY * this.ratio;
         this.element.style.transform = `translateY(${this.x}px)`;
     }
 
     removeListeners = () => {
-        document.removeEventListener('scroll', this.onScroll);
+        document.removeEventListener('scroll', this.onScrollListener);
     }
 }
