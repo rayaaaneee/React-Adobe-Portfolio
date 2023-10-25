@@ -1,4 +1,4 @@
-export const Project = ({ project, key, colorBar, uncolorBar, openProjectPage, shrinkImg, growImg, isDarkTheme, darkLinkImg, darkDownloadImg, linkImg, downloadImg }) => {
+export const Project = ({ project, key, colorBar, uncolorBar, openProjectPage, isDarkTheme, darkLinkImg, darkDownloadImg, linkImg, downloadImg }) => {
     return (
         <div
         className="main-container animate"
@@ -7,7 +7,7 @@ export const Project = ({ project, key, colorBar, uncolorBar, openProjectPage, s
         onClick={ openProjectPage }
         data-date={ project.getFormatDate() }
         key={ key } >
-            <div className="content" onMouseOver={ growImg } onMouseLeave={ shrinkImg } >
+            <div className="content">
                 <div className="to_download">
                     <p>{ project.getTitle() }</p>
                     <img alt='download-link' src={ 

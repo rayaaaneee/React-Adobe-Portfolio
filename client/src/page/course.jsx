@@ -30,12 +30,12 @@ const Course = () => {
     useEffect(() => {
         animateApparition();
         animateImageLoading();
-        
+
         document.title = 'Mon parcours';
         setPointsContainers(pointsContainers.current);
         setSemesters(semestersRef.current);
         main();
-        
+
         document.addEventListener('resize', initHeight);
         document.addEventListener('scroll', onScroll);
         return () => {

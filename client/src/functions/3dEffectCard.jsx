@@ -1,6 +1,5 @@
-export const animateCards = () => {
+export const animateCards = (cards) => {
 
-    const cards = document.querySelectorAll('.card');
     var lastCardClicked = null;
 
     const startRotate = (event) => {

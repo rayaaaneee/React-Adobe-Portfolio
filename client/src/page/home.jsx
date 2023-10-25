@@ -60,6 +60,7 @@ const Home = () => {
 
     let projectsObjects = [];
     projectJson.projects.forEach(project => {
+
       let projectObject = new ProjectObject(project);
 
       let projectIconImg = require('../asset/img/home/project-logos/' + projectObject.getIcon() + '.png');
@@ -77,10 +78,6 @@ const Home = () => {
         let schoolCompetenceObject = new SchoolCompetence(school_competence);
         schoolCompetenceObjects.push(schoolCompetenceObject);
     });
-  
-    const growImg = () => {}
-  
-    const shrinkImg = () => {}
   
     const colorBar = () => {}
   
@@ -107,7 +104,7 @@ const Home = () => {
             setTimeout(() => {
               document.body.style.removeProperty('overflow-y');
               projectPageRef.current.classList.remove('hidden');
-            }, 500);
+            }, 1000);
         }
     }, [projectPageIsVisible]);
 
@@ -159,9 +156,20 @@ const Home = () => {
 
     var [isCvInformationsVisible, setCvInformationsVisible] = useState(false);
 
+    const chevrons = useRef({
+      left: null,
+      right: null
+    });
+    const projects = useRef([]);
+
+    const cards = useRef([]);
     useEffect(() => {
-      new ScrollProjects();
-      animateCards();
+      const scrollProjects = new ScrollProjects(projects.current, chevrons.current.left, chevrons.current.right);
+      animateCards(cards.current);
+
+      return () => {
+        scrollProjects.removeListeners();
+      }
     });
 
     const currentProjectViewingRef = useRef(null);
@@ -197,21 +205,20 @@ const Home = () => {
                   </div>
                   <div className="horizontal-bars animate" id="horizontal-bar1"></div>
                   <div className="projects-chevrons-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron left animate">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron left animate" ref={(chevron) => (chevrons.current.left = chevron) }>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                     </svg>
-                    <article className="projects">
+                    <article className="projects" ref={ projects }>
                     { projectsObjects.map((project, i) => (
                       <Project project={ project } key={i} colorBar={ () => colorBar(1) } 
                       uncolorBar={ () => uncolorBar(1) } 
                       openProjectPage={ () => openProjectPage(project) } 
-                      shrinkImg={ () => shrinkImg(i) } growImg={ () => { growImg(i) } } 
                       isDarkTheme={isDarkTheme} darkLinkImg={darkLinkImg} 
                       darkDownloadImg={darkDownloadImg} linkImg={linkImg} 
                       downloadImg={downloadImg} />
                     ))}
                     </article>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron right animate">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron right animate" ref={(chevron) => (chevrons.current.right = chevron) }>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
                   </div>
@@ -404,7 +411,7 @@ const Home = () => {
                   <div className="horizontal-bars animate" id="horizontal-bar3"></div>
                   <div className="school-competence-container">
                     { schoolCompetenceObjects.map((competence, i) => (
-                      <CompetenceCard competence={ competence } key={i} />
+                      <CompetenceCard competence={ competence } key={i} ref={ card => (cards.current[i] = card) } />
                     ))}
                   </div>
                 </article>

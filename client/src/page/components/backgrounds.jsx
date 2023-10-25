@@ -1,18 +1,46 @@
-import { moveBackgrounds, Parallax } from '../../functions/moveBackgrounds';
-import { useEffect } from 'react';
+import { MoveBackground, Parallax } from '../../functions/utilsBackgrounds';
+import { useEffect, useRef } from 'react';
 
 const Backgrounds = () => {
 
+    const backgroundsObjects = [
+        {
+            speedparallax : 0.02,
+            speedtranslate : 0.6
+        },
+        {
+            speedparallax : -0.03,
+            speedtranslate : 0.7
+        },
+        {
+            speedparallax : -0.05,
+            speedtranslate : 0.73
+        }
+    ]
+
+    const backgrounds = useRef([]);
+
     useEffect(() => {
-        moveBackgrounds();
-        Parallax.bind();
+        const moveBackgrounds = MoveBackground.bind(backgrounds.current);
+        const backgroundsParallaxes = Parallax.bind(backgrounds.current);
+        return () => {
+            backgroundsParallaxes.forEach((background) => {
+                background.removeListeners();
+            });
+            moveBackgrounds.forEach((background) => {
+                background.removeIntervals();
+            });
+        }
     }, []);
 
     return (
         <>
-            <div id="background1" className="background" speedparallax="0.02" speedtranslate="0.6"></div>
-            <div id="background2" className="background" speedparallax="-0.03" speedtranslate="0.7"></div>
-            <div id="background3" className="background" speedparallax="-0.05" speedtranslate="0.73"></div>
+            { backgroundsObjects.map((background, i) => {
+                return (
+                    <div id={ `background${ i + 1 }` } ref={ background => backgrounds.current[i] = background } 
+                    className="background" speedparallax={ background.speedparallax } speedtranslate={ background.speedtranslate }></div>
+                );
+            }) }
         </>
     );
 }
