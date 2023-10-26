@@ -37,7 +37,7 @@ const Backgrounds = () => {
         <>
             { backgroundsObjects.map((background, i) => {
                 return (
-                    <div id={ `background${ i + 1 }` } ref={ background => backgrounds.current[i] = background } 
+                    <div id={ `background${ i + 1 }` } key={ i } ref={ background => backgrounds.current[i] = background } 
                     className="background" speedparallax={ background.speedparallax } speedtranslate={ background.speedtranslate }></div>
                 );
             }) }

@@ -104,7 +104,7 @@ const Home = () => {
             setTimeout(() => {
               document.body.style.removeProperty('overflow-y');
               projectPageRef.current.classList.remove('hidden');
-            }, 1000);
+            }, 500);
         }
     }, [projectPageIsVisible]);
 

@@ -74,7 +74,7 @@ body.home {
             }
 
             .background-project-page {
-                animation: appear forwards 0.2s;
+                animation: appear forwards 0.4s;
 
                 @keyframes appear {
                     to {
@@ -102,8 +102,9 @@ body.home {
             }
 
             .background-project-page {
+
                 opacity: 1;
-                animation: disappear forwards 0.4s;
+                animation: disappear 0.5s forwards;
 
                 @keyframes disappear {
                     from {
@@ -117,7 +118,7 @@ body.home {
 
             .project-page-content {
                 *:not(.background-project-page) {
-                    animation: translateY forwards 0.3s;
+                    animation: translateY 0.7s forwards;
     
                     @keyframes translateY {
                         from {

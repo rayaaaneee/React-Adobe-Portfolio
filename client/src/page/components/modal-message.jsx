@@ -5,16 +5,16 @@ import '../../asset/css/modal/message-modal.scss';
 
 // Utiliser createPortal pour afficher le modal
 
-export const ModalMessage = ({ isSuccess, messages, closeModal }) => {
+export const ModalMessage = ({ informations, closeModal }) => {
 
     // Durée de l'animation en secondes
     const modalDuration = 4;
 
-    let modalStatus = isSuccess ? "success" : "error";
+    let modalStatus = informations.getStatus();
 
     const modalRef = useRef(null);
 
-    const message = isSuccess ? (messages.success) : (messages.error);
+    const message = informations.getMessage();
     let crossClicked = false;
 
     const crossClick = () => {
@@ -39,7 +39,8 @@ export const ModalMessage = ({ isSuccess, messages, closeModal }) => {
                     <div className="bar"></div>
                 </div>
             </div>
-            <img src={ require(`../../asset/img/modal/${ modalStatus }.png`) } alt={ modalStatus } draggable="false" />
+            <img src={ require(`../../asset/img/modal/${ modalStatus }.png`) } 
+            alt={ modalStatus } draggable="false" />
             <div className={`${ modalStatus }-message`}>
                 <p>{ message }</p>
             </div>

@@ -1,6 +1,6 @@
 import { animateApparition } from '../functions/appearence';
 import { animateImageLoading } from '../functions/animateImageLoading';
-import { sendMessage } from '../functions/message';
+import { sendMessage } from '../functions/sendMessage';
 import { ManageBody } from '../functions/manageBody';
 
 import { ModalMessage } from './components/modal-message';
@@ -13,6 +13,7 @@ import '../asset/css/media/contact/style.scss';
 
 import contactImg from '../asset/img/contact/contact.png';
 import { ManageThemes } from '../functions/manageThemes';
+import { ModalInformations } from '../objects/modal-informations';
 
 
 const Contact = () => {
@@ -20,7 +21,7 @@ const Contact = () => {
     useEffect(() => {
         animateApparition();
         animateImageLoading();
-    }, []);;
+    }, []);
 
     ManageBody.changeClass('contact');
 
@@ -37,16 +38,20 @@ const Contact = () => {
     let errormsgRef = useRef(null);
 
     const [sendIsSuccess, setSendIsSuccess] = useState(null);
-    const sendAnswers = {
-        success : "Votre message a bien été envoyé !", 
-        error : "Une erreur est survenue lors de l'envoi de votre message."
-    }
+    const [modalInformations, setModalInformations] = useState(new ModalInformations(
+        "Votre message a bien été envoyé !",
+        "Une erreur est survenue lors de l'envoi du message.",
+    ));
 
     const trySend = (message) => {
-        sendMessage()
+        sendMessage(message)
         .then((response) => {
 
             let isSuccess = (response === 200);
+            setModalInformations((informations) => {
+                informations.setSuccess(isSuccess);
+                return informations;
+            });
 
             setSendIsSuccess(isSuccess);
 
@@ -62,25 +67,26 @@ const Contact = () => {
         e.preventDefault();
 
         let firsterror = null;
-
-        errornameRef.current.innerHTML = "";
-        erroremailRef.current.innerHTML = "";
-        errormsgRef.current.innerHTML = "";
-
         if (isEmpty(nameInput.current.value)) {
             errornameRef.current.innerHTML = "• Veuillez entrez un nom valide";
             if (!firsterror) firsterror = nameInput.current;
+        } else {
+            errornameRef.current.innerHTML = "";
         }
 
         let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,5})+$/;
         if (!emailPattern.test(emailInput.current.value)) {
             erroremailRef.current.innerHTML = "• Veuillez entrez une adresse mail valide";
             if (!firsterror) firsterror = emailInput.current;
+        } else {
+            erroremailRef.current.innerHTML = "";
         }
 
         if (isEmpty(messageInput.current.value)) {
             errormsgRef.current.innerHTML = "• Veuillez entrez un message valide";
             if (!firsterror) firsterror = messageInput.current;
+        } else {
+            errormsgRef.current.innerHTML = "";
         }
 
         if (firsterror) firsterror.focus();
@@ -92,8 +98,8 @@ const Contact = () => {
     }
 
     const textareaMaxLength = 300;
-
-    let oldNbChars = 0;
+    const nameInputMaxLength = 50;
+    const emailInputMaxLength = 50;
 
     const switchNbCharsText = (charsLeft) => {
         let text;
@@ -111,20 +117,29 @@ const Contact = () => {
         return text;
     }
 
-    const handleChars = (e) => {
-        // On recupère le nombre de caractères max et on le soustrait au nombre de caractères actuel
-        
-        if (messageInput.current.value.length > textareaMaxLength) {
-            messageInput.current.value = messageInput.current.value.substring(0, textareaMaxLength);
+    const verifyLength = (input, maxLength) => {
+        if (input.value.length > maxLength) {
+            input.value = input.value.substring(0, maxLength);
         }
-        
-        oldNbChars = nbChars;
+    }
+
+    const [oldNbChars, setOldNbChars] = useState(0);
+    const [textareaHasChanged, setTextareaHasChanged] = useState(false);
+    const handleChars = () => {
+        // On recupère le nombre de caractères max et on le soustrait au nombre de caractères actuel
+        verifyLength(messageInput.current, textareaMaxLength);
+
+        let oldNbCharsTmp = nbChars.valueOf();
+
+        setOldNbChars(oldNbCharsTmp);
+
         setNbChars(messageInput.current.value.length);
+
+        nbChars === textareaMaxLength && (setTextareaHasChanged((changed) => !changed));
     }
 
     const [isScalingCharsLeft, setIsScalingCharsLeft] = useState(false);
     const animateScale = () => {
-        console.log(nbChars, textareaMaxLength, oldNbChars);
         if (nbChars === textareaMaxLength && oldNbChars === textareaMaxLength) {
             setIsScalingCharsLeft(true);
             setTimeout(() => {
@@ -152,14 +167,17 @@ const Contact = () => {
     const nbCharsLeft = useMemo(() => {
         let newNbCharsLeft = textareaMaxLength - nbChars;
         changeColorNbCharsLeft(newNbCharsLeft); 
-        animateScale();
         return newNbCharsLeft;
     }, [nbChars]);
+
+    useEffect(() => {
+        animateScale();
+    }, [nbChars, textareaHasChanged]);
 
     return (
         <>
             { sendIsSuccess !== null && (
-                <ModalMessage isSuccess={ sendIsSuccess } closeModal={ () => setSendIsSuccess(null) } messages={ sendAnswers } />
+                <ModalMessage informations={ modalInformations } closeModal={ () => setSendIsSuccess(null) }  />
             ) }
             <article id="formContainer">
                 <div className="alert-container"></div>
@@ -183,15 +201,19 @@ const Contact = () => {
                                     <label htmlFor='name'>
                                         Votre nom <span className="required">*</span>
                                     </label>
-                                    <input ref={nameInput} type="text" name="name" required placeholder="Nom Prénom" maxLength="50" />
-                                    <span ref={errornameRef} className="error" id="errorname"></span>
+                                    <input ref={ nameInput } type="text" name="name" required placeholder="Nom Prénom" 
+                                    maxLength={ nameInputMaxLength } 
+                                    onInput={ (event) => (
+                                        verifyLength(event.currentTarget, nameInputMaxLength)) } />
+                                    <span ref={ errornameRef } className="error" id="errorname"></span>
                                 </div>
 
                                 <div className='input-container'>
                                     <label htmlFor='email'>
                                         Votre adresse e-mail <span className="required">*</span>
                                     </label>
-                                    <input ref={emailInput} type="email" name="email" required placeholder="example@mail.com" maxLength="50" />
+                                    <input ref={emailInput} type="email" name="email" required placeholder="example@mail.com" maxLength={ emailInputMaxLength } onInput={ (event) => (
+                                        verifyLength(event.currentTarget, emailInputMaxLength)) } />
                                     <span ref={erroremailRef} className="error" id="erroremail"></span>
                                 </div>
 
@@ -200,7 +222,6 @@ const Contact = () => {
                                         Message <span className="required">*</span>
                                     </label>
                                     <textarea ref={messageInput} name="message" required placeholder="Voici mon message.." onInput={ handleChars } onFocus={() => setIsAppearCharsLeft(true) } onBlur={ () => setIsAppearCharsLeft(false) }></textarea>
-                                    <span ref={errormsgRef} className="error" id="errormsg"></span>
                                     <div className={`nb-chars-left ${ isAppearCharsLeft && 'visible'}`}>
                                         <p className="to-modify" style={{ color: charsLeftColor}}>{ nbCharsLeft > 0 && nbCharsLeft }</p>
                                         <p className={`nb-chars-left-text ${isScalingCharsLeft && 'scale'}`} style={{ color: charsLeftColor}}>{ switchNbCharsText( nbCharsLeft ) }</p>
@@ -210,6 +231,7 @@ const Contact = () => {
                                             <div className="bounce3 bounce" style={{ backgroundColor: charsLeftColor}}></div>
                                         </div>
                                     </div>
+                                    <span ref={errormsgRef} className="error" id="errormsg"></span>
                                 </div>
 
                                 <div className="buttons-container">

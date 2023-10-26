@@ -29,7 +29,7 @@ body.contact#dark {
         &:focus {
             animation: appearShadowDark 0.2s forwards;
       
-            $darkBoxShadowColor: rgb(219, 196, 208);
+            $darkBoxShadowColor: rgb(235, 223, 229);
             @keyframes appearShadowDark {
               from {
                 box-shadow: 0 0 0 0 $darkBoxShadowColor;
