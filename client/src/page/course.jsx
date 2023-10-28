@@ -71,6 +71,7 @@ const Course = () => {
 
     useConditionalEffect(() => {
         if (semesterPageIsOpen) {
+            semesterPage.current.scrollTo(0, 0);
             document.body.style.overflow = "hidden";
             semesterPage.current.classList.add("visible");
         } else {

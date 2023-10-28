@@ -21,6 +21,8 @@ export class Project
     #link;
     #file;
 
+    #size;
+
     #endDate;
     #languages;
     #competences;
@@ -49,6 +51,9 @@ export class Project
 
         this.#usesCompetences = project.competences.length > 0;
         this.#usesLanguages = project.languages.length > 0;
+
+        this.#size = project.size;
+        console.log(this.#size);
 
         this.#languages = new Array();
 
@@ -203,5 +208,10 @@ export class Project
     hasUseDescription()
     {
         return this.#useDescription != null;
+    }
+
+    getSize()
+    {
+        return this.#size;
     }
 }

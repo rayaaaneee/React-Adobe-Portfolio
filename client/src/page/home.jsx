@@ -100,8 +100,8 @@ const Home = () => {
 
     useConditionalEffect(() => {
         if (projectPageIsVisible) {
-          projectPageContentRef.current.scrollTo(0, 0);
-            console.log(projectPageContentRef.current.parentNode);
+            projectPageRef.current.scrollTo(0, 0);
+            projectPageContentRef.current.scrollTo(0, 0);
             document.body.style.overflowY = "hidden";
             projectPageRef.current.classList.add('visible');
         } else {
@@ -312,24 +312,24 @@ const Home = () => {
                         <div className="project-size-container text-project-container">
                           <img src={ whiteMemoryIcon } alt="mémoire-icone" draggable="false" />
                           <p className="page-content">Taille du fichier :</p>
-                          <p className="project-size-value page-content"></p>
-                          <p className="page-content">Mo</p>
+                          <p className="project-size-value page-content">{ currentProject && currentProject.getSize() }</p>
+                          <p className='page-content'> Mo </p>
                         </div>
                         <div className="background-project-page"></div>
                       </div>
+                      <a href={ (currentProject? (currentProject.isLink()?
+                            `/project/${currentProject.getLink()}` 
+                              :
+                            `/project/${currentProject.getFile()}`)
+                            :
+                            null)
+                          } className='current-project-viewing' ref={currentProjectViewingRef}>
+                        <img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
+                      </a>
                       <div title='Quitter' className="quit-project-button" onClick={closeProjectPage}>
                         <p>X</p>
                       </div>
-                    </div>
-                    <a href={ (currentProject? (currentProject.isLink()?
-                          `/project/${currentProject.getLink()}` 
-                            :
-                          `/project/${currentProject.getFile()}`)
-                          :
-                          null)
-                        } className='current-project-viewing' ref={currentProjectViewingRef}>
-                      <img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
-                    </a>
+                  </div>
               </article>
               <h2 className="explicationtext">Vous trouverez ici mes projets importants, qu'ils soient scolaires ou faits de mon côté. <br/>Il vous suffit de cliquer pour les télécharger.</h2>
               {/* Page du CV */}
