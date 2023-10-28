@@ -1,48 +1,51 @@
-$general-transition-switch-mode: 0.2s;
+$general-transition-switch-mode: 0.15s;
 
 body:not(.index) {
-    /* Créer les deux backgrounds orange*/
-    #background1 {
-        background-image: url(../../img/backgrounds/background1.png);
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        bottom : -35vh;
-    }
+  /* Créer les deux backgrounds orange*/
+  #background1 {
+    background-image: url(../../img/backgrounds/background1.png);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    bottom: -35vh;
+  }
 
-    /* Créer les deux backgrounds jaune*/
-    #background2 {
-        background-image: url(../../img/backgrounds/background2.png);
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        bottom : -40vh;
-        display: grid;
-    }
+  /* Créer les deux backgrounds jaune*/
+  #background2 {
+    background-image: url(../../img/backgrounds/background2.png);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    bottom: -40vh;
+    display: grid;
+  }
 
-    /* Créer le background nuage */
-    #background3 {
-        background-image: url(../../img/backgrounds/background3.png);
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        bottom : 7vh;
-        display: grid;
-    }
+  /* Créer le background nuage */
+  #background3 {
+    background-image: url(../../img/backgrounds/background3.png);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    bottom: 7vh;
+    display: grid;
+  }
 
-    /* Position initiale des backgrounds */
-    #background1, #background2 {
-        background-position: center;
-    }
+  /* Position initiale des backgrounds */
+  #background1,
+  #background2 {
+    background-position: center;
+  }
 
-    /* Coller les fonds d'écran au bas de la page */
-    #background1, #background2, #background3 {
-        background-repeat: repeat-x;
-        background-size: contain;
-        z-index: -1;
-    }
+  /* Coller les fonds d'écran au bas de la page */
+  #background1,
+  #background2,
+  #background3 {
+    background-repeat: repeat-x;
+    background-size: contain;
+    z-index: -1;
+  }
 
-    .background {
+      .background {
         transition: all $general-transition-switch-mode ease;
     }
 }

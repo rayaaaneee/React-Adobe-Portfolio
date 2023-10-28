@@ -31,6 +31,9 @@ export class ManageThemes {
           case 'light' :
             newFaviconLink.href = faviconLightTheme;
             break;
+          default :
+            newFaviconLink.href = faviconLightTheme;
+            break;
         }
 
         document.head.querySelector('link[rel="icon"]');
@@ -74,6 +77,9 @@ export class ManageThemes {
                 break;
             case 'dark':
                 ManageThemes.isDarkTheme = true;
+                break;
+            default :
+                ManageThemes.isDarkTheme = false;
                 break;
         }
         ManageThemes.updateTheme();

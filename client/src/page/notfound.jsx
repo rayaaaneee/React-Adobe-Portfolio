@@ -1,7 +1,6 @@
 import { ManageBody } from '../functions/manageBody';
 import { useEffect } from 'react';
-import { animateApparition } from '../functions/apparition';
-import Main from './components/main';
+import { animateApparition } from '../functions/appearence';
 
 const NotFound = () => {
 
@@ -10,19 +9,12 @@ const NotFound = () => {
     ManageBody.changeClass('not-found');
 
     useEffect(() => {
-        document.body.scrollTo(0, 0);
-    }, []);
-
-    useEffect(() => {
         document.title = 'Page introuvable';
     });
 
     return (
         <>
-            <Main child=
-            { 
                 <h1>404</h1>
-            } />
         </>
     );
 }

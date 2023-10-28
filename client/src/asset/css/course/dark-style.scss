@@ -1,0 +1,67 @@
+body.course#dark {
+    background-color : rgb(46 45 45);
+    
+    *:not(.page-title-part) {
+        color: white !important;
+    }
+    
+    .page-title-part {
+        color: rgb(232, 190, 190) !important;
+    }
+    
+    .startbackground {
+        background-color : rgb(0 0 0) !important;
+    }
+    
+    .title-page-project {
+        color : rgb(232, 190, 190) !important;
+    }
+    
+    .explain-container {
+        .explain {
+            background-color : rgb(218 198 198 / 70%);
+        }
+    }
+
+    $color-bottom-and-clicked-project-dark-theme : #dfcace;
+    
+    .project {
+        &.selected {
+            background-color : $color-bottom-and-clicked-project-dark-theme;
+        }
+
+        &:not(.selected) {
+            &:hover {
+                background-color:rgba(245, 239, 239, 0.7);
+            }
+        }
+
+        .bottom-project-container {
+            .bottom-project {
+                background-color: $color-bottom-and-clicked-project-dark-theme;
+            }
+        }
+
+        * {
+            color: black !important;
+        }
+    }
+
+    .point:hover, .body-dark .point.selected {
+        background : linear-gradient(160deg, transparent 60%, rgb(230, 209, 209) 40%);
+    }
+    
+    #timeline::before {
+        background: linear-gradient(50deg, rgba(255, 255, 255, 0.2) 40%, rgba(218, 134, 134, 0.8) 50%, rgba(255, 255, 255, 0.4) 60%);
+    }
+    
+    .explain-container .explain a:hover {
+        background-color: rgb(236 205 205 / 70%);
+    }
+    
+    .point-container::after {
+        background-color: rgb(255 255 255 / 60%);
+        color: black;
+        background-image: url(../../img/course/calendar-black.png);
+    }
+}

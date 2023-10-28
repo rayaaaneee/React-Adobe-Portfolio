@@ -7,7 +7,7 @@ export class ManageLanguages {
     static getLanguage = (name) => {
         let result = null;
         ManageLanguages.languages.forEach(language => {
-            if (language.name.toUpperCase() == name.toUpperCase()) {
+            if (language.name.toUpperCase() === name.toUpperCase()) {
                 result = language;
             }
         });

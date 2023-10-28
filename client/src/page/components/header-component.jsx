@@ -1,51 +1,18 @@
+import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+
 import '../../asset/css/header/style.scss';
 import '../../asset/css/header/dark-style.scss';
 import '../../asset/css/media/header/style.scss';
 
-import { NavLink } from 'react-router-dom';
-import { ManageThemes } from '../../functions/manageThemes';
+import themeContext from '../../functions/contexts/themeContext';
 
-const switchImages = (images, darkImages, states) => {
-    switch (ManageThemes.isDarkTheme) {
-        case true:
-            for (let i = 0; i < states.length; i++) {
-                states[i](darkImages[i]);
-            }
-            break;
-        case false:
-        default:
-            for (let i = 0; i < states.length; i++) {
-                states[i](images[i]);
-            }
-            break;
-    }
+const HeaderComponent = () => {
 
-    invertImages(document.querySelectorAll('[imgLightTheme][imgDarkTheme]'));
-}
-
-const invertImages = (images) => {
-    images.forEach(image => {
-        switch(ManageThemes.isDarkTheme) {
-            case true :
-                image.src = image.getAttribute('imgDarkTheme');
-                break;
-            default :
-            case false :
-                image.src = image.getAttribute('imgLightTheme');
-                break;
-        }
-    });
-}
-
-const HeaderComponent = (props) => {
+    const { isDarkTheme, setIsDarkTheme } = useContext(themeContext);
 
     const changeTheme = () => {
-        ManageThemes.toggleThemes();
-        switchImages(props.images, props.darkImages, props.states);
-    }
-
-    const memorizeBackgroundsPosition = () => {
-        console.log("ok");
+        setIsDarkTheme(!isDarkTheme);
     }
 
     return (
@@ -56,22 +23,22 @@ const HeaderComponent = (props) => {
                         <div className="logo"></div>
                     </NavLink>
                     <li>
-                        <NavLink onClick={ memorizeBackgroundsPosition } className="sites s1" to={"/home"}>
+                        <NavLink className="sites s1" to={"/home"}>
                             <p id="text1">ACCUEIL</p>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink onClick={ memorizeBackgroundsPosition } className="sites s2" to={"/course"}>
+                        <NavLink className="sites s2" to={"/course"}>
                             <p id="text2">PARCOURS</p>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink onClick={ memorizeBackgroundsPosition } className="sites s3" to={"/perso"}>
+                        <NavLink className="sites s3" to={"/perso"}>
                             <p id="text3">PERSO</p>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink onClick={ memorizeBackgroundsPosition } className="sites s4" to={"/contact"}>
+                        <NavLink className="sites s4" to={"/contact"}>
                             <p id="text4">CONTACT</p>
                         </NavLink>
                     </li>

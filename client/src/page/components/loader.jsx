@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect, useRef } from 'react';
 import { ManageThemes } from '../../functions/manageThemes';
-import wasLoaderShowed from '../../functions/wasLoaderShowed';
+import { animateImageLoading } from '../../functions/animateImageLoading';
+import loaderContext from '../../functions/contexts/loaderContext';
 
 import '../../asset/css/loader/style.scss';
 import '../../asset/css/loader/media.scss';
@@ -14,22 +15,16 @@ import faviconDarkTheme from '../../asset/img/header/dark-theme/dark_portfolio_l
 
 const Loader = () => {
 
-    const {wasLoader, setWasLoader} = useContext(wasLoaderShowed);
+    const {setWasLoaderShowed} = useContext(loaderContext);
     var [isLoading, setIsLoading] = useState(true);
 
-    let point0 = useRef(null);
-    let point1 = useRef(null);
-    let point2 = useRef(null);
-    let point3 = useRef(null);
-    let point4 = useRef(null);
-    let point5 = useRef(null);
     var points = [
-        point0.current
-        ,point1.current
-        ,point2.current
-        ,point3.current
-        ,point4.current
-        ,point5.current
+        useRef(null),
+        useRef(null),
+        useRef(null),
+        useRef(null),
+        useRef(null),
+        useRef(null)
     ];
 
     var cursor = useRef(null);
@@ -47,14 +42,13 @@ const Loader = () => {
     ];
 
     //Balise texte à modifier
-    var [textIndex, setTextIndex] = useState(0);
+    const [textIndex, setTextIndex] = useState(0);
 
-    //Case du tableau de textes a afficher
-    var i = 0;
+    let maxTime = 2300;
+    const timeToAppearTexts = 200;
 
-    var maxTime = 2000;
 
-    let textDuration = parseInt(maxTime / ( texts.length ));
+    let textDuration = parseInt((maxTime + timeToAppearTexts) / ( texts.length ));
 
     let [containerIsVisible, setContainerIsVisible] = useState(false);
     let [theme, setTheme] = useState();
@@ -64,27 +58,29 @@ const Loader = () => {
 
     useEffect(() => {
 
+        animateImageLoading();
+
         document.body.classList.add('no-scroll');
 
-        let intervalText = setInterval(() => {
-            if (texts.length === textIndex) {
-                clearInterval(intervalText);
-            } else {
-                setTextIndex(textIndex + 1);
-            }
-        }, textDuration);
+        setTimeout(() => {
+            let intervalText = setInterval(() => {
+                if (texts.length - 1 === textIndex) {
+                    console.log(texts.length - 1, textIndex);
+                    clearInterval(intervalText);
+                } else {
+                    setTextIndex(i => i + 1);
+                }
+            }, textDuration);
+        }, timeToAppearTexts);
 
         // Animer le curseur
-        let cursorIndex = 0;
+        let cursorIndex = 1;
         let intervalCursor = setInterval(() => {
             let index = (cursorIndex)%6;
             let previousIndex = (cursorIndex-1)%6;
 
-            points[index] && (points[index].classList.add('loading'));
-            if (previousIndex === -1) {
-                previousIndex = 5;
-            }
-            points[previousIndex] && (points[previousIndex].classList.remove('loading'));
+            points[index].current.classList.add('loading');
+            points[previousIndex].current.classList.remove('loading');
 
             cursorIndex++;
         }, 100);
@@ -92,21 +88,21 @@ const Loader = () => {
         setTimeout(() => {
             setIsBackgroundVisible(false);
         }, disappearBackgroundTime);
-        
+
         setTimeout(() => {
             setContainerIsVisible(false);
-        }, maxTime);
+        }, maxTime - 300);
 
         setTimeout(() => {
             clearInterval(intervalCursor);
             setIsLoading(false);
-            setWasLoader(true);
+            setWasLoaderShowed(true);
             document.removeEventListener("mousemove", followCursor);
             document.body.classList.remove('no-scroll');
-        }, maxTime + 300);
+        }, maxTime);
 
         setContainerIsVisible(true);
-        
+
         switch (ManageThemes.getThemeName()) {
             case 'dark':
                 setTheme(faviconDarkTheme);
@@ -120,10 +116,9 @@ const Loader = () => {
         document.addEventListener("mousemove", followCursor);
 
         return () => {
-            clearInterval(intervalText);
             clearInterval(intervalCursor);
         }
-    },[]);
+    }, []);
 
     const followCursor = (e) => {
         cursor.current && (cursor.current.style.left = e.clientX-47+ "px");
@@ -146,7 +141,7 @@ const Loader = () => {
                     <div id="container" className={ containerIsVisible ? 'visible' : 'hidden' } onMouseOver={ changeCursor } onMouseOut={ unchangeCursor }>
                         <div id="left">
                             <div id="title">
-                                <img draggable="false" src={ theme } alt="PortFolio" />
+                                <img draggable="false" src={ theme } className='onloading' alt="PortFolio" />
                                 <h1>Adobe Portfolio</h1>
                             </div>
                             <div id="loader">
@@ -163,27 +158,27 @@ const Loader = () => {
                                 <p id="underChange" className="lowfontweight2">Russel Williams, Thomas Knoll, John Knoll, Mark Hamburg, Jackie Lincoln-O w y ang, A lan Erickson, Sarah Kong, Jerry Harris, Mike Shaw, Thomas Ruark, Yukie Takahashi, David Dobish, John Peterson, Adam Jerugim, Yuko Kagita, Foster Brereton, Meredith Payne Stotzner, Tai Luxon, Vinod Balakrishnan, David Hackel, Eric Floch, Judy Lee, Kevin Hopps, Barkin Aygun, Shanmugh Natarajan, Vishal Wadhwa, Pulkit Jindal, Quynn Megan Le, Stephen Nielson, Bob Archer, Kavana Anand, Chad Rolfs, Charles F. Rose III, Kamal Arora, Joel Baer, Metthew Neldam, Jacob Correia, Pulkit Mehta, Jesper S. Bache, Eric C hing, Dustin Passofaro, Sagar Pathak, Irina Maderych, Praveen Gelra, Vasanth Pai, Zijun Wei, Nithesh Gangadhar Salian</p>
                             </div>
                             <div id="logo">
-                                <img draggable="false" src={ adobeIcon } alt="Adobe" />
+                                <img draggable="false" src={ adobeIcon } className='onloading' alt="Adobe" />
                                 <p>Adobe Creative Cloud</p>
                             </div>
                         </div>
                         <div id="right">
                             <div id="img">
-                                <img draggable="false" src={ loadIcon } alt="Adobe Portfolio" />
+                                <img draggable="false" src={ loadIcon } className='onloading' alt="Adobe Portfolio" />
                             </div>
                             <div id="logomedia">
-                                <img draggable="false" src={ adobeIcon } alt="Adobe" />
+                                <img draggable="false" className='onloading' src={ adobeIcon } alt="Adobe" />
                                 <p>Adobe Creative Cloud</p>
                             </div>
                         </div>
                     </div>
                     <div id="cursor" ref={cursor}>
-                        <div ref={point0} className="point p0"></div>
-                        <div ref={point1} className="point p1"></div>
-                        <div ref={point2} className="point p2"></div>
-                        <div ref={point3} className="point p3"></div>
-                        <div ref={point4} className="point p4"></div>
-                        <div ref={point5} className="point p5"></div>
+                        <div ref={points[0]} className="point p0"></div>
+                        <div ref={points[1]} className="point p1"></div>
+                        <div ref={points[2]} className="point p2"></div>
+                        <div ref={points[3]} className="point p3"></div>
+                        <div ref={points[4]} className="point p4"></div>
+                        <div ref={points[5]} className="point p5"></div>
                     </div>
                 </main>
                 ) :

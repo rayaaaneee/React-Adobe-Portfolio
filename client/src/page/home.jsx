@@ -1,14 +1,18 @@
-import Main from './components/main';
-import { ManageBody } from '../functions/manageBody';
-import { ManageThemes } from '../functions/manageThemes';
-import { useEffect, useState, useRef } from 'react';
-import { useReactToPrint } from 'react-to-print';
+import { useContext, useEffect, useState, useRef } from 'react';
+import themeContext from '../functions/contexts/themeContext';
 
-import { Project } from '../objects/project';
+import { ManageBody } from '../functions/manageBody';
+
+import { Project as ProjectObject } from '../objects/project';
 import { SchoolCompetence } from '../objects/school_competence';
-import { animateApparition } from '../functions/apparition';
+import { animateApparition } from '../functions/appearence';
 import { ScrollProjects } from '../functions/scrollProjects';
 import { animateCards } from '../functions/3dEffectCard';
+import { animateImageLoading } from '../functions/animateImageLoading';
+import { useConditionalEffect } from '../functions/useConditionalEffect';
+
+import { CompetenceCard } from './components/home/competence-card';
+import { Project } from './components/home/project';
 
 import '../asset/css/home/style.scss';
 import '../asset/css/home/frame-cv.scss';
@@ -43,15 +47,12 @@ const Home = () => {
 
     ManageBody.changeClass('home');
 
-    useEffect(() => { animateApparition() }, []);;
+    useEffect(() => { 
+      animateApparition();
+      animateImageLoading();
+     }, []);
 
-    const [zoomImgState, setZoomImg] = useState(ManageThemes.isDarkTheme ? darkZoomImg : zoomImg);
-    const [downloadImgState, setDownloadImg] = useState(ManageThemes.isDarkTheme ? darkDownloadImg : downloadImg);
-    const [linkImgState, setLinkImg] = useState(ManageThemes.isDarkTheme ? darkLinkImg : linkImg);
-
-    const images = [zoomImg, downloadImg, linkImg];
-    const darkImages = [darkZoomImg, darkDownloadImg, darkLinkImg];
-    const states  = [setZoomImg, setDownloadImg, setLinkImg];
+    const { isDarkTheme } = useContext(themeContext);
 
     useEffect(() => {
         document.title = 'Accueil';
@@ -59,7 +60,8 @@ const Home = () => {
 
     let projectsObjects = [];
     projectJson.projects.forEach(project => {
-      let projectObject = new Project(project);
+
+      let projectObject = new ProjectObject(project);
 
       let projectIconImg = require('../asset/img/home/project-logos/' + projectObject.getIcon() + '.png');
       let projectIconImgDark = require('../asset/img/home/project-logos/' + projectObject.getIcon() + '-white.png');
@@ -76,26 +78,39 @@ const Home = () => {
         let schoolCompetenceObject = new SchoolCompetence(school_competence);
         schoolCompetenceObjects.push(schoolCompetenceObject);
     });
+
+    const bars = useRef([]);
+    const colorBar = (index) => {
+      bars.current[index].classList.add('colored');
+    }
   
-    const growImg = () => {}
-  
-    const shrinkImg = () => {}
-  
-    const colorBar = () => {}
-  
-    const uncolorBar = () => {}
+    const uncolorBar = (index) => {
+      bars.current[index].classList.remove('colored');
+    }
 
     let [projectPageIsVisible, setProjectPageIsVisible] = useState(false);
     let projectPageRef = useRef(null);
-    let projectPageContentRef = useRef(null);
     useEffect(() => {
+      projectPageRef.current.style.display = 'none';
+      setTimeout(() => {
+        projectPageRef.current.style.removeProperty('display');
+      }, 400);
+    }, []);
+    let projectPageContentRef = useRef(null);
+
+    useConditionalEffect(() => {
         if (projectPageIsVisible) {
-            document.body.style.overflowY = "hidden";
+            projectPageRef.current.scrollTo(0, 0);
             projectPageContentRef.current.scrollTo(0, 0);
+            document.body.style.overflowY = "hidden";
             projectPageRef.current.classList.add('visible');
         } else {
-            document.body.style.removeProperty('overflow-y');
+            projectPageRef.current.classList.add('hidden');
             projectPageRef.current.classList.remove('visible');
+            setTimeout(() => {
+              document.body.style.removeProperty('overflow-y');
+              projectPageRef.current.classList.remove('hidden');
+            }, 500);
         }
     }, [projectPageIsVisible]);
 
@@ -103,8 +118,13 @@ const Home = () => {
     const openProjectPage = (project) => {
         setProjectPageIsVisible(true);
         setCurrentProject(project);
+        if (project.isLink()) {
+          currentProjectViewingRef.current.setAttribute('target', '_blank');
+        } else {
+          currentProjectViewingRef.current.removeAttribute('target');
+        }
     }
-    
+
     const closeProjectPage = () => {
         setProjectPageIsVisible(false);
     }
@@ -113,14 +133,20 @@ const Home = () => {
 
     let frameCvRef = useRef(null);
 
+    let cvPdfIframe = useRef(null);
+    const handlePrintPdf = () => {
+      cvPdfIframe.current.contentWindow.focus();
+      cvPdfIframe.current.contentWindow.print();
+    }
+
     var [cvVisibilityChanged, setCvVisibilityChanged] = useState(false);
-    useEffect(() => {
+    useConditionalEffect(() => {
       if (cvContainerIsVisible) {
         document.body.style.overflow = 'hidden';
         frameCvRef.current.classList.add('visible');
-        frameCvRef.current.scrollTo(0, 0);
         setCvVisibilityChanged(true);
       } else if (cvVisibilityChanged) {
+        frameCvRef.current.scrollTo(0, 0);
         frameCvRef.current.classList.add('hidden');
         frameCvRef.current.classList.remove('visible');
         setTimeout(() => {
@@ -134,29 +160,22 @@ const Home = () => {
       frameCvRef.current.classList.remove('hidden');
     }, []);
 
-    useEffect(() => {
-      document.getElementById('pageContent').scrollTo({top: 0});
-    });
-
     var [isCvInformationsVisible, setCvInformationsVisible] = useState(false);
 
-    const handlePrintPdf = () => {
-      window.open(cvPdf).print();
-    }
+    const chevrons = useRef({
+      left: null,
+      right: null
+    });
+    const projects = useRef([]);
 
-    /* let cvImgRef = useRef(null);
-    const handlePrintPdf = useReactToPrint({
-      content: () => cvImgRef.current,
-      contentStyle: `
-        width: 100vw;
-        height: 100vh;
-        background-color: blue;
-      `,
-    }); */
-
+    const cards = useRef([]);
     useEffect(() => {
-      new ScrollProjects();
-      animateCards();
+      const scrollProjects = new ScrollProjects(projects.current, chevrons.current.left, chevrons.current.right);
+      animateCards(cards.current);
+
+      return () => {
+        scrollProjects.removeListeners();
+      }
     });
 
     const currentProjectViewingRef = useRef(null);
@@ -166,13 +185,9 @@ const Home = () => {
         switch(growing){
             case true:
                 currentProjectViewingRef.current.classList.add('animate');
-/*                 currentProjectViewingRef.current.querySelector("img").style.transform = "scale(1)";
-                currentProjectViewingRef.current.style.transform = "scale(0.9)"; */
                 break;
             case false:
                 currentProjectViewingRef.current.classList.remove('animate');
-/*                 currentProjectViewingRef.current.querySelector("img").style.transform = "scale(0.85)";
-                currentProjectViewingRef.current.style.removeProperty('transform'); */
                 break;
             default:
                 break;
@@ -188,44 +203,33 @@ const Home = () => {
 
     return (
       <>
-            <Main child={
-              <>
               <article id="main">
+                  {/* On met le CV dans le rendu, caché dans l'HTML pour s'en servir en cas d'impression */}
+                  <iframe ref={cvPdfIframe} src={cvPdf} className="hidden"></iframe>
                   <div className="title t1" id="firstmid">
                     <p>Mes projets</p>
                   </div>
-                  <div className="horizontal-bars animate" id="horizontal-bar1"></div>
-                  <div className="projects-chevrons-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron left animate">
+                  <div id="bar0" className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
+                  <div className="projects-chevrons-container" onMouseOver={ () => colorBar(0)} onMouseLeave={ () => uncolorBar(0) }>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron left animate" ref={(chevron) => (chevrons.current.left = chevron) }>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                     </svg>
-                    <article className="projects">
+                    <article className="projects" ref={ projects }>
                     { projectsObjects.map((project, i) => (
-                      <div
-                        className="main-container animate"
-                        onMouseOver={ () => colorBar(1) }
-                        onMouseLeave={ () => uncolorBar(1) }
-                        onClick={ () => openProjectPage(project) }
-                        data-date={ project.getFormatDate() }
-                        key={i}
-                      >
-                        <div className="content" onMouseOver={ () => { growImg(i) }} onMouseLeave={ () => { shrinkImg(i) }} >
-                            <div className="to_download">
-                                <p>{ project.getTitle() }</p>
-                                <img alt='download-link' src={ project.isLink() ? linkImgState : downloadImgState } draggable="false" />
-                            </div>
-                            <img alt='project-icon' src={ ManageThemes.isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } imglighttheme={project.getReactIcon()} imgdarktheme={project.getDarkReactIcon()} className="workslogos" draggable="false" />
-                        </div>
-                    </div>
+                      <Project project={ project } key={ i } colorBar={ () => colorBar(1) } 
+                      uncolorBar={ () => uncolorBar(1) } 
+                      openProjectPage={ () => openProjectPage(project) } 
+                      isDarkTheme={isDarkTheme} darkLinkImg={darkLinkImg} 
+                      darkDownloadImg={darkDownloadImg} linkImg={linkImg} 
+                      downloadImg={downloadImg} />
                     ))}
                     </article>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron right animate">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron right animate" ref={(chevron) => (chevrons.current.right = chevron) }>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
                   </div>
                   {/* Page des projets */}
                   <div ref={projectPageRef} className="project-page-container">
-                    <div className="project-page">
                       <div className="project-page-content" ref={projectPageContentRef} >
                         <div className="title-project-container">
                           <img alt='link-or-download' className="link-or-download" src={currentProject ? (currentProject.isLink() ? darkLinkImg : darkDownloadImg) : '' } draggable="false" />
@@ -240,9 +244,9 @@ const Home = () => {
                               } :</p>
                             </div>
                             <div className="project-languages-skills-container page-content">
-                              {currentProject.getLanguages().map((language) => {
+                              {currentProject.getLanguages().map((language, index) => {
                                 return (
-                                  <div className="skill-language-container template" style={{backgroundColor: language.color}}>
+                                  <div key={index} className="skill-language-container template" style={{backgroundColor: language.color}}>
                                     <p>{language.name}</p>
                                   </div>
                                 );
@@ -259,9 +263,9 @@ const Home = () => {
                               } :</p>
                             </div>
                             <div className="project-languages-skills-container page-content">
-                              {currentProject.getCompetences().map((competence) => {
+                              {currentProject.getCompetences().map((competence, index) => {
                                 return (
-                                  <div className="skill-language-container template" style={{backgroundColor: competence.color}}>
+                                  <div key={index} className="skill-language-container template" style={{backgroundColor: competence.color}}>
                                     <p>{competence.name}</p>
                                   </div>
                                 );
@@ -278,7 +282,6 @@ const Home = () => {
                             {currentProject ? currentProject.getDescription() : ''}
                           </p>
                         </div>
-                      
                         { currentProject ? 
                           (currentProject.hasUseDescription() ? 
                               <div className="project-use-desc text-project-container">
@@ -295,13 +298,13 @@ const Home = () => {
                           ) : '' 
                         }
                         { currentProject ? (currentProject.isLink() ?
-                          <a href={ currentProject.getLink() } className="link-btn title-page-project" rel='noreferrer' target="_blank">Consulter {currentProject.getTitle()}</a>
+                          <a href={ `/project/${currentProject.getLink()}` } className="link-btn title-page-project" rel='noreferrer' target="_blank">Consulter {currentProject.getTitle()}</a>
                           :
                           ''
                           ) 
                         : ''}
                         { currentProject ? (currentProject.isDownload() ?
-                           <a href={ currentProject.getFile() } className="download-btn title-page-project" download>Télécharger {currentProject.getFileName()}</a>
+                           <a href={ `/project/${currentProject.getFile()}` } className="download-btn title-page-project" download>Télécharger {currentProject.getFileName()}</a>
                            :
                           ''
                           ) 
@@ -309,18 +312,23 @@ const Home = () => {
                         <div className="project-size-container text-project-container">
                           <img src={ whiteMemoryIcon } alt="mémoire-icone" draggable="false" />
                           <p className="page-content">Taille du fichier :</p>
-                          <p className="project-size-value page-content"></p>
-                          <p className="page-content">Mo</p>
+                          <p className="project-size-value page-content">{ currentProject && currentProject.getSize() }</p>
+                          <p className='page-content'> Mo </p>
                         </div>
                         <div className="background-project-page"></div>
                       </div>
+                      <a href={ (currentProject? (currentProject.isLink()?
+                            `/project/${currentProject.getLink()}` 
+                              :
+                            `/project/${currentProject.getFile()}`)
+                            :
+                            null)
+                          } className='current-project-viewing' ref={currentProjectViewingRef}>
+                        <img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
+                      </a>
                       <div title='Quitter' className="quit-project-button" onClick={closeProjectPage}>
                         <p>X</p>
                       </div>
-                    </div>
-                    <a href={ "ok" } className='current-project-viewing' ref={currentProjectViewingRef}>
-                      <img className='img-current-project-viewing' src={ currentProject ? currentProject.getDarkReactIcon() : '' } alt='project-icon' draggable="false" />
-                    </a>
                   </div>
               </article>
               <h2 className="explicationtext">Vous trouverez ici mes projets importants, qu'ils soient scolaires ou faits de mon côté. <br/>Il vous suffit de cliquer pour les télécharger.</h2>
@@ -329,8 +337,8 @@ const Home = () => {
                   <div className="title t2" id="secondmid">
                     <p>Mon CV</p>
                   </div>
-                  <div className="horizontal-bars animate" id="horizontal-bar2"></div>
-                  <div id="container-cv" className="animate" onMouseOver={colorBar(2)} onMouseLeave={ uncolorBar(2) }>
+                  <div id="bar1" className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
+                  <div id="container-cv" className="animate" onMouseOver={() => colorBar(1)} onMouseLeave={ () => uncolorBar(1) }>
                     <div id="cv-img" onClick={() => {
                       setCvContainerIsVisible(true);
                     }}>
@@ -392,7 +400,7 @@ const Home = () => {
                       <div className="blackbar"></div>
                       <div id="zoom">
                         <p>N'hésitez pas à cliquer sur l'image du C.V pour zoomer, cela vous permettra de le visionner dans sa qualité optimale sans avoir besoin de le télécharger.</p>
-                        <img draggable="false" src={ zoomImgState } alt="zoom" />
+                        <img draggable="false" src={ isDarkTheme ? darkZoomImg : zoomImg } alt="zoom" />
                       </div>
                       <p className="beforebutton">Vous pouvez télécharger mon CV actuel au format pdf en cliquant sur le bouton ci-dessous.</p>
                       <a href={ cvPdf } download="CV_Rayane_Merlin.pdf"><button className="cv-button">Télécharger</button></a>
@@ -404,40 +412,13 @@ const Home = () => {
                   <div className="title t3" id="firstmid">
                     <p>Mes compétences :</p>
                   </div>
-                  <div className="horizontal-bars animate" id="horizontal-bar3"></div>
-                  <div className="school-competence-container">
+                  <div id="bar2" className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
+                  <div className="school-competence-container" onMouseOver={ () => colorBar(2) } onMouseLeave={ () => uncolorBar(2)}>
                     { schoolCompetenceObjects.map((competence, i) => (
-                      <div className="card animate" key={i}>
-                        <div className="card-front">
-                          <div className="linear-gradient-circle-container card-top-container">
-                            <div className="linear-gradient-circle" style={{ background: competence.getGradient() }}>
-                              <img src={ require(`../asset/img/home/card/${competence.getImage()}`) } alt="" />
-                            </div>
-                          </div>
-                          <h1 className="title-card" style={{ color: competence.getTitleColor() }}>
-                            • {competence.getTitle()}
-                          </h1>
-                          <div className="card-bottom-container">
-                            <div className="card-bottom" style={{ backgroundColor: competence.getBottomColor() }}></div>
-                          </div>
-                        </div>
-                        <div className="card-back">
-                          <div className="info-icon-container card-top-container">
-                            <img src={ require('../asset/img/home/card/' + competence.getInfoIcon()) } draggable="false" />
-                          </div>
-                          <h2 className="card-back-title" style={{ color: competence.getTitleColor() }}>
-                            {competence.getTitle()} c'est :
-                          </h2>
-                          <p className="card-description" style={{ color: competence.getTitleColor() }}>
-                            {competence.getDescription()}
-                          </p>
-                        </div>
-                      </div>
+                      <CompetenceCard competence={ competence } key={i} ref={ card => (cards.current[i] = card) } />
                     ))}
                   </div>
                 </article>
-                </>
-              } images={ images } darkImages={ darkImages } states={ states }  />
           </>
     );
 }

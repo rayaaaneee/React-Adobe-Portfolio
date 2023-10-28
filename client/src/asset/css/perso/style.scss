@@ -115,9 +115,14 @@ body.perso {
         /* Centrer */
         margin: 0 auto;
         align-self: center;
+
+        &.colored {
+            box-shadow: 0 0 15px rgba(212, 153, 101, 0.5)
+        }
+
+        &#bar0 {
+            margin-bottom: 3vw;
+        }
     }
 
-    #horizontal-bar1 {
-        margin-bottom: 3vw;
-    }
 }

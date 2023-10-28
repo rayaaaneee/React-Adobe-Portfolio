@@ -1,9 +1,8 @@
 import { ManageBody } from '../functions/manageBody';
-import { ManageThemes } from '../functions/manageThemes';
-import { animateApparition } from '../functions/apparition';
-import Main from './components/main';
+import { animateApparition } from '../functions/appearence';
 import { NavLink } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
+import themeContext from '../functions/contexts/themeContext';
 
 import '../asset/css/about/style.scss';
 import '../asset/css/about/dark-style.scss';
@@ -24,26 +23,16 @@ const About = () => {
         document.title = 'À propos';
     });
 
-    useEffect(() => {
-        document.body.scrollTo(0, 0);
-    }, []);
-
-    const [privacyImgState, setPrivicyImgState] = useState(privacyImg);
-    const [aboutImgState, setAboutImgState] = useState(aboutImg);
-
-    const states = [setPrivicyImgState, setAboutImgState];
-    const images = [privacyImg, aboutImg];
-    const darkImages = [darkPrivacyImg, darkAboutImg];
+    const { isDarkTheme } = useContext(themeContext);
 
     return (
-        <Main child={
-            <div className="main-container">
+            <div className="main-container animate">
                 <div className="content">
                     <div className="privacy">
                     <div className="title-container title-container-first-child">
                             <h1 className="title title1">• Politique de confidentialité</h1>
                             <div className="bar first-bar animate"></div>
-                            <img src={ privacyImgState } alt="privacy" draggable="false" />
+                            <img src={ isDarkTheme ? darkPrivacyImg : privacyImg } alt="privacy" draggable="false" />
                         </div>
                         <p className="text-content">Votre vie privée est importante pour moi. La politique d'Adobe PortFolio est de respecter votre vie privée et de se conformer à toutes les lois et réglementations applicables concernant les informations personnelles que je pourrais collecter à votre sujet, y compris sur mon site Web, par l'adresse <NavLink to={"/"}><strong>https://rayanemerlin.com/</strong></NavLink><br/>Cette politique est en vigueur depuis le 7 février 2023 et a été mise à jour pour la dernière fois le 7 février 2023.</p>
                         <h2 className="subtitle">- Me contacter</h2>
@@ -63,13 +52,12 @@ const About = () => {
                     <div className="title-container">
                             <h1 className="title title2">• À propos</h1>
                             <div className="bar second-bar animate"></div>
-                            <img src={ aboutImgState } alt="about_icon" draggable="false" />
+                            <img src={ isDarkTheme ? darkAboutImg : aboutImg } alt="about_icon" draggable="false" />
                         </div>
                         <p className="text-content">Ce site a été entièrement codé par mes soins dans le but de présenter mon parcours, mes projets et mes compétences. <br/> De même, tous les projets présentés ont pu être codés en partie ou entièrement par mes soins. <br/> Le logo a été inspiré du logo officiel d'Adobe Photoshop (plus généralement de l"ensemble des logos de la suite Adobe). Le loader a lui été inspiré du chargement officiel d'Adobe Photoshop 2022.</p>
                     </div>
                 </div>
             </div>
-        } images={ images } darkImages={ darkImages } states={ states } />
     );
 }
 

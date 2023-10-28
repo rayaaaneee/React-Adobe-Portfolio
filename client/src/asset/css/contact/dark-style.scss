@@ -1,43 +1,55 @@
-body.contact {
-    &#dark *:not(.required, textarea, input) {
+body.contact#dark {
+    *:not(.required, textarea, input) {
         color: white !important;
     }
     
-    &#dark .formulaire {
+    .formulaire {
         background-color : rgb(0 0 0 / 80%);
         box-shadow : 0 0 23px rgb(255 255 255 / 20%);
     }
     
-    &#dark .input-container > input {
-        background-color : rgba(71, 67, 67, 0.8) !important;
+    .buttons-container {
+        & > input {
+            background-color : rgb(173 159 159 / 80%) !important;
+
+            &:hover {
+                background-color : rgba(149, 121, 121, 0.8) !important;
+            }
+        }
     }
     
-    &#dark .input-container > input:hover {
-        background-color : rgba(42, 40, 40, 0.8) !important;
-    }
-    
-    &#dark #pres {
+    #pres {
         background-color: rgb(172 163 163 / 80%);
         box-shadow : 0 0 23px rgb(255 255 255 / 20%) !important;
     }
     
-    &#dark input[type=email], &#dark input[type=text], &#dark textarea {
-        color: rgb(0, 0, 0) !important;
+    input, textarea {
+        color: rgb(255, 255, 255) !important;
+
+        &:focus {
+            animation: appearShadowDark 0.2s forwards;
+      
+            $darkBoxShadowColor: rgb(235, 223, 229);
+            @keyframes appearShadowDark {
+              from {
+                box-shadow: 0 0 0 0 $darkBoxShadowColor;
+              }
+              to {
+                box-shadow: 0 0 0 2.5px $darkBoxShadowColor;
+              }
+            }
+        }
+
+        &::placeholder {
+            color: rgb(177, 177, 177) !important;
+        }
     }
-    
-    &#dark input[type=email]:focus, &#dark input[type=text]:focus, &#dark textarea:focus {
-        box-shadow: 0 0 0 4px rgb(82, 81, 81) !important;
-    }
-    
-    &#dark input[type=text]::placeholder, &#dark input[type=email]::placeholder, &#dark textarea::placeholder {
-        color: black !important;
-    }
-    
-    &#dark .spinner > div {
+
+    .spinner > div {
         background-color: rgb(255, 255, 255) !important;
     }
 
-    &#dark .required {
+    .required {
         color : #f37b7b !important;
     }
 }
