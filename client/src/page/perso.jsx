@@ -54,7 +54,7 @@ const Perso = () => {
                 <p>Perso</p>
             </div>
 
-            <div className="horizontal-bars bar1 animate" ref={ bar => bars.current.push(bar) }></div>
+            <div id='bar0' className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
             <div className="content" onMouseOver={ () => colorBar(0) } onMouseLeave={ () => uncolorBar(0) }>
                 <div className="title-part">
                     <h1>• Qui suis-je ?</h1>
@@ -70,7 +70,7 @@ const Perso = () => {
             </div>
             <div className="title t2">
                 <p>Mes musiques :</p>
-                <div className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
+                <div id='bar1' className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
                 <h3>Voici quelques musiques qui m'ont marquées. Je me permets d'en parler dans ce PortFolio car la musique possède une place importante dans ma vie et dans la société en général. Ce que nous écoutons représente en quelque sorte qui nous sommes, est une source de créativité influant sur nous : les auditeurs.</h3>
             </div>
             <article id="music" onMouseOver={ () => colorBar(1) } onMouseLeave={ () => uncolorBar(1) }>
@@ -85,7 +85,7 @@ const Perso = () => {
             <div className="title t3">
                 <p>Les références :</p>
             </div>
-            <div className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
+            <div id='bar2' className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
             <article id="references" onMouseOver={ () => colorBar(2) } onMouseLeave={ () => uncolorBar(2) }>
             </article>
         </>

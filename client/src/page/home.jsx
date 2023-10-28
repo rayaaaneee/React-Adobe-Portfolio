@@ -100,7 +100,8 @@ const Home = () => {
 
     useConditionalEffect(() => {
         if (projectPageIsVisible) {
-            projectPageContentRef.current.scrollTo(0, 0);
+          projectPageContentRef.current.scrollTo(0, 0);
+            console.log(projectPageContentRef.current.parentNode);
             document.body.style.overflowY = "hidden";
             projectPageRef.current.classList.add('visible');
         } else {
@@ -143,9 +144,9 @@ const Home = () => {
       if (cvContainerIsVisible) {
         document.body.style.overflow = 'hidden';
         frameCvRef.current.classList.add('visible');
-        frameCvRef.current.scrollTo(0, 0);
         setCvVisibilityChanged(true);
       } else if (cvVisibilityChanged) {
+        frameCvRef.current.scrollTo(0, 0);
         frameCvRef.current.classList.add('hidden');
         frameCvRef.current.classList.remove('visible');
         setTimeout(() => {
@@ -208,14 +209,14 @@ const Home = () => {
                   <div className="title t1" id="firstmid">
                     <p>Mes projets</p>
                   </div>
-                  <div className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
+                  <div id="bar0" className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
                   <div className="projects-chevrons-container" onMouseOver={ () => colorBar(0)} onMouseLeave={ () => uncolorBar(0) }>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron left animate" ref={(chevron) => (chevrons.current.left = chevron) }>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                     </svg>
                     <article className="projects" ref={ projects }>
                     { projectsObjects.map((project, i) => (
-                      <Project project={ project } key={i} colorBar={ () => colorBar(1) } 
+                      <Project project={ project } key={ i } colorBar={ () => colorBar(1) } 
                       uncolorBar={ () => uncolorBar(1) } 
                       openProjectPage={ () => openProjectPage(project) } 
                       isDarkTheme={isDarkTheme} darkLinkImg={darkLinkImg} 
@@ -229,7 +230,6 @@ const Home = () => {
                   </div>
                   {/* Page des projets */}
                   <div ref={projectPageRef} className="project-page-container">
-                    <div className="project-page">
                       <div className="project-page-content" ref={projectPageContentRef} >
                         <div className="title-project-container">
                           <img alt='link-or-download' className="link-or-download" src={currentProject ? (currentProject.isLink() ? darkLinkImg : darkDownloadImg) : '' } draggable="false" />
@@ -330,7 +330,6 @@ const Home = () => {
                         } className='current-project-viewing' ref={currentProjectViewingRef}>
                       <img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
                     </a>
-                  </div>
               </article>
               <h2 className="explicationtext">Vous trouverez ici mes projets importants, qu'ils soient scolaires ou faits de mon côté. <br/>Il vous suffit de cliquer pour les télécharger.</h2>
               {/* Page du CV */}
@@ -338,7 +337,7 @@ const Home = () => {
                   <div className="title t2" id="secondmid">
                     <p>Mon CV</p>
                   </div>
-                  <div className="horizontal-bars bar2 animate" ref={ bar => bars.current.push(bar) }></div>
+                  <div id="bar1" className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
                   <div id="container-cv" className="animate" onMouseOver={() => colorBar(1)} onMouseLeave={ () => uncolorBar(1) }>
                     <div id="cv-img" onClick={() => {
                       setCvContainerIsVisible(true);
@@ -413,7 +412,7 @@ const Home = () => {
                   <div className="title t3" id="firstmid">
                     <p>Mes compétences :</p>
                   </div>
-                  <div className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
+                  <div id="bar2" className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
                   <div className="school-competence-container" onMouseOver={ () => colorBar(2) } onMouseLeave={ () => uncolorBar(2)}>
                     { schoolCompetenceObjects.map((competence, i) => (
                       <CompetenceCard competence={ competence } key={i} ref={ card => (cards.current[i] = card) } />
