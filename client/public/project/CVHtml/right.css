@@ -1,0 +1,120 @@
+/* On display flex la partie avec mon nom en créant un background  violet assez gros (20px autour du texte). Le flex 
+sert ici à placer cet élément la ou je le souhaite. Ici au centre du coté droit. */
+.name {
+    background-color: #512E5F;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.univ {
+    font-style: italic;
+}
+
+/* On effectue la même chose en rajoutant également le statut (Etudiant IUT Lyon 1) collé en bas du nom 
+et positionné au même endroit */
+.Base {  
+    display: flex;
+    justify-content: flex-end;
+    width: 70%;
+} 
+
+/* Création d'un padding général sur tous les éléments du côté droit de la page, avec également une couleur de fond 
+blanche. */
+.right {
+    padding: 5%;
+    background-color: white;
+}
+
+/* On change la couleur du nom en blanc */
+ .name {
+     color: white;
+ }
+
+ /* Mise en place d'un système de cases pour la partie "Expériences professionelles à l'aide du grid */
+ .Formation {
+     display:grid;
+ }
+
+/* Les cases de gauche de la partie "Expériences professionelles" prennent 30% du côté droit, les cases de 
+gauche prennent 70% de la place du côté droit */
+ .Exp{
+    display: grid;
+    grid-template-columns: 45% 55%;
+}
+
+/* je crée un padding pour toutes les catégories du flexright sauf pour la classe "Base" */
+.right #others {
+    padding : 4%;
+}
+
+/* On crée un padding sur les cases de gauche du grid expériences professionelles pour que les cases soient 
+au même niveau que celles du côté droit */
+.gridleft div {
+    padding : 9%;
+    padding-top : 25% ;
+}
+
+/* On crée un padding sur les cases de droite du grid expériences professionelles pour que les cases
+soient au même niveau que celles du côté droit */
+.gridright div {
+    padding-top : 19%;
+    margin-left : 20%;
+}
+
+/* Ici, je met mon texte "Etudiant à l'IUT Lyon 1" au centre du flex "right" */
+.Statut > h2 {
+    text-align: center;
+}
+
+/* Mises en place des titres du grid gauche en Violet */
+.right div > #Title {
+    margin-left: 13%;
+    color : #512E5F;
+    font-family: Poppins;
+    text-transform : uppercase;
+    text-decoration: underline;
+}
+
+/* Je dispose les colonnes de "Compétences" */
+#others ul li {
+    display: grid;
+    grid-template-columns: 25% 60%;
+    padding-top:15%;
+    column-gap: 10%;
+    margin-left: 15%;
+}
+/* Je définit les propriétés des images retouchées de la section compétence */
+#LogosV {
+    width : 8%;
+    position : absolute;
+    opacity: 100%;
+    transition: all 0.5s ease;
+}
+
+/* Je définit les même propriétés pour les vraies logos des logiciels */
+#Logos {
+    width: 8%;
+    opacity: 100%;
+    position: absolute;
+    background-attachment: fixed;
+    transition: all 0.5s ease;
+}
+
+/* Création d'un effet d'inversement, lorsque la souris passe sur le Logo retouché, le véritable logo apparaît */
+#Logos:hover {
+    transition: ease 1.5s;
+    width: 3%;
+}
+
+/* Lorsque les images des logos sont survolés par la souris, le vrai logo apparait et perd sa teinte violette retouchée */
+#LogosV:hover {
+    opacity: 0%;
+    transition: ease 1.5s;
+}
+
+/* Permet d'aligner les images et le texte/barre de progression en bas de compétences */
+.Capas {
+    margin-top: 3%;
+}

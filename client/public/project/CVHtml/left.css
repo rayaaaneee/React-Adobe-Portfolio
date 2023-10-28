@@ -1,0 +1,71 @@
+
+/* On définit la couleur de fond du côté gauche, ici un violet. */
+.left {
+    background-color: #512E5F ;
+}
+
+/* création d'une marge pour tous les éléments de la flex gauche dans le but de les centrer */
+.left * {
+    margin-left : 5%;
+    margin-right : 5%;
+}
+
+/* On colorie tous les h1 en blanc et on les décale de 200px entre eux. */
+aside > h1 {
+    color: white;
+    padding-top : 180px;
+    text-decoration: underline;
+    font-family: Poppins;
+}
+
+/* On attribue un padding à chaque partie de "Réseaux sociaux" pour que chaque information soit espacée et que ce soit 
+lisible et propre et permet de situer sur la meme ligne les images des réseaux et mes informations */
+.rsx{
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* On définit la taille des images des réseaux sociaux (situés dans la partie "Réseaux")*/
+.insta{
+    width: 70px;
+    height: 50px;
+}
+.github{
+    width: 70px;
+    height: 50px;
+}
+.linkedin{
+    width: 65px;
+    height: 65px;
+    margin-left : 2px;
+}
+
+/* Padding général de 20 px sur le côté gauche */
+.left {
+    padding: 20px;
+}
+
+/* Tous les textes de la partie gauche seront de couleur blanche.  */
+.left * {
+    color: white;
+}
+
+/*  On définit les colonnes de la partie Formation, soit 65% de la place pour les colonnes de gauche et 
+40 pour les colonnes de droite */
+.Formation {
+    display: grid;
+    grid-template-columns: 65% 40%;
+}
+
+/* Ce padding sert à ce que les élements de la colonne de gauche soient situés à côté des 
+éléments de la colonne de droite */
+.Diplomes div {
+    padding-top : 11%;
+}
+
+/* Ce padding sert à ce que les élements de la colonne de droite soient situés à côté des 
+éléments de la colonne de gauche */
+.Années div {
+    padding-top: 45%;
+}
