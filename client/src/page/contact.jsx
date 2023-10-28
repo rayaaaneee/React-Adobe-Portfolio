@@ -63,9 +63,8 @@ const Contact = () => {
     }
 
     const handleSubmit = (e) => {
-
         e.preventDefault();
-        let formData = new FormData(e.currentTarget.form);
+        let formData = new FormData(e.currentTarget);
 
         let firsterror = null;
         if (isEmpty(formData.get('name'))) {
@@ -93,7 +92,7 @@ const Contact = () => {
         if (firsterror) firsterror.focus();
         else {
             trySend(formData);
-            e.currentTarget.form.reset();
+            e.currentTarget.reset();
             setNbChars(0);
         }
     }
@@ -196,7 +195,7 @@ const Contact = () => {
                     </div>
                     <div className="form-container">
                         <div className="formulaire animate">
-                            <form id="sendMessageForm">
+                            <form id="sendMessageForm" onSubmit={ handleSubmit }>
 
                                 <div className='input-container'>
                                     <label htmlFor='name'>
@@ -236,7 +235,7 @@ const Contact = () => {
                                 </div>
 
                                 <div className="buttons-container">
-                                    <input type="submit" readOnly className="orange-buttons" value="Envoyer" onClick={ handleSubmit } />
+                                    <input type="submit" readOnly className="orange-buttons" value="Envoyer" />
                                     <input readOnly className="orange-buttons"  type="reset" value="Réinitialiser" />
                                 </div>
                             </form>

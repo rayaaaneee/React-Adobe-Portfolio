@@ -163,12 +163,17 @@ body.home {
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease,
-      background-color $general-transition-switch-mode;
+    background-color $general-transition-switch-mode;
+
+    &.colored {
+      box-shadow: 0 0 15px rgba(212, 153, 101, 0.5)
+    }
+
+    &.bar2 {
+      margin-bottom: 50px;
+    }
   }
 
-  #horizontal-bar2 {
-    margin-bottom: 50px;
-  }
 
   /* Centrer le texte d'explication et changer sa couleur en blanc*/
   .explicationtext {

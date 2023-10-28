@@ -78,10 +78,15 @@ const Home = () => {
         let schoolCompetenceObject = new SchoolCompetence(school_competence);
         schoolCompetenceObjects.push(schoolCompetenceObject);
     });
+
+    const bars = useRef([]);
+    const colorBar = (index) => {
+      bars.current[index].classList.add('colored');
+    }
   
-    const colorBar = () => {}
-  
-    const uncolorBar = () => {}
+    const uncolorBar = (index) => {
+      bars.current[index].classList.remove('colored');
+    }
 
     let [projectPageIsVisible, setProjectPageIsVisible] = useState(false);
     let projectPageRef = useRef(null);
@@ -203,8 +208,8 @@ const Home = () => {
                   <div className="title t1" id="firstmid">
                     <p>Mes projets</p>
                   </div>
-                  <div className="horizontal-bars animate" id="horizontal-bar1"></div>
-                  <div className="projects-chevrons-container">
+                  <div className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
+                  <div className="projects-chevrons-container" onMouseOver={ () => colorBar(0)} onMouseLeave={ () => uncolorBar(0) }>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron left animate" ref={(chevron) => (chevrons.current.left = chevron) }>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                     </svg>
@@ -333,8 +338,8 @@ const Home = () => {
                   <div className="title t2" id="secondmid">
                     <p>Mon CV</p>
                   </div>
-                  <div className="horizontal-bars animate" id="horizontal-bar2"></div>
-                  <div id="container-cv" className="animate" onMouseOver={colorBar(2)} onMouseLeave={ uncolorBar(2) }>
+                  <div className="horizontal-bars bar2 animate" ref={ bar => bars.current.push(bar) }></div>
+                  <div id="container-cv" className="animate" onMouseOver={() => colorBar(1)} onMouseLeave={ () => uncolorBar(1) }>
                     <div id="cv-img" onClick={() => {
                       setCvContainerIsVisible(true);
                     }}>
@@ -408,8 +413,8 @@ const Home = () => {
                   <div className="title t3" id="firstmid">
                     <p>Mes compétences :</p>
                   </div>
-                  <div className="horizontal-bars animate" id="horizontal-bar3"></div>
-                  <div className="school-competence-container">
+                  <div className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
+                  <div className="school-competence-container" onMouseOver={ () => colorBar(2) } onMouseLeave={ () => uncolorBar(2)}>
                     { schoolCompetenceObjects.map((competence, i) => (
                       <CompetenceCard competence={ competence } key={i} ref={ card => (cards.current[i] = card) } />
                     ))}
