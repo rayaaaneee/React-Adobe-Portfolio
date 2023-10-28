@@ -6,8 +6,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors(port));
+app.use(express.json());
 
-app.get('/send', require('./parts/sendMessage').sendMessage);
+app.post('/send', require('./parts/sendMessage').sendMessage);
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);

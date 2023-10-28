@@ -4,9 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "ts-node main.js",
-    "watch": "tsc -w main.ts",
-    "build": "tsc main.ts"
+    "start": "ts-node main.ts"
   },
   "author": "Rayane Merlin",
   "license": "ISC",
@@ -17,6 +15,7 @@
     "mongoose": "^7.6.3"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1"
   }

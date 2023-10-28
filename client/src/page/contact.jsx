@@ -43,8 +43,8 @@ const Contact = () => {
         "Une erreur est survenue lors de l'envoi du message.",
     ));
 
-    const trySend = (message) => {
-        sendMessage(message)
+    const trySend = (formData) => {
+        sendMessage(formData)
         .then((response) => {
 
             let isSuccess = (response === 200);
@@ -62,12 +62,13 @@ const Contact = () => {
         return string.trim() === "";
     }
 
-    const validateForm = (e) => {
+    const handleSubmit = (e) => {
 
         e.preventDefault();
+        let formData = new FormData(e.currentTarget.form);
 
         let firsterror = null;
-        if (isEmpty(nameInput.current.value)) {
+        if (isEmpty(formData.get('name'))) {
             errornameRef.current.innerHTML = "• Veuillez entrez un nom valide";
             if (!firsterror) firsterror = nameInput.current;
         } else {
@@ -75,14 +76,14 @@ const Contact = () => {
         }
 
         let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,5})+$/;
-        if (!emailPattern.test(emailInput.current.value)) {
+        if (!emailPattern.test(formData.get('email'))) {
             erroremailRef.current.innerHTML = "• Veuillez entrez une adresse mail valide";
             if (!firsterror) firsterror = emailInput.current;
         } else {
             erroremailRef.current.innerHTML = "";
         }
 
-        if (isEmpty(messageInput.current.value)) {
+        if (isEmpty(formData.get('message'))) {
             errormsgRef.current.innerHTML = "• Veuillez entrez un message valide";
             if (!firsterror) firsterror = messageInput.current;
         } else {
@@ -91,7 +92,7 @@ const Contact = () => {
 
         if (firsterror) firsterror.focus();
         else {
-            trySend(messageInput.current.value);
+            trySend(formData);
             e.currentTarget.form.reset();
             setNbChars(0);
         }
@@ -235,7 +236,7 @@ const Contact = () => {
                                 </div>
 
                                 <div className="buttons-container">
-                                    <input type="submit" readOnly className="orange-buttons" value="Envoyer" onClick={ validateForm } />
+                                    <input type="submit" readOnly className="orange-buttons" value="Envoyer" onClick={ handleSubmit } />
                                     <input readOnly className="orange-buttons"  type="reset" value="Réinitialiser" />
                                 </div>
                             </form>
