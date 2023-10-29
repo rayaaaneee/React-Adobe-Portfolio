@@ -1,4 +1,4 @@
-import { ManageThemes } from './functions/manageThemes';
+import { ManageThemes } from './functions/manage-themes';
 import Contexts from './page/components/contexts';
 
 import Router from './router/router';

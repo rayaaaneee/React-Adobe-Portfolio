@@ -1,4 +1,5 @@
-import { MoveBackground, Parallax } from '../../functions/utilsBackgrounds';
+import { MoveBackground } from '../../objects/move-background';
+import { ParallaxBackground } from '../../objects/parallax-background';
 import { useEffect, useRef } from 'react';
 
 const Backgrounds = () => {
@@ -22,7 +23,7 @@ const Backgrounds = () => {
 
     useEffect(() => {
         const moveBackgrounds = MoveBackground.bind(backgrounds.current);
-        const backgroundsParallaxes = Parallax.bind(backgrounds.current);
+        const backgroundsParallaxes = ParallaxBackground.bind(backgrounds.current);
         return () => {
             backgroundsParallaxes.forEach((background) => {
                 background.removeListeners();

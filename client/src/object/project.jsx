@@ -1,5 +1,5 @@
-import { ManageLanguages } from '../functions/manageLanguages';
-import { ManageCompetences } from '../functions/manageCompetences';
+import { ManageLanguages } from '../functions/manage-languages';
+import { ManageCompetences } from '../functions/manage-competences';
 
 const PATH_PROJECTS = "../asset/project/";
 

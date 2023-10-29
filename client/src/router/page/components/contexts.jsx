@@ -1,10 +1,11 @@
-import loaderContext from '../../functions/contexts/loaderContext';
-import themeContext from '../../functions/contexts/themeContext';
-import { modalContext, modalInformationsContext} from '../../functions/contexts/modalContext';
+import loaderContext from '../../functions/contexts/loader-context';
+import themeContext from '../../functions/contexts/theme-context';
+import { modalContext, modalInformationsContext} from '../../functions/contexts/modal-context';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { ManageThemes } from '../../functions/manageThemes';
+import { ManageThemes } from '../../functions/manage-themes';
+import { ModalInformations } from '../../objects/modal-informations';
 import { Modal } from './modal'; 
 
 const Contexts = ({ children }) => {
@@ -42,13 +43,12 @@ const Contexts = ({ children }) => {
     );
 
     // Gérer les informations de la modale
-    const [modalInformations, setModalInformations] = useState(null);
+    const [modalInformations, setModalInformations] = useState(new ModalInformations());
     const modalInformationsValue = useMemo(
       () => ({ modalInformations, setModalInformations }), 
       [modalInformations]
     );
 
-    
     return (
       <>
         <modalContext.Provider value={modalValue} >

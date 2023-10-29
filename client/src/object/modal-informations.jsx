@@ -1,6 +1,9 @@
 export class ModalInformations {
 
-    message;
+    message = {
+        success: null,
+        error: null
+    }
 
     #isSuccess;
 
@@ -8,14 +11,13 @@ export class ModalInformations {
 
     static errorStatus = "error";
 
-    constructor(messageSuccess, messageError, isSuccess = null) {
+    constructor() {
+    }
+
+    setMessages(messageSuccess, messageError) {
         this.message = {
             success: messageSuccess,
             error: messageError
-        }
-
-        if (isSuccess !== null) {
-            this.#isSuccess = isSuccess;
         }
     }
 

@@ -5,7 +5,7 @@ import '../../asset/css/header/style.scss';
 import '../../asset/css/header/dark-style.scss';
 import '../../asset/css/media/header/style.scss';
 
-import themeContext from '../../functions/contexts/themeContext';
+import themeContext from '../../functions/contexts/theme-context';
 
 const HeaderComponent = () => {
 
