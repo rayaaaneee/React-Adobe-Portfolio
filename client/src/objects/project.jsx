@@ -53,9 +53,8 @@ export class Project
         this.#usesLanguages = project.languages.length > 0;
 
         this.#size = project.size;
-        console.log(this.#size);
 
-        this.#languages = new Array();
+        this.#languages = [];
 
         project.languages.forEach(language => {
             let objectLanguage = ManageLanguages.getLanguage(language);

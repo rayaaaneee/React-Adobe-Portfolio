@@ -3,9 +3,7 @@ import { animateImageLoading } from '../functions/animateImageLoading';
 import { sendMessage } from '../functions/sendMessage';
 import { ManageBody } from '../functions/manageBody';
 
-import { ModalMessage } from './components/modal-message';
-
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, useContext } from 'react';
 
 import '../asset/css/contact/style.scss';
 import '../asset/css/contact/dark-style.scss';
@@ -14,7 +12,7 @@ import '../asset/css/media/contact/style.scss';
 import contactImg from '../asset/img/contact/contact.png';
 import { ManageThemes } from '../functions/manageThemes';
 import { ModalInformations } from '../objects/modal-informations';
-
+import { modalContext, modalInformationsContext } from '../functions/contexts/modalContext';
 
 const Contact = () => {
 
@@ -37,11 +35,14 @@ const Contact = () => {
     let erroremailRef = useRef(null);
     let errormsgRef = useRef(null);
 
-    const [sendIsSuccess, setSendIsSuccess] = useState(null);
-    const [modalInformations, setModalInformations] = useState(new ModalInformations(
-        "Votre message a bien été envoyé !",
-        "Une erreur est survenue lors de l'envoi du message.",
-    ));
+    const { setModalIsVisible } = useContext(modalContext);
+    const { setModalInformations } = useContext(modalInformationsContext);
+    setModalInformations(
+        new ModalInformations(
+            "Votre message a bien été envoyé !",
+            "Une erreur est survenue lors de l'envoi du message.",
+        )
+    );
 
     const trySend = (formData) => {
         sendMessage(formData)
@@ -53,7 +54,7 @@ const Contact = () => {
                 return informations;
             });
 
-            setSendIsSuccess(isSuccess);
+            setModalIsVisible(true);
 
         })
     }
@@ -176,9 +177,6 @@ const Contact = () => {
 
     return (
         <>
-            { sendIsSuccess !== null && (
-                <ModalMessage informations={ modalInformations } closeModal={ () => setSendIsSuccess(null) }  />
-            ) }
             <article id="formContainer">
                 <div className="alert-container"></div>
                 <main id='contactPage'>

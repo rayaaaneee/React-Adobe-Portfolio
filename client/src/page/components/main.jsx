@@ -35,13 +35,12 @@ const Main = ({ children }) => {
         <>
           {!wasLoaderShowed && (
             <>
-              {/* <div style={{ backgroundColor : "black", height: "100vh", width: "100vw", zIndex: 10 }}></div> */}
               <Loader />
             </>
           )}
           <HeaderComponent />
           <Backgrounds />
-          <div id="pageContent" /* style={ props.style } */>
+          <div id="pageContent">
             {children}
           </div>
           {!isCoursePage && <FooterComponent />}

@@ -1,9 +1,11 @@
 import loaderContext from '../../functions/contexts/loaderContext';
 import themeContext from '../../functions/contexts/themeContext';
+import { modalContext, modalInformationsContext} from '../../functions/contexts/modalContext';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { ManageThemes } from '../../functions/manageThemes';
+import { Modal } from './modal'; 
 
 const Contexts = ({ children }) => {
 
@@ -32,14 +34,34 @@ const Contexts = ({ children }) => {
       [wasLoaderShowed]
     );
 
+    // Gérer la modale
+    const [modalIsVisible, setModalIsVisible] = useState(null);
+    const modalValue = useMemo(
+      () => ({ modalIsVisible, setModalIsVisible }), 
+      [modalIsVisible]
+    );
+
+    // Gérer les informations de la modale
+    const [modalInformations, setModalInformations] = useState(null);
+    const modalInformationsValue = useMemo(
+      () => ({ modalInformations, setModalInformations }), 
+      [modalInformations]
+    );
+
+    
     return (
-        <>
+      <>
+        <modalContext.Provider value={modalValue} >
+          <modalInformationsContext.Provider value={modalInformationsValue} >
             <loaderContext.Provider value={loaderValue} >
                 <themeContext.Provider value={themeValue} >
-                    { children }
+                  <Modal />
+                  { children }
                 </themeContext.Provider>
             </loaderContext.Provider>
-        </>
+          </modalInformationsContext.Provider>
+        </modalContext.Provider>
+      </>
     )
 }
 

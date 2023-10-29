@@ -2,7 +2,7 @@ import { animateApparition } from '../functions/appearence';
 import { animateImageLoading } from '../functions/animateImageLoading';
 import { ManageBody } from '../functions/manageBody';
 import { useEffect, useRef, useState } from 'react';
-import { useConditionalEffect } from '../functions/useConditionalEffect';
+import { useConditionalEffect } from '../hooks/useConditionalEffect';
 import { main, initHeight, colorPointAssociateToSemester, 
 uncolorPointAssociateToSemester, onclickSemester, setPointsContainers, setSemesters, setTimeline, intervalMoveSemesters, intervalAnimation, onScroll } from '../functions/coursePageFunctions';
 

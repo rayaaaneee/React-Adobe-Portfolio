@@ -9,9 +9,11 @@ const App = () => {
   ManageThemes.manageThemes();
 
   return (
-    <Contexts>
-      <Router/>
-    </Contexts>
+    <>
+      <Contexts>
+        <Router/>
+      </Contexts>
+    </>
   );
 }
 

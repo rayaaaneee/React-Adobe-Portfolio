@@ -9,7 +9,7 @@ import { animateApparition } from '../functions/appearence';
 import { ScrollProjects } from '../functions/scrollProjects';
 import { animateCards } from '../functions/3dEffectCard';
 import { animateImageLoading } from '../functions/animateImageLoading';
-import { useConditionalEffect } from '../functions/useConditionalEffect';
+import { useConditionalEffect } from '../hooks/useConditionalEffect';
 
 import { CompetenceCard } from './components/home/competence-card';
 import { Project } from './components/home/project';
