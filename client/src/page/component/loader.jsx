@@ -1,7 +1,10 @@
 import { useContext, useState, useEffect, useRef } from 'react';
-import { ManageThemes } from '../../functions/manage-themes';
-import { animateImageLoading } from '../../functions/animate-image-loading';
-import loaderContext from '../../functions/contexts/loader-context';
+
+import { animateImageLoading } from '../../function/animate-image-loading';
+
+import loaderContext from '../../function/context/loader-context';
+
+import { ManageThemes } from '../../object/manage-themes';
 
 import '../../asset/css/loader/style.scss';
 import '../../asset/css/loader/media.scss';

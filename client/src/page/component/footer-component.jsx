@@ -1,7 +1,8 @@
+import { NavLink } from 'react-router-dom';
+
 import '../../asset/css/footer/style.scss';
 import '../../asset/css/footer/dark-style.scss';
 import '../../asset/css/media/footer/style.scss';
-import { NavLink } from 'react-router-dom';
 
 const FooterComponent = () => {
     return (
@@ -18,7 +19,7 @@ const FooterComponent = () => {
             </div>
             <div id="footer2">
                 <a href="https://github.com/rayaaaneee" id="footergithubimg" className="footer-github-img" target="_blank"></a>
-                <a href="https://www.linkedin.com/in/rayanemerlin/" id="footerlinkedinimg" target="_blank" className=" footer-linkedin-img"></a>
+                <a href="https://www.linkedin.com/in/rayanemerlin/" id="footerlinkedinimg" target="_blank" className=" footer-linkedin-img" rel="noreferrer"></a>
                 <a href="mailto:rayane.merlin8@gmail.com" id="footermailimg" target="_blank" className="footer-mail-img"></a>
                 <a href="tel:+33768283277" id="footerphoneimg" target="_blank" className="footer-phone-img"></a>
             </div>

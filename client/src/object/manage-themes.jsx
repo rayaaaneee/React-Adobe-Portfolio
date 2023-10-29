@@ -1,4 +1,4 @@
-import { getCookie, setCookie, removeCookie, isCookie } from '../hooks/useCookies';
+import { getCookie, setCookie, removeCookie, isCookie } from '../hook/useCookies';
 
 import faviconLightTheme from '../asset/img/favicon/favicon-light-theme.png';
 import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';

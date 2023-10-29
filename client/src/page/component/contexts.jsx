@@ -1,11 +1,12 @@
-import loaderContext from '../../functions/contexts/loader-context';
-import themeContext from '../../functions/contexts/theme-context';
-import { modalContext, modalInformationsContext} from '../../functions/contexts/modal-context';
-
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { ManageThemes } from '../../functions/manage-themes';
-import { ModalInformations } from '../../objects/modal-informations';
+import loaderContext from '../../function/context/loader-context';
+import themeContext from '../../function/context/theme-context';
+import { modalContext, modalInformationsContext } from '../../function/context/modal-context';
+
+import { ManageThemes } from '../../object/manage-themes';
+import { ModalInformations } from '../../object/modal-informations';
+
 import { Modal } from './modal'; 
 
 const Contexts = ({ children }) => {

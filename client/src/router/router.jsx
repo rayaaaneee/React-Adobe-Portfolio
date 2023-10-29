@@ -7,7 +7,7 @@ import Contact from "../page/contact";
 import About from "../page/about";
 import Perso from "../page/perso";
 import NotFound from "../page/notfound";
-import Main from "../page/components/main";
+import Main from "../page/component/main";
 
 const Router = () => {
     return (

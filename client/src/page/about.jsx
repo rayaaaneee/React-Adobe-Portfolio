@@ -1,8 +1,11 @@
-import { ManageBody } from '../functions/manage-body';
-import { animateApparition } from '../functions/appearence';
-import { NavLink } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
-import themeContext from '../functions/contexts/theme-context';
+import { NavLink } from 'react-router-dom';
+
+import { ManageBody } from '../object/manage-body';
+
+import { animateApparition } from '../function/appearence';
+
+import themeContext from '../function/context/theme-context';
 
 import '../asset/css/about/style.scss';
 import '../asset/css/about/dark-style.scss';

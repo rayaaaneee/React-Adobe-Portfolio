@@ -1,9 +1,10 @@
 import { useRef, useContext } from 'react';
-import { useConditionalEffect } from '../../hooks/useConditionalEffect';
 import { createPortal } from 'react-dom';
 
+import { useConditionalEffect } from '../../hook/useConditionalEffect';
+
 import '../../asset/css/modal/message-modal.scss';
-import { modalContext, modalInformationsContext } from '../../functions/contexts/modal-context';
+import { modalContext, modalInformationsContext } from '../../function/context/modal-context';
 
 // Utiliser createPortal pour afficher le modal
 

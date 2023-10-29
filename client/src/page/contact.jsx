@@ -1,17 +1,19 @@
-import { animateApparition } from '../functions/appearence';
-import { animateImageLoading } from '../functions/animate-image-loading';
-import { sendMessage } from '../functions/send-message';
-import { ManageBody } from '../functions/manage-body';
-
 import { useEffect, useMemo, useRef, useState, useContext } from 'react';
+
+import { animateApparition } from '../function/appearence';
+import { animateImageLoading } from '../function/animate-image-loading';
+import { sendMessage } from '../function/send-message';
+
+import { modalContext, modalInformationsContext } from '../function/context/modal-context';
+
+import { ManageBody } from '../object/manage-body';
+import { ManageThemes } from '../object/manage-themes';
 
 import '../asset/css/contact/style.scss';
 import '../asset/css/contact/dark-style.scss';
 import '../asset/css/media/contact/style.scss';
 
 import contactImg from '../asset/img/contact/contact.png';
-import { ManageThemes } from '../functions/manage-themes';
-import { modalContext, modalInformationsContext } from '../functions/contexts/modal-context';
 
 const Contact = () => {
 

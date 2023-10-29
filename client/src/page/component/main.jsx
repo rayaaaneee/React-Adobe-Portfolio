@@ -1,9 +1,12 @@
 import { useContext } from "react";
+import { useLocation } from "react-router-dom";
+
 import FooterComponent from "./footer-component";
 import HeaderComponent from "./header-component";
+
 import Loader from "./loader";
 
-import loaderContext from "../../functions/contexts/loader-context";
+import loaderContext from "../../function/context/loader-context";
 
 import "../../asset/css/general/animation.scss";
 import "../../asset/css/general/background.scss";
@@ -14,7 +17,6 @@ import "../../asset/css/general/presets-animation.scss";
 import "../../asset/css/general/scrollbar.scss";
 
 import Backgrounds from "./backgrounds";
-import { useLocation } from "react-router-dom";
 
 const Main = ({ children }) => {
   // Si le loader a déjà été chargé on ne l'affiche pas

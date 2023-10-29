@@ -1,18 +1,21 @@
 import { useContext, useEffect, useState, useRef } from 'react';
-import themeContext from '../functions/contexts/theme-context';
 
-import { ManageBody } from '../functions/manage-body';
+import { ManageBody } from '../object/manage-body';
 
-import { Project as ProjectObject } from '../objects/project';
-import { SchoolCompetence } from '../objects/school-competence';
-import { animateApparition } from '../functions/appearence';
-import { ScrollProjects } from '../functions/scroll-projects';
-import { animateCards } from '../functions/3d-effect-card';
-import { animateImageLoading } from '../functions/animate-image-loading';
-import { useConditionalEffect } from '../hooks/useConditionalEffect';
+import { Project as ProjectObject } from '../object/project';
+import { SchoolCompetence } from '../object/school-competence';
+import { ScrollProjects } from '../object/scroll-projects';
 
-import { CompetenceCard } from './components/home/competence-card';
-import { Project } from './components/home/project';
+import { animateApparition } from '../function/appearence';
+import { animateCards } from '../function/3d-effect-card';
+import { animateImageLoading } from '../function/animate-image-loading';
+
+import { useConditionalEffect } from '../hook/useConditionalEffect';
+
+import { CompetenceCard } from './component/home/competence-card';
+import { Project } from './component/home/project';
+
+import themeContext from '../function/context/theme-context';
 
 import '../asset/css/home/style.scss';
 import '../asset/css/home/frame-cv.scss';

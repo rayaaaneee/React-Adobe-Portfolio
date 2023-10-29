@@ -1,6 +1,7 @@
-import { MoveBackground } from '../../objects/move-background';
-import { ParallaxBackground } from '../../objects/parallax-background';
 import { useEffect, useRef } from 'react';
+
+import { MoveBackground } from '../../object/move-background';
+import { ParallaxBackground } from '../../object/parallax-background';
 
 const Backgrounds = () => {
 

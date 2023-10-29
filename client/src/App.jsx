@@ -1,5 +1,5 @@
-import { ManageThemes } from './functions/manage-themes';
-import Contexts from './page/components/contexts';
+import { ManageThemes } from './object/manage-themes';
+import Contexts from './page/component/contexts';
 
 import Router from './router/router';
 import './style.css';

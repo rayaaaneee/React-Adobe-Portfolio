@@ -1,13 +1,20 @@
-import { animateApparition } from '../functions/appearence';
-import { animateImageLoading } from '../functions/animate-image-loading';
-import { ManageBody } from '../functions/manage-body';
 import { useEffect, useRef, useState } from 'react';
-import { useConditionalEffect } from '../hooks/useConditionalEffect';
-import { main, initHeight, colorPointAssociateToSemester, 
-uncolorPointAssociateToSemester, onclickSemester, setPointsContainers, setSemesters, setTimeline, intervalMoveSemesters, intervalAnimation, onScroll } from '../functions/course-page-functions';
 
-import { Semester } from './components/course/semester';
-import { Point } from './components/course/point';
+import { animateApparition } from '../function/appearence';
+import { animateImageLoading } from '../function/animate-image-loading';
+
+import { ManageBody } from '../object/manage-body';
+import { Semester as SemesterObject } from '../object/semester';
+
+import { useConditionalEffect } from '../hook/useConditionalEffect';
+
+import { main, initHeight, colorPointAssociateToSemester, 
+uncolorPointAssociateToSemester, onclickSemester, setPointsContainers, 
+setSemesters, setTimeline, intervalMoveSemesters, intervalAnimation, onScroll } 
+from '../function/course-page-functions';
+
+import { Semester } from './component/course/semester';
+import { Point } from './component/course/point';
 
 import medalImg from '../asset/img/course/medal-white.png';
 import dateImg from '../asset/img/course/calendar-pink.png';
@@ -18,8 +25,6 @@ import matterImg from '../asset/img/course/tab.png';
 import '../asset/css/course/style.scss';
 import '../asset/css/course/semester-page.scss';
 import '../asset/css/course/dark-style.scss';
-
-import { Semester as SemesterObject } from '../objects/semester';
 
 import semesterJson from '../asset/data/course/semester.json';
 

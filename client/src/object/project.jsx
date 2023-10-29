@@ -1,7 +1,5 @@
-import { ManageLanguages } from '../functions/manage-languages';
-import { ManageCompetences } from '../functions/manage-competences';
-
-const PATH_PROJECTS = "../asset/project/";
+import { ManageLanguages } from '../object/manage-languages';
+import { ManageCompetences } from '../object/manage-competences';
 
 export class Project
 {

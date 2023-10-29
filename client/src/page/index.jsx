@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
-import { ManageBody } from '../functions/manage-body';
 
 import '../asset/css/index/appearence.scss';
 import '../asset/css/index/dark-style.scss';
@@ -12,13 +11,14 @@ import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';
 
 import CV from '../asset/file/CV.pdf';
 
-import { ManageThemes } from '../functions/manage-themes';
+import { ManageBody } from '../object/manage-body';
+import { ManageThemes } from '../object/manage-themes';
 
-import loaderContext from '../functions/contexts/loader-context';
+import loaderContext from '../function/context/loader-context';
 
 const Index = () => {
 
-    const {wasLoaderShowed, setWasLoaderShowed} = useContext(loaderContext);
+    const { setWasLoaderShowed } = useContext(loaderContext);
     setWasLoaderShowed(false);
 
     ManageBody.changeClass('index');

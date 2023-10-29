@@ -1,14 +1,17 @@
-import { ManageBody } from '../functions/manage-body';
 import { useEffect, useRef } from 'react';
-import { animateApparition } from '../../functions/appearence';
-import { animateImageLoading } from '../../functions/animate-image-loading';
 
-import { Music } from './components/perso/music';
+import { animateApparition } from '../function/appearence';
+import { animateImageLoading } from '../function/animate-image-loading';
+
+import { ManageBody } from '../object/manage-body';
+
+import { Music } from './component/perso/music';
+
 import '../asset/css/perso/style.scss';
 import '../asset/css/perso/dark-style.scss';
 import '../asset/css/media/perso/style.scss';
 
-import Musics from '../../asset/data/perso/music.json';
+import musicJson from '../asset/data/perso/music.json';
 
 import photoPerso from '../asset/img/perso/img.png';
 
@@ -75,7 +78,7 @@ const Perso = () => {
             </div>
             <article id="music" onMouseOver={ () => colorBar(1) } onMouseLeave={ () => uncolorBar(1) }>
                 <div id="frames">
-                { Musics.map((link, index) => {
+                { musicJson.map((link, index) => {
                     return (
                         <Music link={ link } key={ index } />
                         );
