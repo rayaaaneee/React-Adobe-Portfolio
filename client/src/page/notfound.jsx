@@ -1,10 +1,18 @@
-import { ManageBody } from '../object/manage-body';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+
 import { animateApparition } from '../function/appearence';
+import { animateImageLoading } from '../function/animate-image-loading';
+
+import { ManageBody } from '../object/manage-body';
 
 const NotFound = () => {
 
-    useEffect(() => {animateApparition()}, []);;
+    const elementsToAnimate = useRef([]);
+    const imagesToLoad = useRef([]);
+    useEffect(() => {
+        animateApparition(elementsToAnimate.current);
+        animateImageLoading(imagesToLoad.current);
+    }, []);
 
     ManageBody.changeClass('not-found');
 
@@ -14,7 +22,7 @@ const NotFound = () => {
 
     return (
         <>
-                <h1>404</h1>
+            <h1>404 Not found</h1>
         </>
     );
 }

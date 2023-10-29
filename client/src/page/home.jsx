@@ -50,9 +50,11 @@ const Home = () => {
 
     ManageBody.changeClass('home');
 
+    const elementsToAnimate = useRef([]);
+    const imagesToLoad = useRef([]);
     useEffect(() => { 
-      animateApparition();
-      animateImageLoading();
+      animateApparition(elementsToAnimate.current);
+      animateImageLoading(imagesToLoad.current);
      }, []);
 
     const { isDarkTheme } = useContext(themeContext);
@@ -144,18 +146,26 @@ const Home = () => {
 
     var [cvVisibilityChanged, setCvVisibilityChanged] = useState(false);
     useConditionalEffect(() => {
+
       if (cvContainerIsVisible) {
+  
         document.body.style.overflow = 'hidden';
         frameCvRef.current.classList.add('visible');
         setCvVisibilityChanged(true);
+
       } else if (cvVisibilityChanged) {
+
         frameCvRef.current.scrollTo(0, 0);
         frameCvRef.current.classList.add('hidden');
         frameCvRef.current.classList.remove('visible');
+
         setTimeout(() => {
+
           document.body.style.removeProperty('overflow');
           frameCvRef.current.classList.remove('hidden');
+  
         }, 150);
+
       }
     }, [cvContainerIsVisible, cvVisibilityChanged]);
 
@@ -208,18 +218,20 @@ const Home = () => {
       <>
               <article id="main">
                   {/* On met le CV dans le rendu, caché dans l'HTML pour s'en servir en cas d'impression */}
-                  <iframe ref={cvPdfIframe} src={cvPdf} className="hidden"></iframe>
+                  <iframe ref={cvPdfIframe} src={cvPdf} className="hidden" title='CV'></iframe>
                   <div className="title t1" id="firstmid">
                     <p>Mes projets</p>
                   </div>
-                  <div id="bar0" className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
+                  <div id="bar0" className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar)} }></div>
                   <div className="projects-chevrons-container" onMouseOver={ () => colorBar(0)} onMouseLeave={ () => uncolorBar(0) }>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron left animate" ref={(chevron) => (chevrons.current.left = chevron) }>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron left" ref={(chevron) => {chevrons.current.left = chevron; elementsToAnimate.current.push(chevron) } }>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                     </svg>
                     <article className="projects" ref={ projects }>
                     { projectsObjects.map((project, i) => (
-                      <Project project={ project } key={ i } colorBar={ () => colorBar(1) } 
+                      <Project project={ project } key={ i } colorBar={ () => colorBar(1) }
+                      ref={ (project) => { elementsToAnimate.current.push(project) } }
+                      imageLoadingRef={ (image) => { imagesToLoad.current.push(image) } }
                       uncolorBar={ () => uncolorBar(1) } 
                       openProjectPage={ () => openProjectPage(project) } 
                       isDarkTheme={isDarkTheme} darkLinkImg={darkLinkImg} 
@@ -227,7 +239,7 @@ const Home = () => {
                       downloadImg={downloadImg} />
                     ))}
                     </article>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron right animate" ref={(chevron) => (chevrons.current.right = chevron) }>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron right" ref={(chevron) => {chevrons.current.right = chevron; elementsToAnimate.current.push(chevron)} }>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
                   </div>
@@ -340,8 +352,8 @@ const Home = () => {
                   <div className="title t2" id="secondmid">
                     <p>Mon CV</p>
                   </div>
-                  <div id="bar1" className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
-                  <div id="container-cv" className="animate" onMouseOver={() => colorBar(1)} onMouseLeave={ () => uncolorBar(1) }>
+                  <div id="bar1" className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
+                  <div id="container-cv" onMouseOver={() => colorBar(1)} onMouseLeave={ () => uncolorBar(1) } ref={ (container) => { elementsToAnimate.current.push(container) } }>
                     <div id="cv-img" onClick={() => {
                       setCvContainerIsVisible(true);
                     }}>
@@ -415,10 +427,10 @@ const Home = () => {
                   <div className="title t3" id="firstmid">
                     <p>Mes compétences :</p>
                   </div>
-                  <div id="bar2" className="horizontal-bars animate" ref={ bar => bars.current.push(bar) }></div>
+                  <div id="bar2" className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
                   <div className="school-competence-container" onMouseOver={ () => colorBar(2) } onMouseLeave={ () => uncolorBar(2)}>
                     { schoolCompetenceObjects.map((competence, i) => (
-                      <CompetenceCard competence={ competence } key={i} ref={ card => (cards.current[i] = card) } />
+                      <CompetenceCard competence={ competence } key={i} ref={ card => { cards.current[i] = card; elementsToAnimate.current.push(card) } } />
                     ))}
                   </div>
                 </article>

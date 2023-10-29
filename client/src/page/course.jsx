@@ -31,13 +31,16 @@ import semesterJson from '../asset/data/course/semester.json';
 
 const Course = () => {
 
+    const elementsToAnimate = useRef([]);
+    const imagesToLoad = useRef([]);
     useEffect(() => {
-        animateApparition();
-        animateImageLoading();
+
+        animateApparition(elementsToAnimate.current);
+        animateImageLoading(imagesToLoad.current);
 
         document.title = 'Mon parcours';
         setPointsContainers(pointsContainers.current);
-        setSemesters(semestersRef.current);
+        setSemesters(semesters.current);
         setTimeline(timelineRef.current);
         main();
 
@@ -53,11 +56,11 @@ const Course = () => {
 
     ManageBody.changeClass('course');
 
-    const semesters = SemesterObject.processRow(semesterJson);
+    const semestersObjects = SemesterObject.processRow(semesterJson);
 
     let timelineRef = useRef(null);
     let pointsContainers = useRef([]);
-    let semestersRef = useRef([]);
+    let semesters = useRef([]);
 
     // Si l'utilisateur clique sur "Consulter", on retire le hash de l'url
     const clearUrl = () => {
@@ -110,7 +113,7 @@ const Course = () => {
     return (
         <>
             <div className="explain-container">
-                <div className="explain animate">
+                <div className="explain" ref={ (element) => ( elementsToAnimate.current.push(element) ) }>
                     <img className="medal-img" src={ medalImg } alt="icon-study" draggable="false" />
                     <h1 className="explain-text">Qu'est-ce que cette page ?</h1>
                     <p className="explain-text">Voici mon parcours scolaire allant de l'obtention du bac jusqu'à aujourd'hui.</p>
@@ -128,19 +131,19 @@ const Course = () => {
                 <div ref={ timelineRef } id="timeline" style={{transform: "translateY(100vh)"}}></div>
                 <div id="fordisplay">
                     <div id="points">
-                        {semesters.map((semester, i) => {
+                        {semestersObjects.map((semester, i) => {
                             return (
                                 <Point ref={ point => (pointsContainers.current[i] = point )} 
-                                semester={ semester } key={ i } />
+                                semester={ semester } />
                             );
                         })}
                     </div>
                     <div id="semesters">
                         <div id="view"></div>
-                        { semesters.map((semester, i) => {
+                        { semestersObjects.map((semester, i) => {
                             return (
-                                <Semester semester={ semester } key={ i }
-                                ref={ semester => (semestersRef.current[i] = semester) } 
+                                <Semester semester={ semester }
+                                ref={ semester => { semesters.current[i] = semester; elementsToAnimate.current.push(semester) } } 
                                 clickSemester={ () => onclickSemester(i) } 
                                 colorPoint={ () => colorPointAssociateToSemester(i) } 
                                 uncolorPoint={ () => uncolorPointAssociateToSemester(i) } 

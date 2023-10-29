@@ -1,7 +1,10 @@
-export const Project = ({ project, key, colorBar, uncolorBar, openProjectPage, isDarkTheme, darkLinkImg, darkDownloadImg, linkImg, downloadImg }) => {
+import { forwardRef } from "react"
+
+export const Project = forwardRef(({ project, key, colorBar, uncolorBar, openProjectPage, isDarkTheme, darkLinkImg, darkDownloadImg, linkImg, downloadImg, imageLoadingRef }, ref) => {
     return (
         <div
-        className="main-container animate"
+        className="main-container"
+        ref={ ref }
         onMouseOver={ colorBar }
         onMouseLeave={ uncolorBar }
         onClick={ openProjectPage }
@@ -17,8 +20,8 @@ export const Project = ({ project, key, colorBar, uncolorBar, openProjectPage, i
                         isDarkTheme ? darkDownloadImg : downloadImg
                       } draggable="false" />
                 </div>
-                <img alt='project-icon' src={ isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } className="workslogos onloading" draggable="false" />
+                <img ref={ imageLoadingRef } alt='project-icon' src={ isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } className="workslogos" draggable="false" />
             </div>
         </div>
     )
-}
+});

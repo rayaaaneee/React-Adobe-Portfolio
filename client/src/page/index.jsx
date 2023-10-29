@@ -19,7 +19,11 @@ import loaderContext from '../function/context/loader-context';
 const Index = () => {
 
     const { setWasLoaderShowed } = useContext(loaderContext);
-    setWasLoaderShowed(false);
+
+    useEffect(() => {
+            setWasLoaderShowed(false);
+        }
+    );
 
     ManageBody.changeClass('index');
 
@@ -31,7 +35,12 @@ const Index = () => {
         document.title = 'Adobe Portfolio';
     });
 
-    const textTab = ["Rayane Merlin", "Full Stack Developper", "Designer", "IT Student (BAC +3)"];
+    const textTab = [
+        "Rayane Merlin", 
+        "Full Stack Developper", 
+        "Designer", 
+        "IT Student (BAC +3)"
+    ];
 
     const [textTypeWriter] = useTypewriter({
         words: textTab,

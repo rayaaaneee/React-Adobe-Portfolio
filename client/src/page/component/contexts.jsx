@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import loaderContext from '../../function/context/loader-context';
 import themeContext from '../../function/context/theme-context';
-import { modalContext, modalInformationsContext } from '../../function/context/modal-context';
+import { modalContext } from '../../function/context/modal-context';
 
 import { ManageThemes } from '../../object/manage-themes';
 import { ModalInformations } from '../../object/modal-informations';
@@ -37,15 +37,8 @@ const Contexts = ({ children }) => {
     );
 
     // Gérer la modale
-    const [modalIsVisible, setModalIsVisible] = useState(null);
-    const modalValue = useMemo(
-      () => ({ modalIsVisible, setModalIsVisible }), 
-      [modalIsVisible]
-    );
-
-    // Gérer les informations de la modale
     const [modalInformations, setModalInformations] = useState(new ModalInformations());
-    const modalInformationsValue = useMemo(
+    const modalValue = useMemo(
       () => ({ modalInformations, setModalInformations }), 
       [modalInformations]
     );
@@ -53,14 +46,12 @@ const Contexts = ({ children }) => {
     return (
       <>
         <modalContext.Provider value={modalValue} >
-          <modalInformationsContext.Provider value={modalInformationsValue} >
             <loaderContext.Provider value={loaderValue} >
                 <themeContext.Provider value={themeValue} >
                   <Modal />
                   { children }
                 </themeContext.Provider>
             </loaderContext.Provider>
-          </modalInformationsContext.Provider>
         </modalContext.Provider>
       </>
     )

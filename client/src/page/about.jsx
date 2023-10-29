@@ -1,9 +1,10 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { ManageBody } from '../object/manage-body';
 
 import { animateApparition } from '../function/appearence';
+import { animateImageLoading } from '../function/animate-image-loading';
 
 import themeContext from '../function/context/theme-context';
 
@@ -18,7 +19,12 @@ import darkAboutImg from '../asset/img/about/about-white.png';
 
 const About = () => {
 
-    animateApparition();
+    const elementsToAnimate = useRef([]);
+    const imagesToLoad = useRef([]);
+    useEffect(() => {
+        animateApparition(elementsToAnimate.current);
+        animateImageLoading(imagesToLoad.current);
+    }, []);
 
     ManageBody.changeClass('about');
 
@@ -29,12 +35,13 @@ const About = () => {
     const { isDarkTheme } = useContext(themeContext);
 
     return (
-            <div className="main-container animate">
+            <div className="main-container" ref={ (element) => { elementsToAnimate.current.push(element) } }>
                 <div className="content">
                     <div className="privacy">
                     <div className="title-container title-container-first-child">
                             <h1 className="title title1">• Politique de confidentialité</h1>
-                            <div className="bar first-bar animate"></div>
+                            <div className="bar first-bar" ref={ (element) => { elementsToAnimate.current.push(element) } }>
+                            </div>
                             <img src={ isDarkTheme ? darkPrivacyImg : privacyImg } alt="privacy" draggable="false" />
                         </div>
                         <p className="text-content">Votre vie privée est importante pour moi. La politique d'Adobe PortFolio est de respecter votre vie privée et de se conformer à toutes les lois et réglementations applicables concernant les informations personnelles que je pourrais collecter à votre sujet, y compris sur mon site Web, par l'adresse <NavLink to={"/"}><strong>https://rayanemerlin.com/</strong></NavLink><br/>Cette politique est en vigueur depuis le 7 février 2023 et a été mise à jour pour la dernière fois le 7 février 2023.</p>
@@ -54,7 +61,8 @@ const About = () => {
                     <div className="contact">
                     <div className="title-container">
                             <h1 className="title title2">• À propos</h1>
-                            <div className="bar second-bar animate"></div>
+                            <div className="bar second-bar" ref={ (element) => { elementsToAnimate.current.push(element) } }>
+                            </div>
                             <img src={ isDarkTheme ? darkAboutImg : aboutImg } alt="about_icon" draggable="false" />
                         </div>
                         <p className="text-content">Ce site a été entièrement codé par mes soins dans le but de présenter mon parcours, mes projets et mes compétences. <br/> De même, tous les projets présentés ont pu être codés en partie ou entièrement par mes soins. <br/> Le logo a été inspiré du logo officiel d'Adobe Photoshop (plus généralement de l"ensemble des logos de la suite Adobe). Le loader a lui été inspiré du chargement officiel d'Adobe Photoshop 2022.</p>

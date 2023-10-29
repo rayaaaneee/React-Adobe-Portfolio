@@ -5,14 +5,14 @@ export class ModalInformations {
         error: null
     }
 
+    isVisible = false;
+
     #isSuccess;
 
-    static successStatus = "success";
+    static #successStatus = "success";
 
-    static errorStatus = "error";
+    static #errorStatus = "error";
 
-    constructor() {
-    }
 
     setMessages(messageSuccess, messageError) {
         this.message = {
@@ -39,9 +39,9 @@ export class ModalInformations {
     getStatus() {
         switch (this.#isSuccess) {
             case true:
-                return ModalInformations.successStatus;
+                return ModalInformations.#successStatus;
             case false:
-                return ModalInformations.errorStatus;
+                return ModalInformations.#errorStatus;
             default:
                 return null;
         }

@@ -1,4 +1,4 @@
-export const animateApparition = () => {
+export const animateApparition = (elementsToAnimate) => {
     const intersectionObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -12,10 +12,7 @@ export const animateApparition = () => {
     });
 
     // Tous les éléments à animer ont la classe "animate"
-    const classListElementsToAnimate = 'animate';
-    const elements = document.querySelectorAll(`.${classListElementsToAnimate}`);
-    elements.forEach((element) => {
+    elementsToAnimate.forEach((element) => {
         intersectionObserver.observe(element);
-        element.classList.remove(classListElementsToAnimate);
     });
 }

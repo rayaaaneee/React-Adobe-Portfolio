@@ -1,17 +1,17 @@
 import { useRef, useContext } from 'react';
 import { createPortal } from 'react-dom';
 
+import { modalContext } from '../../function/context/modal-context';
+
 import { useConditionalEffect } from '../../hook/useConditionalEffect';
 
-import '../../asset/css/modal/message-modal.scss';
-import { modalContext, modalInformationsContext } from '../../function/context/modal-context';
+import '../../asset/css/modal/style.scss';
 
 // Utiliser createPortal pour afficher le modal
 
 export const Modal = () => {
 
-    const { modalIsVisible } = useContext(modalContext);
-    const { modalInformations } = useContext(modalInformationsContext);
+    const { modalInformations, setModalInformations } = useContext(modalContext);
 
     // Durée de l'animation en secondes
     const modalDuration = 4;
@@ -32,14 +32,13 @@ export const Modal = () => {
     }
 
     useConditionalEffect(() => {
-        console.log('modalIsVisible', modalIsVisible);
-        console.log('modalInformations', modalInformations);
+        console.log(modalInformations);
         setTimeout(crossClick, modalDuration * 1000);
-    }, [modalIsVisible])
+    }, [ modalInformations ])
 
     return createPortal(
         <>
-            { modalIsVisible && (
+            { modalInformations.isVisible && (
                 <div ref={ modalRef } className={`${ modalInformations.modalStatus }-message-container message-container` } >
                     <div className="cross-container" onClick={ crossClick }>
                         <div className="cross">

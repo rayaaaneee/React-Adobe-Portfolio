@@ -4,7 +4,7 @@ import { animateApparition } from '../function/appearence';
 import { animateImageLoading } from '../function/animate-image-loading';
 import { sendMessage } from '../function/send-message';
 
-import { modalContext, modalInformationsContext } from '../function/context/modal-context';
+import { modalContext } from '../function/context/modal-context';
 
 import { ManageBody } from '../object/manage-body';
 import { ManageThemes } from '../object/manage-themes';
@@ -17,9 +17,11 @@ import contactImg from '../asset/img/contact/contact.png';
 
 const Contact = () => {
 
+    const elementsToAnimate = useRef([]);
+    const imagesToLoad = useRef([]);
     useEffect(() => {
-        animateApparition();
-        animateImageLoading();
+        animateApparition(elementsToAnimate.current);
+        animateImageLoading(imagesToLoad.current);
     }, []);
 
     ManageBody.changeClass('contact');
@@ -36,8 +38,7 @@ const Contact = () => {
     let erroremailRef = useRef(null);
     let errormsgRef = useRef(null);
 
-    const { setModalIsVisible } = useContext(modalContext);
-    const { setModalInformations } = useContext(modalInformationsContext);
+    const { setModalInformations } = useContext(modalContext);
     useEffect(() => {
         setModalInformations(
             (informations) => {
@@ -59,12 +60,10 @@ const Contact = () => {
             setModalInformations(
                 (informations) => {
                     informations.setSuccess(isSuccess);
+                    informations.isVisible = true;
                     return informations;
                 }
             );
-
-            setModalIsVisible(true);
-
         })
     }
 
@@ -190,8 +189,8 @@ const Contact = () => {
                 <div className="alert-container"></div>
                 <main id='contactPage'>
                     <div className="pres-container">
-                        <div id="pres" className="animate">
-                            <img draggable="false" className='onloading' src={ contactImg } id="imgcontact" alt="Contact Icon" />
+                        <div id="pres" ref={ (element) => elementsToAnimate.current.push(element) } >
+                            <img draggable="false" ref={ (img) => imagesToLoad.current.push(img) } src={ contactImg } id="imgcontact" alt="Contact Icon" />
                             <h3 className="present">Pour tout contact, vous pouvez aussi passer par cette page.<br/>
                                 Pour cela, c'est très simple : <br/>
                                 • Rentrez le nom / pseudonyme sous lequel vous enverrez le message<br/>
@@ -201,7 +200,7 @@ const Contact = () => {
                         </div>
                     </div>
                     <div className="form-container">
-                        <div className="formulaire animate">
+                        <div className="formulaire" ref={ (element) => elementsToAnimate.current.push(element) } >
                             <form id="sendMessageForm" onSubmit={ handleSubmit }>
 
                                 <div className='input-container'>

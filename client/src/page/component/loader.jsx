@@ -19,9 +19,9 @@ import faviconDarkTheme from '../../asset/img/header/dark-theme/dark_portfolio_l
 const Loader = () => {
 
     const {setWasLoaderShowed} = useContext(loaderContext);
-    var [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
-    var points = [
+    const points = [
         useRef(null),
         useRef(null),
         useRef(null),
@@ -30,10 +30,10 @@ const Loader = () => {
         useRef(null)
     ];
 
-    var cursor = useRef(null);
+    const cursor = useRef(null);
 
     /* Déclaration du tableau de texte */
-    var texts = [
+    const texts = [
         "Lecture des préférences...",
         "Initialisation des outils...",
         "Chargement de la palette...",
@@ -47,21 +47,22 @@ const Loader = () => {
     //Balise texte à modifier
     const [textIndex, setTextIndex] = useState(0);
 
-    let maxTime = 2300;
+    const maxTime = 2300;
     const timeToAppearTexts = 200;
 
 
-    let textDuration = parseInt((maxTime + timeToAppearTexts) / ( texts.length ));
+    const textDuration = parseInt((maxTime + timeToAppearTexts) / ( texts.length ));
 
-    let [containerIsVisible, setContainerIsVisible] = useState(false);
-    let [theme, setTheme] = useState();
+    const [containerIsVisible, setContainerIsVisible] = useState(false);
+    const [theme, setTheme] = useState();
 
     const disappearBackgroundTime = maxTime/1.5;
-    let [isBackgroundVisible, setIsBackgroundVisible] = useState(true);
+    const [isBackgroundVisible, setIsBackgroundVisible] = useState(true);
 
+    const imagesToLoad = useRef([]);
     useEffect(() => {
 
-        animateImageLoading();
+        animateImageLoading(imagesToLoad.current);
 
         document.body.classList.add('no-scroll');
 
@@ -144,7 +145,7 @@ const Loader = () => {
                     <div id="container" className={ containerIsVisible ? 'visible' : 'hidden' } onMouseOver={ changeCursor } onMouseOut={ unchangeCursor }>
                         <div id="left">
                             <div id="title">
-                                <img draggable="false" src={ theme } className='onloading' alt="PortFolio" />
+                                <img draggable="false" src={ theme } ref={ (img) => ( imagesToLoad.current.push(img) ) } alt="PortFolio" />
                                 <h1>Adobe Portfolio</h1>
                             </div>
                             <div id="loader">
@@ -161,16 +162,16 @@ const Loader = () => {
                                 <p id="underChange" className="lowfontweight2">Russel Williams, Thomas Knoll, John Knoll, Mark Hamburg, Jackie Lincoln-O w y ang, A lan Erickson, Sarah Kong, Jerry Harris, Mike Shaw, Thomas Ruark, Yukie Takahashi, David Dobish, John Peterson, Adam Jerugim, Yuko Kagita, Foster Brereton, Meredith Payne Stotzner, Tai Luxon, Vinod Balakrishnan, David Hackel, Eric Floch, Judy Lee, Kevin Hopps, Barkin Aygun, Shanmugh Natarajan, Vishal Wadhwa, Pulkit Jindal, Quynn Megan Le, Stephen Nielson, Bob Archer, Kavana Anand, Chad Rolfs, Charles F. Rose III, Kamal Arora, Joel Baer, Metthew Neldam, Jacob Correia, Pulkit Mehta, Jesper S. Bache, Eric C hing, Dustin Passofaro, Sagar Pathak, Irina Maderych, Praveen Gelra, Vasanth Pai, Zijun Wei, Nithesh Gangadhar Salian</p>
                             </div>
                             <div id="logo">
-                                <img draggable="false" src={ adobeIcon } className='onloading' alt="Adobe" />
+                                <img draggable="false" src={ adobeIcon } ref={ (img) => ( imagesToLoad.current.push(img) ) } alt="Adobe" />
                                 <p>Adobe Creative Cloud</p>
                             </div>
                         </div>
                         <div id="right">
                             <div id="img">
-                                <img draggable="false" src={ loadIcon } className='onloading' alt="Adobe Portfolio" />
+                                <img draggable="false" src={ loadIcon } ref={ (img) => ( imagesToLoad.current.push(img) ) } alt="Adobe Portfolio" />
                             </div>
                             <div id="logomedia">
-                                <img draggable="false" className='onloading' src={ adobeIcon } alt="Adobe" />
+                                <img draggable="false" ref={ (img) => ( imagesToLoad.current.push(img) ) } src={ adobeIcon } alt="Adobe" />
                                 <p>Adobe Creative Cloud</p>
                             </div>
                         </div>

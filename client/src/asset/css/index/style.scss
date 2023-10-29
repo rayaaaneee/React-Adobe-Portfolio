@@ -345,8 +345,12 @@ body.index {
     }
 
     .container > .title > h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 12vw;
-        height: 16vw;
+        height: 10vw;
+        margin-bottom: 2vw;
         font-weight: 600;
         color: #fbf6e9;
         text-shadow: 0 0 2.15rem #00000093;
