@@ -20,7 +20,6 @@ export class ModalInformations {
         tmp.isSuccess = information.isSuccess;
         tmp.isVisible = information.isVisible;
 
-        console.log(tmp);
         return tmp;
     }
 

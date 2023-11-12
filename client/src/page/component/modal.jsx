@@ -28,7 +28,7 @@ export const Modal = () => {
             setTimeout(() => {
                 modalRef.current.classList.add('hidden');
                 modalRef.current.classList.remove('fade-out');
-                
+
                 setModalInformations((informations) => {
                     informations = new ModalInformations();
                     return informations;
@@ -36,12 +36,15 @@ export const Modal = () => {
             }, 200);
         }
     }
-    
-/*     useConditionalEffect(() => {
+
+    useConditionalEffect(() => {
         if (modalInformations.isVisible) {
-            setTimeout(crossClick, modalDuration * 1000);
+            setTimeout(() => {
+                crossClick();
+                crossClicked = false;
+            }, modalDuration * 1000);
         }
-    }, [ modalInformations ]); */
+    }, [ modalInformations ]);
 
     return createPortal(
         <>

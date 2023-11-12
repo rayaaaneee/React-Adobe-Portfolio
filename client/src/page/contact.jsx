@@ -40,15 +40,10 @@ const Contact = () => {
     let errormsgRef = useRef(null);
 
     const { setModalInformations } = useContext(modalContext);
-    useEffect(() => {
-        setModalInformations((information) => {
-            information.setMessages(
-               "Votre message a bien été envoyé !",
-               "Une erreur est survenue lors de l'envoi du message."
-            )
-            return ModalInformations.initRow(information)
-        });
-    }, []);
+    let modalMessages = [
+        "Votre message a bien été envoyé !",
+        "Une erreur est survenue lors de l'envoi du message."
+    ];
 
     const trySend = (formData) => {
         sendMessage(formData)
@@ -59,6 +54,7 @@ const Contact = () => {
             setModalInformations(
                 (informations) => {
                     informations.isSuccess = isSuccess;
+                    informations.setMessages(modalMessages[0], modalMessages[1]);
                     informations.isVisible = true;
                     return ModalInformations.initRow(informations);
                 }
