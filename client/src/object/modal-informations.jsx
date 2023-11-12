@@ -7,11 +7,22 @@ export class ModalInformations {
 
     isVisible = false;
 
-    #isSuccess;
+    isSuccess;
 
     static #successStatus = "success";
 
     static #errorStatus = "error";
+
+    static initRow (information) {
+        let tmp = new ModalInformations();
+
+        tmp.setMessages(information.message.success, information.message.error);
+        tmp.isSuccess = information.isSuccess;
+        tmp.isVisible = information.isVisible;
+
+        console.log(tmp);
+        return tmp;
+    }
 
 
     setMessages(messageSuccess, messageError) {
@@ -21,12 +32,8 @@ export class ModalInformations {
         }
     }
 
-    setSuccess(isSuccess) {
-        this.#isSuccess = isSuccess;
-    }
-
     getMessage() {
-        switch (this.#isSuccess) {
+        switch (this.isSuccess) {
             case true:
                 return this.message.success;
             case false:
@@ -37,7 +44,7 @@ export class ModalInformations {
     }
 
     getStatus() {
-        switch (this.#isSuccess) {
+        switch (this.isSuccess) {
             case true:
                 return ModalInformations.#successStatus;
             case false:

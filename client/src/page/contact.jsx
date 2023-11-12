@@ -4,7 +4,7 @@ import { animateApparition } from '../function/appearence';
 import { animateImageLoading } from '../function/animate-image-loading';
 import { sendMessage } from '../function/send-message';
 
-import { modalContext } from '../function/context/modal-context';
+import modalContext from '../function/context/modal-context';
 
 import { ManageBody } from '../object/manage-body';
 import { ManageThemes } from '../object/manage-themes';
@@ -14,6 +14,7 @@ import '../asset/css/contact/dark-style.scss';
 import '../asset/css/media/contact/style.scss';
 
 import contactImg from '../asset/img/contact/contact.png';
+import { ModalInformations } from '../object/modal-informations';
 
 const Contact = () => {
 
@@ -40,15 +41,13 @@ const Contact = () => {
 
     const { setModalInformations } = useContext(modalContext);
     useEffect(() => {
-        setModalInformations(
-            (informations) => {
-                informations.setMessages(
-                   "Votre message a bien été envoyé !",
-                   "Une erreur est survenue lors de l'envoi du message."
-                )
-                return informations;
-            }
-        )
+        setModalInformations((information) => {
+            information.setMessages(
+               "Votre message a bien été envoyé !",
+               "Une erreur est survenue lors de l'envoi du message."
+            )
+            return ModalInformations.initRow(information)
+        });
     }, []);
 
     const trySend = (formData) => {
@@ -59,9 +58,9 @@ const Contact = () => {
 
             setModalInformations(
                 (informations) => {
-                    informations.setSuccess(isSuccess);
+                    informations.isSuccess = isSuccess;
                     informations.isVisible = true;
-                    return informations;
+                    return ModalInformations.initRow(informations);
                 }
             );
         })

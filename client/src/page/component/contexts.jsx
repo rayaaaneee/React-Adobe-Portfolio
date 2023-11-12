@@ -1,13 +1,14 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import loaderContext from '../../function/context/loader-context';
 import themeContext from '../../function/context/theme-context';
-import { modalContext } from '../../function/context/modal-context';
+import modalContext from '../../function/context/modal-context';
 
 import { ManageThemes } from '../../object/manage-themes';
 import { ModalInformations } from '../../object/modal-informations';
 
 import { Modal } from './modal'; 
+import { useConditionalEffect } from '../../hook/useConditionalEffect';
 
 const Contexts = ({ children }) => {
 
@@ -19,14 +20,8 @@ const Contexts = ({ children }) => {
     );
 
     // Si le State accessible de partout (hors index) est modifié, on met à jour le thème
-    const isInitialMount = useRef(true);
-    useEffect(() => {
-        // Si c'est le premier chargement, je ne fait rien
-        if (isInitialMount.current) {
-          isInitialMount.current = false;
-        } else {
-          ManageThemes.toggleThemes();
-        }
+    useConditionalEffect(() => {
+      ManageThemes.toggleThemes();
     }, [isDarkTheme]);
 
     // Gérer l'accessibilité à l'information de si le loader a déjà été affiché

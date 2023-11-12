@@ -43,7 +43,7 @@ const Main = ({ children }) => {
           <HeaderComponent />
           <Backgrounds />
           <div id="pageContent">
-            {children}
+            { children }
           </div>
           {!isCoursePage && <FooterComponent />}
         </>
