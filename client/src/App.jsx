@@ -8,6 +8,8 @@ const App = () => {
 
   ManageThemes.manageThemes();
 
+  document.body.scrollTop = 0;
+
   return (
     <>
       <Contexts>

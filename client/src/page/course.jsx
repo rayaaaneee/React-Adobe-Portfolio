@@ -101,13 +101,18 @@ const Course = () => {
         setSemesterPageIsOpen(false);
     }
 
-    const openImageSemester = () => {
+    const openSubjectsImageSemester = () => {
         crossSemesterPage.current.classList.add("hidden");
         semesterPageSubjectsContainer.current.classList.add("visible");
     }
-    const closeImageSemester = () => {
+    const closeSubjectsImageSemester = () => {
         crossSemesterPage.current.classList.remove("hidden");
+        semesterPageSubjectsContainer.current.classList.add("hidden");
         semesterPageSubjectsContainer.current.classList.remove("visible");
+
+        setTimeout(() => {
+            semesterPageSubjectsContainer.current.classList.remove("hidden");
+        }, 300);
     }
 
     return (
@@ -157,6 +162,16 @@ const Course = () => {
             <article ref={ semesterPage } id="semesterPage">
                 { currentSemester && (
                     <>
+                        { currentSemester.hasMatters() && (
+                            <div ref={ semesterPageSubjectsContainer } className="semester-page-subjects">
+                                <div className="image-subject-container">
+                                    <img src={ currentSemester.getMattersImg() } className="semester-page-subjects-image" alt="subjects" draggable="false" />
+                                    <div className="leave-semester-subject" onClick={ closeSubjectsImageSemester }>
+                                        <p>X</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ) }
                         <div className="semester-page-main-container">
                             <div className="semester-page-title-img-container">
                                 <img className="semester-page-img" alt="icon-study" draggable="false" src={ currentSemester.getWhiteIcon() } />
@@ -219,21 +234,11 @@ const Course = () => {
                                         </div>
                                         <div className="semester-page-content">
                                             <p className="semester-page-subject">Ici sont les matières étudiées et les coefficients de ces mêmes matières .</p>
-                                            <button onClick={ openImageSemester }>Voir les matières</button>
+                                            <button onClick={ openSubjectsImageSemester }>Voir les matières</button>
                                         </div>
                                     </div>
                                 ) }
                             </div>
-                            { currentSemester.hasMatters() && (
-                                <div ref={ semesterPageSubjectsContainer } className="semester-page-subjects">
-                                    <div className="image-subject-container">
-                                        <img src={ currentSemester.getMattersImg() } className="semester-page-subjects-image" alt="subjects" draggable="false" />
-                                        <div className="leave-semester-subject" onClick={ closeImageSemester }>
-                                            <p>X</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ) }
                         </div>
                         <div className="all-cross-container">
                             <div ref={ crossSemesterPage } className="cross-semester-page-container" onClick={ () => closeSemesterPage() }>

@@ -1,8 +1,8 @@
 import { forwardRef } from "react"
 
-export const CompetenceCard = forwardRef(({ key, competence }, ref) => {
+export const CompetenceCard = forwardRef(({ competence }, ref) => {
     return (
-        <div className="card animate" key={ key } ref={ ref }>
+        <div className="card animate" ref={ ref }>
           <div className="card-front">
             <div className="linear-gradient-circle-container card-top-container">
               <div className="linear-gradient-circle" style={{ background: competence.getGradient() }}>

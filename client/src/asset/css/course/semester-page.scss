@@ -424,10 +424,31 @@ body.course {
             top: 0;
             left: 0;
             z-index: 15;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
             background-color: rgba(0, 0, 0, 0.8);
 
             &.visible {
                 display: flex;
+                animation: 0.2s appear 0.1s forwards;
+
+                @keyframes appear {
+                    to {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            &.hidden {
+                display: flex;
+                opacity: 1;
+                animation: 0.2s disappear 0.1s forwards;
+
+                @keyframes disappear {
+                    to {
+                        opacity: 0;
+                    }
+                }
             }
 
             .image-subject-container {

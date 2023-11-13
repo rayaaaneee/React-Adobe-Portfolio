@@ -134,6 +134,38 @@ const Home = () => {
         setProjectPageIsVisible(false);
     }
 
+    let projectViewerContainerRef = useRef(null);
+    let projectViewer;
+
+    useEffect(() => {
+      projectViewer = projectViewerContainerRef.current.querySelector('.project-viewer');
+    });
+
+    const openProjectViewer = (file) => {
+      projectViewerContainerRef.current.classList.add('visible');
+      let link = '/project/' + file;
+  
+      setTimeout(() => {
+        projectViewer.setAttribute('src', link);
+        projectViewer.onload = () => {
+          projectViewer.classList.remove('onloading');
+          projectViewer.removeEventListener('load', projectViewer.onload);
+        }
+      }, 400);
+    }
+
+    const closeProjectViewer = () => {
+      projectViewer.removeAttribute('src');
+      
+      projectViewerContainerRef.current.classList.add('hidden');
+      projectViewerContainerRef.current.classList.remove('visible');
+      
+      setTimeout(() => {
+        projectViewer.classList.add('onloading');
+        projectViewerContainerRef.current.classList.remove('hidden');
+      }, 300);
+    }
+
     let [cvContainerIsVisible, setCvContainerIsVisible] = useState(false);
 
     let frameCvRef = useRef(null);
@@ -228,8 +260,8 @@ const Home = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                     </svg>
                     <article className="projects" ref={ projects }>
-                    { projectsObjects.map((project, i) => (
-                      <Project project={ project } key={ i } colorBar={ () => colorBar(1) }
+                    { projectsObjects.map((project) => (
+                      <Project project={ project } colorBar={ () => colorBar(1) }
                       ref={ (project) => { elementsToAnimate.current.push(project) } }
                       imageLoadingRef={ (image) => { imagesToLoad.current.push(image) } }
                       uncolorBar={ () => uncolorBar(1) } 
@@ -247,16 +279,15 @@ const Home = () => {
                   <div ref={projectPageRef} className="project-page-container">
                       <div className="project-page-content" ref={projectPageContentRef} >
                         <div className="title-project-container">
-                          <img alt='link-or-download' className="link-or-download" src={currentProject ? (currentProject.isLink() ? darkLinkImg : darkDownloadImg) : '' } draggable="false" />
-                          <p className="title-project">{currentProject ? currentProject.getTitle() : ''}</p>
+                          <img alt='link-or-download' className="link-or-download" src={currentProject && (currentProject.isLink() ? darkLinkImg : darkDownloadImg) } draggable="false" />
+                          <p className="title-project">{ currentProject && currentProject.getTitle() }</p>
                         </div>
-                        {currentProject ? (currentProject.hasLanguages() ? 
+                        {currentProject && (currentProject.hasLanguages() &&
                           <>
                             <div className="project-languages-skills title-page-project">
                               <img src={ languages } alt='langages-icones' draggable="false" />
                               <p className="title-language-skill">Langage{
-                                currentProject.getLanguages().length > 1 ? 's' : ''
-                              } :</p>
+                                currentProject.getLanguages().length > 1 && 's' } :</p>
                             </div>
                             <div className="project-languages-skills-container page-content">
                               {currentProject.getLanguages().map((language, index) => {
@@ -268,14 +299,13 @@ const Home = () => {
                               })}
                             </div>
                           </>
-                        : '') : '' }
-                        {currentProject ? (currentProject.hasCompetences() ? 
+                        ) }
+                        {currentProject && (currentProject.hasCompetences() &&
                           <>
                             <div className="project-languages-skills title-page-project">
                               <img src={ skills } alt='languages-icone' draggable="false" />
                               <p className="title-languages-skill">Compétence{
-                                currentProject.getCompetences().length > 1 ? 's' : ''
-                              } :</p>
+                                currentProject.getCompetences().length > 1 && 's' } :</p>
                             </div>
                             <div className="project-languages-skills-container page-content">
                               {currentProject.getCompetences().map((competence, index) => {
@@ -287,58 +317,53 @@ const Home = () => {
                               })}
                             </div>
                           </>
-                        : '') : ''}
+                        ) }
                         <div className="project-desc text-project-container">
                           <div className="project-desc-text title-page-project">
                             <img src={ descriptionIcon } alt="icone-description" draggable="false" />
                             <p>Description :</p>
                           </div>
                           <p className="project-desc-value page-content">
-                            {currentProject ? currentProject.getDescription() : ''}
+                            {currentProject && currentProject.getDescription() }
                           </p>
                         </div>
-                        { currentProject ? 
-                          (currentProject.hasUseDescription() ? 
+                        { currentProject && 
+                          (currentProject.hasUseDescription() &&
                               <div className="project-use-desc text-project-container">
                                 <div className="project-use-desc-text title-page-project">
                                   <img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
                                   <p>Utilisation :</p>
                                 </div>
                                 <p className="project-use-desc-value page-content">
-                                  {currentProject ? currentProject.getUseDescription() : ''}
+                                  { currentProject && currentProject.getUseDescription() }
                                 </p>
                               </div>
-                            : 
-                              ''
-                          ) : '' 
+                          ) 
                         }
-                        { currentProject ? (currentProject.isLink() ?
-                          <a href={ `/project/${currentProject.getLink()}` } className="link-btn title-page-project" rel='noreferrer' target="_blank">Consulter {currentProject.getTitle()}</a>
-                          :
-                          ''
+                        { currentProject && (currentProject.isLink() &&
+                          <a onClick={ () => openProjectViewer(currentProject.getLink()) }
+                          className="link-btn title-page-project" 
+                          rel='noreferrer'>Consulter {currentProject.getTitle()}</a>
                           ) 
-                        : ''}
-                        { currentProject ? (currentProject.isDownload() ?
+                        }
+                        { currentProject && (currentProject.isDownload() &&
                            <a href={ `/project/${currentProject.getFile()}` } className="download-btn title-page-project" download>Télécharger {currentProject.getFileName()}</a>
-                           :
-                          ''
-                          ) 
-                        : ''}
+                        ) }
                         <div className="project-size-container text-project-container">
                           <img src={ whiteMemoryIcon } alt="mémoire-icone" draggable="false" />
                           <p className="page-content">Taille du fichier :</p>
                           <p className="project-size-value page-content">{ currentProject && currentProject.getSize() }</p>
                           <p className='page-content'> Mo </p>
                         </div>
+                        <div className='project-viewer-container' ref={ projectViewerContainerRef }>
+                          <div className='cross-project-viewer' title="Quitter l'aperçu" onClick={ closeProjectViewer }>
+                          </div>
+                          <iframe src='' className='project-viewer onloading'></iframe>
+                        </div>
                         <div className="background-project-page"></div>
                       </div>
-                      <a href={ (currentProject? (currentProject.isLink()?
-                            `/project/${currentProject.getLink()}` 
-                              :
-                            `/project/${currentProject.getFile()}`)
-                            :
-                            null)
-                          } className='current-project-viewing' ref={currentProjectViewingRef}>
+                      <a href={ `/project/${currentProject && currentProject.getFile()}` }
+                          className='current-project-viewing' download ref={currentProjectViewingRef} title={`Télécharger ${currentProject && currentProject.getTitle() }`}>
                         <img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
                       </a>
                       <div title='Quitter' className="quit-project-button" onClick={closeProjectPage}>
@@ -386,7 +411,7 @@ const Home = () => {
                             <img draggable="false" id="imgbutton" src={require('../asset/img/home/frame-cv/infos.png')} alt="" />
                           </div>
                         </div>
-                        <div id="informations" className={isCvInformationsVisible? 'visible' : ''}>
+                        <div id="informations" className={ isCvInformationsVisible && 'visible' }>
                           <div id="title">
                             <p>{cvInformationsJson.name}</p>
                           </div>
@@ -430,7 +455,7 @@ const Home = () => {
                   <div id="bar2" className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
                   <div className="school-competence-container" onMouseOver={ () => colorBar(2) } onMouseLeave={ () => uncolorBar(2)}>
                     { schoolCompetenceObjects.map((competence, i) => (
-                      <CompetenceCard competence={ competence } key={i} ref={ card => { cards.current[i] = card; elementsToAnimate.current.push(card) } } />
+                      <CompetenceCard competence={ competence } ref={ card => { cards.current[i] = card; elementsToAnimate.current.push(card) } } />
                     ))}
                   </div>
                 </article>

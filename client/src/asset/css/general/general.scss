@@ -92,16 +92,6 @@ body:not(.index) {
     color : rgb(228 209 209 / 88%) !important;
   }
 
-  img.onloading {
-    background-color: #e5c1a4;
-    transition: background-color 0.1s ease-in-out, opacity 0.1s ease-in-out;
-    animation: loading 0.5s infinite;
-  }
-  &#dark {
-    img.onloading {
-      background-color: #ffffff;
-    }
-  }
   @keyframes loading {
     0% {
       opacity: 0.4;

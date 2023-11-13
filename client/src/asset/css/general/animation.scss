@@ -1,6 +1,17 @@
 body:not(.index) {
     $black-bar-width: 85%;
 
+    .onloading {
+        background-color: #e5c1a4;
+        transition: background-color 0.1s ease-in-out, opacity 0.1s ease-in-out;
+        animation: loading 0.5s infinite;
+      }
+      &#dark {
+        .onloading {
+          background-color: #ffffff;
+        }
+    }
+
     .view:not(.blackbar, .framecv-bar) {
         -webkit-animation: fadeIn 0.5s;
         animation: fadeIn 0.5s;

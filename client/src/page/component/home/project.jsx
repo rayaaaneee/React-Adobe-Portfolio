@@ -1,6 +1,6 @@
 import { forwardRef } from "react"
 
-export const Project = forwardRef(({ project, key, colorBar, uncolorBar, openProjectPage, isDarkTheme, darkLinkImg, darkDownloadImg, linkImg, downloadImg, imageLoadingRef }, ref) => {
+export const Project = forwardRef(({ project, colorBar, uncolorBar, openProjectPage, isDarkTheme, darkLinkImg, darkDownloadImg, linkImg, downloadImg, imageLoadingRef }, ref) => {
     return (
         <div
         className="main-container"
@@ -8,8 +8,7 @@ export const Project = forwardRef(({ project, key, colorBar, uncolorBar, openPro
         onMouseOver={ colorBar }
         onMouseLeave={ uncolorBar }
         onClick={ openProjectPage }
-        data-date={ project.getFormatDate() }
-        key={ key } >
+        data-date={ project.getFormatDate() } >
             <div className="content">
                 <div className="to_download">
                     <p>{ project.getTitle() }</p>
