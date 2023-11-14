@@ -1,5 +1,6 @@
+@import '../vars.scss';
+
 body.course#dark {
-    background-color : rgb(46 45 45);
     
     *:not(.page-title-part) {
         color: white !important;
@@ -13,21 +14,21 @@ body.course#dark {
         background-color : rgb(0 0 0) !important;
     }
     
-    .title-page-project {
+    .title-page-semester {
         color : rgb(232, 190, 190) !important;
     }
     
     .explain-container {
         .explain {
-            background-color : rgb(218 198 198 / 70%);
+            background-color : $colored-container-background-color-dark;
         }
     }
 
-    $color-bottom-and-clicked-project-dark-theme : #dfcace;
+    $color-bottom-and-clicked-semester-dark-theme : #dfcace;
     
-    .project {
+    .semester {
         &.selected {
-            background-color : $color-bottom-and-clicked-project-dark-theme;
+            background-color : $color-bottom-and-clicked-semester-dark-theme;
         }
 
         &:not(.selected) {
@@ -36,9 +37,9 @@ body.course#dark {
             }
         }
 
-        .bottom-project-container {
-            .bottom-project {
-                background-color: $color-bottom-and-clicked-project-dark-theme;
+        .bottom-semester-container {
+            .bottom-semester {
+                background-color: $color-bottom-and-clicked-semester-dark-theme;
             }
         }
 

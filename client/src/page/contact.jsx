@@ -236,8 +236,8 @@ const Contact = () => {
                                 </div>
 
                                 <div className="buttons-container">
-                                    <input type="submit" readOnly className="orange-buttons" value="Envoyer" />
-                                    <input readOnly className="orange-buttons"  type="reset" value="Réinitialiser" />
+                                    <button type="submit" readOnly className="orange-buttons">Envoyer</button>
+                                    <button readOnly className="orange-buttons"  type="reset">Réinitialiser</button>
                                 </div>
                             </form>
                         </div>

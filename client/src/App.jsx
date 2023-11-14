@@ -2,7 +2,7 @@ import { ManageThemes } from './object/manage-themes';
 import Contexts from './page/component/contexts';
 
 import Router from './router/router';
-import './style.css';
+import './style.scss';
 
 const App = () => {
 

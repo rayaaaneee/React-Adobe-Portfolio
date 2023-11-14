@@ -1,4 +1,4 @@
-$general-transition-switch-mode: 0.2s;
+@import '../vars.scss';
 
 body.contact {
     form {
@@ -13,7 +13,7 @@ body.contact {
       }
 
       .buttons-container {
-        input {
+        button {
             transition: background-color 0.4s ease-in-out;
             background: rgb(235, 177, 89);
             padding: 8px 15px 8px 15px;
@@ -48,10 +48,11 @@ body.contact {
         }
 
         input, textarea{
+
           box-sizing: border-box;
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
-          padding: 7px;
+          padding: 8px;
           margin:0px;
           width: 100%;
           backdrop-filter: blur(15px);
@@ -64,8 +65,8 @@ body.contact {
             display: none;
           }
 
-          $boxShadowColor: rgb(232, 181, 39);
           &:focus {
+            $boxShadowColor: rgb(232, 181, 39);
             animation: appearShadow 0.3s forwards;
             @keyframes appearShadow {
               from {
@@ -76,6 +77,12 @@ body.contact {
               }
             }
           }
+        }
+
+        input {
+          $input-vertical-padding: 10px;
+          padding-top: $input-vertical-padding;
+          padding-bottom: $input-vertical-padding;
         }
       }
       .error{
@@ -104,9 +111,9 @@ body.contact {
     display: grid;
     grid-template-rows: 1fr 1.2fr;
     align-items: center;
-    background-color: rgb(210 168 135 / 80%);
+    background-color: $colored-container-background-color;
     transition: background-color $general-transition-switch-mode;
-    box-shadow: 0 0 30px rgba(0,0,0,0.1); 
+    box-shadow: $colored-container-box-shadow; 
     border-radius: 20px;
   }
 
@@ -189,7 +196,7 @@ body.contact {
     align-items: start;
   }
 
-  .buttons-container > input {
+  .buttons-container > button {
     width: 100%;
     padding: 5px;
     border-radius: 10px;

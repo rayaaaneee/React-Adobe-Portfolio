@@ -1,4 +1,4 @@
-$general-transition-switch-mode: 0.2s;
+@import '../vars.scss';
 
 body:not(.index) {
     /* Base du menu */
@@ -7,14 +7,35 @@ body:not(.index) {
         display: flex;
         margin-top : 0;
         font-weight : bold;    
-        background-color: rgba(255, 255, 255, 0.9); 
+        background-color: $components-background-color; 
         transition: background-color $general-transition-switch-mode;
         backdrop-filter: blur(5px);
         justify-content : flex-end;
         height: 67px;
         align-items: center;
         letter-spacing: 0.4px;
-        box-shadow: 0 0 40px rgb(0 0 0 / 20%);
+        box-shadow: $components-box-shadow;
+
+        /* Ecart entre les endroits */
+        li {
+
+            display : inline;
+            padding-inline: 20px;
+            
+            /* Le bas de chaque case survolée s'agrandit de 10px mais pas le reste */
+            &:hover{
+    
+                $hover-color: black;
+    
+                transform: translateY(2.5px);
+                border-bottom: 5px solid $hover-color;
+                border-radius: 3px;
+    
+                p {
+                    color: $hover-color;
+                }
+            }
+        }
     }
 
     /* Disposition et personnification des items */
@@ -25,29 +46,11 @@ body:not(.index) {
         text-transform: uppercase;
         text-align: center;
         padding : 5px;
-    }
-
-    /* Ecart entre les endroits */
-    .menu li {
-        display : inline;
-        padding-inline: 20px;
-    }
-
-    .menu .sites p {
-        font-family: 'Poppins', sans-serif;
-    }
-
-    /* Le bas de chaque case survolée s'agrandit de 10px mais pas le reste */
-    .menu li:hover{
-
-        $hover-color: black;
-
-        transform: translateY(2.5px);
-        border-bottom: 5px solid $hover-color;
-        border-radius: 3px;
-
-        p {
-            color: $hover-color;
+        
+        & > p {
+            color: black;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.7px;
         }
     }
 
@@ -113,10 +116,6 @@ body:not(.index) {
 
     .mode-button:hover {
         background-image: url(../../img/header/dark-mode-hover.png);
-    }
-
-    .menu .sites > p {
-        color: black;
     }
 
     .menu-logo-container {

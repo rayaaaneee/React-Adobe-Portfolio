@@ -1,7 +1,9 @@
+@import '../vars.scss';
+
 body:not(.index) {
     &#dark .menu {
-        background-color: rgba(0, 0, 0, 0.9);
-        box-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
+        background-color: $components-background-color-dark;
+        box-shadow: $components-box-shadow-dark;
     }
 
     &#dark .menu li:hover{

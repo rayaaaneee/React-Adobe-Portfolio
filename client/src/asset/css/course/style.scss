@@ -41,8 +41,8 @@ body.course {
             justify-content: space-between;
             position: relative;
             z-index: 1;
-            background-color: rgb(205 159 142 / 70%);
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+            background-color: $colored-container-background-color;
+            box-shadow: $colored-container-box-shadow;
             padding: 30px;
             border-radius: 20px;
             color: white;

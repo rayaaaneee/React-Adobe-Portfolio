@@ -1,4 +1,4 @@
-$general-transition-switch-mode: 0.2s;
+@import '../vars.scss';
 
 body.perso {
     /* Parametres du titre */
@@ -17,9 +17,9 @@ body.perso {
     .content {
         display: flex;
         flex-direction: column;
-        background-color: rgba(255, 255, 255, 0.884);
+        background-color: $containers-background-color;
         transition: background-color $general-transition-switch-mode;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        box-shadow: $containers-box-shadow;
     }
 
     .content .title-part {
@@ -76,7 +76,7 @@ body.perso {
     #frames {
         width: 100%;
         display: grid;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        box-shadow: $containers-box-shadow;
         /* Centrer les iframes */
         justify-items: center;
 
@@ -86,7 +86,7 @@ body.perso {
         grid-column-start: 1;
         grid-column-end: 2;
         row-gap: 30px;
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: $containers-background-color;
         transition: background-color $general-transition-switch-mode;
         padding-top: 40px;
         padding-bottom: 40px;

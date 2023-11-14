@@ -12,7 +12,6 @@ import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';
 import CV from '../asset/file/CV.pdf';
 
 import { ManageBody } from '../object/manage-body';
-import { ManageThemes } from '../object/manage-themes';
 
 import loaderContext from '../function/context/loader-context';
 import themeContext from '../function/context/theme-context';
@@ -54,7 +53,7 @@ const Index = () => {
         words: textTab,
         loop: true,
         typeSpeed: 100,
-        deleteSpeed: 200,
+        deleteSpeed: 50,
     });
 
     let [menuClass, setMenuClass] = useState(''); 

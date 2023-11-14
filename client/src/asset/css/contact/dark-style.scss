@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 body.contact#dark {
     *:not(.required, textarea, input) {
         color: white !important;
@@ -9,7 +11,7 @@ body.contact#dark {
     }
     
     .buttons-container {
-        & > input {
+        & > button {
             background-color : rgb(173 159 159 / 80%) !important;
 
             &:hover {
@@ -19,8 +21,8 @@ body.contact#dark {
     }
     
     #pres {
-        background-color: rgb(172 163 163 / 80%);
-        box-shadow : 0 0 23px rgb(255 255 255 / 20%) !important;
+        background-color: $colored-container-background-color-dark;
+        box-shadow : $colored-container-box-shadow-dark;
     }
     
     input, textarea {

@@ -8,11 +8,11 @@ import Loader from "./loader";
 
 import loaderContext from "../../function/context/loader-context";
 
+import "../../asset/css/general/styles.scss";
 import "../../asset/css/general/animation.scss";
 import "../../asset/css/general/background.scss";
 import "../../asset/css/general/dark-background.scss";
 import "../../asset/css/general/dark-scrollbar.scss";
-import "../../asset/css/general/general.scss";
 import "../../asset/css/general/presets-animation.scss";
 import "../../asset/css/general/scrollbar.scss";
 

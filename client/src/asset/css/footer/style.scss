@@ -1,13 +1,13 @@
-$general-transition-switch-mode: 0.2s;
+@import '../vars.scss';
 
 body:not(.index) {
     /* Parametres du footer et design du footer */
     footer {
         max-height: 75px;
         position: relative;
-        background-color: rgb(255, 255, 255, 0.8);
+        background-color: $components-background-color;
         transition: background-color $general-transition-switch-mode;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        box-shadow: $components-box-shadow;
         display: grid;
         width: 100vw;
         height: 10vh;

@@ -1,4 +1,4 @@
-/* # Global vars */
+/* # Global vars pages */
 
 // Transition
 $general-transition-switch-mode: 0.2s;
@@ -13,10 +13,16 @@ $bar-background-color: rgb(255 251 246) !important;
 
 $components-background-color-dark: rgba(0, 0, 0, 0.9);
 $components-box-shadow-dark: 0 0 60px rgba(255, 255, 255, 0.1);
-$containers-background-color-dark: rgba(0, 0, 0, 0.8) !important;
+$containers-background-color-dark: rgba(0, 0, 0, 0.97) !important;
 $containers-box-shadow-dark: 0 0 23px rgba(255, 255, 255, 0.2) !important;
 $titles-color-dark: rgba(228, 209, 209, 0.88) !important;
 $bar-background-color-dark: #000000 !important;
+
+$colored-container-background-color: rgba(210, 168, 135, 0.8);
+$colored-container-box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+
+$colored-container-background-color-dark: rgb(218 198 198 / 70%);
+$colored-container-box-shadow-dark: $containers-box-shadow-dark;
 
 // Couleurs au chargement
 $colorLoading: rgb(229, 193, 164);
@@ -25,15 +31,33 @@ $alternateColorLoading: rgb(229, 193, 164, 0.4);
 $darkColorLoading: rgb(255, 255, 255);
 $alternateDarkColorLoading: rgb(255, 255, 255, 0.4);
 
-// Index
+// Titres
+/* $title-size: ; */
+$title-color: rgba(86, 86, 86, 0.88) !important;
+/* $title-weight:;
+/* $title-size-dark:; */
+$title-color-dark: rgba(228, 209, 209, 0.88) !important;
+/* $title-weight-dark:;
+ */
+/* Loader */
+$loader-background-color: rgb(255, 255, 255);
+$loader-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
+$start-background-color: rgb(249, 238, 212);
 
-// Course
-
-// Personal
-
-// Contact
-
-// About
+$loader-background-color-dark: rgb(24, 23, 23) !important;
+$loader-box-shadow-dark: 0 0 30px 0 rgba(255, 255, 255, 0.3) !important;
+$start-background-color-dark: rgb(0, 0, 0) !important;
 
 
+/* Course */
+
+/* Personal */
+
+/* Contact */
+
+/* About */
+
+/* Modal */
+
+/* # Index page */
 

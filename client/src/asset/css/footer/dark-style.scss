@@ -1,7 +1,9 @@
+@import '../vars.scss';
+
 body:not(.index) {
     &#dark footer {
-        background-color: rgb(0 0 0 / 90%);
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        background-color: $components-background-color-dark;
+        box-shadow: $components-box-shadow-dark;
     }
     
     &#dark #footer1>.point-footer-container>.point-footer {
