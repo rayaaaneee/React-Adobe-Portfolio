@@ -15,20 +15,28 @@ import { ManageBody } from '../object/manage-body';
 import { ManageThemes } from '../object/manage-themes';
 
 import loaderContext from '../function/context/loader-context';
+import themeContext from '../function/context/theme-context';
 
 const Index = () => {
 
     const { setWasLoaderShowed } = useContext(loaderContext);
 
-    useEffect(() => {
-            setWasLoaderShowed(false);
-        }
-    );
+    const { setIsDarkTheme } = useContext(themeContext);
+
+    useEffect(() => (setWasLoaderShowed(false)));
 
     ManageBody.changeClass('index');
 
-    const setTheme = (theme) => {
-        ManageThemes.set(theme);
+    const setTheme = (isDarkTheme) => {
+        switch (isDarkTheme) {
+            case false:
+            default:
+                setIsDarkTheme(false);
+                break;
+            case true:
+                setIsDarkTheme(true);
+                break;
+        }
     }
 
     useEffect(() => {
@@ -128,10 +136,10 @@ const Index = () => {
             </main>
             <footer>
                 <div className="btn-switch-mode">
-                    <div className="media-dark-theme-form" onClick={ () => setTheme('dark') }>
+                    <div className="media-dark-theme-form" onClick={ () => setTheme(true) }>
                         <button className="dark-mode-button"/>
                     </div>
-                    <div className="media-light-theme-form" onClick={ () => setTheme('light') }>
+                    <div className="media-light-theme-form" onClick={ () => setTheme(false) }>
                         <button className="dark-mode-button"/>
                     </div>
                 </div>

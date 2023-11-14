@@ -1,4 +1,4 @@
-$general-transition-switch-mode: 0.2s;
+@import '../vars.scss';
 
 body.home {
 
@@ -79,11 +79,11 @@ body.home {
 
   /* Design d'une case */
   .content {
-    background-color: rgba(255, 255, 255, 0.801);
+    background-color: $containers-background-color;
     width: 250px;
     height: 250px;
     border-radius: 15px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    box-shadow: $containers-box-shadow;
     transition: box-shadow 0.5s, transform 0.5s,
       background-color $general-transition-switch-mode;
     display: flex;
@@ -201,14 +201,14 @@ body.home {
 
   /* Mise en place du conteneur en grid avec les deux articles */
   #container-cv {
-    background-color: rgba(255, 255, 255, 0.801);
+    background-color: $containers-background-color;
     transition: background-color $general-transition-switch-mode;
     width: 1100px;
     height: 700px;
     border-radius: 15px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    box-shadow: $containers-box-shadow;
     column-gap: 2%;
   }
 
@@ -424,7 +424,7 @@ body.home {
   .school-competence-container .card {
     width: 280px;
     height: 400px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: $containers-background-color;
     border-radius: 30px;
     transform-style: preserve-3d;
     perspective: 1000px;
@@ -432,7 +432,7 @@ body.home {
     position: relative;
     padding: 20px;
     cursor: pointer;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    box-shadow: $containers-box-shadow;
     transform: rotateY(0deg);
     transition: scale 0.8s, transform 0.3s,
       background-color $general-transition-switch-mode;

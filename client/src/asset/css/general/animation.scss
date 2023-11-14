@@ -1,14 +1,43 @@
+@import '../vars.scss';
+
 body:not(.index) {
+
     $black-bar-width: 85%;
 
     .onloading {
-        background-color: #e5c1a4;
-        transition: background-color 0.1s ease-in-out, opacity 0.1s ease-in-out;
-        animation: loading 0.5s infinite;
-      }
-      &#dark {
+        background-color: $colorLoading;
+        transition: background-color 0.3s ease-in-out;
+        animation: loading 0.7s infinite;
+
+        @keyframes loading {
+            0% {
+              background-color: $alternateColorLoading;
+            }
+            50% {
+              background-color: $colorLoading;
+            }
+            100% {
+              background-color: $alternateColorLoading;
+            }
+        }
+    }
+
+    &#dark {
         .onloading {
-          background-color: #ffffff;
+          background-color: $darkColorLoading;
+          animation: loadingDarkTheme 0.7s infinite;
+        }
+
+        @keyframes loadingDarkTheme {
+            0% {
+              background-color: $alternateDarkColorLoading;
+            }
+            50% {
+              background-color: $darkColorLoading;
+            }
+            100% {
+              background-color: $alternateDarkColorLoading;
+            }
         }
     }
 

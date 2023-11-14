@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 body.home#dark {
     *:not(.text-project-container *, .text-project-container, .title-card, .title-page-project > p, .card-back *) {
         color: white !important;
@@ -23,8 +25,8 @@ body.home#dark {
     }
     
     .content, #container-cv {
-        background-color: rgb(0 0 0 / 80%) !important;
-        box-shadow : 0 0 23px rgba(255, 255, 255, 0.2) !important;
+        background-color: $containers-background-color-dark;
+        box-shadow : $containers-box-shadow-dark;
     }
     
     .blackbar {
@@ -58,10 +60,10 @@ body.home#dark {
     }
     
     .school-competence-container .card {
-        background : rgb(0 0 0 / 80%);
+        background-color : $containers-background-color-dark;
     }
     
     .card-top-container {
-        box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+        box-shadow: $containers-box-shadow-dark;
     }
 }

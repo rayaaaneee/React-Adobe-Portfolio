@@ -1,6 +1,7 @@
+@import '../vars.scss';
+
 body.course {
 
-    $general-transition-switch-mode: 0.2s;
     $color-bottom-and-clicked-semester-dark-theme : #dfcace;
     $color-bottom-and-clicked-semester: #d5baaf;
     $margin-background-position: 20%;
@@ -206,7 +207,7 @@ body.course {
         .semester{
             width: $size-semester;
             height: $size-semester;
-            background-color:rgba(255, 255, 255, 0.7);
+            background-color: $containers-background-color;
             border-radius: $border-radius-semester;
             display: flex;
             flex-direction: column;
