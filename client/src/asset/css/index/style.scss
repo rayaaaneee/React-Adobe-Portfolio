@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 body.index {
 
     width: 100%;
@@ -8,9 +10,15 @@ body.index {
     #root {
         height: 100%;
     }
+
     main {
         width: 100%;
         height: 100%;
+    }
+
+    @font-face {
+        font-family: 'Poppins';
+        src: url('../../font/Poppins/Poppins3.woff2') format('woff2');
     }
 
     @font-face {
@@ -23,9 +31,7 @@ body.index {
         src: url('../../font/AdobeFont/AdobeBold.ttf') format('truetype');
     }
 
-    $general-transition-switch-mode: 0.2s;
-
-    & * {
+    * {
         margin: 0;
         padding: 0;
         font-family: 'Poppins', sans-serif;
@@ -37,7 +43,7 @@ body.index {
         left: 0;
         width: 100vw;
         height: 100%;
-        background-color: rgb(255, 255, 255);
+        background-color: $index-background-color;
         transition: background-color $general-transition-switch-mode;
     }
 
@@ -46,7 +52,6 @@ body.index {
         position: absolute;
         width: 0;
         height: 0;
-        filter: drop-shadow(0 0 5rem #000);
         transition: border-bottom $general-transition-switch-mode;
     }
 
@@ -55,7 +60,8 @@ body.index {
         top: 5vw;
         border-left: 10vw solid transparent;
         border-right: 10vw solid transparent;
-        border-bottom: 16vw solid #df9191a9;
+        border-bottom: 16vw solid;
+        border-bottom-color: $index-triangle-red-background-color;
         animation: triangle-red-move 40s linear infinite;
         z-index: -1;
     }
@@ -65,7 +71,8 @@ body.index {
         top: 5vw;
         border-left: 16vw solid transparent;
         border-right: 16vw solid transparent;
-        border-bottom: 23vw solid #f7daa79b;
+        border-bottom: 23vw solid;
+        border-bottom-color: $index-triangle-yellow-background-color;
         animation: triangle-yellow-move 50s linear infinite;
         z-index: -2;
     }
@@ -73,7 +80,8 @@ body.index {
     .triangle-orange {
         border-left: 20vw solid transparent;
         border-right: 20vw solid transparent;
-        border-bottom: 27vw solid #f7b07ad1;
+        border-bottom: 27vw solid;
+        border-bottom-color: $index-triangle-orange-background-color;
         bottom: 10vw;
         left: 15vw;
         animation: triangle-orange-move 70s linear infinite;
@@ -83,7 +91,6 @@ body.index {
     .circle {
         position: absolute;
         border-radius: 50%;
-        filter: drop-shadow(0 0 3.15rem #000);
         z-index: -4;
         transition: background-color $general-transition-switch-mode;
     }
@@ -93,7 +100,7 @@ body.index {
         height: 100vw;
         top: 35%;
         right: -70%;
-        background-color: #e0ded4d0;
+        background-color: $index-circle-one-background-color;
     }
 
     .circle-two {
@@ -101,7 +108,7 @@ body.index {
         height: 80vw;
         top: -60%;
         left: -40%;
-        background-color: #decdbde5;
+        background-color: $index-circle-two-background-color;
     }
 
     /* Animations */
@@ -388,7 +395,7 @@ body.index {
         height: 0;
         border-left: 100vw solid transparent;
         border-right: 0vw solid transparent;
-        border-bottom: 21vw solid #e6bdb198;
+        border-bottom: 21vw solid $index-triangle-footer-background-color;
         z-index: 0;
     }
 
@@ -400,7 +407,7 @@ body.index {
         height: 0;
         border-left: 100vw solid transparent;
         border-right: 0vw solid transparent;
-        border-top: 12vw solid #dca0b153;
+        border-top: 12vw solid $index-triangle-header-background-color;
         filter: blur(6px) drop-shadow(0 0 0.5rem #000000e9);
         z-index: 1;
     }

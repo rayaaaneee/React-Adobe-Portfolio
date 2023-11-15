@@ -15,14 +15,14 @@ body.contact {
       .buttons-container {
         button {
             transition: background-color 0.4s ease-in-out;
-            background: rgb(235, 177, 89);
+            background: $form-submit-button-background-color;
             padding: 8px 15px 8px 15px;
             border: none;
             color: #fff;
             text-align: center;
 
             &:hover {
-                background: rgb(236, 140, 84);
+                background: $form-submit-button-background-color-hover;
                 box-shadow:none;
                 -moz-box-shadow:none;
                 -webkit-box-shadow:none;
@@ -40,11 +40,6 @@ body.contact {
         label {
           font-weight: bold;
           margin: 0;
-        }
-
-        textarea{
-          height: 100px;
-          resize: none;
         }
 
         input, textarea{
@@ -66,7 +61,7 @@ body.contact {
           }
 
           &:focus {
-            $boxShadowColor: rgb(232, 181, 39);
+            $boxShadowColor: $form-submit-button-background-color;
             animation: appearShadow 0.3s forwards;
             @keyframes appearShadow {
               from {
@@ -84,18 +79,17 @@ body.contact {
           padding-top: $input-vertical-padding;
           padding-bottom: $input-vertical-padding;
         }
+
+        textarea{
+          height: 100px;
+          resize: none;
+        }
       }
       .error{
         color: rgb(227, 153, 100);
         font-size: 13px;
         font-weight: 500;
       }
-    }
-
-    /* Centrer le formulaire */
-    .formulaire > form {
-      width: 400px;
-      margin: 0 auto;
     }
 
   /* Définition case rose avec texte */
@@ -157,18 +151,18 @@ body.contact {
     font-size: 40px;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.884);
+    img{
+      width: 70px;
+      height: 70px;
+    }
+  
+    p {
+      color : rgb(0, 0, 0);
+      font-size: 30px;
+      text-align: justify;
+    }
   }
 
-  #hasSend img{
-    width: 70px;
-    height: 70px;
-  }
-
-  #hasSend p {
-    color : rgb(0, 0, 0);
-    font-size: 30px;
-    text-align: justify;
-  }
   /* Flex des principaux elements de la page */
   main#contactPage {
     width: 100%;
@@ -186,15 +180,16 @@ body.contact {
     justify-content: center;
     width: 100%;
     height: 100%;
+
+    &.pres-container {
+      align-items: end;
+    }
+
+    &.form-container {
+      align-items: start;
+    }
   }
 
-  .pres-container {
-    align-items: end;
-  }
-
-  .form-container {
-    align-items: start;
-  }
 
   .buttons-container > button {
     width: 100%;
@@ -302,6 +297,12 @@ body.contact {
     backdrop-filter: blur(3px);
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0,0,0,0.2); 
+
+    /* Centrer le formulaire */
+    & > form {
+      width: 400px;
+      margin: 0 auto;
+    }
   }
 
   /* On met le container principal en de l'erreur en fixed */

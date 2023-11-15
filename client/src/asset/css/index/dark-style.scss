@@ -1,16 +1,18 @@
+@import '../vars.scss';
+
 body.index#dark{
     color: #ffffff;
 
     .background-container {
-        background-color: #000000;
+        background-color: $index-background-color-dark;
     }
 
     .header-triangle {
-        border-top-color: #ecdfe853;
+        border-top-color: $index-triangle-header-background-color-dark;
     }
 
     .footer-triangle {
-        border-bottom-color: #dfcbe953;
+        border-bottom-color: $index-triangle-footer-background-color-dark;
     }
 
     .get-start:hover {
@@ -18,40 +20,39 @@ body.index#dark{
         color: #30052b;
     }
 
-    .about-page > p::after {
-        background-color: #30052b;
+    .about-page {
+        & > p {
+
+            &::after  {
+                background-color: #30052b;
+            }
+
+            &:hover::after {
+                background-color: #510548;
+            }
+
+        }
     }
 
-    .about-page > p:hover::after {
-        background-color: #510548;
-    }
-
-    .circle {
-        filter: drop-shadow(0 0 3.15rem #ffffff8f);
-    }
 
     .circle-one {
-        background-color: #9b8282d0;
+        background-color: $index-circle-one-background-color-dark;
     }
 
     .circle-two {
-        background-color: #534d5cd0;
-    }
-
-    .triangle:not(.border-triangle) {
-        filter: drop-shadow(0 0 5rem #ccb8ce94);
+        background-color: $index-circle-two-background-color-dark;
     }
 
     .triangle-orange {
-        border-bottom-color: #ffffffd0;
+        border-bottom-color: $index-triangle-orange-background-color-dark;
     }
 
     .triangle-red {
-        border-bottom-color: rgba(221, 181, 181, 0.816);
+        border-bottom-color: $index-triangle-red-background-color-dark;
     }
 
     .triangle-yellow {
-        border-bottom-color: #d4bbd0d0;
+        border-bottom-color: $index-triangle-yellow-background-color-dark;
     }
 
     .menu ul li a::after {

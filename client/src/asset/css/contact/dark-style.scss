@@ -6,16 +6,16 @@ body.contact#dark {
     }
     
     .formulaire {
-        background-color : rgb(0 0 0 / 80%);
+        background-color : $form-background-color-dark;
         box-shadow : 0 0 23px rgb(255 255 255 / 20%);
     }
     
     .buttons-container {
         & > button {
-            background-color : rgb(173 159 159 / 80%) !important;
+            background-color : $form-submit-button-background-color-dark;
 
             &:hover {
-                background-color : rgba(149, 121, 121, 0.8) !important;
+                background-color : $form-submit-button-background-color-hover-dark;
             }
         }
     }
@@ -31,7 +31,7 @@ body.contact#dark {
         &:focus {
             animation: appearShadowDark 0.2s forwards;
       
-            $darkBoxShadowColor: rgb(235, 223, 229);
+            $darkBoxShadowColor: $form-submit-button-background-color-dark;
             @keyframes appearShadowDark {
               from {
                 box-shadow: 0 0 0 0 $darkBoxShadowColor;

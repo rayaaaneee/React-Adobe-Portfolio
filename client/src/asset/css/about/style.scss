@@ -1,4 +1,4 @@
-$general-transition-switch-mode: 0.2s;
+@import '../vars.scss';
 
 body.about {
     body {
@@ -17,19 +17,19 @@ body.about {
         margin-top: 12vh;
         display: flex;
         flex-direction: column;
-        background-color: rgba(255, 255, 255, 0.801);
+        background-color: $containers-background-color;
         transition: background-color $general-transition-switch-mode;
         width: 85%;
         height: fit-content;
         border-radius: 15px;
-        box-shadow: 0 0 30px rgb(0 0 0 / 20%);
+        box-shadow: $containers-box-shadow;
         column-gap: 2%;
         margin-bottom: 4vw;
     }
     
     .title {
         text-align : start;
-        color: rgb(223, 207, 127);
+        color: $title-color;
         margin-left: 4vw;
     }
     
@@ -72,6 +72,7 @@ body.about {
         height: 0.4vw;
         border-radius: 10px;
         background-color: rgb(223, 207, 127);
+        margin: 0 auto;
         margin-top: 1vw;
     }
 }

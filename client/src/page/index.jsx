@@ -39,7 +39,7 @@ const Index = () => {
     }
 
     useEffect(() => {
-        document.title = 'Adobe Portfolio';
+        document.title = 'Adobe Portfolio - Rayane Merlin';
     });
 
     const textTab = [

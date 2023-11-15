@@ -21,14 +21,14 @@ body:not(.index) {
 
             display : inline;
             padding-inline: 20px;
-            
+
             /* Le bas de chaque case survolée s'agrandit de 10px mais pas le reste */
             &:hover{
     
                 $hover-color: black;
     
                 transform: translateY(2.5px);
-                border-bottom: 5px solid $hover-color;
+                border-bottom: 3px solid $hover-color;
                 border-radius: 3px;
     
                 p {
@@ -36,23 +36,25 @@ body:not(.index) {
                 }
             }
         }
-    }
 
-    /* Disposition et personnification des items */
-    .sites {
-        display : block;
-        min-width: 100px;
-        text-decoration: none;
-        text-transform: uppercase;
-        text-align: center;
-        padding : 5px;
-        
-        & > p {
-            color: black;
-            font-family: 'Poppins', sans-serif;
-            letter-spacing: 0.7px;
+        /* Disposition et personnification des items */
+        .sites {
+            display : block;
+            min-width: 100px;
+            text-decoration: none;
+            text-transform: uppercase;
+            text-align: center;
+            padding : 5px;
+
+            & > p {
+                color: black;
+                font-family: 'Poppins', sans-serif;
+                letter-spacing: 0.7px;
+                font-weight: bold;
+            }
         }
     }
+
 
     /* Mise en place du menu sticky */
     header{

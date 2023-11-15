@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 body {
     /* CSS des erreurs et des messages de succès */
     .message-container {
@@ -15,7 +17,7 @@ body {
         color: #fff;
         text-align: center;
         margin-top: 10px !important;
-        box-shadow: 0 0 10px rgb(0 0 0 / 15%);
+        box-shadow: $modal-box-shadow;
         display: grid;
         grid-template-columns: auto 1fr; 
         column-gap: 20px;
@@ -27,7 +29,7 @@ body {
 
         /* CSS des erreurs */
         &.error-message-container {
-            background-color: #d490908d;
+            background-color: $modal-error-color;
 
             img {
                 width: 30px;
@@ -37,7 +39,7 @@ body {
 
         /* CSS des messages de succès */
         &.success-message-container {
-            background-color: #6dc17083;
+            background-color: $modal-success-color;
 
             img {
                 width: 50px;

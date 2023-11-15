@@ -164,9 +164,9 @@ body.home {
   .horizontal-bars {
     width: 30%;
     height: 12px;
-    background-color: #fff;
+    background-color: $bar-background-color;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    box-shadow: $bar-box-shadow;
     transition: box-shadow 0.3s ease,
       background-color $general-transition-switch-mode;
 
@@ -258,24 +258,24 @@ body.home {
 
   /* Changer le style des boutons */
   .cv-button {
-    background-color: rgba(255, 255, 255, 0.801);
+    background-color: $cv-download-button-background-color;
     border: none;
     border-radius: 15px;
     padding: 10px 20px;
     font-size: 20px;
     font-weight: bold;
-    color: rgba(0, 0, 0, 0.884);
-    box-shadow: 0 0 40px rgb(0 0 0 / 20%);
+    color: rgb(0, 0, 0);
+    box-shadow: $cv-download-button-box-shadow;
     cursor: pointer;
     transition: 0.1s;
+      /* Hover des boutons */
+      &:hover {
+        background-color: $cv-download-button-background-color-hover;
+        color: #fff;
+        transition: 0.1s;
+      }
   }
 
-  /* Hover des boutons */
-  .cv-button:hover {
-    background-color: rgb(239, 195, 153);
-    color: #fff;
-    transition: 0.1s;
-  }
 
   /* Barre noire au dessus et au dessous des textes */
 
@@ -312,28 +312,6 @@ body.home {
 
   .beforebutton {
     font-size: 21px;
-  }
-
-  /* Changer le design du bouton voir plus */
-  #More {
-    align-items: center;
-    background-color: rgba(151, 151, 151, 0.801);
-    color: rgba(0, 0, 0, 0.884);
-  }
-
-  /* Changer la taille de l'image de "Voir plus" */
-  #More img {
-    width: 120px;
-  }
-
-  /* Modifier le texte du bouton "Voir plus" */
-  #More p {
-    margin-top: 0px;
-    font-size: 20px;
-    line-height: 1.1;
-    letter-spacing: 1px;
-    color: #000;
-    font-weight: bold;
   }
 
   .hidden {

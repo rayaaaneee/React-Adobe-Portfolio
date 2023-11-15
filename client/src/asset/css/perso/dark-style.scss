@@ -11,7 +11,7 @@ body.perso {
     }
 
     &#dark .horizontal-bars {
-        background-color: #000000 !important;
+        background-color: $bar-background-color-dark;
         box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
     }
 }

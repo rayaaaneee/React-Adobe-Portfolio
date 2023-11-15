@@ -108,7 +108,7 @@ body.perso {
     .horizontal-bars {
         width: 30%;
         height: 12px;
-        background-color: #fff;
+        background-color: $bar-background-color;
         border-radius: 10px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         transition: box-shadow 0.3s ease, background-color $general-transition-switch-mode;

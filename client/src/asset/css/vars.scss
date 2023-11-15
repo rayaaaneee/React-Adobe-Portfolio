@@ -1,5 +1,9 @@
 /* # Global vars pages */
 
+// Body
+$body-background-color: linear-gradient(to left, blanchedalmond, #f0f0f0);
+$body-background-color-dark: rgb(46 45 45);
+
 // Transition
 $general-transition-switch-mode: 0.2s;
 
@@ -9,36 +13,42 @@ $components-box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
 $containers-background-color: rgba(255, 255, 255, 0.8) !important;
 $containers-box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 $titles-color: rgba(86, 86, 86, 0.88);
-$bar-background-color: rgb(255 251 246) !important;
+$bar-background-color: rgb(255 250 238) !important;
+$bar-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 
 $components-background-color-dark: rgba(0, 0, 0, 0.9);
 $components-box-shadow-dark: 0 0 60px rgba(255, 255, 255, 0.1);
 $containers-background-color-dark: rgba(0, 0, 0, 0.97) !important;
 $containers-box-shadow-dark: 0 0 23px rgba(255, 255, 255, 0.2) !important;
 $titles-color-dark: rgba(228, 209, 209, 0.88) !important;
+
 $bar-background-color-dark: #000000 !important;
 
 $colored-container-background-color: rgba(210, 168, 135, 0.8);
+$colored-containers-background-color-hover: rgba(206, 147, 126, 0.7);
 $colored-container-box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 
-$colored-container-background-color-dark: rgb(218 198 198 / 70%);
+$colored-container-background-color-dark: rgba(218 198 198 / 70%);
+$colored-containers-background-color-hover-dark: rgba(236, 205, 205, 0.7);
 $colored-container-box-shadow-dark: $containers-box-shadow-dark;
+
+$selection-color: white;
+$selection-background-color: #e5c1a4;
+$selection-color-dark: rgb(141, 152, 251);
+$selection-background-color-dark: #ffffff;
 
 // Couleurs au chargement
 $colorLoading: rgb(229, 193, 164);
-$alternateColorLoading: rgb(229, 193, 164, 0.4);
+$alternateColorLoading: rgba(229, 193, 164, 0.4);
 
 $darkColorLoading: rgb(255, 255, 255);
-$alternateDarkColorLoading: rgb(255, 255, 255, 0.4);
+$alternateDarkColorLoading: rgba(255, 255, 255, 0.4);
 
 // Titres
-/* $title-size: ; */
 $title-color: rgba(86, 86, 86, 0.88) !important;
-/* $title-weight:;
-/* $title-size-dark:; */
+$title-font-weight: 600;
 $title-color-dark: rgba(228, 209, 209, 0.88) !important;
-/* $title-weight-dark:;
- */
+
 /* Loader */
 $loader-background-color: rgb(255, 255, 255);
 $loader-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
@@ -48,16 +58,58 @@ $loader-background-color-dark: rgb(24, 23, 23) !important;
 $loader-box-shadow-dark: 0 0 30px 0 rgba(255, 255, 255, 0.3) !important;
 $start-background-color-dark: rgb(0, 0, 0) !important;
 
+/* Home */
+
+$cv-download-button-background-color: rgba(255, 255, 255, 0.8);
+$cv-download-button-background-color-hover: rgb(239, 195, 153);
+$cv-download-button-box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+
+$cv-download-button-background-color-dark: rgba(40, 40, 40, 0.8);
+$cv-download-button-background-color-hover-dark: rgba(233, 210, 210, 0.8);
 
 /* Course */
+
+$bottom-semester-background-color: $colored-container-background-color;
+$bottom-semester-background-color-dark: $colored-container-background-color-dark;
 
 /* Personal */
 
 /* Contact */
+$form-background-color: rgba(255, 255, 255, 0.5);
+$form-submit-button-background-color: $colored-container-background-color;
+$form-submit-button-background-color-hover: $colored-containers-background-color-hover;
+$input-background-color: rgba(255, 255, 255, 0.8);
+
+$form-background-color-dark: rgba(0, 0, 0, 0.8);
+$form-submit-button-background-color-dark: $colored-container-background-color-dark;
+$form-submit-button-background-color-hover-dark: $colored-containers-background-color-hover-dark;
+$input-background-color-dark: rgba(0, 0, 0, 0.8);
 
 /* About */
 
 /* Modal */
+$modal-error-color: #d490908d;
+$modal-success-color: #6dc17083;
+$modal-box-shadow: 0 0 10px rgb(0 0 0 / 15%);
 
 /* # Index page */
 
+$index-background-color: rgb(255, 255, 255);
+$index-background-color-dark: rgb(0, 0, 0);
+
+$index-triangle-header-background-color: #dca0b153;
+$index-triangle-header-background-color-dark: #ecdfe853;
+$index-triangle-footer-background-color: #e6bdb198;
+$index-triangle-footer-background-color-dark: #dfcbe953;
+
+$index-circle-one-background-color: #e0ded4d0;
+$index-circle-one-background-color-dark: #9b8282d0;
+$index-circle-two-background-color: #decdbde5;
+$index-circle-two-background-color-dark: #534d5cd0;
+
+$index-triangle-yellow-background-color: #f7daa79b;
+$index-triangle-yellow-background-color-dark: #d4bbd0d0;
+$index-triangle-orange-background-color: #f7b07ad1;
+$index-triangle-orange-background-color-dark: #ffffffd0;
+$index-triangle-red-background-color: #df9191a9;
+$index-triangle-red-background-color-dark: rgba(221, 181, 181, 0.816);

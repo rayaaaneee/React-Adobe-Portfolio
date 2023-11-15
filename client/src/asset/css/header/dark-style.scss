@@ -1,31 +1,31 @@
 @import '../vars.scss';
 
-body:not(.index) {
-    &#dark .menu {
+body:not(.index)#dark {
+    .menu {
         background-color: $components-background-color-dark;
         box-shadow: $components-box-shadow-dark;
     }
 
-    &#dark .menu li:hover{
-        border-bottom: 5px solid rgb(255, 255, 255) !important;
+    .menu li:hover{
+        border-bottom: 3px solid rgb(255, 255, 255) !important;
         transform: translateY(2.5px);
     }
 
-    &#dark .menu .sites > p {
+    .menu .sites > p {
         color: white;
     }
 
-    &#dark .logo {
+    .logo {
         background-image: url(../../img/header/dark-theme/dark_portfolio_logo.png);
     }
 
-    &#dark .mode-button {
+    .mode-button {
         background-image: url(../../img/header/light-mode.png);
         width: 40px;
         height: 40px;
     }
 
-    &#dark .mode-button:hover {
+    .mode-button:hover {
         background-image: url(../../img/header/light-mode-hover.png);
     }
 }

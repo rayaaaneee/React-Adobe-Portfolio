@@ -21,7 +21,12 @@ body.course#dark {
     .explain-container {
         .explain {
             background-color : $colored-container-background-color-dark;
+
+            a:hover {
+                background-color: $colored-containers-background-color-hover-dark;
+            }
         }
+        
     }
 
     $color-bottom-and-clicked-semester-dark-theme : #dfcace;
@@ -54,10 +59,6 @@ body.course#dark {
     
     #timeline::before {
         background: linear-gradient(50deg, rgba(255, 255, 255, 0.2) 40%, rgba(218, 134, 134, 0.8) 50%, rgba(255, 255, 255, 0.4) 60%);
-    }
-    
-    .explain-container .explain a:hover {
-        background-color: rgb(236 205 205 / 70%);
     }
     
     .point-container::after {

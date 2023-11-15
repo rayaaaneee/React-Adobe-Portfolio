@@ -4,60 +4,58 @@ body.home#dark {
     *:not(.text-project-container *, .text-project-container, .title-card, .title-page-project > p, .card-back *) {
         color: white !important;
     }
-    
-    
+
     .page-title-part {
         color: rgb(232, 190, 190) !important;
     }
-    
+
     .horizontal-bars {
-        background-color: #000000 !important;
+        background-color: $bar-background-color-dark;
         box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
     }
-    
+
     .explicationtext {
         text-shadow:  0 0 #000, 1px 1px 0 #000, 0 1px 0 #000, -1px 1px 0 #000, -1px 0 0 #000, -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000;
     }
-    
-    .link-btn:hover, .download-btn:hover {
-        color: rgb(234, 215, 215) !important;
-        transition: 0.2s;
+
+    .link-btn, .download-btn {
+        &:hover {
+            color: rgb(234, 215, 215) !important;
+            transition: 0.2s;
+        }
     }
-    
+
     .content, #container-cv {
         background-color: $containers-background-color-dark;
         box-shadow : $containers-box-shadow-dark;
     }
-    
+
     .blackbar {
         background-color: rgba(255, 255, 255);
         border: 2px solid rgba(255, 255, 255);
     }
-    
+
     .cv-button {
-        background-color: rgb(40 40 40 / 80%);
+        background-color: $cv-download-button-background-color-dark;
+        &:hover {
+            background-color: $cv-download-button-background-color-hover-dark;
+        }
     }
-    
-    .cv-button:hover {
-        background-color: rgb(233 210 210 / 80%);
-    }
-    
-    #more {
-        background-color: rgb(29 29 29 / 80%) !important;
-    }
-    
+
     $projects-data-date-background-color-dark-theme: rgba(255, 255, 255, 0.884);
     $projects-data-date-border-width: 9px;
-    
-    .projects > *::before {
-        border-top: $projects-data-date-border-width solid $projects-data-date-background-color-dark-theme;
-    }
-    
-    .projects > *::after {
-        background-color: $projects-data-date-background-color-dark-theme;
-        background-image: url(../../img/home/icon/calendar-black.png);
-        color: black;
-    }
+
+    .projects {
+        & > *::before {
+            border-top: $projects-data-date-border-width solid $projects-data-date-background-color-dark-theme;
+        }
+
+        & > *::after {
+            background-color: $projects-data-date-background-color-dark-theme;
+            background-image: url(../../img/home/icon/calendar-black.png);
+            color: black;
+        }
+    } 
     
     .school-competence-container .card {
         background-color : $containers-background-color-dark;

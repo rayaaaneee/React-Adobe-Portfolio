@@ -9,7 +9,7 @@ body:not(.index) {
   overflow-y: auto;
 
   & {
-      background: linear-gradient(to left, blanchedalmond, #f0f0f0);
+      background: $body-background-color;
       padding:0;
       margin:0;
   }
@@ -21,22 +21,13 @@ body:not(.index) {
     align-items: center;
     justify-content: center;
     font-size: 40px;
-    font-weight: 600;
+    font-weight: $title-font-weight;
     letter-spacing: 1px;
     margin: 0 auto;
     
     p {
       color: $title-color;
     }
-  }
-
-  
-  &#dark {
-    .title {
-      p {
-        color : $title-color-dark;
-      }
-    } 
   }
 
   * {
@@ -65,36 +56,40 @@ body:not(.index) {
 
   /* Couleur de la selection */
 
-  $selection-color: white;
-  $selection-background-color: #e5c1a4;
-  $selection-color-dark: rgb(141, 152, 251);
-  $selection-background-color-dark: #ffffff;
-
-  & *::-moz-selection {
-    color: $selection-color;
-    background-color: $selection-background-color;
+  & * {
+    &::selection, &::-moz-selection {
+      color: $selection-color;
+      background-color: $selection-background-color;
+    }
   }
 
-  & *::selection {
-    color: $selection-color;
-    background-color: $selection-background-color;
-  }
-
-  &#dark * {
-    color: white;
-  }
 
   &#dark {
-    background : rgb(46 45 45);
+  
+    .title {
+      p {
+        color : $title-color-dark;
+      }
+    } 
+
+    & * {
+      color: white;
+    }
+
+    & {
+      background : $body-background-color-dark;
+    }
+
+    & *::-moz-selection {
+      color: $selection-color-dark;
+      background-color: $selection-background-color-dark;
+    }
+
+    & *::selection {
+      color: $selection-color-dark;
+      background-color: $selection-background-color-dark;
+    }
+
   }
 
-  &#dark *::-moz-selection {
-    color: $selection-color-dark;
-    background-color: $selection-background-color-dark;
-  }
-
-  &#dark *::selection {
-    color: $selection-color-dark;
-    background-color: $selection-background-color-dark;
-  }
 }

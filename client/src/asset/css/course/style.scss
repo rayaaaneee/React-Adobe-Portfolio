@@ -2,8 +2,6 @@
 
 body.course {
 
-    $color-bottom-and-clicked-semester-dark-theme : #dfcace;
-    $color-bottom-and-clicked-semester: #d5baaf;
     $margin-background-position: 20%;
     $size-semester: 400px;
     $border-radius-semester: 20px;
@@ -49,7 +47,7 @@ body.course {
             transition: background-color $general-transition-switch-mode;
 
             a:hover {
-                background-color: rgb(206 147 126 / 70%);
+                background-color: $colored-containers-background-color-hover;
                 transition: 0.2s;
             }
 
@@ -228,7 +226,7 @@ body.course {
             }
 
             &.selected {
-                background-color: $color-bottom-and-clicked-semester;
+                background-color: $bottom-semester-background-color;
             }
 
             .bottom-semester-container {
@@ -249,10 +247,9 @@ body.course {
                     left: 0px;
                     width: 113%;
                     height: 207px;
-                    background-color: 239, 195, 153;
+                    background-color: $bottom-semester-background-color;
                     rotate: 173deg;
                     z-index: -1;
-                    background-color: $color-bottom-and-clicked-semester;
                 }
             }
 
@@ -403,7 +400,7 @@ body.course {
             &:hover, &.focus {
                 .point {
                     box-shadow: 0 0 10px 0 rgb(0, 0, 0);
-                    background: linear-gradient(160deg, transparent 60%, $color-bottom-and-clicked-semester 40%);
+                    background: linear-gradient(160deg, transparent 60%, $bottom-semester-background-color 40%);
                     backdrop-filter: blur(10px);
                 }
             }

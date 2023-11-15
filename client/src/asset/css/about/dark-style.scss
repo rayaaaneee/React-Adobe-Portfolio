@@ -1,22 +1,20 @@
-body.about {
-    &#dark * {
+@import '../vars.scss';
+
+body.about#dark {
+    * {
         color: white;
     }
-    
-    &#dark {
-        background-color : rgb(46 45 45);
+
+    .content {
+        background-color: $containers-background-color-dark;
+        box-shadow: $containers-box-shadow;
     }
-    
-    &#dark .content {
-        background-color: rgb(0 0 0 / 80%) !important;
-        box-shadow: 0 0 23px rgb(255 255 255 / 20%) !important;
+
+    .title, #dark .subtitle {
+        color : $title-color-dark;
     }
-    
-    &#dark .title, #dark .subtitle {
-        color : rgb(232, 190, 190);
-    }
-    
-    &#dark .bar {
+
+    .bar {
         background-color: rgb(232, 190, 190);
     }
 }
