@@ -52,18 +52,23 @@ body.course#dark {
             color: black !important;
         }
     }
-
-    .point:hover, .body-dark .point.selected {
-        background : linear-gradient(160deg, transparent 60%, rgb(230, 209, 209) 40%);
-    }
     
     #timeline::before {
         background: linear-gradient(50deg, rgba(255, 255, 255, 0.2) 40%, rgba(218, 134, 134, 0.8) 50%, rgba(255, 255, 255, 0.4) 60%);
     }
     
-    .point-container::after {
-        background-color: rgb(255 255 255 / 60%);
-        color: black;
-        background-image: url(../../img/course/calendar-black.png);
+    .point-container {
+
+        &::after {
+            background-color: rgb(255 255 255 / 60%);
+            color: black;
+            background-image: url(../../img/course/calendar-black.png);
+        }
+
+        &:hover, &.focus {
+            .point {
+                background : linear-gradient(160deg, transparent 60%, $bottom-semester-background-color-dark 40%) !important;
+            }
+        }
     }
 }
