@@ -41,7 +41,7 @@
         position: fixed;
         background-color: $start-background-color;
         z-index: -1;
-        transition: top 0.4s ease;
+        transition: opacity 0.4s ease;
     }
 
     #background.visible {

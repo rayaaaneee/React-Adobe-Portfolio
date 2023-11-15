@@ -10,11 +10,11 @@ body.about#dark {
         box-shadow: $containers-box-shadow;
     }
 
-    .title, #dark .subtitle {
+    .title, .subtitle {
         color : $title-color-dark;
     }
 
     .bar {
-        background-color: rgb(232, 190, 190);
+        background-color: $title-color-dark;
     }
 }

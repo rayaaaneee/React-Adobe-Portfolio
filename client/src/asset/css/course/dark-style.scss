@@ -29,11 +29,12 @@ body.course#dark {
         
     }
 
-    $color-bottom-and-clicked-semester-dark-theme : #dfcace;
+    $bottom-semester-background-color-dark : #dfcace;
     
     .semester {
         &.selected {
-            background-color : $color-bottom-and-clicked-semester-dark-theme;
+            box-shadow: 0 0 0 4px $bottom-semester-background-color-dark;
+            background-color : $bottom-semester-background-color-dark;
         }
 
         &:not(.selected) {
@@ -44,7 +45,7 @@ body.course#dark {
 
         .bottom-semester-container {
             .bottom-semester {
-                background-color: $color-bottom-and-clicked-semester-dark-theme;
+                background-color: $bottom-semester-background-color-dark;
             }
         }
 
@@ -65,10 +66,16 @@ body.course#dark {
             background-image: url(../../img/course/calendar-black.png);
         }
 
+        .point {
+            background: linear-gradient(160deg, transparent 60%, rgb(255, 255, 255) 40%) !important;
+        }
+
         &:hover, &.focus {
             .point {
                 background : linear-gradient(160deg, transparent 60%, $bottom-semester-background-color-dark 40%) !important;
             }
         }
+
+
     }
 }

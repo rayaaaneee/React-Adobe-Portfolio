@@ -210,7 +210,7 @@ body.course {
             display: flex;
             flex-direction: column;
             row-gap: 15px;
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+            /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3); */
             backdrop-filter: blur(4px);
             margin-bottom: 100px;
             cursor: pointer;
@@ -226,6 +226,7 @@ body.course {
             }
 
             &.selected {
+                box-shadow: 0 0 0 4px $bottom-semester-background-color;
                 background-color: $bottom-semester-background-color;
             }
 

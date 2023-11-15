@@ -2,7 +2,7 @@
 
 // Body
 $body-background-color: linear-gradient(to left, blanchedalmond, #f0f0f0);
-$body-background-color-dark: rgb(46 45 45);
+$body-background-color-dark: linear-gradient(to left, rgb(73, 71, 78), rgb(105, 101, 117));
 
 // Transition
 $general-transition-switch-mode: 0.2s;
@@ -12,24 +12,22 @@ $components-background-color: rgba(255, 255, 255, 0.9);
 $components-box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
 $containers-background-color: rgba(255, 255, 255, 0.8) !important;
 $containers-box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-$titles-color: rgba(86, 86, 86, 0.88);
 $bar-background-color: rgb(255 250 238) !important;
 $bar-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 
-$components-background-color-dark: rgba(0, 0, 0, 0.9);
+$components-background-color-dark: rgb(33, 31, 38, 0.9);
 $components-box-shadow-dark: 0 0 60px rgba(255, 255, 255, 0.1);
-$containers-background-color-dark: rgba(0, 0, 0, 0.97) !important;
+$containers-background-color-dark: rgb(33, 31, 38, 0.75) !important;
 $containers-box-shadow-dark: 0 0 23px rgba(255, 255, 255, 0.2) !important;
-$titles-color-dark: rgba(228, 209, 209, 0.88) !important;
-
-$bar-background-color-dark: #000000 !important;
+$bar-background-color-dark: rgb(181, 178, 188) !important;
+$bar-box-shadow-dark: 0 0 15px rgba(255, 255, 255, 0.2);
 
 $colored-container-background-color: rgba(210, 168, 135, 0.8);
 $colored-containers-background-color-hover: rgba(206, 147, 126, 0.7);
 $colored-container-box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 
-$colored-container-background-color-dark: rgba(218 198 198 / 70%);
-$colored-containers-background-color-hover-dark: rgba(236, 205, 205, 0.7);
+$colored-container-background-color-dark: rgba(98, 95, 105, 0.8);
+$colored-containers-background-color-hover-dark: rgba(88, 83, 101, 0.8);
 $colored-container-box-shadow-dark: $containers-box-shadow-dark;
 
 $selection-color: white;
@@ -47,16 +45,16 @@ $alternateDarkColorLoading: rgba(255, 255, 255, 0.4);
 // Titres
 $title-color: rgba(86, 86, 86, 0.88) !important;
 $title-font-weight: 600;
-$title-color-dark: rgba(228, 209, 209, 0.88) !important;
+$title-color-dark: rgb(238, 238, 240) !important;
 
 /* Loader */
 $loader-background-color: rgb(255, 255, 255);
 $loader-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
 $start-background-color: rgb(249, 238, 212);
 
-$loader-background-color-dark: rgb(24, 23, 23) !important;
+$loader-background-color-dark: rgb(35, 34, 37) !important;
 $loader-box-shadow-dark: 0 0 30px 0 rgba(255, 255, 255, 0.3) !important;
-$start-background-color-dark: rgb(0, 0, 0) !important;
+$start-background-color-dark: rgb(50, 48, 53) !important;
 
 /* Home */
 
@@ -76,11 +74,13 @@ $bottom-semester-background-color-dark: $colored-container-background-color-dark
 
 /* Contact */
 $form-background-color: rgba(255, 255, 255, 0.5);
+$form-box-shadow: 0 0 30px rgba(0,0,0,0.2);
 $form-submit-button-background-color: $colored-container-background-color;
 $form-submit-button-background-color-hover: $colored-containers-background-color-hover;
 $input-background-color: rgba(255, 255, 255, 0.8);
 
-$form-background-color-dark: rgba(0, 0, 0, 0.8);
+$form-background-color-dark: rgb(33, 31, 38, 0.75);
+$form-box-shadow-dark: 0 0 23px rgb(255 255 255 / 10%);
 $form-submit-button-background-color-dark: $colored-container-background-color-dark;
 $form-submit-button-background-color-hover-dark: $colored-containers-background-color-hover-dark;
 $input-background-color-dark: rgba(0, 0, 0, 0.8);
