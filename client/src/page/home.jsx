@@ -105,17 +105,16 @@ const Home = () => {
 
     useConditionalEffect(() => {
         if (projectPageIsVisible) {
-            projectPageRef.current.scrollTo(0, 0);
-            projectPageContentRef.current.scrollTo(0, 0);
             document.body.style.overflowY = "hidden";
             projectPageRef.current.classList.add('visible');
         } else {
-            projectPageRef.current.classList.add('hidden');
-            projectPageRef.current.classList.remove('visible');
-            setTimeout(() => {
+          projectPageRef.current.scrollTo({ top: 0 });
+          projectPageRef.current.classList.add('hidden');
+          projectPageRef.current.classList.remove('visible');
+          setTimeout(() => {
               document.body.style.removeProperty('overflow-y');
               projectPageRef.current.classList.remove('hidden');
-            }, 500);
+          }, 500);
         }
     }, [projectPageIsVisible]);
 

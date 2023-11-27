@@ -85,6 +85,7 @@ const Course = () => {
         } else {
             semesterPage.current.classList.add("hidden");
             semesterPage.current.classList.remove("visible");
+            semesterPage.current.scrollTo({ top: 0 });
             setTimeout(() => {
                 document.body.style.removeProperty("overflow");
                 semesterPage.current.classList.remove("hidden");
