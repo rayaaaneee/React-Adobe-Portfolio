@@ -94,6 +94,7 @@ export const colorPointAssociateToSemester = (i) => {
 }
 
 export const uncolorPointAssociateToSemester = (i) => {
+    console.log("uncolorPoint");
     if (!isSelect || (i !== lastSemesterIndex)) {
         let point = pointsContainers[i];
         uncolorPoint(point);
@@ -127,6 +128,8 @@ export const disclickSemester = (i) => {
     semester.classList.remove("selected");
 
     let point = pointsContainers[i];
+
+    isSelect = false;
 
     uncolorPoint(point);
 
