@@ -47,6 +47,17 @@ $title-color: rgba(86, 86, 86, 0.88) !important;
 $title-font-weight: 600;
 $title-color-dark: rgb(238, 238, 240) !important;
 
+// Scroll bars
+$scrollbar-track-color: rgb(230, 230, 230);
+$scrollbar-color: rgb(235, 204, 178);
+$scrollbar-color-hover: rgb(219, 179, 151);
+
+$dark-scrollbar-track-color: rgb(35, 34, 37);
+$dark-scrollbar-color: rgb(238, 238, 240);
+$dark-scrollbar-color-hover: rgb(181, 178, 188);
+
+$scrollbar-width: 10px;
+
 /* Loader */
 $loader-background-color: rgb(255, 255, 255);
 $loader-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);

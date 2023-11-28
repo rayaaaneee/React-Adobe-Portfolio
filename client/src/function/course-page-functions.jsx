@@ -110,8 +110,6 @@ export const onclickSemester = (i) => {
 
         semester.classList.add("selected");
 
-        semester.querySelector(".arrow-container .arrow").classList.add("active");
-
         colorPoint(point);
 
         let onclickScale = 0.05;
@@ -119,22 +117,10 @@ export const onclickSemester = (i) => {
         modifyScale(semester, onclickScale);
         addToScale = onclickScale;
 
-    } else {
-        let lastsemester = semesters[lastSemesterIndex];
-        if (lastSemesterIndex === i) {
-            disclickSemester(i);
-            isSelect = false;
-            lastSemesterIndex = null;
-        } else {
-            disclickSemester(lastSemesterIndex);
-            isSelect = false;
-            onclickSemester(i);
-        }
-        lastsemester.querySelector(".arrow-container .arrow").classList.remove("active");
     }
 }
 
-const disclickSemester = (i) => {
+export const disclickSemester = (i) => {
 
     let semester = semesters[i];
 

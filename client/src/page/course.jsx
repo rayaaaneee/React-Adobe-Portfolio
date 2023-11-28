@@ -10,7 +10,7 @@ import { useConditionalEffect } from '../hook/useConditionalEffect';
 
 import { main, initHeight, colorPointAssociateToSemester, 
 uncolorPointAssociateToSemester, onclickSemester, setPointsContainers, 
-setSemesters, setTimeline, intervalMoveSemesters, intervalAnimation, onScroll } 
+setSemesters, setTimeline, intervalMoveSemesters, intervalAnimation, onScroll, disclickSemester } 
 from '../function/course-page-functions';
 
 import { Semester } from './component/course/semester';
@@ -99,7 +99,12 @@ const Course = () => {
         setCurrentSemester(semester);
     }
     const closeSemesterPage = () => {
+
         setSemesterPageIsOpen(false);
+
+        let index = semestersObjects.findIndex((semester) => semester.id === currentSemester.id);
+
+        disclickSemester(index);
     }
 
     const openSubjectsImageSemester = () => {
@@ -153,7 +158,7 @@ const Course = () => {
                                 clickSemester={ () => onclickSemester(i) } 
                                 colorPoint={ () => colorPointAssociateToSemester(i) } 
                                 uncolorPoint={ () => uncolorPointAssociateToSemester(i) } 
-                                openSemesterPage={ (event) => { event.stopPropagation(); openSemesterPage(semester); } 
+                                openSemesterPage={ (event) => (openSemesterPage(semester)) 
                                 } />
                             );
                         }) }

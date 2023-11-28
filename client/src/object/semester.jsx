@@ -17,6 +17,7 @@ export class Semester
 
     constructor(semester)
     {
+        this.id = semester.id;
         this.title = semester.title;
         this.description = semester.description;
         this.startingDate = new Date(semester.starting_date);
