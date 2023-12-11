@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState, useContext } from 'react';
 
 import { animateApparition } from '../function/appearence';
 import { animateImageLoading } from '../function/animate-image-loading';
-import { sendMessage } from '../function/send-message';
+import { sendMessage } from '../function/api/send-message';
 
 import modalContext from '../function/context/modal-context';
 
@@ -40,26 +40,43 @@ const Contact = () => {
     let errormsgRef = useRef(null);
 
     const { setModalInformations } = useContext(modalContext);
-    let modalMessages = [
-        "Votre message a bien été envoyé !",
-        "Une erreur est survenue lors de l'envoi du message."
-    ];
 
-    const trySend = (formData) => {
-        sendMessage(formData)
-        .then((response) => {
-
-            let isSuccess = (response === 200);
-
-            setModalInformations(
-                (informations) => {
-                    informations.isSuccess = isSuccess;
-                    informations.setMessages(modalMessages[0], modalMessages[1]);
-                    informations.isVisible = true;
-                    return ModalInformations.initRow(informations);
-                }
+        const trySend = (formData) => {
+            sendMessage(
+                formData, 
+                (data) => {
+                    if (data.success) {
+                        setModalInformations(
+                            (informations) => {
+                                informations.isSuccess = true;
+                                informations.setMessageSuccess(data.success);
+                                informations.isVisible = true;
+                                return ModalInformations.initRow(informations);
+                            }
+                        );
+                    } else {
+                        setModalInformations(
+                            (informations) => {
+                                informations.isSuccess = false;
+                                informations.setMessageError(data.error);
+                                informations.isVisible = true;
+                                return ModalInformations.initRow(informations);
+                            }
+                        );
+                    }
+                },
+                (err) => {
+                    setModalInformations(
+                        (informations) => {
+                            informations.isSuccess = false;
+                            informations.setMessageError('Une erreur est survenue lors de l\'envoi du message.');
+                            informations.isVisible = true;
+                            return ModalInformations.initRow(informations);
+                        }
+                    );
+                },
             );
-        })
+
     }
 
     const isEmpty = (string) => {

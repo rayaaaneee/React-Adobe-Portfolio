@@ -1,8 +1,7 @@
-const mongoose = require('mongoose');
+import { Request, Response } from "express";
+import { db } from "../main";
 
-const collection: string = 'message';
-
-export const sendMessage = async (dbUrl: string, req: any, res: any) => {
+const sendMessage = async (req: Request, res: Response) => {
 
     let name: string = req.body.name;
     let email: string = req.body.email;
@@ -10,38 +9,33 @@ export const sendMessage = async (dbUrl: string, req: any, res: any) => {
 
     // Si un des champs est vide on retourne une erreur 400
     if (!name || !email || !message) {
-        res.status(400).send();
+        res.status(400).send({
+            error: 'Un des champs est vide'
+        });
         return;
     }
 
     // Si un des champs est trop long on retourne une erreur 400
     if (name.length > 50 || email.length > 50 || message.length > 300) {
-        res.status(400).send();
+        res.status(400).send({
+            error: 'Un des champs est trop long'
+        });
         return;
     }
-    console.log(dbUrl);
-    await mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
-    let db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'connection error:'));
-    db.once('open', () => {
-        console.log('Connected to database');
+
+    // On vérifie que l'email est bien un email
+    if (!email.includes('@') || !email.includes('.')) {
+        res.status(400).send({
+            error: 'L\'email n\'est pas valide'
+        });
+        return;
+    }
+
+    db.prepare('INSERT INTO message (name, email, message) VALUES (?, ?, ?)').run(name, email, message);
+
+    res.status(200).send({
+        success: 'Message envoyé avec succès !'
     });
-
-    const messageSchema = new mongoose.Schema({
-        name: String,
-        email: String,
-        message: String
-    });
-
-    const Message = mongoose.model('Message', messageSchema, collection);
-
-    const newMessage = new Message({
-        name: name,
-        email: email,
-        message: message
-    });
-
-    await newMessage.save();
-
-    res.status(200).send();
 }
+
+export default sendMessage;

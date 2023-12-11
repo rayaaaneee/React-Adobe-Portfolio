@@ -7,3 +7,5 @@
 ## Page course : colorer la barre en fonction du scroll effectué
 
 ## Fix la modal pour qu'elle reste affichée peu importe si on change de page entre temps
+
+## Index : duree changement de couleurs mettre body background > elements

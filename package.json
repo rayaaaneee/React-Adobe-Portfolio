@@ -7,7 +7,7 @@
     "host-client": "cd client && npm run host",
     "build-client": "cd client && npm run build",
     "server": "cd server && npm start",
-    "watch-server": "cd server && npm run watch",
+    "dev-server": "cd server && npm run dev",
     "install": "cd client && npm install && cd server && npm install && cd ../../server && npm install"
   },
   "repository": {

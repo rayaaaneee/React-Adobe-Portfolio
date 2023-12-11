@@ -31,6 +31,14 @@ export class ModalInformations {
         }
     }
 
+    setMessageSuccess(messageSuccess) {
+        this.message.success = messageSuccess;
+    }
+
+    setMessageError(messageError) {
+        this.message.error = messageError;
+    }
+
     getMessage() {
         switch (this.isSuccess) {
             case true:

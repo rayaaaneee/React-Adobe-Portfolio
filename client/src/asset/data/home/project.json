@@ -232,7 +232,7 @@
             "is_download": true,
             "is_link": true,
             "file": "kwiz.rar",
-            "link": "Kwiz/",
+            "link": "https://kwiz-client.vercel.app/login",
             "image": null,
             "date": "07-2023",
             "languages": [
@@ -258,7 +258,7 @@
             "is_download": true,
             "is_link": true,
             "file": "sunsys.rar",
-            "link": "SunSys/",
+            "link": "https://vercel-sunsys.vercel.app/",
             "image": null,
             "date": "09-2023",
             "languages": [
