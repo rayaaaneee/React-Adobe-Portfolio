@@ -4,11 +4,11 @@
   "description": "React Portfolio",
   "scripts": {
     "client": "cd client && npm start",
-    "host-client": "cd client && npm run host",
+    "serve-client": "cd client && npm run serve",
     "build-client": "cd client && npm run build",
     "server": "cd server && npm start",
     "dev-server": "cd server && npm run dev",
-    "install": "cd client && npm install && cd server && npm install && cd ../../server && npm install"
+    "install": "cd client && npm i && cd ../server && npm i"
   },
   "repository": {
     "type": "git",
