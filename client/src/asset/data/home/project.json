@@ -9,7 +9,7 @@
             "is_download": true,
             "file": "cv-html.rar",
             "is_link": true,
-            "link": "CVHtml/",
+            "link": "https://cv-seven-lyart.vercel.app/",
             "image": null,
             "date": "10-2021",
             "languages": [
@@ -103,7 +103,7 @@
             "is_download": true,
             "file": "would-you-play.rar",
             "is_link": true,
-            "link": "WouldYouPlay/",
+            "link": "https://would-you-play.vercel.app/",
             "image": null,
             "date": "11-2022",
             "languages": [
@@ -232,7 +232,7 @@
             "is_download": true,
             "is_link": true,
             "file": "kwiz.rar",
-            "link": "https://kwiz-client.vercel.app/login",
+            "link": "https://kwiz-three.vercel.app/login",
             "image": null,
             "date": "07-2023",
             "languages": [
@@ -258,7 +258,7 @@
             "is_download": true,
             "is_link": true,
             "file": "sunsys.rar",
-            "link": "https://vercel-sunsys.vercel.app/",
+            "link": "https://sunsys.vercel.app/",
             "image": null,
             "date": "09-2023",
             "languages": [

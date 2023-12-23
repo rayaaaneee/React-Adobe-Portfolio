@@ -25,8 +25,6 @@ export class Project
     #languages;
     #competences;
 
-    #stateImg = null;
-
     #reactIcon = null;
     #darkReactIcon = null;
 

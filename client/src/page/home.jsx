@@ -140,9 +140,8 @@ const Home = () => {
       projectViewer = projectViewerContainerRef.current.querySelector('.project-viewer');
     });
 
-    const openProjectViewer = (file) => {
+    const openProjectViewer = (link) => {
       projectViewerContainerRef.current.classList.add('visible');
-      let link = '/project/' + file;
   
       setTimeout(() => {
         projectViewer.setAttribute('src', link);
@@ -343,7 +342,7 @@ const Home = () => {
                           <a onClick={ () => openProjectViewer(currentProject.getLink()) }
                           className="link-btn title-page-project" 
                           rel='noreferrer'>Consulter {currentProject.getTitle()}</a>
-                          ) 
+                          )
                         }
                         { currentProject && (currentProject.isDownload() &&
                            <a href={ `/project/${currentProject.getFile()}` } className="download-btn title-page-project" download>Télécharger {currentProject.getFileName()}</a>
@@ -370,7 +369,7 @@ const Home = () => {
                       </div>
                   </div>
               </article>
-              <h2 className="explicationtext">Vous trouverez ici mes projets importants, qu'ils soient scolaires ou faits de mon côté. <br/>Il vous suffit de cliquer pour les télécharger.</h2>
+              <h2 className="explicationtext">Vous trouverez ici mes projets importants, qu'ils soient scolaires ou personnels. <br/>Il vous suffit de cliquer pour les télécharger.</h2>
               {/* Page du CV */}
               <article id="cv">
                   <div className="title t2" id="secondmid">
