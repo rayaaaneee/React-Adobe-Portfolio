@@ -7,3 +7,5 @@
 ## Page course : colorer la barre en fonction du scroll effectué
 
 ## Index : duree changement de couleurs mettre body background > elements
+
+## Raccourcis boutons echap pour fermer les modales
