@@ -12,15 +12,19 @@ import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';
 import CV from '../asset/file/CV.pdf';
 
 import { ManageBody } from '../object/manage-body';
+import { ManageWebsiteLanguages } from '../object/manage-website-languages';
 
 import loaderContext from '../function/context/loader-context';
 import themeContext from '../function/context/theme-context';
+import languageContext from '../function/context/language-context';
 
 const Index = () => {
 
     const { setWasLoaderShowed } = useContext(loaderContext);
 
     const { setIsDarkTheme } = useContext(themeContext);
+
+    const { language } = useContext(languageContext);
 
     useEffect(() => (setWasLoaderShowed(false)));
 
@@ -39,15 +43,10 @@ const Index = () => {
     }
 
     useEffect(() => {
-        document.title = 'Adobe Portfolio - Rayane Merlin';
+        document.title = language.index.title;
     });
 
-    const textTab = [
-        "Rayane Merlin", 
-        "Full Stack Developper", 
-        "Designer", 
-        "IT Student (BAC +3)"
-    ];
+    const textTab = language.index.description;
 
     const [textTypeWriter] = useTypewriter({
         words: textTab,
@@ -93,14 +92,36 @@ const Index = () => {
                     <div className="circle circle-two"></div>
                 </div>
                 <nav className="menu basic-menu">
-                    <div className="logo">
-                        <img src={ faviconDarkTheme } alt="logo" draggable="false" />
+                    <div className='left-top-angular'>
+                        <div className="logo">
+                            <img src={ faviconDarkTheme } alt="logo" draggable="false" />
+                        </div>
+                        <div className='select-language'>
+                            <choice>
+                                <p>{ language.current }</p>
+                            </choice>
+                            <opt-container>
+                            { ManageWebsiteLanguages.supportedLanguages.map(
+                                language => {
+                                    return (<opt>{ language }</opt>)
+                                }) 
+                            }
+                            </opt-container>
+                        </div>
                     </div>
                     <ul className={ `menu-links ${menuClass}` }>
-                        <li><NavLink to={'/home'}>Accueil</NavLink></li>
-                        <li><NavLink to={'/course'}>Parcours</NavLink></li>
-                        <li><NavLink to={'/perso'}>Perso</NavLink></li>
-                        <li><NavLink to={'/contact'}>Contact</NavLink></li>
+                        <li>
+                            <NavLink to={'/home'}>{ language.menu.home }</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={'/background'}>{ language.menu.background }</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={'/perso'}>{ language.menu.myself }</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={'/contact'}>{ language.menu.contact }</NavLink>
+                        </li>
                         <li className="cv-download">
                             <a href={ CV } download="CV_Rayane_Merlin.pdf" onMouseOver={ colorMenuImg } onMouseLeave={ uncolorMenuImg }>
                                 <div className="container-cv-download">
@@ -119,7 +140,7 @@ const Index = () => {
                         <div className="hamburger-bar bottom-bar"></div>
                     </div>
                 </nav>
-                <NavLink to={'/home'} className="get-start">Découvrir</NavLink>
+                <NavLink to={'/home'} className="get-start">{ language.index.discover }</NavLink>
             </header>
             <main>
                 <div className="container">
@@ -144,7 +165,7 @@ const Index = () => {
                 </div>
                 <div className="triangle border-triangle footer-triangle"></div>
                 <NavLink to={'/about'} className="about-page">
-                    <p>Crédits</p>
+                    <p>{ language.index.credentials }</p>
                 </NavLink>
                 <ul className="footer-links">
                     <li title="Linked In">

@@ -4,6 +4,8 @@ import { animateImageLoading } from '../../function/animate-image-loading';
 
 import loaderContext from '../../function/context/loader-context';
 
+import languageContext from '../../function/context/language-context';
+
 import { ManageThemes } from '../../object/manage-themes';
 
 import '../../asset/css/loader/style.scss';
@@ -21,6 +23,8 @@ const Loader = () => {
     const {setWasLoaderShowed} = useContext(loaderContext);
     const [isLoading, setIsLoading] = useState(true);
 
+    const { language } = useContext(languageContext);
+
     const points = [
         useRef(null),
         useRef(null),
@@ -33,16 +37,7 @@ const Loader = () => {
     const cursor = useRef(null);
 
     /* Déclaration du tableau de texte */
-    const texts = [
-        "Lecture des préférences...",
-        "Initialisation des outils...",
-        "Chargement de la palette...",
-        "Création des tables de conversion des couleurs...",
-        "Lecture des pinceaux...",
-        "Chargement .",
-        "Chargement . .",
-        "Chargement . . .",
-    ];
+    const texts = language.loader.texts;
 
     //Balise texte à modifier
     const [textIndex, setTextIndex] = useState(0);
@@ -153,8 +148,8 @@ const Loader = () => {
                             <div id="text">
                                 <div className="abovetext">
                                     <p className="highfontweight">© 1990 - 2022 Adobe. All rights reserved.</p>
-                                    <p className="highfontweight">Illustration de Flore Marquin</p>
-                                    <p className="lowfontweight">Illustration inspirée par le seigneur des anneaux : Les anneaux de pouvoirs. "Pour obtenir plus de détails et des informations juridiques, rendez vous sur l'écran.</p>
+                                    <p className="highfontweight">{ language.loader.illustration_creator }</p>
+                                    <p className="lowfontweight">{ language.loader.illustration_inspiration }</p>
                                     <p id="toChange" className="highfontweight">{ texts[textIndex] }</p>
                                 </div>
                                 <div className="undertext">

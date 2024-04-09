@@ -5,6 +5,7 @@ import { animateImageLoading } from '../function/animate-image-loading';
 import { sendMessage } from '../function/api/send-message';
 
 import modalContext from '../function/context/modal-context';
+import languageContext from '../function/context/language-context';
 
 import { ManageBody } from '../object/manage-body';
 import { ManageThemes } from '../object/manage-themes';
@@ -27,8 +28,10 @@ const Contact = () => {
 
     ManageBody.changeClass('contact');
 
+    const { language } = useContext(languageContext);
+
     useEffect(() => {
-        document.title = 'Contact';
+        document.title = language.contact.title;
     });
 
     let nameInput = useRef(null);
@@ -41,41 +44,41 @@ const Contact = () => {
 
     const { setModalInformations } = useContext(modalContext);
 
-        const trySend = (formData) => {
-            sendMessage(
-                formData, 
-                (data) => {
-                    if (data.success) {
-                        setModalInformations(
-                            (informations) => {
-                                informations.isSuccess = true;
-                                informations.setMessageSuccess(data.success);
-                                informations.isVisible = true;
-                                return ModalInformations.initRow(informations);
-                            }
-                        );
-                    } else {
-                        setModalInformations(
-                            (informations) => {
-                                informations.isSuccess = false;
-                                informations.setMessageError(data.error);
-                                informations.isVisible = true;
-                                return ModalInformations.initRow(informations);
-                            }
-                        );
-                    }
-                },
-                (err) => {
+    const trySend = (formData) => {
+        sendMessage(
+            formData, 
+            (data) => {
+                if (data.success) {
                     setModalInformations(
                         (informations) => {
-                            informations.isSuccess = false;
-                            informations.setMessageError('Une erreur est survenue lors de l\'envoi du message.');
+                            informations.isSuccess = true;
+                            informations.setMessageSuccess(data.success);
                             informations.isVisible = true;
                             return ModalInformations.initRow(informations);
                         }
                     );
-                },
-            );
+                } else {
+                    setModalInformations(
+                        (informations) => {
+                            informations.isSuccess = false;
+                            informations.setMessageError(data.error);
+                            informations.isVisible = true;
+                            return ModalInformations.initRow(informations);
+                        }
+                    );
+                }
+            },
+            (err) => {
+                setModalInformations(
+                    (informations) => {
+                        informations.isSuccess = false;
+                        informations.setMessageError(language.contact.error);
+                        informations.isVisible = true;
+                        return ModalInformations.initRow(informations);
+                    }
+                );
+            },
+        );
 
     }
 
@@ -89,7 +92,7 @@ const Contact = () => {
 
         let firsterror = null;
         if (isEmpty(formData.get('name'))) {
-            errornameRef.current.innerHTML = "• Veuillez entrez un nom valide";
+            errornameRef.current.innerHTML = `• ${ language.contact.error_name }`;
             if (!firsterror) firsterror = nameInput.current;
         } else {
             errornameRef.current.innerHTML = "";
@@ -97,14 +100,14 @@ const Contact = () => {
 
         let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,5})+$/;
         if (!emailPattern.test(formData.get('email'))) {
-            erroremailRef.current.innerHTML = "• Veuillez entrez une adresse mail valide";
+            erroremailRef.current.innerHTML = `• ${ language.contact.error_email }`;
             if (!firsterror) firsterror = emailInput.current;
         } else {
             erroremailRef.current.innerHTML = "";
         }
 
         if (isEmpty(formData.get('message'))) {
-            errormsgRef.current.innerHTML = "• Veuillez entrez un message valide";
+            errormsgRef.current.innerHTML = `• ${ language.contact.error_message }`;
             if (!firsterror) firsterror = messageInput.current;
         } else {
             errormsgRef.current.innerHTML = "";
@@ -126,13 +129,13 @@ const Contact = () => {
         let text;
         switch (charsLeft) {
             case 0:
-                text = "• Aucun caractère restant";
+                text = `• ${ language.contact.no_chars_left }`;
                 break;
             case 1:
-                text = "caractère restant";
+                text = language.contact.one_char_left;
                 break;
             default:
-                text = `caractères restants`;
+                text = language.contact.chars_left;
                 break;
         }
         return text;
@@ -203,12 +206,7 @@ const Contact = () => {
                     <div className="pres-container">
                         <div id="pres" ref={ (element) => elementsToAnimate.current.push(element) } >
                             <img draggable="false" ref={ (img) => imagesToLoad.current.push(img) } src={ contactImg } id="imgcontact" alt="Contact Icon" />
-                            <h3 className="present">Pour tout contact, vous pouvez aussi passer par cette page.<br/>
-                                Pour cela, c'est très simple : <br/>
-                                • Rentrez le nom / pseudonyme sous lequel vous enverrez le message<br/>
-                                • Rentrez votre adresse mail<br/>
-                                • Rentrez simplement votre message !
-                            </h3>
+                            <h3 className="present" dangerouslySetInnerHTML={{ __html: language.contact.description }}></h3>
                         </div>
                     </div>
                     <div className="form-container">
@@ -217,9 +215,9 @@ const Contact = () => {
 
                                 <div className='input-container'>
                                     <label htmlFor='name'>
-                                        Votre nom <span className="required">*</span>
+                                        { language.contact.name } <span className="required">*</span>
                                     </label>
-                                    <input ref={ nameInput } type="text" name="name" required placeholder="Nom Prénom" 
+                                    <input ref={ nameInput } type="text" name="name" required placeholder={ language.contact.name_placeholder } 
                                     maxLength={ nameInputMaxLength } 
                                     onInput={ (event) => (
                                         verifyLength(event.currentTarget, nameInputMaxLength)) } />
@@ -228,18 +226,18 @@ const Contact = () => {
 
                                 <div className='input-container'>
                                     <label htmlFor='email'>
-                                        Votre adresse e-mail <span className="required">*</span>
+                                    { language.contact.email } <span className="required">*</span>
                                     </label>
-                                    <input ref={emailInput} type="email" name="email" required placeholder="example@mail.com" maxLength={ emailInputMaxLength } onInput={ (event) => (
+                                    <input ref={emailInput} type="email" name="email" required placeholder={ language.contact.email_placeholder } maxLength={ emailInputMaxLength } onInput={ (event) => (
                                         verifyLength(event.currentTarget, emailInputMaxLength)) } />
                                     <span ref={erroremailRef} className="error" id="erroremail"></span>
                                 </div>
 
                                 <div className='input-container'>
                                     <label htmlFor='name'>
-                                        Message <span className="required">*</span>
+                                    { language.contact.message } <span className="required">*</span>
                                     </label>
-                                    <textarea ref={messageInput} name="message" required placeholder="Voici mon message.." onInput={ handleChars } onFocus={() => setIsAppearCharsLeft(true) } onBlur={ () => setIsAppearCharsLeft(false) }></textarea>
+                                    <textarea ref={messageInput} name="message" required placeholder={ language.contact.message_placeholder } onInput={ handleChars } onFocus={() => setIsAppearCharsLeft(true) } onBlur={ () => setIsAppearCharsLeft(false) }></textarea>
                                     <div className={`nb-chars-left ${ isAppearCharsLeft && 'visible'}`}>
                                         <p className="to-modify" style={{ color: charsLeftColor}}>{ nbCharsLeft > 0 && nbCharsLeft }</p>
                                         <p className={`nb-chars-left-text ${isScalingCharsLeft && 'scale'}`} style={{ color: charsLeftColor}}>{ switchNbCharsText( nbCharsLeft ) }</p>
@@ -253,8 +251,8 @@ const Contact = () => {
                                 </div>
 
                                 <div className="buttons-container">
-                                    <button type="submit" readOnly className="orange-buttons">Envoyer</button>
-                                    <button readOnly className="orange-buttons"  type="reset">Réinitialiser</button>
+                                    <button type="submit" readOnly className="orange-buttons">{ language.contact.send }</button>
+                                    <button readOnly className="orange-buttons"  type="reset">{ language.contact.reset }</button>
                                 </div>
                             </form>
                         </div>

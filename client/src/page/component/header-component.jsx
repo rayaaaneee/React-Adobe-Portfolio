@@ -7,6 +7,8 @@ import '../../asset/css/media/header/style.scss';
 
 import themeContext from '../../function/context/theme-context';
 
+import languageContext from '../../function/context/language-context';
+
 const HeaderComponent = () => {
 
     const { isDarkTheme, setIsDarkTheme } = useContext(themeContext);
@@ -14,6 +16,8 @@ const HeaderComponent = () => {
     const changeTheme = () => {
         setIsDarkTheme(!isDarkTheme);
     }
+
+    const { language } = useContext(languageContext);
 
     return (
         <header>
@@ -24,22 +28,22 @@ const HeaderComponent = () => {
                     </NavLink>
                     <li>
                         <NavLink className="sites s1" to={"/home"}>
-                            <p id="text1">ACCUEIL</p>
+                            <p id="text1">{ language.menu.home }</p>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className="sites s2" to={"/course"}>
-                            <p id="text2">PARCOURS</p>
+                        <NavLink className="sites s2" to={"/background"}>
+                            <p id="text2">{ language.menu.background }</p>
                         </NavLink>
                     </li>
                     <li>
                         <NavLink className="sites s3" to={"/perso"}>
-                            <p id="text3">PERSO</p>
+                            <p id="text3">{ language.menu.myself }</p>
                         </NavLink>
                     </li>
                     <li>
                         <NavLink className="sites s4" to={"/contact"}>
-                            <p id="text4">CONTACT</p>
+                            <p id="text4">{ language.menu.contact }</p>
                         </NavLink>
                     </li>
                     <div className="theme-form">
@@ -51,7 +55,7 @@ const HeaderComponent = () => {
                         <div className="logo"></div>
                     </NavLink>
                     <NavLink className="mediasites" id="receptionsite" to={"/home"}></NavLink>
-                    <NavLink className="mediasites" id="coursesite" to={"/course"}></NavLink>
+                    <NavLink className="mediasites" id="backgroundsite" to={"/background"}></NavLink>
                     <NavLink className="mediasites" id="personalsite" to={"/perso"}></NavLink>
                     <NavLink className="mediasites" id="contactsite" to={"/contact"}></NavLink>
                     <button className="mode-button" onClick={ changeTheme }></button>

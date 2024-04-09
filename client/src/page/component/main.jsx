@@ -27,7 +27,7 @@ const Main = ({ children }) => {
   // Récupérer l'url de la page actuelle
   const url = useLocation().pathname;
   let isRootPage = url === "/";
-  let isCoursePage = url.includes("/course");
+  let isBackgroundPage = url.includes("/background");
 
   return (
     <>
@@ -45,7 +45,7 @@ const Main = ({ children }) => {
           <div id="pageContent">
             { children }
           </div>
-          {!isCoursePage && <FooterComponent />}
+          {!isBackgroundPage && <FooterComponent />}
         </>
       )}
     </>

@@ -3,12 +3,14 @@ import { useMemo, useState } from 'react';
 import loaderContext from '../../function/context/loader-context';
 import themeContext from '../../function/context/theme-context';
 import modalContext from '../../function/context/modal-context';
+import languageContext from '../../function/context/language-context';
 
 import { ManageThemes } from '../../object/manage-themes';
 import { ModalInformations } from '../../object/modal-informations';
 
 import { Modal } from './modal'; 
 import { useConditionalEffect } from '../../hook/useConditionalEffect';
+import { ManageWebsiteLanguages } from '../../object/manage-website-languages';
 
 const Contexts = ({ children }) => {
 
@@ -38,16 +40,25 @@ const Contexts = ({ children }) => {
       [modalInformations]
     );
 
+    // Gérer le langage
+    const [language, setLanguage] = useState(ManageWebsiteLanguages.getSentences());
+    const languageValue = useMemo(
+      () => ({ language, setLanguage }), 
+      [language]
+    );
+
     return (
       <>
-        <modalContext.Provider value={modalValue} >
-            <loaderContext.Provider value={loaderValue} >
-                <themeContext.Provider value={themeValue} >
-                  <Modal />
-                  { children }
-                </themeContext.Provider>
-            </loaderContext.Provider>
-        </modalContext.Provider>
+        <languageContext.Provider value={languageValue}>
+          <modalContext.Provider value={modalValue} >
+              <loaderContext.Provider value={loaderValue} >
+                  <themeContext.Provider value={themeValue} >
+                    <Modal />
+                    { children }
+                  </themeContext.Provider>
+              </loaderContext.Provider>
+          </modalContext.Provider>
+        </languageContext.Provider>
       </>
     )
 }

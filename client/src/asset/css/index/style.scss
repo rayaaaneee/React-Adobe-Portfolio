@@ -279,15 +279,29 @@ body.index {
         transition: width 0.3s, opacity 0.3s ease;
     }
 
-    .logo {
+    .left-top-angular {
         position: absolute;
-        left: 1vw;
-        top: 1vw;
-        width: 70px;
-    }
+        left: 0;
+        height: fit-content;
+        width: fit-content;
+        display: flex;
+        flex-direction: row;
+        column-gap: 25px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        .logo {
+            width: 70px;
 
-    .logo img {
-        width: 80%;
+            img {
+                width: 80%;
+            }
+        }
+        .select-language {
+            position: relative;
+            width: 130px;
+            height: 45px;
+        }
     }
 
     footer {

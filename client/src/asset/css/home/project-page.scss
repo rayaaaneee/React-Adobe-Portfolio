@@ -121,6 +121,7 @@ body.home {
         &.visible {
             display: block;
             overflow-y: scroll;
+            scrollbar-width: none;
 
             .quit-project-button {
                 animation: 0.3s unTranslateY forwards;

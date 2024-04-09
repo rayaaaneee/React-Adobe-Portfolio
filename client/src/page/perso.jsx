@@ -1,9 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 
 import { animateApparition } from '../function/appearence';
 import { animateImageLoading } from '../function/animate-image-loading';
 
 import { ManageBody } from '../object/manage-body';
+
+import languageContext from '../function/context/language-context';
 
 import { Music } from './component/perso/music';
 
@@ -38,8 +40,10 @@ const Perso = () => {
 
     ManageBody.changeClass('perso');
 
+    const { language } = useContext(languageContext);
+
     useEffect(() => {
-        document.title = 'Qui suis-je ?';
+        document.title = language.myself.title;
     });
 
     let age = getAge('02/05/2003');
@@ -61,11 +65,11 @@ const Perso = () => {
             <div id='bar0' className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
             <div className="content" onMouseOver={ () => colorBar(0) } onMouseLeave={ () => uncolorBar(0) }>
                 <div className="title-part">
-                    <h1>• Qui suis-je ?</h1>
+                    <h1>• { language.myself.title }</h1>
                 </div>
                 <div className="content-part">
                     <div className="text">
-                        <p>Je suis un étudiant de { age } ans, passionné par l'informatique et les nouvelles technologies. Actuellement en deuxième année de BUT informatique, je souhaite poursuivre mes études dans le domaine du développement et du design.</p>
+                        <p>{ language.myself.description.replace("{{age}}", age) }</p>
                     </div>
                     <div className="photo">
                         <img alt='Photo' ref={ (img) => imagesToLoad.current.push(img) } draggable="false" src={ photoPerso } id="photopres" />
@@ -73,13 +77,13 @@ const Perso = () => {
                 </div>
             </div>
             <div className="title t2">
-                <p>Mes musiques :</p>
+                <p>{ language.myself.musics }</p>
                 <div id='bar1' className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
-                <h3>Voici quelques musiques qui m'ont marquées. Je me permets d'en parler dans ce PortFolio car la musique possède une place importante dans ma vie et dans la société en général. Ce que nous écoutons représente en quelque sorte qui nous sommes, est une source de créativité influant sur nous : les auditeurs.</h3>
+                <h3>{ language.myself.musics_description }</h3>
             </div>
             <article id="music" onMouseOver={ () => colorBar(1) } onMouseLeave={ () => uncolorBar(1) }>
                 <div id="frames">
-                { musicJson.map((link, index) => {
+                { musicJson.map((link) => {
                     return (
                         <Music link={ link } />
                     );
@@ -87,7 +91,7 @@ const Perso = () => {
                 </div>
             </article>
             <div className="title t3">
-                <p>Les références :</p>
+                <p>{ language.myself.references }</p>
             </div>
             <div id='bar2' className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
             <article id="references" onMouseOver={ () => colorBar(2) } onMouseLeave={ () => uncolorBar(2) }>

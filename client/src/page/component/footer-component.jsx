@@ -1,10 +1,16 @@
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import '../../asset/css/footer/style.scss';
 import '../../asset/css/footer/dark-style.scss';
 import '../../asset/css/media/footer/style.scss';
 
+import languageContext from '../../function/context/language-context';
+
 const FooterComponent = () => {
+
+    const { language } = useContext(languageContext);
+
     return (
         <footer>
             <div id="footer1">
@@ -12,7 +18,7 @@ const FooterComponent = () => {
                     <p className="point-footer"> • </p>
                 </div>
                 <NavLink className="redirect-about" to={"/about"}>
-                    <p>À propos</p>
+                    <p>{ language.footer.about }</p>
                 </NavLink>
                 {/* <p>Ce site a été créé dans le but de présenter mes projets et mes compétences.</p> 
                 <p>2022, Copyright © - Rayane Merlin</p> */}

@@ -1,8 +1,15 @@
 {
     "competences" : [
         {
-            "title" : "Réaliser",
-            "description" : "Créer, concevoir, coder, tester et intégrer une solution informatique pour un client.",
+            "en": {
+                "title" : "Realize",
+                "description" : "Create, design, code, test and integrate a computer solution for a client."
+            },
+            "fr": {
+                "title" : "Réaliser",
+                "description" : "Créer, concevoir, coder, tester et intégrer une solution informatique pour un client."
+            },
+
             "image" : "realize.png",
             "gradient" : "linear-gradient(90deg, rgb(206 136 204 / 80%) 0%, rgb(71 71 71 / 80%) 50%, rgb(186 140 140 / 80%) 100%)",
             "title_color" : "#9a85b8",
@@ -10,8 +17,15 @@
             "bottom_color" : "#a976a7"
         },
         {
-            "title" : "Optimiser",
-            "description" : "Proposer des applications informatiques optimisées en fonction de critères spécifiques : temps d'exécution, précision, consommation de ressources",
+            "en": {
+                "title" : "Optimize",
+                "description" : "Propose optimized computer applications based on specific criteria: execution time, accuracy, resource consumption."
+            },
+            "fr": {
+                "title" : "Optimiser",
+                "description" : "Proposer des applications informatiques optimisées en fonction de critères spécifiques : temps d'exécution, précision, consommation de ressources"
+            },
+
             "image" : "optimise.png",
             "gradient" : "linear-gradient(90deg, rgb(128 219 211 / 80%) 0%, rgba(212, 173, 132, 0.801) 50%, rgb(175 69 69 / 80%) 100%)",
             "title_color" : "#b88d85",
@@ -19,8 +33,15 @@
             "bottom_color" : "#bc8282"
         },
         {
-            "title" : "Administrer",
-            "description" : "Installer, configurer, mettre à disposition, maintenir en conditions opérationnelles des infrastructures, des services et des réseaux et optimiser les systèmes informatiques d'une organisation.",
+            "en": {
+                "title" : "Administer",
+                "description" : "Install, configure, make available, maintain in operational conditions infrastructures, services and networks and optimize the computer systems of an organization."
+            }, 
+            "fr" : {
+                "title" : "Administrer",
+                "description" : "Installer, configurer, mettre à disposition, maintenir en conditions opérationnelles des infrastructures, des services et des réseaux et optimiser les systèmes informatiques d'une organisation."
+            },
+
             "image" : "manage.png",
             "gradient" : "linear-gradient(90deg, rgba(219, 128, 217, 0.801) 0%, rgba(212, 173, 132, 0.801) 50%, rgba(177, 125, 125, 0.801) 100%)",
             "title_color" : "#d2b4b4",
@@ -28,8 +49,15 @@
             "bottom_color" : "#d2b4b4"
         },
         {
-            "title" : "Gérer",
-            "description" : "Concevoir, gérer, administrer et exploiter les données de l'entreprise et mettre à disposition toutes les informations pour un bon pilotage de l'entreprise.",
+            "en": {
+                "title" : "Handle",
+                "description" : "Design, manage, administer and exploit the company's data and make all information available for good business management."
+            },
+            "fr": {
+                "title" : "Gérer",
+                "description" : "Concevoir, gérer, administrer et exploiter les données de l'entreprise et mettre à disposition toutes les informations pour un bon pilotage de l'entreprise."
+            },
+
             "image" : "handle.png",
             "gradient" : "linear-gradient(90deg, rgb(67 101 157 / 80%) 0%, rgb(180 171 162 / 80%) 50%, rgb(255 180 180 / 80%) 100%)",
             "title_color" : "#859eb8",
@@ -37,8 +65,15 @@
             "bottom_color" : "#a1c1e1"
         },
         {
-            "title" : "Conduire",
-            "description" : "Satisfaire les besoins des utilisateurs au regard de la chaîne de valeur du client, organiser et piloter un projet informatique avec des méthodes classiques ou agiles.",
+            "en": {
+                "title" : "Drive",
+                "description" : "Satisfy the needs of users with regard to the customer value chain, organize and manage an IT project with classical or agile methods."
+            },
+            "fr": {
+                "title" : "Conduire",
+                "description" : "Satisfaire les besoins des utilisateurs au regard de la chaîne de valeur du client, organiser et piloter un projet informatique avec des méthodes classiques ou agiles."
+            },
+
             "image" : "lead.png",
             "gradient" : "linear-gradient(90deg, rgb(209 45 102 / 80%) 0%, rgb(113 110 106 / 80%) 50%, rgba(177, 125, 125, 0.801) 100%)",
             "title_color" : "#b88594",
@@ -46,8 +81,15 @@
             "bottom_color" : "#ab2456"
         },
         {
-            "title" : "Collaborer",
-            "description" : "Acquérir, développer et exploiter les aptitudes nécessaires pour travailler efficacement dans une équipe informatique.",
+            "en": {
+                "title" : "Collaborate",
+                "description" : "Acquire, develop and exploit the skills necessary to work effectively in an IT team."
+            },
+            "fr": {
+                "title" : "Collaborer",
+                "description" : "Acquérir, développer et exploiter les aptitudes nécessaires pour travailler efficacement dans une équipe informatique."
+            },
+
             "image" : "collaborate.png",
             "gradient" : "linear-gradient(90deg, rgb(119 134 145 / 80%) 0%, rgb(192 187 181 / 80%) 50%, rgb(104 49 130 / 80%) 100%)",
             "title_color" : "#999ea4",

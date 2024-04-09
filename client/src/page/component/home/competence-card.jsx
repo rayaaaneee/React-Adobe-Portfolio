@@ -1,6 +1,11 @@
-import { forwardRef } from "react"
+import { forwardRef, useContext } from "react";
+
+import languageContext from "../../../function/context/language-context";
 
 export const CompetenceCard = forwardRef(({ competence }, ref) => {
+
+    const { language } = useContext(languageContext);
+
     return (
         <div className="card animate" ref={ ref }>
           <div className="card-front">
@@ -10,7 +15,7 @@ export const CompetenceCard = forwardRef(({ competence }, ref) => {
               </div>
             </div>
             <h1 className="title-card" style={{ color: competence.getTitleColor() }}>
-              • { competence.getTitle() }
+              • { competence.getTitle(language.current) }
             </h1>
             <div className="card-bottom-container">
               <div className="card-bottom" style={{ backgroundColor: competence.getBottomColor() }}></div>
@@ -21,10 +26,10 @@ export const CompetenceCard = forwardRef(({ competence }, ref) => {
               <img src={ require('../../../asset/img/home/card/' + competence.getInfoIcon()) } draggable="false" />
             </div>
             <h2 className="card-back-title" style={{ color: competence.getTitleColor() }}>
-              {competence.getTitle()} c'est :
+              {competence.getTitle(language.current)} { language.home.is }
             </h2>
             <p className="card-description" style={{ color: competence.getTitleColor() }}>
-              {competence.getDescription()}
+              {competence.getDescription(language.current)}
             </p>
           </div>
         </div>

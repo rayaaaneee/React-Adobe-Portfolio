@@ -60,18 +60,18 @@ export class Semester
     }
 
     getIcon() {
-        return require('../asset/img/course/' + this.icon);
+        return require('../asset/img/background/' + this.icon);
     }
-
+    
     getWhiteIcon() {
-        return require('../asset/img/course/' + this.whiteIcon);
+        return require('../asset/img/background/' + this.whiteIcon);
     }
 
     getSchoolIcon() {
-        return require('../asset/img/course/semester/' + this.schoolIcon);
+        return require('../asset/img/background/semester/' + this.schoolIcon);
     }
 
     getMattersImg() {
-        return require('../asset/img/course/semester/' + this.matters);
+        return require('../asset/img/background/semester/' + this.matters);
     }
 }

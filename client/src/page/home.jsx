@@ -16,6 +16,7 @@ import { CompetenceCard } from './component/home/competence-card';
 import { Project } from './component/home/project';
 
 import themeContext from '../function/context/theme-context';
+import languageContext from '../function/context/language-context';
 
 import '../asset/css/home/style.scss';
 import '../asset/css/home/frame-cv.scss';
@@ -45,6 +46,7 @@ import whiteMemoryIcon from '../asset/img/home/icon/white-memory-icon.png';
 
 import cvImg from '../asset/file/CV.png';
 import cvPdf from '../asset/file/CV.pdf';
+import { ManageWebsiteLanguages } from '../object/manage-website-languages';
 
 const Home = () => {
 
@@ -55,12 +57,14 @@ const Home = () => {
     useEffect(() => { 
       animateApparition(elementsToAnimate.current);
       animateImageLoading(imagesToLoad.current);
-     }, []);
+    }, []);
 
     const { isDarkTheme } = useContext(themeContext);
 
+    const { language } = useContext(languageContext);
+
     useEffect(() => {
-        document.title = 'Accueil';
+        document.title = language.home.title;
     });
 
     let projectsObjects = [];
@@ -250,7 +254,7 @@ const Home = () => {
                   {/* On met le CV dans le rendu, caché dans l'HTML pour s'en servir en cas d'impression */}
                   <iframe ref={cvPdfIframe} src={cvPdf} className="hidden" title='CV'></iframe>
                   <div className="title t1" id="firstmid">
-                    <p>Mes projets</p>
+                    <p>{ language.home.projects }</p>
                   </div>
                   <div id="bar0" className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar)} }></div>
                   <div className="projects-chevrons-container" onMouseOver={ () => colorBar(0)} onMouseLeave={ () => uncolorBar(0) }>
@@ -284,8 +288,8 @@ const Home = () => {
                           <>
                             <div className="project-languages-skills title-page-project">
                               <img src={ languages } alt='langages-icones' draggable="false" />
-                              <p className="title-language-skill">Langage{
-                                currentProject.getLanguages().length > 1 && 's' } :</p>
+                              <p className="title-language-skill">{
+                                language.home.projects_frame.languages + (currentProject.getLanguages().length > 1 ? 's' : '') } :</p>
                             </div>
                             <div className="project-languages-skills-container page-content">
                               {currentProject.getLanguages().map((language, index) => {
@@ -302,8 +306,8 @@ const Home = () => {
                           <>
                             <div className="project-languages-skills title-page-project">
                               <img src={ skills } alt='languages-icone' draggable="false" />
-                              <p className="title-languages-skill">Compétence{
-                                currentProject.getCompetences().length > 1 && 's' } :</p>
+                              <p className="title-languages-skill">{
+                                language.home.projects_frame.skills + (currentProject.getCompetences().length > 1 ? 's' : '') } :</p>
                             </div>
                             <div className="project-languages-skills-container page-content">
                               {currentProject.getCompetences().map((competence, index) => {
@@ -319,7 +323,7 @@ const Home = () => {
                         <div className="project-desc text-project-container">
                           <div className="project-desc-text title-page-project">
                             <img src={ descriptionIcon } alt="icone-description" draggable="false" />
-                            <p>Description :</p>
+                            <p>{ language.home.projects_frame.description } :</p>
                           </div>
                           <p className="project-desc-value page-content">
                             {currentProject && currentProject.getDescription() }
@@ -330,7 +334,7 @@ const Home = () => {
                               <div className="project-use-desc text-project-container">
                                 <div className="project-use-desc-text title-page-project">
                                   <img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
-                                  <p>Utilisation :</p>
+                                  <p>{ language.home.projects_frame.for_using } :</p>
                                 </div>
                                 <p className="project-use-desc-value page-content">
                                   { currentProject && currentProject.getUseDescription() }
@@ -341,39 +345,39 @@ const Home = () => {
                         { currentProject && (currentProject.isLink() &&
                           <a onClick={ () => openProjectViewer(currentProject.getLink()) }
                           className="link-btn title-page-project" 
-                          rel='noreferrer'>Consulter {currentProject.getTitle()}</a>
+                          rel='noreferrer'>{ `${language.home.projects_frame.consult} ${currentProject.getTitle()}` }</a>
                           )
                         }
                         { currentProject && (currentProject.isDownload() &&
-                           <a href={ `/project/${currentProject.getFile()}` } className="download-btn title-page-project" download>Télécharger {currentProject.getFileName()}</a>
+                           <a href={ `/project/${currentProject.getFile()}` } className="download-btn title-page-project" download>{ `${language.home.projects_frame.download} ${currentProject.getFileName()}`}</a>
                         ) }
                         <div className="project-size-container text-project-container">
                           <img src={ whiteMemoryIcon } alt="mémoire-icone" draggable="false" />
-                          <p className="page-content">Taille du fichier :</p>
+                          <p className="page-content">{language.home.projects_frame.file_size} :</p>
                           <p className="project-size-value page-content">{ currentProject && currentProject.getSize() }</p>
                           <p className='page-content'> Mo </p>
                         </div>
                         <div className='project-viewer-container' ref={ projectViewerContainerRef }>
-                          <div className='cross-project-viewer' title="Quitter l'aperçu" onClick={ closeProjectViewer }>
+                          <div className='cross-project-viewer' title={ language.home.projects_frame.quit_preview } onClick={ closeProjectViewer }>
                           </div>
                           <iframe src='' className='project-viewer onloading'></iframe>
                         </div>
                         <div className="background-project-page"></div>
                       </div>
                       <a href={ `/project/${currentProject && currentProject.getFile()}` }
-                          className='current-project-viewing' download ref={currentProjectViewingRef} title={`Télécharger ${currentProject && currentProject.getTitle() }`}>
+                          className='current-project-viewing' download ref={currentProjectViewingRef} title={`${ language.home.projects_frame.download } ${currentProject && currentProject.getTitle() }`}>
                         <img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
                       </a>
-                      <div title='Quitter' className="quit-project-button" onClick={closeProjectPage}>
+                      <div title={ language.home.projects_frame.quit } className="quit-project-button" onClick={closeProjectPage}>
                         <p>X</p>
                       </div>
                   </div>
               </article>
-              <h2 className="explicationtext">Vous trouverez ici mes projets importants, qu'ils soient scolaires ou personnels. <br/>Il vous suffit de cliquer pour les télécharger.</h2>
+              <h2 className="explicationtext" dangerouslySetInnerHTML={{ __html: language.home.projects_desc }}></h2>
               {/* Page du CV */}
               <article id="cv">
                   <div className="title t2" id="secondmid">
-                    <p>Mon CV</p>
+                    <p>{ language.home.cv }</p>
                   </div>
                   <div id="bar1" className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
                   <div id="container-cv" onMouseOver={() => colorBar(1)} onMouseLeave={ () => uncolorBar(1) } ref={ (container) => { elementsToAnimate.current.push(container) } }>
@@ -388,7 +392,7 @@ const Home = () => {
                           <img draggable="false" src={cvImg} alt="photo" />
                         </div>
                         <div id="buttons">
-                          <div id="cross" title='Quitter' onClick={() =>{
+                          <div id="cross" title={ language.home.cv_frame.quit } onClick={() =>{
                             setCvContainerIsVisible(false);
                           }}>
                             <p>x</p>
@@ -414,21 +418,20 @@ const Home = () => {
                             <p>{cvInformationsJson.name}</p>
                           </div>
                           <div id="size">
-                            <p>Taille : {cvInformationsJson.size}</p>
+                            <p>{`${language.home.cv_frame.size} : ${cvInformationsJson.size}`}</p>
                           </div>
                           <div id="date">
-                            <p>Modification : {cvInformationsJson.date}</p>
+                            <p>{`${language.home.cv_frame.modification} : ${cvInformationsJson.date}`}</p>
                           </div>
                           <div id="type">
-                            <p>Type : {cvInformationsJson.type}</p>
+                            <p>{`${language.home.cv_frame.type} : ${cvInformationsJson.type}`}</p>
                           </div>
                         </div>
                       </div>
                       <div id="container-cv-text-bar">
                         <div className="framecv-bar"></div>
                         <div id="framecv-text">
-                          <p>À savoir : <br/><br/> Voici mon CV, celui-ci est amené à être modifié avec le temps, dans quelques mois il sera différent. <br/>
-                            N'hésitez pas à passer sur ce site, celui-ci est mis à jour très régulièrement et contiendra donc forcément la dernière version en date. </p>
+                          <p dangerouslySetInnerHTML={{ __html: language.home.cv_frame.text }}></p>
                         </div>
                         <div className="framecv-bar"></div>
                       </div>
@@ -437,18 +440,18 @@ const Home = () => {
                     <div id="cv-text">
                       <div className="blackbar"></div>
                       <div id="zoom">
-                        <p>N'hésitez pas à cliquer sur l'image du C.V pour zoomer, cela vous permettra de le visionner dans sa qualité optimale sans avoir besoin de le télécharger.</p>
+                        <p>{ language.home.cv_subtext_1 }</p>
                         <img draggable="false" src={ isDarkTheme ? darkZoomImg : zoomImg } alt="zoom" />
                       </div>
-                      <p className="beforebutton">Vous pouvez télécharger mon CV actuel au format pdf en cliquant sur le bouton ci-dessous.</p>
-                      <a href={ cvPdf } download="CV_Rayane_Merlin.pdf"><button className="cv-button">Télécharger</button></a>
+                      <p className="beforebutton">{ language.home.cv_subtext_2 }</p>
+                      <a href={ cvPdf } download="CV_Rayane_Merlin.pdf"><button className="cv-button">{ language.home.download }</button></a>
                       <div className="blackbar"></div>
                     </div>
                   </div>
               </article>
               <article id="realisation">
                   <div className="title t3" id="firstmid">
-                    <p>Mes compétences :</p>
+                    <p>{ language.home.skills }</p>
                   </div>
                   <div id="bar2" className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
                   <div className="school-competence-container" onMouseOver={ () => colorBar(2) } onMouseLeave={ () => uncolorBar(2)}>

@@ -10,8 +10,12 @@ export class SchoolCompetence
 
     constructor(data)
     {
-        this.title = data.title;
-        this.description = data.description;
+        this.title_en = data.en.title;
+        this.description_en = data.en.description;
+
+        this.title_fr = data.fr.title;
+        this.description_fr = data.fr.description;
+
         this.image = data.image;
         this.gradient = data.gradient;
         this.titleColor = data.title_color;
@@ -19,14 +23,24 @@ export class SchoolCompetence
         this.bottomColor = data.bottom_color;
     }
 
-    getTitle()
+    getTitle(language)
     {
-        return this.title;
+        if (language === 'fr')
+        {
+            return this.title_fr;
+        } else {
+            return this.title_en;
+        }
     }
 
-    getDescription()
+    getDescription(language)
     {
-        return this.description;
+        if (language === 'fr')
+        {
+            return this.description_fr;
+        } else {
+            return this.description_en;
+        }
     }
 
     getImage()

@@ -12,6 +12,10 @@ body.home {
     margin: 0 auto;
 
     .projects {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      scrollbar-width: none;
       display: flex;
       overflow-x: scroll;
       width: 85%;
@@ -329,52 +333,53 @@ body.home {
   $projects-data-date-height: 40px;
   $projects-data-date-background-color: rgba(0, 0, 0, 0.884);
 
-  .projects>*::before {
-    content: "";
-    border-left: $projects-data-date-border-width solid transparent;
-    border-right: $projects-data-date-border-width solid transparent;
-    border-top: $projects-data-date-border-width solid $projects-data-date-background-color;
-    position: absolute;
-    z-index: 1;
-    top: calc($projects-data-date-after-dist-top + $projects-data-date-height );
-    opacity: 0;
-    transition: $projects-data-date-transition;
-    pointer-events: none;
-  }
-
-  .projects>*::after {
-    opacity: 0;
-    content: attr(data-date);
-    position: absolute;
-    z-index: 1;
-    top: $projects-data-date-after-dist-top;
-    font-size: 20px;
-    background-color: $projects-data-date-background-color;
-    padding-right: 25px;
-    padding-left: 45px;
-    background-image: url(../../img/home/icon/calendar.png);
-    background-repeat: no-repeat;
-    background-position: center left 15px;
-    background-size: 20px;
-    color: white;
-    width: fit-content;
-    height: $projects-data-date-height;
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: $projects-data-date-transition;
-    pointer-events: none;
-  }
-
-  .projects>*:hover::before {
-    opacity: 1;
-    transition: $projects-data-date-transition;
-  }
-
-  .projects>*:hover::after {
-    opacity: 1;
-    transition: $projects-data-date-transition;
+  .projects>*{
+    &::before {
+      content: "";
+      border-left: $projects-data-date-border-width solid transparent;
+      border-right: $projects-data-date-border-width solid transparent;
+      border-top: $projects-data-date-border-width solid $projects-data-date-background-color;
+      position: absolute;
+      z-index: 1;
+      top: calc($projects-data-date-after-dist-top + $projects-data-date-height );
+      opacity: 0;
+      transition: $projects-data-date-transition;
+      pointer-events: none;
+    }
+    &::after {
+      opacity: 0;
+      content: attr(data-date);
+      position: absolute;
+      z-index: 1;
+      top: $projects-data-date-after-dist-top;
+      font-size: 20px;
+      background-color: $projects-data-date-background-color;
+      padding-right: 25px;
+      padding-left: 45px;
+      background-image: url(../../img/home/icon/calendar.png);
+      background-repeat: no-repeat;
+      background-position: center left 15px;
+      background-size: 20px;
+      color: white;
+      width: fit-content;
+      height: $projects-data-date-height;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: $projects-data-date-transition;
+      pointer-events: none;
+    }
+    &:hover {
+      &::before {
+        opacity: 1;
+        transition: $projects-data-date-transition;
+      }
+      &::after {
+        opacity: 1;
+        transition: $projects-data-date-transition;
+      }
+    }
   }
 
   #realisation {
