@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Index from "../page/index";
 import Home from "../page/home";
-import Course from "../page/course";
+import Background from "../page/background";
 import Contact from "../page/contact";
 import About from "../page/about";
 import Perso from "../page/perso";
@@ -16,7 +16,7 @@ const Router = () => {
                 <Routes>
                     <Route path={'/'} element={<Index/>} />
                     <Route path={'/home'} element={<Home />} />
-                    <Route path={'/course'} element={<Course />} />
+                    <Route path={'/background'} element={<Background />} />
                     <Route path={'/contact'} element={<Contact />} />
                     <Route path={'/about'} element={<About />} />
                     <Route path={'/perso'} element={<Perso />} />

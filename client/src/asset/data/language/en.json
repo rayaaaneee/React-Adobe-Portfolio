@@ -1,6 +1,8 @@
 {
     "current": "en",
+    "denomination": "English",
     "title": "Adobe Portfolio",
+    "flag_img": "british.png",
     "loader": {
         "texts": [
             "Reading preferences...",

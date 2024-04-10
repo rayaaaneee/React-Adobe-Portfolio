@@ -176,7 +176,7 @@ const Background = () => {
                         { currentSemester.hasMatters() && (
                             <div ref={ semesterPageSubjectsContainer } className="semester-page-subjects">
                                 <div className="image-subject-container">
-                                    <img src={ currentSemester.getMattersImg() } className="semester-page-subjects-image" alt="subjects" draggable="false" />
+                                    <img src={ require("../asset/img/background/semester/" + currentSemester.matters) } className="semester-page-subjects-image" alt="subjects" draggable="false" />
                                     <div className="leave-semester-subject" onClick={ closeSubjectsImageSemester }>
                                         <p>X</p>
                                     </div>
@@ -185,7 +185,7 @@ const Background = () => {
                         ) }
                         <div className="semester-page-main-container">
                             <div className="semester-page-title-img-container">
-                                <img className="semester-page-img" alt="icon-study" draggable="false" src={ currentSemester.getWhiteIcon() } />
+                                <img className="semester-page-img" alt="icon-study" draggable="false" src={ require("../asset/img/background/" + currentSemester.whiteIcon) } />
                                 <p className="title-semester">{ currentSemester.title }</p>
                             </div>
                             <div className="semester-page-body">
@@ -214,7 +214,7 @@ const Background = () => {
                                         <div className="page-title-part">{ language.background.semester_frame.school } : </div>
                                     </div>
                                     <div className="semester-page-content">
-                                        <img className="semester-school-img" alt="school-icon" draggable="false" src={ currentSemester.getSchoolIcon() } />
+                                        <img className="semester-school-img" alt="school-icon" draggable="false" src={ require("../asset/img/background/semester/" + currentSemester.schoolIcon) } />
                                         <div className="semester-school-text">
                                             <h3 className="semester-school-name">{ currentSemester.schoolName }</h3>
                                             <p className="semester-school-location">{ currentSemester.schoolLocation }</p>

@@ -74,10 +74,15 @@ body.index {
         animation: appearence 0.45s 1.1s ease-in-out forwards;
     }
 
-    .logo {
+    .logo, .select-language {
         opacity: 0;
         transform: translateY(-10px);
-        animation: appearence 0.45s 1.3s ease-in-out forwards;
+        &.logo {
+            animation: appearence 0.45s 1.3s ease-in-out forwards;
+        }
+        &.select-language {
+            animation: appearence 0.45s 1.5s ease-in-out forwards;
+        }
     }
 
     .btn-switch-mode {

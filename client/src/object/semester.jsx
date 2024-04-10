@@ -58,20 +58,4 @@ export class Semester
     {
         return this.matters != null;
     }
-
-    getIcon() {
-        return require('../asset/img/background/' + this.icon);
-    }
-    
-    getWhiteIcon() {
-        return require('../asset/img/background/' + this.whiteIcon);
-    }
-
-    getSchoolIcon() {
-        return require('../asset/img/background/semester/' + this.schoolIcon);
-    }
-
-    getMattersImg() {
-        return require('../asset/img/background/semester/' + this.matters);
-    }
 }

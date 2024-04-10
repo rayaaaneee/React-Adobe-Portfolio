@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import loaderContext from '../../function/context/loader-context';
 import themeContext from '../../function/context/theme-context';
@@ -44,6 +44,11 @@ const Contexts = ({ children }) => {
     const [language, setLanguage] = useState(ManageWebsiteLanguages.getSentences());
     const languageValue = useMemo(
       () => ({ language, setLanguage }), 
+      [language]
+    );
+
+    useEffect(() =>
+      console.log(language),
       [language]
     );
 

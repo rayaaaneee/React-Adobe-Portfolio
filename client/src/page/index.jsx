@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
 
@@ -24,9 +24,11 @@ const Index = () => {
 
     const { setIsDarkTheme } = useContext(themeContext);
 
-    const { language } = useContext(languageContext);
+    const { language, setLanguage } = useContext(languageContext);
 
     useEffect(() => (setWasLoaderShowed(false)));
+
+    const selectLanguageOptions = useRef(null);
 
     ManageBody.changeClass('index');
 
@@ -80,6 +82,27 @@ const Index = () => {
         setImgMenuClass('dl-img');
     }
 
+    useEffect(() => {
+        const handleClick = (e) => {
+            if (
+                (selectLanguageOptions.current.classList.contains('active'))
+                && 
+                (selectLanguageOptions.current.closest(".select-language") !== e.target)
+                &&
+                (!(selectLanguageOptions.current.closest(".select-language").contains(e.target))) 
+            ) {
+                selectLanguageOptions.current.classList.remove('active');
+            }
+        };
+
+        window.addEventListener('click', handleClick);
+
+        // Nettoyer l'effet
+        return () => {
+            window.removeEventListener('click', handleClick);
+        };
+    }, []); 
+
     return (
         <>
             <header>
@@ -97,19 +120,34 @@ const Index = () => {
                             <img src={ faviconDarkTheme } alt="logo" draggable="false" />
                         </div>
                         <div className='select-language'>
-                            <choice>
-                                <p>{ language.current }</p>
-                            </choice>
-                            <opt-container>
-                            { ManageWebsiteLanguages.supportedLanguages.map(
-                                language => {
-                                    return (<opt>{ language }</opt>)
-                                }) 
-                            }
-                            </opt-container>
+                            <div className='choice' onClick={ (e) => { selectLanguageOptions.current.classList.toggle("active")} }>
+                                <img src={ require('../asset/img/index/flags/' + language.flag_img) }></img>
+                                <p>{ language.denomination }</p>
+                                <svg
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                  height="1em"
+                                  width="1em"
+                                >
+                                  <path d="M11.178 19.569a.998.998 0 001.644 0l9-13A.999.999 0 0021 5H3a1.002 1.002 0 00-.822 1.569l9 13z" />
+                                </svg>
+                                <div className='options' ref={ selectLanguageOptions }>
+                                { ManageWebsiteLanguages.supportedLanguages.map(
+                                    ([current, json]) => {
+                                        return current !== language.current && 
+                                        (<div className='option' onClick={ (e) => {
+                                            setLanguage(json) 
+                                        } }>
+                                            <img src={ require('../asset/img/index/flags/' + json.flag_img) }></img>
+                                            <p>{ json.denomination }</p>
+                                        </div>)
+                                    }) 
+                                }
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <ul className={ `menu-links ${menuClass}` }>
+                    <ul className={ `menu-links ${menuClass}` } style={{ pointerEvents: checked ? 'all' : 'none' }}>
                         <li>
                             <NavLink to={'/home'}>{ language.menu.home }</NavLink>
                         </li>
@@ -131,7 +169,6 @@ const Index = () => {
                                 </div>
                             </a>
                         </li>
-                        <div className={ 'hide-links ' + (checked ? 'disabled' : '') }></div>
                     </ul>
                     <div className="hamburger-container" onClick={ toggleMenuClass }>
                         <input type="checkbox" id="hamburger-checkbox" checked={ checked } />

@@ -1,5 +1,7 @@
 {
     "current": "fr",
+    "denomination": "Français",
+    "flag_img": "french.png",
     "title": "Adobe Portfolio",
     "loader": {
         "texts": [
