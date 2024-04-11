@@ -80,7 +80,9 @@ body.index#dark{
             background-color: rgba(0, 0, 0, 0.2);
             .options {
                 .option {
-
+                    &:hover {
+                        background-color: #e6c6be38;
+                    }
                 }
             }
         }
