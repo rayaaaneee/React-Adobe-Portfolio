@@ -37,7 +37,7 @@ const HeaderComponent = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className="sites s3" to={"/perso"}>
+                        <NavLink className="sites s3" to={"/myself"}>
                             <p id="text3">{ language.menu.myself }</p>
                         </NavLink>
                     </li>

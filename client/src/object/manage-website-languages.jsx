@@ -2,6 +2,7 @@ import { getCookie, setCookie, removeCookie, isCookie } from '../hook/useCookies
 
 import frenchSentences from '../asset/data/language/fr.json';
 import englishSentences from '../asset/data/language/en.json';
+import spanishSentences from '../asset/data/language/es.json';
 
 export class ManageWebsiteLanguages {
 
@@ -11,12 +12,13 @@ export class ManageWebsiteLanguages {
     static supportedLanguages = [
         ['en', englishSentences],
         ['fr', frenchSentences],
+        ['es', spanishSentences]
     ];
 
     static defaultLanguage = 'en';
 
-    static isSupported(languageCode) {
-        return this.supportedLanguages.some(([code, _]) => code === languageCode);
+    static isSupported(language) {
+        return this.supportedLanguages.some(([name, _]) => name === language);
     }
 
     static getSystemLanguage = () => {
@@ -37,6 +39,7 @@ export class ManageWebsiteLanguages {
     }
 
     static setLanguage = (language) => {
+        console.log(ManageWebsiteLanguages.isSupported(language), language);
         if (ManageWebsiteLanguages.isSupported(language)) {
             ManageWebsiteLanguages.language = language;
             setCookie(ManageWebsiteLanguages.cookieName, language);
@@ -52,12 +55,10 @@ export class ManageWebsiteLanguages {
     }
 
     static getSentences = () => {
-        switch (ManageWebsiteLanguages.language) {
-            case 'fr':
-                return frenchSentences;
-            case 'en':
-            default:
-                return englishSentences;
+        let json = ManageWebsiteLanguages.supportedLanguages.find(([name, _]) => name === ManageWebsiteLanguages.language)[1];
+        if (json === null) {
+            json = ManageWebsiteLanguages.supportedLanguages.find(([name, _]) => name === ManageWebsiteLanguages.defaultLanguage)[1];
         }
+        return json;
     }
 }

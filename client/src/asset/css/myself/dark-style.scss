@@ -1,0 +1,17 @@
+@import '../vars.scss';
+
+body.myself {
+    &#dark * {
+        color: white !important;
+    }
+
+    &#dark .content, &#dark #frames{
+        background-color: $containers-background-color-dark;
+        box-shadow: $containers-box-shadow-dark;
+    }
+
+    &#dark .horizontal-bars {
+        background-color: $bar-background-color-dark;
+        box-shadow: $bar-box-shadow-dark;
+    }
+}

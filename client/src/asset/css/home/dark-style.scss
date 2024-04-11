@@ -33,6 +33,7 @@ body.home#dark {
 
     .cv-button {
         background-color: $cv-download-button-background-color-dark;
+        background-image: url(../../img/home/icon/white-download-without-line.png);
         &:hover {
             background-color: $cv-download-button-background-color-hover-dark;
         }

@@ -146,7 +146,9 @@ const Home = () => {
 
     const openProjectViewer = (link) => {
       projectViewerContainerRef.current.classList.add('visible');
-  
+      if (link.toLowerCase().endsWith('pdf')) {
+        link = `./project/${link}`;
+      }
       setTimeout(() => {
         projectViewer.setAttribute('src', link);
         projectViewer.onload = () => {

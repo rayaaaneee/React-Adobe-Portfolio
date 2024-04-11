@@ -5,7 +5,7 @@ import Home from "../page/home";
 import Background from "../page/background";
 import Contact from "../page/contact";
 import About from "../page/about";
-import Perso from "../page/perso";
+import Myself from "../page/myself";
 import NotFound from "../page/notfound";
 import Main from "../page/component/main";
 
@@ -19,7 +19,7 @@ const Router = () => {
                     <Route path={'/background'} element={<Background />} />
                     <Route path={'/contact'} element={<Contact />} />
                     <Route path={'/about'} element={<About />} />
-                    <Route path={'/perso'} element={<Perso />} />
+                    <Route path={'/myself'} element={<Myself />} />
                     <Route path={'*'} element={<NotFound />} />
                 </Routes>
             </Main>

@@ -1,6 +1,7 @@
 body.index {
     @keyframes appearence {
         100% {
+            pointer-events: all;
             opacity: 1;
             transform: none;
         }
@@ -8,29 +9,34 @@ body.index {
 
     @keyframes fadeIn {
         100% {
+            pointer-events: all;
             opacity: 1;
         }
     }
 
     .main-bar {
+        pointer-events: none;
         opacity: 0;
         animation: fadeIn 0.6s 0.2s ease-in-out forwards, bar-move 6s linear infinite;
         margin-bottom: 20px;
     }
 
     .title > h1 {
+        pointer-events: none;
         opacity: 0;
         transform: translateY(40px);
         animation: appearence 0.6s 0.4s ease-in-out forwards;
     }
 
     .about-page {
+        pointer-events: none;
         opacity: 0;
         transform: translateY(10px);
         animation: appearence 0.6s 0.8s ease-in-out forwards;
     }
 
     .subtitle {
+        pointer-events: none;
         opacity: 0;
         transform: translateY(-40px);
         animation: appearence 0.6s 0.8s ease-in-out forwards;
@@ -38,43 +44,52 @@ body.index {
 
 
     .linkedin-link , .github-link, .gitlab-link, .mail-link, .tel-link  {
+        pointer-events: none;
         opacity: 0;
         transform: translateY(10px);
     }
 
     .linkedin-link {
+        pointer-events: none;
         animation: appearence 0.45s 0.4s ease-in-out forwards;
     }
 
     .gitlab-link {
+        pointer-events: none;
         animation: appearence 0.45s 0.6s ease-in-out forwards;
     }
 
     .github-link {
+        pointer-events: none;
         animation: appearence 0.45s 0.8s ease-in-out forwards;
     }
 
     .mail-link {
+        pointer-events: none;
         animation: appearence 0.45s 1s ease-in-out forwards;
     }
 
     .tel-link {
+        pointer-events: none;
         animation: appearence 0.45s 1.2s ease-in-out forwards;
     }
 
     .get-start {
+        pointer-events: none;
         opacity: 0;
         transform: translateY(-10px);
         animation: appearence 0.45s 0.9s ease-in-out forwards;
     }
 
     .hamburger-container {
+        pointer-events: none;
         opacity: 0;
         transform: translateY(-10px);
         animation: appearence 0.45s 1.1s ease-in-out forwards;
     }
 
     .logo, .select-language {
+        pointer-events: none;
         opacity: 0;
         transform: translateY(-10px);
         &.logo {
@@ -86,6 +101,7 @@ body.index {
     }
 
     .btn-switch-mode {
+        pointer-events: none;
         opacity: 0;
         transform: translateY(10px);
         animation: appearence 0.45s 1.5s ease-in-out forwards;

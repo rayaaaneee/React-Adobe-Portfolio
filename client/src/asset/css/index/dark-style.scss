@@ -34,7 +34,6 @@ body.index#dark{
         }
     }
 
-
     .circle-one {
         background-color: $index-circle-one-background-color-dark;
     }
@@ -55,13 +54,14 @@ body.index#dark{
         border-bottom-color: $index-triangle-yellow-background-color-dark;
     }
 
-    .menu ul li a::after {
-        background-color: #ead3d3;
-    }
-
-    .menu li a:hover {
-        color: #ead3d3;
-    }
+    .menu {
+        ul li a::after {
+            background-color: #ead3d3;
+        }
+        li a:hover {
+            color: #ead3d3;
+        }
+    } 
 
     .dl-img-hover {
         background-image: url(../../img/index/download-pink.png);
@@ -75,28 +75,39 @@ body.index#dark{
         background-color: #ffffff;
     }
 
-    .btn-switch-mode button {
-        border: 1.5px solid #ffffff;
+    .select-language {
+        .choice {
+            background-color: rgba(0, 0, 0, 0.2);
+            .options {
+                .option {
+
+                }
+            }
+        }
     }
 
-    .btn-switch-mode > .media-dark-theme-form > button{
-        background-color: #d5c6d83f;
-        background-image: url(../../img/index/dark-hover.png);
-    }
+    .btn-switch-mode {
 
-    .btn-switch-mode > .media-light-theme-form > button{
-        background-color: transparent;
-        background-image: url(../../img/index/light.png);
-    }
+        button {
+            border: 1.5px solid #ffffff;
+        }
+        & > .media-dark-theme-form > button {
+            background-color: #d5c6d83f;
+            background-image: url(../../img/index/dark-hover.png);
+            &:hover {
+                background-color: #bb93c33f;
+                background-image: url(../../img/index/dark.png);
+            }
+        }
 
-    .btn-switch-mode > .media-dark-theme-form > button:hover{
-        background-color: #bb93c33f;
-        background-image: url(../../img/index/dark.png);
+        & > .media-light-theme-form > button{
+            background-color: transparent;
+            background-image: url(../../img/index/light.png);
+            &:hover {
+                background-color: #e8dfea25;
+                background-image: url(../../img/index/light-hover.png);
+            }
+        }
     }
-
-
-    .btn-switch-mode > .media-light-theme-form > button:hover{
-        background-color: #e8dfea25;
-        background-image: url(../../img/index/light-hover.png);
-    }
+    
 }

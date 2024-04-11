@@ -47,11 +47,6 @@ const Contexts = ({ children }) => {
       [language]
     );
 
-    useEffect(() =>
-      console.log(language),
-      [language]
-    );
-
     return (
       <>
         <languageContext.Provider value={languageValue}>

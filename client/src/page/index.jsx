@@ -133,10 +133,11 @@ const Index = () => {
                                 </svg>
                                 <div className='options' ref={ selectLanguageOptions }>
                                 { ManageWebsiteLanguages.supportedLanguages.map(
-                                    ([current, json]) => {
-                                        return current !== language.current && 
+                                    ([name, json]) => {
+                                        return name !== language.current && 
                                         (<div className='option' onClick={ (e) => {
-                                            setLanguage(json) 
+                                            ManageWebsiteLanguages.setLanguage(name);
+                                            setLanguage(json);
                                         } }>
                                             <img src={ require('../asset/img/index/flags/' + json.flag_img) }></img>
                                             <p>{ json.denomination }</p>
@@ -155,7 +156,7 @@ const Index = () => {
                             <NavLink to={'/background'}>{ language.menu.background }</NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/perso'}>{ language.menu.myself }</NavLink>
+                            <NavLink to={'/myself'}>{ language.menu.myself }</NavLink>
                         </li>
                         <li>
                             <NavLink to={'/contact'}>{ language.menu.contact }</NavLink>
