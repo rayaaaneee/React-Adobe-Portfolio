@@ -332,10 +332,16 @@ body.index {
                     border-radius: 5px;
                 }
 
-                .options {
+                .options-wrapper {
                     position: absolute;
-                    top: 100%;
                     left: 0;
+                    top: 100%;
+                    height:fit-content;
+                    width: 100%;
+                    overflow: hidden;
+                }
+
+                .options {
                     width: 100%;
                     height: fit-content;
                     display: flex;
@@ -346,7 +352,7 @@ body.index {
                     backdrop-filter: blur(20px);
                     color: black;
                     border-radius: 10px;
-                    box-shadow: 0 0 2.15rem #00000052;
+                    /* box-shadow: 0 0 2.15rem #00000052; */
                     z-index: -1;
                     pointer-events: none;
                     opacity: 0;

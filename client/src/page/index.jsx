@@ -131,19 +131,21 @@ const Index = () => {
                                 >
                                   <path d="M11.178 19.569a.998.998 0 001.644 0l9-13A.999.999 0 0021 5H3a1.002 1.002 0 00-.822 1.569l9 13z" />
                                 </svg>
-                                <div className='options' ref={ selectLanguageOptions }>
-                                { ManageWebsiteLanguages.supportedLanguages.map(
-                                    ([name, json]) => {
-                                        return name !== language.current && 
-                                        (<div className='option' onClick={ (e) => {
-                                            ManageWebsiteLanguages.setLanguage(name);
-                                            setLanguage(json);
-                                        } }>
-                                            <img src={ require('../asset/img/index/flags/' + json.flag_img) }></img>
-                                            <p>{ json.denomination }</p>
-                                        </div>)
-                                    }) 
-                                }
+                                <div className="options-wrapper">
+                                    <div className='options' ref={ selectLanguageOptions }>
+                                    { ManageWebsiteLanguages.supportedLanguages.map(
+                                        ([name, json]) => {
+                                            return name !== language.current && 
+                                            (<div className='option' onClick={ (e) => {
+                                                ManageWebsiteLanguages.setLanguage(name);
+                                                setLanguage(json);
+                                            } }>
+                                                <img src={ require('../asset/img/index/flags/' + json.flag_img) }></img>
+                                                <p>{ json.denomination }</p>
+                                            </div>)
+                                        }) 
+                                    }
+                                    </div>
                                 </div>
                             </div>
                         </div>
