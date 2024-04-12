@@ -163,15 +163,6 @@ const Index = () => {
                         <li>
                             <NavLink to={'/contact'}>{ language.menu.contact }</NavLink>
                         </li>
-                        <li className="cv-download">
-                            <a href={ CV } download="CV_Rayane_Merlin.pdf" onMouseOver={ colorMenuImg } onMouseLeave={ uncolorMenuImg }>
-                                <div className="container-cv-download">
-                                    <p>C</p>
-                                    <p>V</p>
-                                    <div className="download-img dl-img"></div>
-                                </div>
-                            </a>
-                        </li>
                     </ul>
                     <div className="hamburger-container" onClick={ toggleMenuClass }>
                         <input type="checkbox" id="hamburger-checkbox" checked={ checked } />

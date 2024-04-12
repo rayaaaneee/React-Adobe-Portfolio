@@ -1,9 +1,21 @@
 [
     {
         "id" : 0,
-        "title" : "Baccalauréat",
-        "description" : "J'ai obtenu mon baccalauréat scientifique avec mention. J'ai eu ce bac avec les spécialités de physique-chimie et de mathématiques. Cette année m'a permis de découvrir de nouvelles matières et de me spécialiser dans les sciences. J'ai également pu apprendre à travailler en groupe et à gérer mon temps et mon travail.",
-        "specialties" : [ "Physique-Chimie", "Mathématiques" ],
+        "fr": {
+            "title" : "Baccalauréat",
+            "description" : "J'ai obtenu mon baccalauréat scientifique avec mention. J'ai eu ce bac avec les spécialités de physique-chimie et de mathématiques. Cette année m'a permis de découvrir de nouvelles matières et de me spécialiser dans les sciences. J'ai également pu apprendre à travailler en groupe et à gérer mon temps et mon travail.",
+            "specialties" : [ "Physique-Chimie", "Mathématiques" ]
+        },
+        "en": {
+            "title" : "Baccalaureate",
+            "description" : "I obtained my scientific baccalaureate with honors. I got this baccalaureate with the specialties of physics-chemistry and mathematics. This year allowed me to discover new subjects and to specialize in the sciences. I was also able to learn to work in groups and to manage my time and work.",
+            "specialties" : [ "Physics-Chemistry", "Mathematics" ]
+        },
+        "es": {
+            "title" : "Bachillerato",
+            "description" : "Obtuve mi bachillerato científico con honores. Obtuve este bachillerato con las especialidades de física-química y matemáticas. Este año me permitió descubrir nuevas materias y especializarme en las ciencias. También pude aprender a trabajar en grupo y a gestionar mi tiempo y mi trabajo.",
+            "specialties" : [ "Física-Química", "Matemáticas" ]
+        },
         "school_name" : "St Charles",
         "school_location" : "Rillieux-la-Pape, 69140",
         "school_address" : "26 Av. Victor Hugo",
@@ -16,9 +28,21 @@
     },
     {
         "id" : 1,
-        "title" : "BUT : Semestre 1",
-        "description" : "Le premier semestre est un semestre d'introduction. Nous avons pu apprendre les bases de la programmation (algorithmique, langage C). Nous avons appris à utiliser les outils de développement (IDE, compilateur, etc...). Nous avons également appris à utiliser les outils de gestion de version en particulier Git. Les bases du développement web nous ont été enseignées (HTML, CSS).",
-        "specialties" : [],
+        "fr": {
+            "title" : "BUT : Semestre 1",
+            "description" : "Le premier semestre est un semestre d'introduction. Nous avons pu apprendre les bases de la programmation (algorithmique, langage C). Nous avons appris à utiliser les outils de développement (IDE, compilateur, etc...). Nous avons également appris à utiliser les outils de gestion de version en particulier Git. Les bases du développement web nous ont été enseignées (HTML, CSS).",
+            "specialties" : []
+        },
+        "en": {
+            "title" : "BUT : Semester 1",
+            "description" : "The first semester is an introductory semester. We were able to learn the basics of programming (algorithmics, C language). We learned to use development tools (IDE, compiler, etc...). We also learned to use version management tools in particular Git. The basics of web development were taught to us (HTML, CSS).",
+            "specialties" : []
+        },
+        "es": {
+            "title" : "BUT : Semestre 1",
+            "description" : "El primer semestre es un semestre introductorio. Pudimos aprender los conceptos básicos de la programación (algoritmia, lenguaje C). Aprendimos a usar herramientas de desarrollo (IDE, compilador, etc...). También aprendimos a usar herramientas de gestión de versiones en particular Git. Se nos enseñaron los conceptos básicos del desarrollo web (HTML, CSS).",
+            "specialties" : []
+        },
         "school_name" : "IUT Lyon 1",
         "school_location" : "Villeurbanne La Doua, 69100",
         "school_address" : "80 Bd Niels Bohr",
@@ -31,9 +55,21 @@
     },
     {
         "id" : 2,
-        "title" : "BUT : Semestre 2",
-        "description" : "Le deuxième semestre est un semestre d'apprentissage. Nous avons pu commencer à apprendre le langage de programmation Java ainsi que vu la programmation orientée objet de manière générale, la programmation sur les bases de données (PL/SQL), ainsi que les interfaces graphiques (JavaFX, Swing). Nous avons également reçu des cours de qualité de développement logiciel (UML, tests unitaires, conventions de code, etc...), ce qui s'est avéré très utile pour la suite de la formation.",
-        "specialties" : [],
+        "fr": {
+            "title" : "BUT : Semestre 2",
+            "description" : "Le deuxième semestre est un semestre d'apprentissage. Nous avons pu commencer à apprendre le langage de programmation Java ainsi que vu la programmation orientée objet de manière générale, la programmation sur les bases de données (PL/SQL), ainsi que les interfaces graphiques (JavaFX, Swing). Nous avons également reçu des cours de qualité de développement logiciel (UML, tests unitaires, conventions de code, etc...), ce qui s'est avéré très utile pour la suite de la formation.",
+            "specialties" : []
+        },
+        "en": {
+            "title" : "BUT : Semester 2",
+            "description" : "The second semester is a learning semester. We were able to start learning the Java programming language as well as see object-oriented programming in general, programming on databases (PL/SQL), as well as graphical interfaces (JavaFX, Swing). We also received software development quality courses (UML, unit tests, code conventions, etc...), which proved to be very useful for the rest of the training.",
+            "specialties" : []
+        },
+        "es": {
+            "title" : "BUT : Semestre 2",
+            "description" : "El segundo semestre es un semestre de aprendizaje. Pudimos comenzar a aprender el lenguaje de programación Java, así como ver la programación orientada a objetos en general, la programación en bases de datos (PL/SQL), así como interfaces gráficas (JavaFX, Swing). También recibimos cursos de calidad de desarrollo de software (UML, pruebas unitarias, convenciones de código, etc...), lo que resultó ser muy útil para el resto de la formación.",
+            "specialties" : []
+        },
         "starting_date" : "2022-01-01",
         "ending_date" : "2022-06-22",
         "school_name" : "IUT Lyon 1",
@@ -46,9 +82,21 @@
     },
     {
         "id" : 3,
-        "title" : "BUT : Semestre 3",
-        "description" : "Le troisième semestre est le semestre de la spécialisation. Vous devez choisir une spécialisation parmi les 3 suivantes : <br> - Réseau en alternance <br> - Administration de bases de données <br> - Développement <br> En parcours développement, j'ai pu apprendre en profondeur le langage de programmation Python ainsi que le langage JavaScript en complément du développement Web du premier semestre, ainsi que son systeme de notation : le JSON avec enfin la mise en place du back-end avec le langage PHP.",
-        "specialties" : [],
+        "fr": {
+            "title" : "BUT : Semestre 3",
+            "description" : "Le troisième semestre est le semestre de la spécialisation. Vous devez choisir une spécialisation parmi les 3 suivantes : <br> - Réseau en alternance <br> - Administration de bases de données <br> - Développement <br> En parcours développement, j'ai pu apprendre en profondeur le langage de programmation Python ainsi que le langage JavaScript en complément du développement Web du premier semestre, ainsi que son systeme de notation : le JSON avec enfin la mise en place du back-end avec le langage PHP.",
+            "specialties" : []
+        }, 
+        "en": {
+            "title" : "BUT : Semester 3",
+            "description" : "The third semester is the specialization semester. You must choose a specialization from the following 3: <br> - Network in alternation <br> - Database administration <br> - Development <br> In the development course, I was able to learn in depth the Python programming language as well as the JavaScript language in addition to the Web development of the first semester, as well as its notation system: JSON with finally the implementation of the back-end with the PHP language.",
+            "specialties" : []
+        },
+        "es": {
+            "title" : "BUT : Semestre 3",
+            "description" : "El tercer semestre es el semestre de especialización. Debe elegir una especialización entre las siguientes 3: <br> - Red en alternancia <br> - Administración de bases de datos <br> - Desarrollo <br> En el curso de desarrollo, pude aprender en profundidad el lenguaje de programación Python, así como el lenguaje JavaScript además del desarrollo web del primer semestre, así como su sistema de notación: JSON con finalmente la implementación del back-end con el lenguaje PHP.",
+            "specialties" : []
+        },
         "starting_date" : "2022-09-05",
         "ending_date" : "2022-02-20",
         "school_name" : "IUT Lyon 1",
@@ -61,9 +109,18 @@
     },
     {
         "id" : 4,
-        "title" : "BUT : Semestre 4",
-        "description" : "Le quatrième semestre est divisé en deux parties. La première partie est une spécialisation en développement, la deuxieme est un stage de 12 semaines démarrant le 11 avril. Durant la premiere partie du semestre, nous avons pu nous consacrer au développement mobile où nous avons pu apprendre le langage de programmation Kotlin ainsi que le framework Android. Côté back-end j'ai aussi pu apprendre à utiliser le framework Symfony et découvrir plusieurs langages de programmation JavaScript (NodeJS, TypeScript, ReactJS).",
-        "specialties" : [],
+        "fr": {
+            "title" : "BUT : Semestre 4",
+            "description" : "Le quatrième semestre est divisé en deux parties. La première partie est une spécialisation en développement, la deuxieme est un stage de 12 semaines démarrant le 11 avril. Durant la premiere partie du semestre, nous avons pu nous consacrer au développement mobile où nous avons pu apprendre le langage de programmation Kotlin ainsi que le framework Android. Côté back-end j'ai aussi pu apprendre à utiliser le framework Symfony et découvrir plusieurs langages de programmation JavaScript (NodeJS, TypeScript, ReactJS)."
+        }, 
+        "en": {
+            "title" : "BUT : Semester 4",
+            "description" : "The fourth semester is divided into two parts. The first part is a specialization in development, the second is a 12-week internship starting on April 11. During the first part of the semester, we were able to focus on mobile development where we learned the Kotlin programming language as well as the Android framework. On the back-end side, I was also able to learn how to use the Symfony framework and discover several JavaScript programming languages (NodeJS, TypeScript, ReactJS)."
+        },
+        "es": {
+            "title" : "BUT : Semestre 4",
+            "description" : "El cuarto semestre se divide en dos partes. La primera parte es una especialización en desarrollo, la segunda es una pasantía de 12 semanas que comienza el 11 de abril. Durante la primera parte del semestre, pudimos centrarnos en el desarrollo móvil donde aprendimos el lenguaje de programación Kotlin y el marco de Android. En el lado del back-end, también pude aprender a usar el marco Symfony y descubrir varios lenguajes de programación JavaScript (NodeJS, TypeScript, ReactJS)."
+        },
         "starting_date" : "2023-02-20",
         "ending_date" : "2023-06-30",
         "school_name" : "IUT Lyon 1",

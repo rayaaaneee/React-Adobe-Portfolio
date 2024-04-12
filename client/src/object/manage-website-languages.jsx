@@ -39,7 +39,6 @@ export class ManageWebsiteLanguages {
     }
 
     static setLanguage = (language) => {
-        console.log(ManageWebsiteLanguages.isSupported(language), language);
         if (ManageWebsiteLanguages.isSupported(language)) {
             ManageWebsiteLanguages.language = language;
             setCookie(ManageWebsiteLanguages.cookieName, language);

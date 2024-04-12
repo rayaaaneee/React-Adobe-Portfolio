@@ -9,7 +9,10 @@
                 "title" : "Réaliser",
                 "description" : "Créer, concevoir, coder, tester et intégrer une solution informatique pour un client."
             },
-
+            "es": {
+                "title" : "Realizar",
+                "description" : "Crear, diseñar, codificar, probar e integrar una solución informática para un cliente."
+            },
             "image" : "realize.png",
             "gradient" : "linear-gradient(90deg, rgb(206 136 204 / 80%) 0%, rgb(71 71 71 / 80%) 50%, rgb(186 140 140 / 80%) 100%)",
             "title_color" : "#9a85b8",
@@ -25,7 +28,10 @@
                 "title" : "Optimiser",
                 "description" : "Proposer des applications informatiques optimisées en fonction de critères spécifiques : temps d'exécution, précision, consommation de ressources"
             },
-
+            "es": {
+                "title" : "Optimizar",
+                "description" : "Proponer aplicaciones informáticas optimizadas en función de criterios específicos: tiempo de ejecución, precisión, consumo de recursos."
+            },
             "image" : "optimise.png",
             "gradient" : "linear-gradient(90deg, rgb(128 219 211 / 80%) 0%, rgba(212, 173, 132, 0.801) 50%, rgb(175 69 69 / 80%) 100%)",
             "title_color" : "#b88d85",
@@ -41,7 +47,10 @@
                 "title" : "Administrer",
                 "description" : "Installer, configurer, mettre à disposition, maintenir en conditions opérationnelles des infrastructures, des services et des réseaux et optimiser les systèmes informatiques d'une organisation."
             },
-
+            "es": {
+                "title" : "Administrar",
+                "description" : "Instalar, configurar, poner a disposición, mantener en condiciones operativas infraestructuras, servicios y redes y optimizar los sistemas informáticos de una organización."
+            },
             "image" : "manage.png",
             "gradient" : "linear-gradient(90deg, rgba(219, 128, 217, 0.801) 0%, rgba(212, 173, 132, 0.801) 50%, rgba(177, 125, 125, 0.801) 100%)",
             "title_color" : "#d2b4b4",
@@ -57,7 +66,10 @@
                 "title" : "Gérer",
                 "description" : "Concevoir, gérer, administrer et exploiter les données de l'entreprise et mettre à disposition toutes les informations pour un bon pilotage de l'entreprise."
             },
-
+            "es": {
+                "title" : "Manejar",
+                "description" : "Diseñar, gestionar, administrar y explotar los datos de la empresa y poner a disposición toda la información para una buena gestión empresarial."
+            },
             "image" : "handle.png",
             "gradient" : "linear-gradient(90deg, rgb(67 101 157 / 80%) 0%, rgb(180 171 162 / 80%) 50%, rgb(255 180 180 / 80%) 100%)",
             "title_color" : "#859eb8",
@@ -73,7 +85,10 @@
                 "title" : "Conduire",
                 "description" : "Satisfaire les besoins des utilisateurs au regard de la chaîne de valeur du client, organiser et piloter un projet informatique avec des méthodes classiques ou agiles."
             },
-
+            "es": {
+                "title" : "Conducir",
+                "description" : "Satisfacer las necesidades de los usuarios en relación con la cadena de valor del cliente, organizar y gestionar un proyecto informático con métodos clásicos o ágiles."
+            },  
             "image" : "lead.png",
             "gradient" : "linear-gradient(90deg, rgb(209 45 102 / 80%) 0%, rgb(113 110 106 / 80%) 50%, rgba(177, 125, 125, 0.801) 100%)",
             "title_color" : "#b88594",
@@ -89,7 +104,10 @@
                 "title" : "Collaborer",
                 "description" : "Acquérir, développer et exploiter les aptitudes nécessaires pour travailler efficacement dans une équipe informatique."
             },
-
+            "es": {
+                "title" : "Colaborar",
+                "description" : "Adquirir, desarrollar y explotar las habilidades necesarias para trabajar eficazmente en un equipo informático."
+            },
             "image" : "collaborate.png",
             "gradient" : "linear-gradient(90deg, rgb(119 134 145 / 80%) 0%, rgb(192 187 181 / 80%) 50%, rgb(104 49 130 / 80%) 100%)",
             "title_color" : "#999ea4",

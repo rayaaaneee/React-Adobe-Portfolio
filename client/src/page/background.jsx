@@ -160,10 +160,10 @@ const Background = () => {
                             return (
                                 <Semester semester={ semester }
                                 ref={ semester => { semesters.current[i] = semester; elementsToAnimate.current.push(semester) } } 
-                                clickSemester={ () => onclickSemester(i) } 
+                                clickSemester={ () => (onclickSemester(i)) } 
                                 colorPoint={ () => colorPointAssociateToSemester(i) } 
                                 uncolorPoint={ () => uncolorPointAssociateToSemester(i) } 
-                                openSemesterPage={ (event) => (openSemesterPage(semester)) 
+                                openSemesterPage={ (e) => (openSemesterPage(semester)) 
                                 } />
                             );
                         }) }
@@ -186,7 +186,7 @@ const Background = () => {
                         <div className="semester-page-main-container">
                             <div className="semester-page-title-img-container">
                                 <img className="semester-page-img" alt="icon-study" draggable="false" src={ require("../asset/img/background/" + currentSemester.whiteIcon) } />
-                                <p className="title-semester">{ currentSemester.title }</p>
+                                <p className="title-semester">{ currentSemester.getTitle(language.current) }</p>
                             </div>
                             <div className="semester-page-body">
                                 <div className="semester-part semester-date-part">
@@ -229,7 +229,7 @@ const Background = () => {
                                             <div className="page-title-part"> { language.background.semester_frame.specialties } : </div>
                                         </div>
                                         <div className="semester-page-content">
-                                            { currentSemester.specialties.map((specialty) => {
+                                            { currentSemester.getSpecialties(language.current).map((specialty) => {
                                                 return (
                                                     <p className="semester-page-specialty">• { specialty }</p>
                                                 );

@@ -16,6 +16,9 @@ export class SchoolCompetence
         this.title_fr = data.fr.title;
         this.description_fr = data.fr.description;
 
+        this.title_es = data.es.title;
+        this.description_es = data.es.description;
+
         this.image = data.image;
         this.gradient = data.gradient;
         this.titleColor = data.title_color;
@@ -28,6 +31,10 @@ export class SchoolCompetence
         if (language === 'fr')
         {
             return this.title_fr;
+        } else if (language === 'en') {
+            return this.title_en;
+        } else if (language === 'es') {
+            return this.title_es;
         } else {
             return this.title_en;
         }
@@ -38,9 +45,13 @@ export class SchoolCompetence
         if (language === 'fr')
         {
             return this.description_fr;
+        } else if (language === 'en') {
+            return this.description_en;
+        } else if (language === 'es') {
+            return this.description_es;
         } else {
             return this.description_en;
-        }
+        } 
     }
 
     getImage()

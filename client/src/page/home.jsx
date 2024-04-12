@@ -327,8 +327,7 @@ const Home = () => {
                             <img src={ descriptionIcon } alt="icone-description" draggable="false" />
                             <p>{ language.home.projects_frame.description } :</p>
                           </div>
-                          <p className="project-desc-value page-content">
-                            {currentProject && currentProject.getDescription() }
+                          <p className="project-desc-value page-content" dangerouslySetInnerHTML={{ __html: currentProject && currentProject.getDescription() }}>
                           </p>
                         </div>
                         { currentProject && 
@@ -338,8 +337,7 @@ const Home = () => {
                                   <img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
                                   <p>{ language.home.projects_frame.for_using } :</p>
                                 </div>
-                                <p className="project-use-desc-value page-content">
-                                  { currentProject && currentProject.getUseDescription() }
+                                <p className="project-use-desc-value page-content" dangerouslySetInnerHTML={{ __html: currentProject.getUseDescription() }}>
                                 </p>
                               </div>
                           ) 
