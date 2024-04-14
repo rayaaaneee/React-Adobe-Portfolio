@@ -9,3 +9,5 @@
 ## Index : duree changement de couleurs mettre body background > elements
 
 ## Raccourcis boutons echap pour fermer les modales
+
+## Home : Bouton chevron sur les projets ne fonctionne plus sur chrome

@@ -27,7 +27,6 @@ import '../asset/css/media/home/style.scss';
 import '../asset/css/media/home/project-page.scss';
 import '../asset/css/media/home/frame-cv.scss';
 
-import competenceJson from '../asset/data/home/competence.json';
 import projectJson from '../asset/data/home/project.json';
 import schoolCompetenceJson from '../asset/data/home/school_competence.json';
 import cvInformationsJson from '../asset/data/home/cv-info.json';
@@ -43,10 +42,9 @@ import languages from '../asset/img/home/icon/language.png';
 import descriptionIcon from '../asset/img/home/icon/desc-icon-pink.png';
 import useDescriptionIcon from '../asset/img/home/icon/use-desc-icon-pink.png';
 import whiteMemoryIcon from '../asset/img/home/icon/white-memory-icon.png';
+import anchorLink from '../asset/img/home/icon/anchor-link.png';
 
-import cvImg from '../asset/file/CV.png';
-import cvPdf from '../asset/file/CV.pdf';
-import { ManageWebsiteLanguages } from '../object/manage-website-languages';
+import cvImg from '../asset/img/home/frame-cv/CV.png';
 
 const Home = () => {
 
@@ -160,10 +158,10 @@ const Home = () => {
 
     const closeProjectViewer = () => {
       projectViewer.removeAttribute('src');
-      
+
       projectViewerContainerRef.current.classList.add('hidden');
       projectViewerContainerRef.current.classList.remove('visible');
-      
+
       setTimeout(() => {
         projectViewer.classList.add('onloading');
         projectViewerContainerRef.current.classList.remove('hidden');
@@ -254,7 +252,7 @@ const Home = () => {
       <>
               <article id="main">
                   {/* On met le CV dans le rendu, caché dans l'HTML pour s'en servir en cas d'impression */}
-                  <iframe ref={cvPdfIframe} src={cvPdf} className="hidden" title='CV'></iframe>
+                  <iframe ref={cvPdfIframe} src={ `/project/CV.pdf` } className="hidden" title='CV'></iframe>
                   <div className="title t1" id="firstmid">
                     <p>{ language.home.projects }</p>
                   </div>
@@ -282,66 +280,82 @@ const Home = () => {
                   {/* Page des projets */}
                   <div ref={projectPageRef} className="project-page-container">
                       <div className="project-page-content" ref={projectPageContentRef} >
-                        <div className="title-project-container">
-                          <img alt='link-or-download' className="link-or-download" src={currentProject && (currentProject.isLink() ? darkLinkImg : darkDownloadImg) } draggable="false" />
-                          <p className="title-project">{ currentProject && currentProject.getTitle() }</p>
-                        </div>
-                        {currentProject && (currentProject.hasLanguages() &&
-                          <>
-                            <div className="project-languages-skills title-page-project">
-                              <img src={ languages } alt='langages-icones' draggable="false" />
-                              <p className="title-language-skill">{
-                                language.home.projects_frame.languages + (currentProject.getLanguages().length > 1 ? 's' : '') } :</p>
-                            </div>
-                            <div className="project-languages-skills-container page-content">
-                              {currentProject.getLanguages().map((language, index) => {
-                                return (
-                                  <div key={index} className="skill-language-container template" style={{backgroundColor: language.color}}>
-                                    <p>{language.name}</p>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </>
-                        ) }
-                        {currentProject && (currentProject.hasCompetences() &&
-                          <>
-                            <div className="project-languages-skills title-page-project">
-                              <img src={ skills } alt='languages-icone' draggable="false" />
-                              <p className="title-languages-skill">{
-                                language.home.projects_frame.skills + (currentProject.getCompetences().length > 1 ? 's' : '') } :</p>
-                            </div>
-                            <div className="project-languages-skills-container page-content">
-                              {currentProject.getCompetences().map((competence, index) => {
-                                return (
-                                  <div key={index} className="skill-language-container template" style={{backgroundColor: competence.color}}>
-                                    <p>{competence.name}</p>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </>
-                        ) }
-                        <div className="project-desc text-project-container">
-                          <div className="project-desc-text title-page-project">
-                            <img src={ descriptionIcon } alt="icone-description" draggable="false" />
-                            <p>{ language.home.projects_frame.description } :</p>
+                        <div className='parts'>
+                          <div className="title-project-container">
+                            <img alt='link-or-download' className="link-or-download" src={currentProject && (currentProject.isLink() ? darkLinkImg : darkDownloadImg) } draggable="false" />
+                            <p className="title-project">{ currentProject && currentProject.getTitle() }</p>
                           </div>
-                          <p className="project-desc-value page-content" dangerouslySetInnerHTML={{ __html: currentProject && currentProject.getDescription() }}>
-                          </p>
-                        </div>
-                        { currentProject && 
-                          (currentProject.hasUseDescription() &&
-                              <div className="project-use-desc text-project-container">
-                                <div className="project-use-desc-text title-page-project">
-                                  <img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
-                                  <p>{ language.home.projects_frame.for_using } :</p>
-                                </div>
-                                <p className="project-use-desc-value page-content" dangerouslySetInnerHTML={{ __html: currentProject.getUseDescription() }}>
-                                </p>
+                          {currentProject && (currentProject.hasLanguages() &&
+                            <>
+                              <div className="project-languages-skills title-page-project">
+                                <img src={ languages } alt='langages-icones' draggable="false" />
+                                <p className="title-language-skill">{
+                                  language.home.projects_frame.languages + (currentProject.getLanguages().length > 1 ? 's' : '') } :</p>
                               </div>
-                          ) 
-                        }
+                              <div className="project-languages-skills-container page-content">
+                                {currentProject.getLanguages().map((language, index) => {
+                                  return (
+                                    <div key={index} className="skill-language-container template" style={{backgroundColor: language.color}}>
+                                      <p>{language.name}</p>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </>
+                          ) }
+                          {currentProject && (currentProject.hasCompetences() &&
+                            <>
+                              <div className="project-languages-skills title-page-project">
+                                <img src={ skills } alt='languages-icone' draggable="false" />
+                                <p className="title-languages-skill">{
+                                  language.home.projects_frame.skills + (currentProject.getCompetences().length > 1 ? 's' : '') } :</p>
+                              </div>
+                              <div className="project-languages-skills-container page-content">
+                                {currentProject.getCompetences().map((competence, index) => {
+                                  return (
+                                    <div key={index} className="skill-language-container template" style={{backgroundColor: competence.color}}>
+                                      <p>{competence.name}</p>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </>
+                          ) }
+                          <div className="project-desc text-project-container">
+                            <div className="project-desc-text title-page-project">
+                              <img src={ descriptionIcon } alt="icone-description" draggable="false" />
+                              <p>{ language.home.projects_frame.description } :</p>
+                            </div>
+                            <p className="project-desc-value page-content" dangerouslySetInnerHTML={{ __html: currentProject && currentProject.getDescription() }}>
+                            </p>
+                          </div>
+                          { currentProject && 
+                            (currentProject.hasUseDescription() &&
+                                <div className="project-use-desc text-project-container">
+                                  <div className="project-use-desc-text title-page-project">
+                                    <img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
+                                    <p>{ language.home.projects_frame.for_using } :</p>
+                                  </div>
+                                  <p className="project-use-desc-value page-content" dangerouslySetInnerHTML={{ __html: currentProject.getUseDescription() }}>
+                                  </p>
+                                </div>
+                            ) 
+                          }
+                          { currentProject && 
+                            (currentProject.hasRepository() &&
+                                <div className="project-repository text-project-container">
+                                  <div className="project-repository-text title-page-project">
+                                    <img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
+                                    <p>{ language.home.projects_frame.repository } :</p>
+                                  </div>
+                                  <a target='_blank' href={ currentProject.getRepository() } className="project-repository-value page-content">
+                                    <p>{ currentProject.getRepository() }</p>
+                                    <img src={ anchorLink } alt="repository-link" draggable="false" />
+                                  </a>
+                                </div>
+                            ) 
+                          }
+                        </div>
                         { currentProject && (currentProject.isLink() &&
                           <a onClick={ () => openProjectViewer(currentProject.getLink()) }
                           className="link-btn title-page-project" 
@@ -400,7 +414,7 @@ const Home = () => {
                           <div id="print" onClick={ handlePrintPdf }>
                             <img draggable="false" id="imgbutton" src={require('../asset/img/home/frame-cv/print.png')} />
                           </div>
-                          <a href={cvPdf} download="CV_Rayane_Merlin.pdf">
+                          <a href={ `/project/CV.pdf` } download="CV_Rayane_Merlin.pdf">
                             <div id="download">
                               <img draggable="false" id="imgbutton" src={require('../asset/img/home/frame-cv/download.png')} alt="dl" />
                             </div>
@@ -444,7 +458,7 @@ const Home = () => {
                         <img draggable="false" src={ isDarkTheme ? darkZoomImg : zoomImg } alt="zoom" />
                       </div>
                       <p className="beforebutton">{ language.home.cv_subtext_2 }</p>
-                      <a href={ cvPdf } download="CV_Rayane_Merlin.pdf"><button className="cv-button">{ language.home.download }</button></a>
+                      <a href={ `/project/CV.pdf` } download="CV_Rayane_Merlin.pdf"><button className="cv-button">{ language.home.download }</button></a>
                       <div className="blackbar"></div>
                     </div>
                   </div>

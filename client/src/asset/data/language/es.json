@@ -51,7 +51,8 @@
             "download": "Descargar",
             "file_size": "Tamaño del archivo",
             "quit": "Salir",
-            "quit_preview": "Salir de la vista previa"
+            "quit_preview": "Salir de la vista previa",
+            "repository": "Github repositorio"
         },
         "cv": "Mi CV",
         "cv_subtext_1": "Siéntete libre de hacer clic en la imagen del CV para hacer zoom; esto te permitirá verlo en su calidad óptima sin necesidad de descargarlo.",

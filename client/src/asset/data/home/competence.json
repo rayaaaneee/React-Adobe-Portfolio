@@ -5,6 +5,10 @@
             "color" : "#F24E1E"
         },
         {
+            "name": "Docker",
+            "color": "#0DB7ED"
+        },
+        {
             "name" : "Prezzi",
             "color" : "#A259FF"
         },

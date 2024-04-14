@@ -9,8 +9,6 @@ import '../asset/css/media/index/style.scss';
 
 import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';
 
-import CV from '../asset/file/CV.pdf';
-
 import { ManageBody } from '../object/manage-body';
 import { ManageWebsiteLanguages } from '../object/manage-website-languages';
 

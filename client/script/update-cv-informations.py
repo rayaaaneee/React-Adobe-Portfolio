@@ -4,10 +4,9 @@ pour afficher les informations du fichier CV_Rayane_Merlin.pdf dans la page prin
 import os
 import time
 import json
+from pypdfium2 import PdfDocument
 
 # Fonction qui permet de convertir le mois en chiffre
-
-
 def getNumberOfMonths(month):
     match(month):
         case "Jan":
@@ -39,7 +38,7 @@ def getNumberOfMonths(month):
 
 
 def getFileInformations(filename):
-    path = "client/src/asset/file/"
+    path = "client/public/"
     date = time.ctime(os.path.getmtime(path + filename))
     date = date.split(" ")
     date = date[2] + " " + date[1] + " " + date[4]
@@ -84,8 +83,17 @@ def write():
         f.write(jsonString)
 
         print("File modified")
+        
+def export_cv_into_pdf():
+    print("\nExporting curriculum vitae...")
+    pdf = PdfDocument("client/public/CV.pdf")
+    page = pdf[0]
+    image = page.render(scale=4).to_pil()
+    image.save("client/src/asset/img/home/frame-cv/CV.png")
+    print("Successfully exported\n")
 
 
 # Fonction principale du programme
 if __name__ == "__main__":
     write()
+    export_cv_into_pdf()

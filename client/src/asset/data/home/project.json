@@ -17,10 +17,8 @@
                 "CSS"
             ],
             "competences": [],
-            "has_documentation": false,
             "documentation": null,
-            "has_github": false,
-            "github": null,
+            "repository": "https://github.com/rayaaaneee/CV",
             "size": 3.39
         },
         {
@@ -41,10 +39,8 @@
             "competences": [
                 "Git"
             ],
-            "has_documentation": false,
             "documentation": null,
-            "has_github": false,
-            "github": null,
+            "repository": null,
             "size": 0.79
         },
         {
@@ -65,10 +61,8 @@
             "competences": [
                 "PowerBI"
             ],
-            "has_documentation": false,
             "documentation": null,
-            "has_github": false,
-            "github": null,
+            "repository": null,
             "size": 11.17
         },
         {
@@ -88,10 +82,8 @@
                 "Photoshop",
                 "Illustrator"
             ],
-            "has_documentation": false,
             "documentation": null,
-            "has_github": false,
-            "github": null,
+            "repository": null,
             "size": 3.78
         },
         {
@@ -114,10 +106,8 @@
             "competences": [
                 "Git"
             ],
-            "has_documentation": false,
             "documentation": null,
-            "has_github": false,
-            "github": null,
+            "repository": "https://github.com/rayaaaneee/Would-You-Play",
             "size": 40.6
         },
         {
@@ -137,10 +127,8 @@
                 "Figma",
                 "Git"
             ],
-            "has_documentation": false,
             "documentation": null,
-            "has_github": false,
-            "github": null,
+            "repository": null,
             "size": 2.96
         },
         {
@@ -164,10 +152,8 @@
             "competences": [
                 "Git"
             ],
-            "has_documentation": false,
+            "repository": null,
             "documentation": null,
-            "has_github": false,
-            "github": null,
             "size": 17.22
         },
         {
@@ -191,10 +177,7 @@
             "competences": [
                 "Git"
             ],
-            "has_documentation": false,
             "documentation": null,
-            "has_github": false,
-            "github": null,
             "size": 2.01
         },
         {
@@ -217,10 +200,8 @@
             "competences": [
                 "Git"
             ],
-            "has_documentation": false,
             "documentation": null,
-            "has_github": false,
-            "github": null,
+            "repository": "https://github.com/rayaaaneee/MarketManager",
             "size": 4.62
         },
         {
@@ -245,7 +226,7 @@
             "competences": [
                 "Git"
             ],
-            "has_documentation": false,
+            "repository": "https://github.com/rayaaaneee/Kwiz",
             "documentation": null,
             "size": 0.22
         },
@@ -269,7 +250,34 @@
             "competences": [
                 "Git"
             ],
-            "has_documentation": false,
+            "repository": "https://github.com/rayaaaneee/SunSys",
+            "documentation": null,
+            "size": 39.92
+        },
+        {
+            "id": 11,
+            "title": "SpendLess",
+            "icon": "spendless",
+            "project_desc": "Ce projet personnel est une modélisation de notre système solaire réaliste faite avec la librairie THREE.js. L'ensemble des astres de notre système solaire y sont représentés tels que les planètes, les satellites, les ceintures d'astéroides. Une grande quantité de paramètres ont été mis à votre disposition sur un panneau de configuration, ainsi que des informations importantes sur chacun de ces astres. Les animations de caméra ont été faites avec la librairie TWEEN.js pour rendre la navigation agréable pour l'utilisateur.",
+            "use_desc": "Une fois le chargement de la page terminé, le point de vue se met sur le système solaire et le panneau de configuration apparait. Vous pouvez vous déplacer relativement simplement dans le système solaire en utilisant votre souris. Sur le panneau de configuration vous aurez un grand nombre de paramètres à votre disposition pour modifier l'affichage du système solaire, notamment la vitesse et le sens de l'écoulement du temps, l'affichage des orbites ainsi que d'autres. Vous pouvez aussi cliquer sur les astres pour avoir des informations sur ceux-ci qui apparaissent à l'écran. Pour lancer le projet, vous vous vous rendre dans le répértoire courant du projet, faire npm install puis npm run dev. Le projet sera alors accessible sur votre localhost:5173. Cela nécéssitera d'avoir installé le gestionnaire de dépendances NPM sur votre ordinateur. Vous pouvez aussi lancer la version compilée qui nécéssite uniquement d'être lancée sur un serveur, un simple live server lancé sur l'index.html du dossier dist/ suffit, mais il vous faudra avant éxécuter la commande npm run build pour lancer la compilation du projet.",
+            "is_download": true,
+            "is_link": false,
+            "file": "spendless.rar",
+            "image": null,
+            "date": "01-2024",
+            "languages": [
+                "HTML",
+                "Typescript",
+                "CSS",
+                "Angular",
+                "NodeJS",
+                "SQL"
+            ],
+            "competences": [
+                "Git",
+                "Docker"
+            ],
+            "repository": "https://github.com/rayaaaneee/SpendLess",
             "documentation": null,
             "size": 39.92
         }

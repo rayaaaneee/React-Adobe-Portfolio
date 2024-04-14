@@ -145,6 +145,10 @@ body.home {
                 *:not(.background-project-page, .project-viewer-container, .project-viewer-container > *) {
                     animation: 0.3s unTranslateY forwards;
                 }
+
+                .parts > div:last-child {
+                    margin-bottom: 1.5vw;
+                }
             }
 
             @keyframes unTranslateY {
@@ -301,8 +305,30 @@ body.home {
                 text-align: justify;
             }
 
-            .project-use-desc-value {
-                padding-bottom: 1.5vw;
+            .project-repository {
+                .project-repository-value {
+                    width: fit-content;
+                    display: flex;
+                    align-items: center;
+                    column-gap: 10px;
+                    p {
+                        margin: 0;
+                        padding: 0;
+                    }
+                    img {
+                        transition: 0.3s;
+                        width: 2vw;
+                        height: 2vw;
+                    }
+
+                    &:hover {
+                        img {
+                            $scale: 0.9;
+                            scale: $scale;
+                            transform: scale($scale);
+                        }
+                    }
+                }
             }
 
             .link-btn, .download-btn {

@@ -51,7 +51,8 @@
             "download": "Download",
             "file_size": "Filesize",
             "quit": "Quit",
-            "quit_preview": "Quit preview"
+            "quit_preview": "Quit preview",
+            "repository": "Github repository"
         },
         "cv": "My CV",
         "cv_subtext_1": "Feel free to click on the CV image to zoom in; this will allow you to view it in its optimal quality without needing to download it.",

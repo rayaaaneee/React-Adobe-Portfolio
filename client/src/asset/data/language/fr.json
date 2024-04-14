@@ -50,7 +50,8 @@
             "download": "Télécharger",
             "file_size": "Filesize",
             "quit": "Quitter",
-            "quit_preview": "Quitter l'aperçu"
+            "quit_preview": "Quitter l'aperçu",
+            "repository": "Dépôt Github"
         },
         "cv": "Mon CV",
         "cv_subtext_1": "N'hésitez pas à cliquer sur l'image du C.V pour zoomer, cela vous permettra de le visionner dans sa qualité optimale sans avoir besoin de le télécharger.",

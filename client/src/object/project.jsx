@@ -25,6 +25,8 @@ export class Project
     #languages;
     #competences;
 
+    #repository;
+
     #reactIcon = null;
     #darkReactIcon = null;
 
@@ -63,6 +65,8 @@ export class Project
             let objectCompetence = ManageCompetences.getCompetence(competence);
             this.#competences.push(objectCompetence);
         });
+
+        this.#repository = project.repository;
     }
 
     setReactIcon(img) {
@@ -134,6 +138,16 @@ export class Project
         } else {
             return null;
         }
+    }
+
+    hasRepository()
+    {
+        return this.#repository !== null;
+    }
+
+    getRepository()
+    {
+        return this.#repository;
     }
 
     getFile()
