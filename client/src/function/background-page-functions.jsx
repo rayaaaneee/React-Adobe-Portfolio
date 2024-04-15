@@ -94,7 +94,6 @@ export const colorPointAssociateToSemester = (i) => {
 }
 
 export const uncolorPointAssociateToSemester = (i) => {
-    console.log("uncolorPoint");
     if (!isSelect || (i !== lastSemesterIndex)) {
         let point = pointsContainers[i];
         uncolorPoint(point);
@@ -105,7 +104,6 @@ export const onclickSemester = (i) => {
     let semester = semesters[i];
     let point = pointsContainers[i];
 
-    console.log("onclickSemester", i);
     if (!isSelect) {
         lastSemesterIndex = i;
 

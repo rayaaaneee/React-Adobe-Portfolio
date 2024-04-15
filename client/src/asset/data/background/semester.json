@@ -111,15 +111,18 @@
         "id" : 4,
         "fr": {
             "title" : "BUT : Semestre 4",
-            "description" : "Le quatrième semestre est divisé en deux parties. La première partie est une spécialisation en développement, la deuxieme est un stage de 12 semaines démarrant le 11 avril. Durant la premiere partie du semestre, nous avons pu nous consacrer au développement mobile où nous avons pu apprendre le langage de programmation Kotlin ainsi que le framework Android. Côté back-end j'ai aussi pu apprendre à utiliser le framework Symfony et découvrir plusieurs langages de programmation JavaScript (NodeJS, TypeScript, ReactJS)."
+            "description" : "Le quatrième semestre est divisé en deux parties. La première partie est une spécialisation en développement, la deuxieme est un stage de 12 semaines démarrant le 11 avril. Durant la premiere partie du semestre, nous avons pu nous consacrer au développement mobile où nous avons pu apprendre le langage de programmation Kotlin ainsi que le framework Android. Côté back-end j'ai aussi pu apprendre à utiliser le framework Symfony et découvrir plusieurs langages de programmation JavaScript (NodeJS, TypeScript, ReactJS).",
+            "specialties" : []
         }, 
         "en": {
             "title" : "BUT : Semester 4",
-            "description" : "The fourth semester is divided into two parts. The first part is a specialization in development, the second is a 12-week internship starting on April 11. During the first part of the semester, we were able to focus on mobile development where we learned the Kotlin programming language as well as the Android framework. On the back-end side, I was also able to learn how to use the Symfony framework and discover several JavaScript programming languages (NodeJS, TypeScript, ReactJS)."
+            "description" : "The fourth semester is divided into two parts. The first part is a specialization in development, the second is a 12-week internship starting on April 11. During the first part of the semester, we were able to focus on mobile development where we learned the Kotlin programming language as well as the Android framework. On the back-end side, I was also able to learn how to use the Symfony framework and discover several JavaScript programming languages (NodeJS, TypeScript, ReactJS).",
+            "specialties" : []
         },
         "es": {
             "title" : "BUT : Semestre 4",
-            "description" : "El cuarto semestre se divide en dos partes. La primera parte es una especialización en desarrollo, la segunda es una pasantía de 12 semanas que comienza el 11 de abril. Durante la primera parte del semestre, pudimos centrarnos en el desarrollo móvil donde aprendimos el lenguaje de programación Kotlin y el marco de Android. En el lado del back-end, también pude aprender a usar el marco Symfony y descubrir varios lenguajes de programación JavaScript (NodeJS, TypeScript, ReactJS)."
+            "description" : "El cuarto semestre se divide en dos partes. La primera parte es una especialización en desarrollo, la segunda es una pasantía de 12 semanas que comienza el 11 de abril. Durante la primera parte del semestre, pudimos centrarnos en el desarrollo móvil donde aprendimos el lenguaje de programación Kotlin y el marco de Android. En el lado del back-end, también pude aprender a usar el marco Symfony y descubrir varios lenguajes de programación JavaScript (NodeJS, TypeScript, ReactJS).",
+            "specialties" : []
         },
         "starting_date" : "2023-02-20",
         "ending_date" : "2023-06-30",
@@ -130,5 +133,59 @@
         "icon" : "study.png",
         "white_icon" : "study-white.png",
         "subjects" : "s4.png"
+    },
+    {
+        "id" : 5,
+        "fr": {
+            "title" : "BUT : Semestre 5",
+            "description" : "Le cinquième semestre démarre la troisième année du Bachelor, qui se déroule en alternance. Au cours de ce semestre, d'autres frameworks et langages de programmation ont été abordés, tels qu'Angular pour le front-end et Java SpringBoot pour le back-end. Nos connaissances MongoDB ont également été approfondies, avec la découverte de Neo4j. Un projet personnel donné par l'entreprise a été réalisé, il s'agissait de la création de fonctionnalités liées à la génération de factures pour une entreprise cliente.",
+            "specialties" : []
+        }, 
+        "en": {
+            "title" : "BUT : Semester 5",
+            "description" : "The fifth semester starts the third year of the Bachelor's degree, which takes place in alternation. During this semester, other frameworks and programming languages were addressed, such as Angular for the front-end and Java SpringBoot for the back-end. Our MongoDB knowledge was also deepened, with the discovery of Neo4j. A personal project given by the company was carried out, it was the creation of features related to the generation of invoices for a client company.",
+            "specialties" : []
+        },
+        "es": {
+            "title" : "BUT : Semestre 5",
+            "description" : "El quinto semestre inicia el tercer año del Bachelor, que se lleva a cabo en alternancia. Durante este semestre, se abordaron otros marcos y lenguajes de programación, como Angular para el front-end y Java SpringBoot para el back-end. Nuestro conocimiento de MongoDB también se profundizó, con el descubrimiento de Neo4j. Se realizó un proyecto personal dado por la empresa, se trataba de la creación de funciones relacionadas con la generación de facturas para una empresa cliente.",
+            "specialties" : []
+        },
+        "starting_date" : "2023-09-03",
+        "ending_date" : "2024-02-09",
+        "school_name" : "IUT Lyon 1",
+        "school_location" : "Villeurbanne La Doua, 69100",
+        "school_address" : "80 Bd Niels Bohr",
+        "school_icon" : "lyon1.png",
+        "icon" : "study.png",
+        "white_icon" : "study-white.png",
+        "subjects" : "s5.png"
+    },
+    {
+        "id" : 6,
+        "fr": {
+            "title" : "BUT : Semestre 6",
+            "description" : "Le sixième et dernier semestre a permis de conclure ces 3 années de formation. J'ai pu apprendre les bases du Cloud Computing sur AWS et Google Cloud Platform. Des cours d'entrepreunariat ont également été donnés.",
+            "specialties" : []
+        }, 
+        "en": {
+            "title" : "BUT : Semester 6",
+            "description" : "The sixth and final semester allowed to conclude these 3 years of training. I was able to learn the basics of Cloud Computing on AWS and Google Cloud Platform. Entrepreneurship courses were also given.",
+            "specialties" : []
+        },
+        "es": {
+            "title" : "BUT : Semestre 6",
+            "description" : "El sexto y último semestre permitió concluir estos 3 años de formación. Pude aprender los conceptos básicos de Cloud Computing en AWS y Google Cloud Platform. También se dieron cursos de emprendimiento.",
+            "specialties" : []
+        },
+        "starting_date" : "2024-02-19",
+        "ending_date" : "2024-08-28",
+        "school_name" : "IUT Lyon 1",
+        "school_location" : "Villeurbanne La Doua, 69100",
+        "school_address" : "80 Bd Niels Bohr",
+        "school_icon" : "lyon1.png",
+        "icon" : "study.png",
+        "white_icon" : "study-white.png",
+        "subjects" : "s6.png"
     }
 ]

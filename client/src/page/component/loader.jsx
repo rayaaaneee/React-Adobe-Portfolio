@@ -64,7 +64,6 @@ const Loader = () => {
         setTimeout(() => {
             let intervalText = setInterval(() => {
                 if (texts.length - 1 === textIndex) {
-                    console.log(texts.length - 1, textIndex);
                     clearInterval(intervalText);
                 } else {
                     setTextIndex(i => i + 1);

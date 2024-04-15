@@ -6,8 +6,6 @@ export const CompetenceCard = forwardRef(({ competence }, ref) => {
 
     const { language } = useContext(languageContext);
 
-    console.log(language.current);
-
     return (
         <div className="card animate" ref={ ref }>
           <div className="card-front">
