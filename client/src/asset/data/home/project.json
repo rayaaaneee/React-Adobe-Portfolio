@@ -259,8 +259,8 @@
             "id": 11,
             "title": "SpendLess",
             "icon": "spendless",
-            "project_desc": "No description available",
-            "use_desc": "No use description available",
+            "project_desc": "SpendLess est un site web développé dans le cadre du cours de qualité de développement en équipe par 4 étudiants. Notre objectif est de fournir une solution intuitive pour la gestion des dépenses personnelles, avec un backend robuste et un frontend élégant. 🚀\n## ⚙️ Technologies Utilisées\n#### 🖥️ Backend\n- Langage: *JavaScript* (*Node.js*) \n- Framework: *Express*\n- Base de données: *SQLite3* (base de données interne)\n- Framework de test: *Jest*\n- Méthode de développement: Peer programming\n#### 🖼️ Frontend\n- Langage: *JavaScript* (*Node.js*)\n- Framework: *Angular*\n- Framework de test: *Puppeteer*\n- Méthode de développement: Peer programming\n## ## ♦️ Retour d'Expérience\nSpendLess a été un terrain d'apprentissage organisationnel. Nos choix de répartition des tâches et de technologies n'ont pas toujours été optimaux, entraînant des pertes de points. Malgré cela, l'expérience a été formatrice, offrant des leçons concrètes sur les concepts de qualité de développement. Les défis rencontrés nous ont permis de mieux comprendre et d'ajuster nos pratiques pour des projets futurs.\n🔗 Liens Utiles\n- <a href=\"https://docs.google.com/document/d/1v5fS0eFqUwBantlmD32R7yqiswEbuZ1b5X6fc8oeyYg/edit?usp=sharing\" target=\"_blank\">Fiche résumé SpendLess (avec schéma décrivant l'architecture)</a>",
+            "use_desc": "## ⬇️ Installation et Déploiement\n#### 🖥️ Backend:\n```bash\ngit clone https://github.com/rayaaaneee/SpendLess.git\ncd server\ndocker-compose up\n```\n#### 🖼️ Frontend:\n```bash\ngit clone https://github.com/rayaaaneee/SpendLess.git\ncd client\nnpm install\nng serve\n```\n## 🚀 Lancement de l'Application\nAprès avoir suivi les étapes d'installation, vous pouvez lancer l'application en toute simplicité.\n## 🕹️ Utilisation\n> Explorez l'interface utilisateur pour suivre et gérer vos dépenses personnelles.\n#### 🏠 Home\nCette page vous permet de voir vos dépenses en fonction de la date et du mode de sélection (jour/semaine/mois/année).\n#### 💲 Spend\nCette page vous permet d'ajouter une dépense !\n#### 👛 Wallet\nCette page vous permet de voir votre budget et de le mettre à jour.\n #### ➕ Create category\nCette page vous permet de créer une nouvelle catégorie rien que pour vous !\n",
             "is_download": true,
             "is_link": false,
             "file": "spendless.rar",
@@ -276,7 +276,8 @@
             ],
             "competences": [
                 "Git",
-                "Docker"
+                "Docker",
+                "Jest"
             ],
             "repository": "https://github.com/rayaaaneee/SpendLess",
             "documentation": null,

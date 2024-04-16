@@ -63,6 +63,10 @@
         {
             "name" : "Git",
             "color" : "#F05032"
+        },
+        {
+            "name": "Jest",
+            "color": "#99425B"
         }
     ]
 }
