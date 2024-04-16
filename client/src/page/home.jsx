@@ -279,7 +279,7 @@ const Home = () => {
       <>
               <article id="main">
                   {/* On met le CV dans le rendu, caché dans l'HTML pour s'en servir en cas d'impression */}
-                  <iframe ref={cvPdfIframe} src={ `/project/CV.pdf` } className="hidden" title='CV'></iframe>
+                  <iframe ref={cvPdfIframe} src={ `/CV.pdf` } className="hidden" title='CV'></iframe>
                   <div className="title t1" id="firstmid">
                     <p>{ language.home.projects }</p>
                   </div>
@@ -483,7 +483,7 @@ const Home = () => {
                         <img draggable="false" src={ isDarkTheme ? darkZoomImg : zoomImg } alt="zoom" />
                       </div>
                       <p className="beforebutton">{ language.home.cv_subtext_2 }</p>
-                      <a href={ `/project/CV.pdf` } download="CV_Rayane_Merlin.pdf"><button className="cv-button">{ language.home.download }</button></a>
+                      <a href={ `/CV.pdf` } download="CV_Rayane_Merlin.pdf"><button className="cv-button">{ language.home.download }</button></a>
                       <div className="blackbar"></div>
                     </div>
                   </div>
