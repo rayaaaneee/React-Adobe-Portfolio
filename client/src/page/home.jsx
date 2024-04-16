@@ -439,7 +439,7 @@ const Home = () => {
                           <div id="print" onClick={ handlePrintPdf }>
                             <img draggable="false" id="imgbutton" src={require('../asset/img/home/frame-cv/print.png')} />
                           </div>
-                          <a href={ `/project/CV.pdf` } download="CV_Rayane_Merlin.pdf">
+                          <a href={ `/CV.pdf` } download="CV_Rayane_Merlin.pdf">
                             <div id="download">
                               <img draggable="false" id="imgbutton" src={require('../asset/img/home/frame-cv/download.png')} alt="dl" />
                             </div>
