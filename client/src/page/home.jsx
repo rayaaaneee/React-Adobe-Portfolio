@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState, useRef } from 'react';
 
+import MarkdownPreview from '@uiw/react-markdown-preview';
+
 import { ManageBody } from '../object/manage-body';
 
 import { Project as ProjectObject } from '../object/project';
@@ -109,6 +111,7 @@ const Home = () => {
         if (projectPageIsVisible) {
             document.body.style.overflowY = "hidden";
             projectPageRef.current.classList.add('visible');
+            document.addEventListener('keydown', closeProjectPageOnEscape);
         } else {
           projectPageRef.current.scrollTo({ top: 0 });
           projectPageRef.current.classList.add('hidden');
@@ -119,6 +122,8 @@ const Home = () => {
           }, 500);
         }
     }, [projectPageIsVisible]);
+
+    let [isProjectViewerVisible, setIsProjectViewerVisible] = useState(false);
 
     let [currentProject, setCurrentProject] = useState(null);
     const openProjectPage = (project) => {
@@ -131,18 +136,15 @@ const Home = () => {
         }
     }
 
-    const closeProjectPage = () => {
-        setProjectPageIsVisible(false);
-    }
-
+    const closeProjectPage = () => setProjectPageIsVisible(false);
     let projectViewerContainerRef = useRef(null);
     let projectViewer;
 
     useEffect(() => {
       projectViewer = projectViewerContainerRef.current.querySelector('.project-viewer');
     });
-
     const openProjectViewer = (link) => {
+      setIsProjectViewerVisible(true);
       projectViewerContainerRef.current.classList.add('visible');
       if (link.toLowerCase().endsWith('pdf')) {
         link = `./project/${link}`;
@@ -157,6 +159,7 @@ const Home = () => {
     }
 
     const closeProjectViewer = () => {
+      setIsProjectViewerVisible(false);
       projectViewer.removeAttribute('src');
 
       projectViewerContainerRef.current.classList.add('hidden');
@@ -166,6 +169,20 @@ const Home = () => {
         projectViewer.classList.add('onloading');
         projectViewerContainerRef.current.classList.remove('hidden');
       }, 300);
+    }
+
+    const closeProjectPageOnEscape = (e) => {
+      if (e.key === 'Escape') {
+        console.log("Escape");
+        if (isProjectViewerVisible) {
+          console.log('Closing viewer');
+          closeProjectViewer();
+        } else if (projectPageIsVisible) {
+          document.removeEventListener('keydown', closeProjectPageOnEscape);
+          closeProjectPage();
+          console.log('Closing page');
+        }
+      }
     }
 
     let [cvContainerIsVisible, setCvContainerIsVisible] = useState(false);
@@ -178,6 +195,12 @@ const Home = () => {
       cvPdfIframe.current.contentWindow.print();
     }
 
+    const closeCvPreviewOnEscape = (e) => {
+      if (e.key === 'Escape') {
+        setCvContainerIsVisible(false);
+      }
+    }
+
     var [cvVisibilityChanged, setCvVisibilityChanged] = useState(false);
     useConditionalEffect(() => {
 
@@ -187,11 +210,15 @@ const Home = () => {
         frameCvRef.current.classList.add('visible');
         setCvVisibilityChanged(true);
 
+        document.addEventListener('keydown', closeCvPreviewOnEscape);
+
       } else if (cvVisibilityChanged) {
 
         frameCvRef.current.scrollTo(0, 0);
         frameCvRef.current.classList.add('hidden');
         frameCvRef.current.classList.remove('visible');
+
+        document.removeEventListener('keydown', closeCvPreviewOnEscape);
 
         setTimeout(() => {
 
@@ -326,8 +353,7 @@ const Home = () => {
                               <img src={ descriptionIcon } alt="icone-description" draggable="false" />
                               <p>{ language.home.projects_frame.description } :</p>
                             </div>
-                            <p className="project-desc-value page-content" dangerouslySetInnerHTML={{ __html: currentProject && currentProject.getDescription() }}>
-                            </p>
+                            <MarkdownPreview className='project-desc-value page-content' source={ currentProject && currentProject.getDescription() } />
                           </div>
                           { currentProject && 
                             (currentProject.hasUseDescription() &&
@@ -336,8 +362,7 @@ const Home = () => {
                                     <img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
                                     <p>{ language.home.projects_frame.for_using } :</p>
                                   </div>
-                                  <p className="project-use-desc-value page-content" dangerouslySetInnerHTML={{ __html: currentProject.getUseDescription() }}>
-                                  </p>
+                                  <MarkdownPreview className='project-use-desc-value page-content' source={ currentProject && currentProject.getUseDescription() } />
                                 </div>
                             ) 
                           }

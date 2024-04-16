@@ -1,7 +1,3 @@
-## Sur les liens actifs, changer le style du lien pour le mettre d'une couleur différente
-
-## Améliorer considérablement les animations d'apparition avec React-Intersection-Observer
-
 ## Page coruse: colorier la bare en demarrant d'en haut et faire augmenter la coloration selon le scroll
 
 ## Page course : colorer la barre en fonction du scroll effectué
@@ -10,4 +6,4 @@
 
 ## Raccourcis boutons echap pour fermer les modales
 
-## Home : Bouton chevron sur les projets ne fonctionne plus sur chrome
+## Home : Bouton chevron sur les projets ne fonctionne plus sur chrome // Pas sur au final

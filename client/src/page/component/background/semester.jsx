@@ -1,4 +1,7 @@
 import { forwardRef, useContext } from "react";
+
+import MarkdownPreview from '@uiw/react-markdown-preview';
+
 import languageContext from "../../../function/context/language-context";
 
 export const Semester = forwardRef(({ semester, clickSemester, colorPoint, uncolorPoint, openSemesterPage }, ref) => {
@@ -10,7 +13,7 @@ export const Semester = forwardRef(({ semester, clickSemester, colorPoint, uncol
                 <img src={ require("../../../asset/img/background/" + semester.icon) } alt="icon-study" draggable="false" />
                 <h1 className="title-semester">{ semester.getTitle(language.current) }</h1>
             </div>
-            <p className="semester-description" dangerouslySetInnerHTML={{ __html : semester.getDescription(language.current) }}></p>
+            <MarkdownPreview className='semester-description' source={ semester.getDescription(language.current) } />
             <div className="bottom-semester-container">
                 <div className="bottom-semester"></div>
             </div>

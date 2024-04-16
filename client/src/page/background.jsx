@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 import { animateApparition } from '../function/appearence';
 import { animateImageLoading } from '../function/animate-image-loading';
@@ -32,6 +32,13 @@ import semesterJson from '../asset/data/background/semester.json';
 
 
 const Background = () => {
+
+    useEffect(() => {
+        document.querySelector("html").classList.add('background');
+        return () => {
+            document.querySelector("html").classList.remove('background');
+        }
+    }, []);
 
     const elementsToAnimate = useRef([]);
     const imagesToLoad = useRef([]);
@@ -84,6 +91,7 @@ const Background = () => {
 
     useConditionalEffect(() => {
         if (semesterPageIsOpen) {
+            document.addEventListener("keydown", closeSemesterPageOnEscape);
             semesterPage.current.scrollTo(0, 0);
             document.body.style.overflow = "hidden";
             semesterPage.current.classList.add("visible");
@@ -112,19 +120,37 @@ const Background = () => {
         disclickSemester(index);
     }
 
-    const openSubjectsImageSemester = () => {
-        crossSemesterPage.current.classList.add("hidden");
-        semesterPageSubjectsContainer.current.classList.add("visible");
-    }
-    const closeSubjectsImageSemester = () => {
-        crossSemesterPage.current.classList.remove("hidden");
-        semesterPageSubjectsContainer.current.classList.add("hidden");
-        semesterPageSubjectsContainer.current.classList.remove("visible");
+    const [isSubjectImageOpen, setIsSubjectImageOpen] = useState(false);
 
-        setTimeout(() => {
-            semesterPageSubjectsContainer.current.classList.remove("hidden");
-        }, 300);
-    }
+    useConditionalEffect(() => {
+        if (isSubjectImageOpen) {
+            crossSemesterPage.current.classList.add("hidden");
+            semesterPageSubjectsContainer.current.classList.add("visible");
+        } else {
+            crossSemesterPage.current.classList.remove("hidden");
+            semesterPageSubjectsContainer.current.classList.add("hidden");
+            semesterPageSubjectsContainer.current.classList.remove("visible");
+    
+            setTimeout(() => {
+                semesterPageSubjectsContainer.current.classList.remove("hidden");
+            }, 300);
+        }
+    }, [isSubjectImageOpen]);
+
+    const openSubjectsImageSemester = () => setIsSubjectImageOpen(true);
+    const closeSubjectsImageSemester = () => setIsSubjectImageOpen(false);
+
+    const closeSemesterPageOnEscape = useCallback((e) => {
+        if (e.key === "Escape") {
+            console.log(isSubjectImageOpen);
+            if (isSubjectImageOpen) {
+                setIsSubjectImageOpen(false);
+            } else if (semesterPageIsOpen) {
+                document.removeEventListener("keydown", closeSemesterPageOnEscape);
+                closeSemesterPage();
+            }
+        }
+    }, [semesterPageIsOpen, setIsSubjectImageOpen, isSubjectImageOpen, closeSemesterPage]);
 
     return (
         <>

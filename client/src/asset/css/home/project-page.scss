@@ -20,6 +20,10 @@ body.home {
         height: 100vh;
         transition: opacity $anim-duration ease;
 
+        .wmde-markdown {
+            background-color: transparent !important;
+        }
+
         .current-project-viewing {
             transform: translateY(40vh);
         }

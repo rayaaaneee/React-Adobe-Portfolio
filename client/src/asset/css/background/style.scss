@@ -1,5 +1,12 @@
 @import '../vars.scss';
 
+html.background {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 body.background {
 
     $margin-background-position: 20%;
@@ -13,6 +20,10 @@ body.background {
 
     header {
         position: absolute !important;
+    }
+
+    .wmde-markdown {
+        background-color: transparent !important;
     }
 
     .explain-container {
@@ -204,7 +215,8 @@ body.background {
 
         .semester{
             width: $size-semester;
-            height: $size-semester;
+            min-height: $size-semester;
+            height: fit-content;
             background-color: $containers-background-color;
             border-radius: $border-radius-semester;
             display: flex;
@@ -256,6 +268,7 @@ body.background {
 
             .semester-description {
                 text-align: justify;
+                color: black;
             }
         }
 

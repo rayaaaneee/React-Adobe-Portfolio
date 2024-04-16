@@ -3,17 +3,17 @@
         "id" : 0,
         "fr": {
             "title" : "Baccalauréat",
-            "description" : "J'ai obtenu mon baccalauréat scientifique avec mention. J'ai eu ce bac avec les spécialités de physique-chimie et de mathématiques. Cette année m'a permis de découvrir de nouvelles matières et de me spécialiser dans les sciences. J'ai également pu apprendre à travailler en groupe et à gérer mon temps et mon travail.",
+            "description" : "J'ai obtenu mon baccalauréat scientifique **avec mention**. J'ai eu ce bac avec les spécialités de physique-chimie et de mathématiques. Cette année m'a permis de découvrir de nouvelles matières et de me spécialiser dans les sciences. J'ai également pu apprendre à travailler en groupe et à gérer mon temps et mon travail.",
             "specialties" : [ "Physique-Chimie", "Mathématiques" ]
         },
         "en": {
             "title" : "Baccalaureate",
-            "description" : "I obtained my scientific baccalaureate with honors. I got this baccalaureate with the specialties of physics-chemistry and mathematics. This year allowed me to discover new subjects and to specialize in the sciences. I was also able to learn to work in groups and to manage my time and work.",
+            "description" : "I obtained my scientific baccalaureate **with honors**. I got this baccalaureate with the specialties of *physics-chemistry* and *mathematics*. This year allowed me to discover new subjects and to specialize in the sciences. I was also able to learn to work in groups and to manage my time and work.",
             "specialties" : [ "Physics-Chemistry", "Mathematics" ]
         },
         "es": {
             "title" : "Bachillerato",
-            "description" : "Obtuve mi bachillerato científico con honores. Obtuve este bachillerato con las especialidades de física-química y matemáticas. Este año me permitió descubrir nuevas materias y especializarme en las ciencias. También pude aprender a trabajar en grupo y a gestionar mi tiempo y mi trabajo.",
+            "description" : "Obtuve mi bachillerato científico **con honores**. Obtuve este bachillerato con las especialidades de *física-química* y *matemáticas*. Este año me permitió descubrir nuevas materias y especializarme en las ciencias. También pude aprender a trabajar en grupo y a gestionar mi tiempo y mi trabajo.",
             "specialties" : [ "Física-Química", "Matemáticas" ]
         },
         "school_name" : "St Charles",
@@ -30,17 +30,17 @@
         "id" : 1,
         "fr": {
             "title" : "BUT : Semestre 1",
-            "description" : "Le premier semestre est un semestre d'introduction. Nous avons pu apprendre les bases de la programmation (algorithmique, langage C). Nous avons appris à utiliser les outils de développement (IDE, compilateur, etc...). Nous avons également appris à utiliser les outils de gestion de version en particulier Git. Les bases du développement web nous ont été enseignées (HTML, CSS).",
+            "description" : "Le **premier semestre** est un semestre d'introduction. Nous avons pu apprendre les **bases de la programmation** (*algorithmique*, *langage C*). Nous avons appris à utiliser les **outils de développement** (*IDE*, *compilateur*, *etc...*). Nous avons également appris à utiliser les outils de gestion de version en particulier *Git*. Les bases du **développement web** nous ont été enseignées (*HTML*, *CSS*).",
             "specialties" : []
         },
         "en": {
             "title" : "BUT : Semester 1",
-            "description" : "The first semester is an introductory semester. We were able to learn the basics of programming (algorithmics, C language). We learned to use development tools (IDE, compiler, etc...). We also learned to use version management tools in particular Git. The basics of web development were taught to us (HTML, CSS).",
+            "description" : "The **first semester** is an introductory semester. We were able to learn the **basics of programming** (*algorithmics*, *C language*). We learned to use **development tools** (*IDE*, *compiler*, *etc...*). We also learned to use **version management** tools in particular *Git*. The basics of **web development** were taught to us (*HTML*, *CSS*).",
             "specialties" : []
         },
         "es": {
             "title" : "BUT : Semestre 1",
-            "description" : "El primer semestre es un semestre introductorio. Pudimos aprender los conceptos básicos de la programación (algoritmia, lenguaje C). Aprendimos a usar herramientas de desarrollo (IDE, compilador, etc...). También aprendimos a usar herramientas de gestión de versiones en particular Git. Se nos enseñaron los conceptos básicos del desarrollo web (HTML, CSS).",
+            "description" : "El **primer semestre** es un semestre de introducción. Pudimos aprender las **bases de la programación** (*algoritmia*, *lenguaje C*). Aprendimos a utilizar las **herramientas de desarrollo** (*IDE*, *compilador*, *etc...*). También aprendimos a utilizar las herramientas de gestión de versiones en particular *Git*. Se nos enseñaron las bases del **desarrollo web** (*HTML*, *CSS*).",
             "specialties" : []
         },
         "school_name" : "IUT Lyon 1",
@@ -57,17 +57,17 @@
         "id" : 2,
         "fr": {
             "title" : "BUT : Semestre 2",
-            "description" : "Le deuxième semestre est un semestre d'apprentissage. Nous avons pu commencer à apprendre le langage de programmation Java ainsi que vu la programmation orientée objet de manière générale, la programmation sur les bases de données (PL/SQL), ainsi que les interfaces graphiques (JavaFX, Swing). Nous avons également reçu des cours de qualité de développement logiciel (UML, tests unitaires, conventions de code, etc...), ce qui s'est avéré très utile pour la suite de la formation.",
+            "description" : "Le **deuxième semestre** est un semestre d'apprentissage. Nous avons pu commencer à apprendre le langage de programmation *Java* avec la **programmation orientée objet** de manière générale, la programmation sur les **bases de données** (*PL/SQL*), ainsi que les interfaces graphiques (*JavaFX*, *Swing*). Nous avons également reçu des cours de **qualité de développement** logiciel (*UML*, *tests unitaires*, *conventions de code*, *etc...*), ce qui s'est avéré très utile pour la suite de la formation.",
             "specialties" : []
         },
         "en": {
             "title" : "BUT : Semester 2",
-            "description" : "The second semester is a learning semester. We were able to start learning the Java programming language as well as see object-oriented programming in general, programming on databases (PL/SQL), as well as graphical interfaces (JavaFX, Swing). We also received software development quality courses (UML, unit tests, code conventions, etc...), which proved to be very useful for the rest of the training.",
+            "description" : "The **second semester** is a learning semester. We were able to start learning the *Java* programming language with **object-oriented programming** in general, programming on **databases** (*PL/SQL*), as well as graphical interfaces (*JavaFX*, *Swing*). We also received courses in **software development quality** (*UML*, *unit tests*, *code conventions*, *etc...*), which turned out to be very useful for the rest of the training.",
             "specialties" : []
         },
         "es": {
             "title" : "BUT : Semestre 2",
-            "description" : "El segundo semestre es un semestre de aprendizaje. Pudimos comenzar a aprender el lenguaje de programación Java, así como ver la programación orientada a objetos en general, la programación en bases de datos (PL/SQL), así como interfaces gráficas (JavaFX, Swing). También recibimos cursos de calidad de desarrollo de software (UML, pruebas unitarias, convenciones de código, etc...), lo que resultó ser muy útil para el resto de la formación.",
+            "description" : "El **segundo semestre** es un semestre de aprendizaje. Pudimos comenzar a aprender el lenguaje de programación *Java* con la **programación orientada a objetos** en general, la programación en **bases de datos** (*PL/SQL*), así como las interfaces gráficas (*JavaFX*, *Swing*). También recibimos cursos de **calidad de desarrollo** de software (*UML*, *pruebas unitarias*, *convenciones de código*, *etc...*), lo que resultó ser muy útil para el resto de la formación.",
             "specialties" : []
         },
         "starting_date" : "2022-01-01",
@@ -84,17 +84,17 @@
         "id" : 3,
         "fr": {
             "title" : "BUT : Semestre 3",
-            "description" : "Le troisième semestre est le semestre de la spécialisation. Vous devez choisir une spécialisation parmi les 3 suivantes : <br> - Réseau en alternance <br> - Administration de bases de données <br> - Développement <br> En parcours développement, j'ai pu apprendre en profondeur le langage de programmation Python ainsi que le langage JavaScript en complément du développement Web du premier semestre, ainsi que son systeme de notation : le JSON avec enfin la mise en place du back-end avec le langage PHP.",
+            "description" : "Le **troisième semestre** est le semestre de la **spécialisation**. Nous avons du choisir une spécialisation parmi les 3 suivantes :<br/>- Réseau en alternance<br/>- Administration de bases de données <br/>- Développement<br/>En parcours développement, j'ai pu apprendre en profondeur le langage de programmation *Python* ainsi que le langage *JavaScript* en complément du développement Web du premier semestre, ainsi que son systeme de notation : le *JSON* avec enfin la mise en place du **back-end** avec le langage *PHP*.",
             "specialties" : []
         }, 
         "en": {
             "title" : "BUT : Semester 3",
-            "description" : "The third semester is the specialization semester. You must choose a specialization from the following 3: <br> - Network in alternation <br> - Database administration <br> - Development <br> In the development course, I was able to learn in depth the Python programming language as well as the JavaScript language in addition to the Web development of the first semester, as well as its notation system: JSON with finally the implementation of the back-end with the PHP language.",
+            "description" : "The **third semester** is the **specialization** semester. We had to choose a specialization among the following 3:<br/>- Network in alternation<br/>- Database administration<br/>- Development<br/>In the development course, I was able to learn in depth the *Python* programming language as well as the *JavaScript* language in addition to the Web development of the first semester, as well as its notation system: *JSON* with finally the implementation of the **back-end** with the *PHP* language.",
             "specialties" : []
         },
         "es": {
             "title" : "BUT : Semestre 3",
-            "description" : "El tercer semestre es el semestre de especialización. Debe elegir una especialización entre las siguientes 3: <br> - Red en alternancia <br> - Administración de bases de datos <br> - Desarrollo <br> En el curso de desarrollo, pude aprender en profundidad el lenguaje de programación Python, así como el lenguaje JavaScript además del desarrollo web del primer semestre, así como su sistema de notación: JSON con finalmente la implementación del back-end con el lenguaje PHP.",
+            "description" : "El **tercer semestre** es el semestre de la **especialización**. Tuvimos que elegir una especialización entre las siguientes 3:<br/>- Red en alternancia<br/>- Administración de bases de datos<br/>- Desarrollo<br/>En el curso de desarrollo, pude aprender en profundidad el lenguaje de programación *Python* así como el lenguaje *JavaScript* en complemento del desarrollo Web del primer semestre, así como su sistema de notación: *JSON* con finalmente la implementación del **back-end** con el lenguaje *PHP*.",
             "specialties" : []
         },
         "starting_date" : "2022-09-05",
@@ -111,17 +111,17 @@
         "id" : 4,
         "fr": {
             "title" : "BUT : Semestre 4",
-            "description" : "Le quatrième semestre est divisé en deux parties. La première partie est une spécialisation en développement, la deuxieme est un stage de 12 semaines démarrant le 11 avril. Durant la premiere partie du semestre, nous avons pu nous consacrer au développement mobile où nous avons pu apprendre le langage de programmation Kotlin ainsi que le framework Android. Côté back-end j'ai aussi pu apprendre à utiliser le framework Symfony et découvrir plusieurs langages de programmation JavaScript (NodeJS, TypeScript, ReactJS).",
+            "description" : "Le **quatrième semestre** est divisé en deux parties. La première partie est une poursuite de la spécialisation en développement, la deuxieme est un **stage de 12 semaines** démarrant le 11 avril. Durant la premiere partie du semestre, nous avons pu nous consacrer au **développement mobile** où nous avons pu apprendre le langage de programmation *Kotlin* ainsi que le *framework Android*. Côté back-end j'ai aussi pu apprendre à utiliser le *framework Symfony* et découvrir plusieurs langages de programmation **JavaScript** (*NodeJS*, *TypeScript*, *ReactJS*).",
             "specialties" : []
         }, 
         "en": {
             "title" : "BUT : Semester 4",
-            "description" : "The fourth semester is divided into two parts. The first part is a specialization in development, the second is a 12-week internship starting on April 11. During the first part of the semester, we were able to focus on mobile development where we learned the Kotlin programming language as well as the Android framework. On the back-end side, I was also able to learn how to use the Symfony framework and discover several JavaScript programming languages (NodeJS, TypeScript, ReactJS).",
+            "description" : "The **fourth semester** is divided into two parts. The first part is a specialization in development, the second is a **12-week internship** starting on April 11. During the first part of the semester, we were able to focus on **mobile development** where we learned the *Kotlin* programming language and the *Android* framework. On the back-end side, I was also able to learn to use the *Symfony* framework and discover several **JavaScript** programming languages (*NodeJS*, *TypeScript*, *ReactJS*).",
             "specialties" : []
         },
         "es": {
             "title" : "BUT : Semestre 4",
-            "description" : "El cuarto semestre se divide en dos partes. La primera parte es una especialización en desarrollo, la segunda es una pasantía de 12 semanas que comienza el 11 de abril. Durante la primera parte del semestre, pudimos centrarnos en el desarrollo móvil donde aprendimos el lenguaje de programación Kotlin y el marco de Android. En el lado del back-end, también pude aprender a usar el marco Symfony y descubrir varios lenguajes de programación JavaScript (NodeJS, TypeScript, ReactJS).",
+            "description" : "El **cuarto semestre** está dividido en dos partes. La primera parte es una especialización en desarrollo, la segunda es un **prácticas de 12 semanas** que comienzan el 11 de abril. Durante la primera parte del semestre, pudimos centrarnos en el **desarrollo móvil** donde aprendimos el lenguaje de programación *Kotlin* y el *framework Android*. En el lado del back-end, también pude aprender a usar el *framework Symfony* y descubrir varios lenguajes de programación **JavaScript** (*NodeJS*, *TypeScript*, *ReactJS*).",
             "specialties" : []
         },
         "starting_date" : "2023-02-20",
@@ -138,17 +138,17 @@
         "id" : 5,
         "fr": {
             "title" : "BUT : Semestre 5",
-            "description" : "Le cinquième semestre démarre la troisième année du Bachelor, qui se déroule en alternance. Au cours de ce semestre, d'autres frameworks et langages de programmation ont été abordés, tels qu'Angular pour le front-end et Java SpringBoot pour le back-end. Nos connaissances MongoDB ont également été approfondies, avec la découverte de Neo4j. Un projet personnel donné par l'entreprise a été réalisé, il s'agissait de la création de fonctionnalités liées à la génération de factures pour une entreprise cliente.",
+            "description" : "Le **cinquième semestre** démarre la troisième année du Bachelor, qui se déroule en **alternance**. Au cours de ce semestre, d'autres frameworks et langages de programmation ont été abordés, tels qu'Angular pour le front-end et *Java SpringBoot* pour le back-end. Nos connaissances *MongoDB* ont également été approfondies, avec la découverte de *Neo4j*. Un **projet personnel** donné par l'entreprise a été réalisé, il s'agissait de la création de fonctionnalités liées à la **génération de factures** pour une entreprise cliente.",
             "specialties" : []
         }, 
         "en": {
             "title" : "BUT : Semester 5",
-            "description" : "The fifth semester starts the third year of the Bachelor's degree, which takes place in alternation. During this semester, other frameworks and programming languages were addressed, such as Angular for the front-end and Java SpringBoot for the back-end. Our MongoDB knowledge was also deepened, with the discovery of Neo4j. A personal project given by the company was carried out, it was the creation of features related to the generation of invoices for a client company.",
+            "description" : "The **fifth semester** starts the third year of the Bachelor, which takes place in **alternation**. During this semester, other frameworks and programming languages were addressed, such as *Angular* for the front-end and *Java SpringBoot* for the back-end. Our knowledge of *MongoDB* was also deepened, with the discovery of *Neo4j*. A **personal project** given by the company was carried out, it was about creating features related to **invoice generation** for a client company.",
             "specialties" : []
         },
         "es": {
             "title" : "BUT : Semestre 5",
-            "description" : "El quinto semestre inicia el tercer año del Bachelor, que se lleva a cabo en alternancia. Durante este semestre, se abordaron otros marcos y lenguajes de programación, como Angular para el front-end y Java SpringBoot para el back-end. Nuestro conocimiento de MongoDB también se profundizó, con el descubrimiento de Neo4j. Se realizó un proyecto personal dado por la empresa, se trataba de la creación de funciones relacionadas con la generación de facturas para una empresa cliente.",
+            "description" : "El **quinto semestre** inicia el tercer año del Bachelor, que se lleva a cabo en **alternancia**. Durante este semestre, se abordaron otros frameworks y lenguajes de programación, como *Angular* para el front-end y *Java SpringBoot* para el back-end. Nuestro conocimiento de *MongoDB* también se profundizó, con el descubrimiento de *Neo4j*. Se realizó un **proyecto personal** dado por la empresa, se trataba de crear funcionalidades relacionadas con la **generación de facturas** para una empresa cliente.",
             "specialties" : []
         },
         "starting_date" : "2023-09-03",
@@ -165,17 +165,17 @@
         "id" : 6,
         "fr": {
             "title" : "BUT : Semestre 6",
-            "description" : "Le sixième et dernier semestre a permis de conclure ces 3 années de formation. J'ai pu apprendre les bases du Cloud Computing sur AWS et Google Cloud Platform. Des cours d'entrepreunariat ont également été donnés.",
+            "description" : "Le **sixième et dernier semestre** du B.U.T a permis de conclure ces **3 années** de formation. J'ai pu apprendre les bases du Cloud Computing sur *AWS* et *Google Cloud Platform*. Des cours d'**entrepreunariat** ont également été donnés.",
             "specialties" : []
         }, 
         "en": {
             "title" : "BUT : Semester 6",
-            "description" : "The sixth and final semester allowed to conclude these 3 years of training. I was able to learn the basics of Cloud Computing on AWS and Google Cloud Platform. Entrepreneurship courses were also given.",
+            "description" : "The **sixth and final** semester of the Bachelor allowed to conclude these **3 years** of training. I was able to learn the basics of Cloud Computing on AWS and Google Cloud Platform. **Entrepreneurship** courses were also given.",
             "specialties" : []
         },
         "es": {
             "title" : "BUT : Semestre 6",
-            "description" : "El sexto y último semestre permitió concluir estos 3 años de formación. Pude aprender los conceptos básicos de Cloud Computing en AWS y Google Cloud Platform. También se dieron cursos de emprendimiento.",
+            "description" : "El **sexto y último** semestre del Bachelor permitió concluir estos **3 años** de formación. Pude aprender los conceptos básicos de Cloud Computing en *AWS* y *Google Cloud Platform*. También se dieron cursos de **emprendimiento**.",
             "specialties" : []
         },
         "starting_date" : "2024-02-19",
