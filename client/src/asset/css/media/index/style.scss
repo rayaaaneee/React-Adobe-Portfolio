@@ -1,9 +1,7 @@
 body.index {
     @media screen and (max-width : 425px) and (min-width : 300px) {
         .about-page {
-            bottom: 10vh;
-            right: 5vw;
-            font-size: 5.5vw;
+            display: none;
         }
         .footer-links a {
             width: 11vw;
@@ -16,13 +14,96 @@ body.index {
         .get-start {
             top: 1vh;
             right: 1vh;
-            width: 300px;
-            height: 110px;
-            font-size: 2.5em;
+            width: 120px;
+            height: 45px;
+            font-size: 1em;
+        }
+
+        .container {
+            justify-content: unset;
+            margin-top: 25vh;
+            .title {
+                align-items: center;
+                justify-content: center;
+                * {
+                    text-align: center;
+                }
+
+                & > h1 {
+                    font-size: 17vw;
+                    height: fit-content;
+                }
+
+                & > .subtitle {
+                    justify-content: center;
+                    height: fit-content;
+                    column-gap: 2.5vw;
+
+                    $media-sutitle-bar-height: 13vw;
+
+                    h2 {
+                        font-size: $media-sutitle-bar-height;
+                    }
+
+                    .vertical-bar {
+                        width: 1vw;
+                        height: $media-sutitle-bar-height;
+                    }
+                }
+            }
+        }
+
+        .btn-switch-mode {
+            display: none;
+        }
+
+        .triangle-red {
+            border-left-width: 200px;
+            border-right-width: 200px;
+            border-bottom-width: 300px;
+        }
+
+        .triangle-orange {
+            border-left-width: 150px;
+            border-right-width: 150px;
+            border-bottom-width: 235px;
+        }
+
+        .triangle-yellow {
+            border-left-width: 90px;
+            border-right-width: 90px;
+            border-bottom-width: 135px;
+        }
+
+        .circle-one {
+            right: -50%;
+        }
+
+        .circle-two {
+            width: 90vw;
+            height: 90vw;
+            top: -25%;
+            left: -40%;
+        }
+
+        .header-triangle {
+            border-top-width: 30vw;
+        }
+
+        .footer-triangle {
+            border-bottom-width: 30vw;
+        }
+
+        .hamburger-container {
+            right: 210px;
         }
     
         .hamburger-bar {
-            width: 100px;
+            width: 50px;
+        }
+
+        .select-language {
+            display: none;
         }
     }
     
@@ -125,7 +206,7 @@ body.index {
         }
     }
     
-    @media screen and (max-width : 1024px) and (min-width : 768px) {
+    @media screen and (max-width : 1024px) and (min-width : 769px) {
         .get-start {
             top: 2vw;
             right: 2vw;

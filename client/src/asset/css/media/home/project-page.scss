@@ -2,7 +2,7 @@ body.home {
     @media screen and (max-width: 767px) {
         .page-content {
             font-size: 3vw;
-            margin-right: 4vw;
+            margin-right: 4vw !important;
         }
 
         .title-page-project {
@@ -18,9 +18,9 @@ body.home {
         }
 
         .quit-project-button {
-            width: 8vw;
-            height: 8vw;
-            font-size: 4vw;
+            width: 8vw !important;
+            height: 8vw !important;
+            font-size: 4vw !important;
             background-color: rgba(209, 95, 95, 0.8);
         }
 
@@ -46,6 +46,7 @@ body.home {
         @media screen and (max-width: 427px) {
             .page-content {
                 font-size: 5vw;
+                margin: 0;
             }
 
             .title-project-container > p {
