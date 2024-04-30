@@ -15,6 +15,7 @@ import "../../asset/css/general/dark-background.scss";
 import "../../asset/css/general/dark-scrollbar.scss";
 import "../../asset/css/general/presets-animation.scss";
 import "../../asset/css/general/scrollbar.scss";
+import "../../asset/css/media/general/background.scss";
 
 import Backgrounds from "./backgrounds";
 

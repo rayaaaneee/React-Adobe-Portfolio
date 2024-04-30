@@ -12,9 +12,13 @@ export class MoveBackground {
 
     moveListener;
 
+    position;
+
     constructor(background) {
 
         this.background = background;
+
+        this.position = background.getAttribute("position");
         //Faire bouger les backgrounds horizontalement
 
         //Déclaration de la vitesse
@@ -30,13 +34,11 @@ export class MoveBackground {
     }
 
     move = () => {
-        //On décremente la position par la vitese
+        //On décremente la position par la vitesse
         this.x -= this.speed * parseFloat(this.speed)
 
         //On applique la nouvelle position
-        this.background.style.backgroundPosition = this.x + "px center";
-        this.background.style.backgroundPosition = this.x + "px center";
-        this.background.style.backgroundPosition = this.x + "px center";
+        this.background.style.backgroundPosition = `${this.x}px ${ this.position }`;
     }
 
     removeIntervals = () => {

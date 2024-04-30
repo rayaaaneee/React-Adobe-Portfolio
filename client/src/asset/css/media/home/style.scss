@@ -165,8 +165,8 @@ body.home {
             }
 
             .card.view {
-                width: 250px;
-                height: 375px;
+                width: 195px;
+                height: 295px;
             }
 
             @media screen and (max-width:427px) {
@@ -199,8 +199,45 @@ body.home {
                 }
 
                 .card.view {
-                    width: 215px;
-                    height: 320px;
+                    width: 130px;
+                    height: 210px;
+
+                    $card-top-img-height: 60px;
+                    $card-top-height: 70px; 
+                    .card-front {
+                        .linear-gradient-circle-container {
+                            height: 70px;
+                            .linear-gradient-circle {
+                                width: $card-top-img-height;
+                                height: $card-top-img-height;
+                                img {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+                            }
+                        }
+                        .title-card {
+                            font-size: 20px;
+                        }
+                    }
+
+                    .card-back {
+                        .info-icon-container {
+                            height: $card-top-height;
+                            img {
+                                width: $card-top-img-height;
+                                height: $card-top-img-height;
+                            }
+                        }
+
+                        .card-back-title {
+                            font-size: 20px;
+                        }
+
+                        .card-description {
+                            font-size: 10px;  
+                        }
+                    }
                 }
             }
         }
