@@ -8,15 +8,18 @@ const Backgrounds = () => {
     const backgroundsObjects = [
         {
             speedparallax : 0.02,
-            speedtranslate : 0.6
+            speedtranslate : 0.6,
+            position: "center",
         },
         {
             speedparallax : -0.03,
-            speedtranslate : 0.7
+            speedtranslate : 0.7,
+            position: "center",
         },
         {
             speedparallax : -0.05,
-            speedtranslate : 0.73
+            speedtranslate : 0.73,
+            position: "top",
         }
     ]
 
@@ -40,7 +43,7 @@ const Backgrounds = () => {
             { backgroundsObjects.map((background, i) => {
                 return (
                     <div id={ `background${ i + 1 }` } key={ i } ref={ background => backgrounds.current[i] = background } 
-                    className="background" speedparallax={ background.speedparallax } speedtranslate={ background.speedtranslate }></div>
+                    className="background" speedparallax={ background.speedparallax } speedtranslate={ background.speedtranslate } position={ background.position }></div>
                 );
             }) }
         </>
