@@ -401,7 +401,6 @@ const Home = () => {
                           </div>
                           <iframe src='' className='project-viewer onloading'></iframe>
                         </div>
-                        <div className="background-project-page"></div>
                       </div>
                       <a href={ `/project/${currentProject && currentProject.getFile()}` }
                           className='current-project-viewing' download ref={currentProjectViewingRef} title={`${ language.home.projects_frame.download } ${currentProject && currentProject.getTitle() }`}>

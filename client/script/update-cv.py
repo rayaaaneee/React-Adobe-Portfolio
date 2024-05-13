@@ -7,7 +7,7 @@ import json
 from pypdfium2 import PdfDocument
 
 # Fonction qui permet de convertir le mois en chiffre
-def getNumberOfMonths(month):
+def getNumberOfMonths(month: str):
     match(month):
         case "Jan":
             return "01"
@@ -37,8 +37,8 @@ def getNumberOfMonths(month):
 # Fonction qui permet de recuperer les informations du fichier
 
 
-def getFileInformations(filename):
-    path = "client/public/"
+def getFileInformations(filename: str):
+    path: str = "client/public/"
     date = time.ctime(os.path.getmtime(path + filename))
     date = date.split(" ")
     date = date[2] + " " + date[1] + " " + date[4]
@@ -58,13 +58,13 @@ def getFileInformations(filename):
 
 
 # Ouvrir un fichier en mode lecture ecriture
-name = None
+name: str = None
 
 
 def write():
     with open("client/src/asset/data/home/cv-info.json", "w") as f:
 
-        name = "CV.pdf"
+        name: str = "CV.pdf"
 
         # Recuperer les informations du fichier
         date, size, type = getFileInformations(name)

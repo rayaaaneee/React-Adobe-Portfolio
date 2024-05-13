@@ -8,7 +8,9 @@
     "build-client": "cd client && npm run build",
     "server": "cd server && npm start",
     "dev-server": "cd server && npm run dev",
-    "install": "cd client && npm i && cd ../server && npm i"
+    "install": "cd client && npm i && cd ../server && npm i",
+    "update-cv": "python client/script/update-cv.py",
+    "update-projects": "python client/script/update-projects.py"
   },
   "repository": {
     "type": "git",

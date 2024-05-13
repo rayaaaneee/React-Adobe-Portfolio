@@ -19,6 +19,9 @@ body.home {
         position: fixed;
         height: 100vh;
         transition: opacity $anim-duration ease;
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(3px);
+        transition: opacity $background-opacity-duration ease;
 
         .wmde-markdown {
             background-color: transparent !important;
@@ -42,7 +45,6 @@ body.home {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.9);
             transition: opacity 0.3s ease-in-out;
             opacity: 0;
 
@@ -114,11 +116,7 @@ body.home {
             }
         }
 
-        .background-project-page {
-            transition: opacity $background-opacity-duration ease;
-        }
-
-        *:not(.background-project-page, .project-viewer-container, .project-viewer-container > *) {
+        *:not(.project-viewer-container, .project-viewer-container > *) {
             transition: transform 0.5s ease-in-out;
         }
 
@@ -146,7 +144,7 @@ body.home {
             }
 
             .project-page-content {
-                *:not(.background-project-page, .project-viewer-container, .project-viewer-container > *) {
+                *:not(.project-viewer-container, .project-viewer-container > *) {
                     animation: 0.3s unTranslateY forwards;
                 }
 
@@ -183,7 +181,7 @@ body.home {
             }
 
             .project-page-content {
-                *:not(.background-project-page, .project-viewer-container, .project-viewer-container > *) {
+                *:not(.project-viewer-container, .project-viewer-container > *) {
                     animation: translateY 0.7s forwards;
     
                     @keyframes translateY {
@@ -244,7 +242,7 @@ body.home {
 
         .project-page-content {
 
-            *:not(.background-project-page, .project-viewer-container, .project-viewer-container > *) {
+            *:not(.project-viewer-container, .project-viewer-container > *) {
                 transform: translateY(100vh);
             }
 
