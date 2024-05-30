@@ -56,7 +56,7 @@ const HeaderComponent = () => {
                     </NavLink>
                     <NavLink className="mediasites" id="receptionsite" to={"/home"}></NavLink>
                     <NavLink className="mediasites" id="backgroundsite" to={"/background"}></NavLink>
-                    <NavLink className="mediasites" id="personalsite" to={"/perso"}></NavLink>
+                    <NavLink className="mediasites" id="personalsite" to={"/myself"}></NavLink>
                     <NavLink className="mediasites" id="contactsite" to={"/contact"}></NavLink>
                     <button className="mode-button" onClick={ changeTheme }></button>
                 </ul>

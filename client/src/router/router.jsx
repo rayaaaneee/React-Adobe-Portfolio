@@ -7,6 +7,7 @@ import Contact from "../page/contact";
 import About from "../page/about";
 import Myself from "../page/myself";
 import NotFound from "../page/notfound";
+import Blog from "../page/blog";
 import Main from "../page/component/main";
 
 const Router = () => {
@@ -20,6 +21,7 @@ const Router = () => {
                     <Route path={'/contact'} element={<Contact />} />
                     <Route path={'/about'} element={<About />} />
                     <Route path={'/myself'} element={<Myself />} />
+                    <Route path={'/blog'} element={<Blog />} />
                     <Route path={'*'} element={<NotFound />} />
                 </Routes>
             </Main>
