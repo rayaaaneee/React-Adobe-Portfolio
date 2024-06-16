@@ -28,23 +28,13 @@ body:not(.index) {
     
                 $hover-color: black;
                 $bar-height: 3px;
-
-                @keyframes increaseBarHeight {
-                    0% {
-                        height: 0;
-                    }
-                    100% {
-                        height: $bar-height;
-                    }
-                }
     
                 &::after {
                     content: '';
                     position: absolute;
                     display: block;
                     width: 100%;
-                    height: 0;
-                    animation: increaseBarHeight 0.2s forwards ease-out;
+                    height: $bar-height;
                     bottom: 0;
                     left: 0;
                     transform: translateY(100%);
