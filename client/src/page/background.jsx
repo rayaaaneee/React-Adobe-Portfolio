@@ -204,7 +204,6 @@ const Background = () => {
                                 <div className="image-subject-container">
                                     <img src={ require("../asset/img/background/semester/" + currentSemester.matters) } className="semester-page-subjects-image" alt="subjects" draggable="false" />
                                     <div className="leave-semester-subject" onClick={ closeSubjectsImageSemester }>
-                                        <p>X</p>
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +278,6 @@ const Background = () => {
                         </div>
                         <div className="all-cross-container">
                             <div ref={ crossSemesterPage } className="cross-semester-page-container" onClick={ () => closeSemesterPage() }>
-                                <p>X</p>
                             </div>
                         </div>
                         <div className="background-semester-page"></div>

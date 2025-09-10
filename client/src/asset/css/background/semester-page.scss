@@ -112,13 +112,13 @@ body.background {
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(3px);
+            transition: opacity 0.5s;
             position: fixed;
             z-index: 1;
             top: 0;
             left: 0;
             z-index: 0;
             opacity: 0;
-            transition: opacity 0.5s;
         }
 
         .all-cross-container {
@@ -147,6 +147,11 @@ body.background {
             transform: translateX(15vw);
             justify-content: center;
             align-items: center;
+            
+            background-repeat: no-repeat;
+            background-size: 40%;
+            background-position: center;
+            background-image: url('../../img/cross.png');
 
             &:hover {
                 border: 1px solid transparent;
@@ -171,7 +176,9 @@ body.background {
         }
 
         .semester-page-main-container {
-            margin: 20px 0;
+            $margin: 50px;
+            margin-top: $margin;
+            margin-left: $margin;
             position: relative;
             z-index: 2;
             width: 100%;
@@ -398,7 +405,7 @@ body.background {
         .semester-school-name {
             text-decoration: underline;
             text-decoration-style: wavy;
-            text-decoration-color: rgb(192, 82, 82);
+            text-decoration-color: rgb(232, 190, 190);
             text-decoration-thickness: 3px;
             text-underline-offset: 5px;
         }
@@ -478,6 +485,12 @@ body.background {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+
+                    background-repeat: no-repeat;
+                    background-size: 45%;
+                    background-position: center;
+                    background-image: url('../../img/background/grey-cross.png');
+
                     cursor: pointer;
                     transition: background-color 0.3s, border 0.3s;
                     border: 2px solid $leave-semester-subject-border-color;

@@ -187,5 +187,59 @@
         "icon" : "study.png",
         "white_icon" : "study-white.png",
         "subjects" : "s6.png"
+    },
+    {
+        "id" : 7,
+        "fr": {
+            "title" : "CPE : Semestre 1",
+            "description" : "Le **sixième et dernier semestre** du B.U.T a permis de conclure ces **3 années** de formation. J'ai pu apprendre les bases du Cloud Computing sur *AWS* et *Google Cloud Platform*. Des cours d'**entrepreunariat** ont également été donnés.",
+            "specialties" : []
+        }, 
+        "en": {
+            "title" : "BUT : Semester 1",
+            "description" : "The **sixth and final** semester of the Bachelor allowed to conclude these **3 years** of training. I was able to learn the basics of Cloud Computing on AWS and Google Cloud Platform. **Entrepreneurship** courses were also given.",
+            "specialties" : []
+        },
+        "es": {
+            "title" : "BUT : Semestre 1",
+            "description" : "El **sexto y último** semestre del Bachelor permitió concluir estos **3 años** de formación. Pude aprender los conceptos básicos de Cloud Computing en *AWS* y *Google Cloud Platform*. También se dieron cursos de **emprendimiento**.",
+            "specialties" : []
+        },
+        "starting_date" : "2024-01-X",
+        "ending_date" : "2025-01-X",
+        "school_name" : "IUT Lyon 1",
+        "school_location" : "Villeurbanne La Doua, 69100",
+        "school_address" : "80 Bd Niels Bohr",
+        "school_icon" : "lyon1.png",
+        "icon" : "gear.png",
+        "white_icon" : "gear-white.png",
+        "subjects" : "s6.png"
+    },
+    {
+        "id" : 8,
+        "fr": {
+            "title" : "CPE : Semestre 2",
+            "description" : "Le **sixième et dernier semestre** du B.U.T a permis de conclure ces **3 années** de formation. J'ai pu apprendre les bases du Cloud Computing sur *AWS* et *Google Cloud Platform*. Des cours d'**entrepreunariat** ont également été donnés.",
+            "specialties" : []
+        }, 
+        "en": {
+            "title" : "CPE : Semester 2",
+            "description" : "The **sixth and final** semester of the Bachelor allowed to conclude these **3 years** of training. I was able to learn the basics of Cloud Computing on AWS and Google Cloud Platform. **Entrepreneurship** courses were also given.",
+            "specialties" : []
+        },
+        "es": {
+            "title" : "CPE : Semestre 2",
+            "description" : "El **sexto y último** semestre del Bachelor permitió concluir estos **3 años** de formación. Pude aprender los conceptos básicos de Cloud Computing en *AWS* y *Google Cloud Platform*. También se dieron cursos de **emprendimiento**.",
+            "specialties" : []
+        },
+        "starting_date" : "2025-01-X",
+        "ending_date" : "2025-06-X",
+        "school_name" : "IUT Lyon 1",
+        "school_location" : "Villeurbanne La Doua, 69100",
+        "school_address" : "80 Bd Niels Bohr",
+        "school_icon" : "lyon1.png",
+        "icon" : "gear.png",
+        "white_icon" : "gear-white.png",
+        "subjects" : "s6.png"
     }
 ]

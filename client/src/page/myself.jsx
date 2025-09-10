@@ -15,7 +15,7 @@ import '../asset/css/media/myself/style.scss';
 
 import musicJson from '../asset/data/myself/music.json';
 
-import photoPerso from '../asset/img/myself/img.png';
+import photoPerso from "../asset/img/myself/crop.jpg";
 
 const Myself = () => {
 

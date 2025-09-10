@@ -198,15 +198,11 @@ const Index = () => {
                 </NavLink>
                 <ul className="footer-links">
                     <li title="Linked In">
-                        <a className="linkedin-link" href="https://www.linkedin.com/in/rayanemerlin/" target="_blank">
-                        </a>
-                    </li>
-                    <li title="School Gitlab">
-                        <a className="gitlab-link" href="https://forge.univ-lyon1.fr/p2103994" target="_blank">
+                        <a className="linkedin-link" href="https://www.linkedin.com/in/rayanemerlin/" target="_blank" rel="noreferrer">
                         </a>
                     </li>
                     <li title="Personal Github">
-                        <a className="github-link" href="https://github.com/rayaaaneee" target="_blank">
+                        <a className="github-link" href="https://github.com/rayaaaneee" target="_blank" rel="noreferrer">
                         </a>
                     </li>
                     <li title="Mail">

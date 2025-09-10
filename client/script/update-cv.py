@@ -4,10 +4,17 @@ pour afficher les informations du fichier CV_Rayane_Merlin.pdf dans la page prin
 import os
 import time
 import json
-from pypdfium2 import PdfDocument
+from pypdfium2 import PdfDocument, PdfPage
+from PIL import Image
+
+def clean_array(data: list[str]) -> list[str]:
+    return [x for x in data if x != '']
+
+def format_date(date: str) -> str:  
+    return date if len(date) == 2 else "0" + date
 
 # Fonction qui permet de convertir le mois en chiffre
-def getNumberOfMonths(month: str):
+def getMonthNumber(month: str):
     match(month):
         case "Jan":
             return "01"
@@ -33,6 +40,8 @@ def getNumberOfMonths(month: str):
             return "11"
         case "Dec":
             return "12"
+        case _:
+            return "null"
 
 # Fonction qui permet de recuperer les informations du fichier
 
@@ -40,11 +49,9 @@ def getNumberOfMonths(month: str):
 def getFileInformations(filename: str):
     path: str = "client/public/"
     date = time.ctime(os.path.getmtime(path + filename))
-    date = date.split(" ")
-    date = date[2] + " " + date[1] + " " + date[4]
-    date = date.split(" ")
-    date[1] = getNumberOfMonths(date[1])
-    date = date[0] + "/" + date[1] + "/" + date[2]
+    date = clean_array(date.split(" "))
+    date[1] = getMonthNumber(date[1])
+    date = format_date(date[2]) + "/" + date[1] + "/" + date[4]
 
     size = os.path.getsize(path + filename)
     size = size / 1024
@@ -56,10 +63,8 @@ def getFileInformations(filename: str):
 
     return date, size, type
 
-
 # Ouvrir un fichier en mode lecture ecriture
 name: str = None
-
 
 def write():
     with open("client/src/asset/data/home/cv-info.json", "w") as f:
@@ -87,13 +92,11 @@ def write():
 def export_cv_into_pdf():
     print("\nExporting curriculum vitae...")
     pdf = PdfDocument("client/public/CV.pdf")
-    page = pdf[0]
-    image = page.render(scale=4).to_pil()
-    image.save("client/src/asset/img/home/frame-cv/CV.png")
+    page: PdfPage = pdf.get_page(0)
+    pil_image: Image.Image = page.render(scale=4).to_pil()
+    pil_image.save("client/src/asset/img/home/frame-cv/CV.png")
     print("Successfully exported\n")
 
-
-# Fonction principale du programme
 if __name__ == "__main__":
     write()
     export_cv_into_pdf()

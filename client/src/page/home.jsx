@@ -143,6 +143,7 @@ const Home = () => {
     useEffect(() => {
       projectViewer = projectViewerContainerRef.current.querySelector('.project-viewer');
     });
+    
     const openProjectViewer = (link) => {
       setIsProjectViewerVisible(true);
       projectViewerContainerRef.current.classList.add('visible');
@@ -307,6 +308,7 @@ const Home = () => {
                   {/* Page des projets */}
                   <div ref={projectPageRef} className="project-page-container">
                       <div className="project-page-content" ref={projectPageContentRef} >
+                        <div className='background-project-page'></div>
                         <div className='parts'>
                           <div className="title-project-container">
                             <img alt='link-or-download' className="link-or-download" src={currentProject && (currentProject.isLink() ? darkLinkImg : darkDownloadImg) } draggable="false" />
@@ -407,7 +409,6 @@ const Home = () => {
                         <img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
                       </a>
                       <div title={ language.home.projects_frame.quit } className="quit-project-button" onClick={closeProjectPage}>
-                        <p>X</p>
                       </div>
                   </div>
               </article>
@@ -433,7 +434,6 @@ const Home = () => {
                           <div id="cross" title={ language.home.cv_frame.quit } onClick={() =>{
                             setCvContainerIsVisible(false);
                           }}>
-                            <p>x</p>
                           </div>
                           <div id="print" onClick={ handlePrintPdf }>
                             <img draggable="false" id="imgbutton" src={require('../asset/img/home/frame-cv/print.png')} />

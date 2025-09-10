@@ -7,6 +7,12 @@ body.home {
         height: 70px;
         z-index: 3;
         border: 1px solid rgba(221, 141, 141, 0.8);
+
+        background-repeat: no-repeat;
+        background-size: 40%;
+        background-position: center;
+        background-image: url('../../img/cross.png');
+        
         border-radius: 50%;
         font-size: 45px;
         cursor: pointer;
