@@ -67,6 +67,10 @@
         {
             "name": "Jest",
             "color": "#99425B"
+        },
+        {
+            "name": "SVG",
+            "color": "#FFB13B"
         }
     ]
 }

@@ -282,6 +282,35 @@
             "repository": "https://github.com/rayaaaneee/SpendLess",
             "documentation": null,
             "size": 39.92
+        },
+        {
+            "id": 12,
+            "title": "WorldMaster",
+            "icon": "worldmaster",
+            "project_desc": "gros caca",
+            "use_desc": "arrete detre une merde",
+            "is_link": true,
+            "link": "https://worldmaster.vercel.app/",
+            "is_download": true,
+            "file": "worldmaster.rar",
+            "image": null,
+            "date": "08-2025",
+            "languages": [
+                "HTML",
+                "ReactJS",
+                "SCSS",
+                "NextJS",
+                "NodeJS",
+                "SQL"
+            ],
+            "competences": [
+                "Git",
+                "Docker",
+                "SVG"
+            ],
+            "repository": "https://github.com/rayaaaneee/WorldMaster",
+            "documentation": null,
+            "size": null
         }
     ]
 }

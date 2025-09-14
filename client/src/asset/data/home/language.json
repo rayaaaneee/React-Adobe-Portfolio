@@ -143,6 +143,10 @@
         {
             "name" : "ASP.NET",
             "color" : "#f3f3f3"
+        },
+        {
+            "name" : "NextJS",
+            "color" : "#000000"
         }
     ]
 }

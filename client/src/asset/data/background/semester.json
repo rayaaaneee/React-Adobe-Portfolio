@@ -196,12 +196,12 @@
             "specialties" : []
         }, 
         "en": {
-            "title" : "BUT : Semester 1",
+            "title" : "CPE : Semester 1",
             "description" : "The **sixth and final** semester of the Bachelor allowed to conclude these **3 years** of training. I was able to learn the basics of Cloud Computing on AWS and Google Cloud Platform. **Entrepreneurship** courses were also given.",
             "specialties" : []
         },
         "es": {
-            "title" : "BUT : Semestre 1",
+            "title" : "CPE : Semestre 1",
             "description" : "El **sexto y último** semestre del Bachelor permitió concluir estos **3 años** de formación. Pude aprender los conceptos básicos de Cloud Computing en *AWS* y *Google Cloud Platform*. También se dieron cursos de **emprendimiento**.",
             "specialties" : []
         },
