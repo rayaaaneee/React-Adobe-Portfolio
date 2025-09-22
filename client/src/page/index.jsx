@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
 
@@ -10,52 +10,47 @@ import '../asset/css/media/index/style.scss';
 import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';
 
 import { ManageBody } from '../object/manage-body';
-import { ManageWebsiteLanguages } from '../object/manage-website-languages';
 
 import loaderContext from '../function/context/loader-context';
-import themeContext from '../function/context/theme-context';
 import languageContext from '../function/context/language-context';
+
+import { CredentialsButton } from './component/index/credentials-button';
+import { SelectLanguageButton } from './component/index/select-language-button';
+import { SwitchThemeButton } from './component/index/switch-theme-button copy';
 
 const Index = () => {
 
     const { setWasLoaderShowed } = useContext(loaderContext);
 
-    const { setIsDarkTheme } = useContext(themeContext);
-
-    const { language, setLanguage } = useContext(languageContext);
+    const { language } = useContext(languageContext);
 
     useEffect(() => (setWasLoaderShowed(false)));
 
-    const selectLanguageOptions = useRef(null);
-
     ManageBody.changeClass('index');
-
-    const setTheme = (isDarkTheme) => {
-        switch (isDarkTheme) {
-            case false:
-            default:
-                setIsDarkTheme(false);
-                break;
-            case true:
-                setIsDarkTheme(true);
-                break;
-        }
-    }
 
     useEffect(() => {
         document.title = language.index.title;
     });
 
     const textTab = language.index.description;
+    const shortedTextTab = language.index.shorted_description;
 
-    const [textTypeWriter] = useTypewriter({
-        words: textTab,
+    const template = {
         loop: true,
         typeSpeed: 100,
         deleteSpeed: 50,
+    }
+    const [textTypeWriter] = useTypewriter({
+        words: textTab,
+        ...template
     });
 
-    let [menuClass, setMenuClass] = useState(''); 
+    const [shortedTextTypeWriter] = useTypewriter({
+        words: shortedTextTab,
+        ...template
+    });
+
+    const [menuClass, setMenuClass] = useState(''); 
     const toggleMenuClass = () => {
         if (menuClass === '') {
             setMenuClass('active');
@@ -65,41 +60,11 @@ const Index = () => {
         toggleChecked();
     }
 
-    let [imgMenuClass, setImgMenuClass] = useState('dl-img');
-    let [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(false);
 
     const toggleChecked = () => {
         setChecked(!checked);
     }
-
-    const colorMenuImg = () => {
-        setImgMenuClass('dl-img-hover');
-    }
-
-    const uncolorMenuImg = () => {
-        setImgMenuClass('dl-img');
-    }
-
-    useEffect(() => {
-        const handleClick = (e) => {
-            if (
-                (selectLanguageOptions.current.classList.contains('active'))
-                && 
-                (selectLanguageOptions.current.closest(".select-language") !== e.target)
-                &&
-                (!(selectLanguageOptions.current.closest(".select-language").contains(e.target))) 
-            ) {
-                selectLanguageOptions.current.classList.remove('active');
-            }
-        };
-
-        window.addEventListener('click', handleClick);
-
-        // Nettoyer l'effet
-        return () => {
-            window.removeEventListener('click', handleClick);
-        };
-    }, []); 
 
     return (
         <>
@@ -117,38 +82,9 @@ const Index = () => {
                         <div className="logo">
                             <img src={ faviconDarkTheme } alt="logo" draggable="false" />
                         </div>
-                        <div className='select-language'>
-                            <div className='choice' onClick={ (e) => { selectLanguageOptions.current.classList.toggle("active")} }>
-                                <img src={ require('../asset/img/index/flags/' + language.flag_img) }></img>
-                                <p>{ language.denomination }</p>
-                                <svg
-                                  viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                  height="1em"
-                                  width="1em"
-                                >
-                                  <path d="M11.178 19.569a.998.998 0 001.644 0l9-13A.999.999 0 0021 5H3a1.002 1.002 0 00-.822 1.569l9 13z" />
-                                </svg>
-                                <div className="options-wrapper">
-                                    <div className='options' ref={ selectLanguageOptions }>
-                                    { ManageWebsiteLanguages.supportedLanguages.map(
-                                        ([name, json]) => {
-                                            return name !== language.current && 
-                                            (<div className='option' onClick={ (e) => {
-                                                ManageWebsiteLanguages.setLanguage(name);
-                                                setLanguage(json);
-                                            } }>
-                                                <img src={ require('../asset/img/index/flags/' + json.flag_img) }></img>
-                                                <p>{ json.denomination }</p>
-                                            </div>)
-                                        }) 
-                                    }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <SelectLanguageButton className={'one'} />
                     </div>
-                    <ul className={ `menu-links ${menuClass}` } style={{ pointerEvents: checked ? 'all' : 'none' }}>
+                    <ul className={ `menu-links ${menuClass} one` } style={{ pointerEvents: checked ? 'all' : 'none' }}>
                         <li>
                             <NavLink to={'/home'}>{ language.menu.home }</NavLink>
                         </li>
@@ -162,6 +98,25 @@ const Index = () => {
                             <NavLink to={'/contact'}>{ language.menu.contact }</NavLink>
                         </li>
                     </ul>
+                    <ul className={ `menu-links ${menuClass} two` } style={{ pointerEvents: checked ? 'all' : 'none' }}>
+                        <SelectLanguageButton className={'two loaded'} />
+                        <li>
+                            <NavLink to={'/home'}>{ language.menu.home }</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={'/background'}>{ language.menu.background }</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={'/myself'}>{ language.menu.myself }</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={'/contact'}>{ language.menu.contact }</NavLink>
+                        </li>
+                        <li>
+                            <CredentialsButton className={'two loaded'} />
+                        </li>
+                        <SwitchThemeButton className={"two loaded"}/>
+                    </ul>
                     <div className="hamburger-container" onClick={ toggleMenuClass }>
                         <input type="checkbox" id="hamburger-checkbox" checked={ checked } />
                         <div className="hamburger-bar top-bar"></div>
@@ -169,7 +124,7 @@ const Index = () => {
                         <div className="hamburger-bar bottom-bar"></div>
                     </div>
                 </nav>
-                <NavLink to={'/home'} className="get-start">{ language.index.discover }</NavLink>
+                <NavLink to={'/home'} className="get-start one">{ language.index.discover }</NavLink>
             </header>
             <main>
                 <div className="container">
@@ -177,25 +132,17 @@ const Index = () => {
                         <h1>Adobe Portfolio</h1>
                         <div className="main-bar"></div>
                         <div className="subtitle">
-                            <h2>{ textTypeWriter }</h2>{/*  Texte dynamique  */}
+                            <h2>{ shortedTextTypeWriter }</h2>{/*  Texte dynamique  */}
                             <div className="vertical-bar"></div>
                         </div>
                     </div>
+                    <NavLink to={'/home'} className="get-start two">{ language.index.discover }</NavLink>
                 </div>
             </main>
             <footer>
-                <div className="btn-switch-mode">
-                    <div className="media-dark-theme-form" onClick={ () => setTheme(true) }>
-                        <button className="dark-mode-button"/>
-                    </div>
-                    <div className="media-light-theme-form" onClick={ () => setTheme(false) }>
-                        <button className="dark-mode-button"/>
-                    </div>
-                </div>
+                <SwitchThemeButton className={"one"}/>
                 <div className="triangle border-triangle footer-triangle"></div>
-                <NavLink to={'/about'} className="about-page">
-                    <p>{ language.index.credentials }</p>
-                </NavLink>
+                <CredentialsButton className={'one'} />
                 <ul className="footer-links">
                     <li title="Linked In">
                         <a className="linkedin-link" href="https://www.linkedin.com/in/rayanemerlin/" target="_blank" rel="noreferrer">

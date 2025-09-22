@@ -31,9 +31,15 @@
         "discover": "Découvrir",
         "description": [
             "Rayane Merlin", 
-            "Développeur full-stack", 
+            "Développeur Full-Stack", 
             "Designer", 
             "Etudiant en IT (BAC +3)"
+        ],
+        "shorted_description": [
+            "Rayane Merlin",
+            "Dev Full-Stack",
+            "Designer",
+            "Étudiant IT"
         ],
         "credentials": "Crédits"
     },

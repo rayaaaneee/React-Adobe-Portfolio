@@ -7,6 +7,7 @@ import languageContext from "../../../function/context/language-context";
 export const Semester = forwardRef(({ semester, clickSemester, colorPoint, uncolorPoint, openSemesterPage }, ref) => {
 
     const { language } = useContext(languageContext);
+    
     return (
         <div className="semester animate" initial-x={ (Math.floor(Math.random() * 20) - 10) } ref={ ref } onMouseOver={ colorPoint } onClick={ () => { clickSemester(); openSemesterPage() } } onMouseOut={ uncolorPoint }>
             <div className="title-semester-container">

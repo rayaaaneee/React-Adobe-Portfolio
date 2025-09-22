@@ -1,121 +1,24 @@
-body.index {
-    @media screen and (max-width : 425px) and (min-width : 300px) {
-        .about-page {
-            display: none;
-        }
-        .footer-links a {
-            width: 11vw;
-            height: 11vw;
-        }
-        .logo  {
-            width: 115px;
-            top: 1vh;
-        }
-        .get-start {
-            top: 1vh;
-            right: 1vh;
-            width: 120px;
-            height: 45px;
-            font-size: 1em;
-        }
+@import '../../index/style.scss';
 
-        .container {
-            justify-content: unset;
-            margin-top: 25vh;
-            .title {
-                align-items: center;
-                justify-content: center;
-                * {
-                    text-align: center;
-                }
+$index-media-menu-margins: 2.5vh;
 
-                & > h1 {
-                    font-size: 17vw;
-                    height: fit-content;
-                }
-
-                & > .subtitle {
-                    justify-content: center;
-                    height: fit-content;
-                    column-gap: 2.5vw;
-
-                    $media-sutitle-bar-height: 13vw;
-
-                    h2 {
-                        font-size: $media-sutitle-bar-height;
-                    }
-
-                    .vertical-bar {
-                        width: 1vw;
-                        height: $media-sutitle-bar-height;
-                    }
-                }
-            }
-        }
-
-        .btn-switch-mode {
-            display: none;
-        }
-
-        .triangle-red {
-            border-left-width: 200px;
-            border-right-width: 200px;
-            border-bottom-width: 300px;
-        }
-
-        .triangle-orange {
-            border-left-width: 150px;
-            border-right-width: 150px;
-            border-bottom-width: 235px;
-        }
-
-        .triangle-yellow {
-            border-left-width: 90px;
-            border-right-width: 90px;
-            border-bottom-width: 135px;
-        }
-
-        .circle-one {
-            right: -50%;
-        }
-
-        .circle-two {
-            width: 90vw;
-            height: 90vw;
-            top: -25%;
-            left: -40%;
-        }
-
-        .header-triangle {
-            border-top-width: 30vw;
-        }
-
-        .footer-triangle {
-            border-bottom-width: 30vw;
-        }
-
-        .hamburger-container {
-            right: 210px;
-        }
-    
-        .hamburger-bar {
-            width: 50px;
-        }
-
-        .select-language {
-            display: none;
-        }
+body.index#dark {
+    .get-start {
+        background-color: rgb(75 62 77 / 68%);
     }
+}
+
+body.index {
     
-    @media screen and (max-aspect-ratio : 3/2) and (max-width : 1440px) and (min-width : 1024px) {
+    @media screen and (max-width : 1440px) {
     
         .media-menu {
             display: block;
         }
     
-        .basic-menu {
-            display: none;
-        }
+        // .basic-menu {
+        //     display: none;
+        // }
     
         .logo img {
             width: 100%;
@@ -139,25 +42,27 @@ body.index {
             right: 9.5vw;
             width: fit-content;
             height: 4.6vh;
+
+            .hamburger-bar {
+                width: 70px;
+                height: 0.7vh;
+            }
         }
     
-        .hamburger-container .hamburger-bar {
-            width: 70px;
-            height: 0.7vh;
-        }
     
         .container > .title > h1 {
             font-size: 13.5vw;
         }
     
+        .container > .title {
+            row-gap: 5vw;
+        }
+
         .subtitle {
             margin-top: 0;
             column-gap: 2vw;
         }
     
-        .container > .title {
-            row-gap: 5vw;
-        }
     
         .title > .main-bar {
             height: 15px;
@@ -196,94 +101,275 @@ body.index {
         }
     
         .about-page {
-            font-size: 3em;
+            font-size: 1.7em;
             bottom: 10vh;
             right: 6vw;
+
+            & > p::after {
+                height: 12px;
+            }
         }
     
-        .about-page > p::after {
-            height: 12px;
-        }
-    }
-    
-    @media screen and (max-width : 1024px) and (min-width : 769px) {
-        .get-start {
-            top: 2vw;
-            right: 2vw;
-        }
-        .footer-links a {
-            width: 8vw;
-            height: 8vw;
-        }
-        .about-page {
-            font-size: 2em;
-            bottom: 17vh;
-            right: 2vw;
-        }
-    }
-    
-    @media screen and (max-width : 768px) and (min-width : 600px) {
-    
-        .hamburger-container {
-            position: relative;
-            height: 8.5vh;
-            z-index: 5;
-        }
-    
-        .menu-links{
-            position: relative;
-            z-index: 4;
-        }
-    
-        .get-start {
-            top: 12vh;
-        }
-    
-        .hide-links {
-            width: 74%;
-            height: 140%;
-        }
-    
-        .footer-links a {
-            width: 7vw;
-            height: 7vw;
-        }
-    
-        .about-page {
-            font-size: 4vw;
-            bottom: 12vh;
-            right: 13vw;
-        }
-    
-        .about-page > p::after {
-            height: 10px;
-        }
-    
-        .vertical-bar {
-            width: 6px;
-        }
-    }
-    
-    @media screen and (max-width : 600px) and (min-width : 520px){
-        .hamburger-container {
-            height: 7.5vh;
-        }
-        .get-start {
-            width: 220px;
-            height: 90px;
-            font-size: 1.9em;
-        }
-        .about-page {
-            bottom: 9vh;
-        }
-    }
-    
-    @media screen and (max-width: 520px) and (min-width: 425px) {
-        .hamburger-container .hamburger-bar {
-            width: 90px;
-        }
-        .hamburger-container {
-            right: 11vw;
+        @media screen and (max-width : 1024px) {
+            .get-start {
+                top: 2vw;
+                right: 2vw;
+            }
+            .footer-links a {
+                width: 8vw;
+                height: 8vw;
+            }
+            .about-page {
+                font-size: 2em;
+                bottom: 17vh;
+                right: 2vw;
+            }
+        
+            @media screen and (max-width : 768px) {
+
+                .get-start {
+
+                    width: 200px;
+                    height: 80px;
+                    border-radius: 60px;
+                    font-size: 1.7em;
+                    top: 12vh;
+
+                    &.one {
+                        display: none !important;
+                    }
+
+                    &.two {
+                        display: block !important;
+                    }
+                }
+            
+                .hamburger-container {
+                    position: relative;
+                    height: 8.5vh;
+                    z-index: 5;
+                }
+            
+                .menu-links{
+
+                    &.one {
+                        display: none !important;
+                    }
+
+                    &.active.two {
+                        display: flex !important;
+
+                        * {
+                            animation: none 0s 0s forwards;
+                        }
+                    }
+
+                    position: relative;
+                    z-index: 4;
+                }
+
+                .select-language {
+                    &.one {
+                        display: none !important;
+                    }
+
+                    &.two {
+                        position: absolute;
+                        top: $index-media-menu-margins;
+                        left: $index-media-menu-margins;
+                    }
+                }
+            
+                .hide-links {
+                    width: 74%;
+                    height: 140%;
+                }
+            
+                .footer-links a {
+                    width: 7vw;
+                    height: 7vw;
+                }
+
+                .about-page {
+
+                    font-size: 3.5vw;
+
+                    &.one {
+                        display: none;
+                    }
+
+                    &.two {
+                        font-size: 1.35em;
+                    }
+
+                    & > p::after {
+                        height: 10px;
+                    }
+                }
+
+                .btn-switch-mode {
+                    &.one {
+                        display: none;
+                    }
+
+                    &.two {
+                        bottom: $index-media-menu-margins;
+                        left: $index-media-menu-margins;
+                    }
+                }
+            
+                .vertical-bar {
+                    width: 6px;
+                }
+            
+                @media screen and (max-width : 600px) {
+                    .hamburger-container {
+                        height: 7.5vh;
+                    }
+                    .about-page {
+                        &.one {
+                            bottom: 9vh;
+                        }
+                    }
+                    
+                    @media screen and (max-width: 520px){
+
+                        .hamburger-container .hamburger-bar {
+                            width: $hamburger-bar-width;
+                        }
+                        .hamburger-container {
+                            right: 11vw;
+                        }
+                    
+                        @media screen and (max-width : 425px) {
+                            
+                            .about-page {
+                                &.one {
+                                    display: none;
+                                }
+                            }
+
+                            .footer-links a {
+                                width: 15vw;
+                                height: 15vw;
+                            }
+                            .logo  {
+                                width: 115px;
+                                top: 1vh;
+                            }
+
+                            .subtitle {
+                                min-height: calc(1em * 2.5);
+                                height: fit-content;
+                                margin-bottom: 15px;
+                            }
+
+                            .hamburger-container {
+                                position: static !important;
+                                margin-right: calc(($hamburger-bar-width / 2));
+                            }
+
+                            .get-start {
+                                top: 1vh;
+                                right: 1vh;
+                                width: 120px;
+                                height: 45px;
+                                font-size: 1em;
+                                background-color: #c3703482;
+
+                                &.one {
+                                    display: none !important;
+                                }
+
+                                &.two {
+                                    display: flex !important;
+                                }
+                            }
+
+                            .container {
+                                justify-content: unset;
+                                margin-top: 25vh;
+                                .title {
+                                    align-items: center;
+                                    justify-content: center;
+                                    * {
+                                        text-align: center;
+                                    }
+
+                                    & > h1 {
+                                        font-size: 17vw;
+                                        height: fit-content;
+                                    }
+
+                                    & > .subtitle {
+                                        justify-content: center;
+                                        height: fit-content;
+                                        column-gap: 2.5vw;
+
+                                        $media-sutitle-bar-height: 13vw;
+
+                                        h2 {
+                                            font-size: $media-sutitle-bar-height;
+                                        }
+
+                                        .vertical-bar {
+                                            width: 1vw;
+                                            height: $media-sutitle-bar-height;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .triangle-red {
+                                border-left-width: 200px;
+                                border-right-width: 200px;
+                                border-bottom-width: 300px;
+                            }
+
+                            .triangle-orange {
+                                border-left-width: 150px;
+                                border-right-width: 150px;
+                                border-bottom-width: 235px;
+                            }
+
+                            .triangle-yellow {
+                                border-left-width: 90px;
+                                border-right-width: 90px;
+                                border-bottom-width: 135px;
+                            }
+
+                            .circle-one {
+                                right: -50%;
+                            }
+
+                            .circle-two {
+                                width: 90vw;
+                                height: 90vw;
+                                top: -25%;
+                                left: -40%;
+                            }
+
+                            .header-triangle {
+                                border-top-width: 30vw;
+                            }
+
+                            .footer-triangle {
+                                border-bottom-width: 30vw;
+                            }
+
+                            .hamburger-container {
+                                
+                                right: 210px;
+
+                                .hamburger-bar {
+                                    width: 50px;
+                                }
+                            }
+                        
+                        }
+                    }
+                }
+            }
         }
     }
 }

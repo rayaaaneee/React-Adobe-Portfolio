@@ -111,5 +111,19 @@ body.index#dark{
             }
         }
     }
+
+    .footer-links {
     
+        .github-link {
+
+            background-image: url(../../img/index/icon-github-white.png);
+
+            &:hover {
+                background-image: url(../../img/index/icon-github-white-hover.png);
+            }
+
+        }
+
+    }
+
 }

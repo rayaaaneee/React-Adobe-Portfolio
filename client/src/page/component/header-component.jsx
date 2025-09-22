@@ -51,9 +51,7 @@ const HeaderComponent = () => {
                     </div>
                 </ul>
                 <ul className="mediamenu">
-                    <NavLink to={"/"}>
-                        <div className="logo"></div>
-                    </NavLink>
+                    <NavLink className="mediasites" id="indexsite" to={"/"}></NavLink>
                     <NavLink className="mediasites" id="receptionsite" to={"/home"}></NavLink>
                     <NavLink className="mediasites" id="backgroundsite" to={"/background"}></NavLink>
                     <NavLink className="mediasites" id="personalsite" to={"/myself"}></NavLink>

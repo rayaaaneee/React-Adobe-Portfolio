@@ -189,8 +189,7 @@ const Background = () => {
                                 clickSemester={ () => (onclickSemester(i)) } 
                                 colorPoint={ () => colorPointAssociateToSemester(i) } 
                                 uncolorPoint={ () => uncolorPointAssociateToSemester(i) } 
-                                openSemesterPage={ (e) => (openSemesterPage(semester)) 
-                                } />
+                                openSemesterPage={ (_) => (openSemesterPage(semester)) } />
                             );
                         }) }
                     </div>

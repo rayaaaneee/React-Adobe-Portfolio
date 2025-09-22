@@ -92,8 +92,20 @@ body.contact {
                     justify-content: center;
                 }
     
-                #pres {
-                    width: var(--width-main-components);
+                #contactPage {
+                    display: flex !important;
+                    row-gap: 0;
+                    #pres {
+                        display: none !important;
+                    }
+                    .form-container {
+                        .formulaire {
+                            padding: 20px;
+                            form#sendMessageForm {
+                                width: 85vw;
+                            }
+                        }
+                    }
                 }
                 #hasSend img{
                     width: 40px;

@@ -36,6 +36,12 @@
             "Diseñador",
             "Estudiante de IT (BAC +3)"
         ],
+        "shorted_description": [
+            "Rayane Merlin",
+            "Dev Full-Stack",
+            "Diseñador",
+            "Estudiante IT"
+        ],
         "credentials": "Credenciales"
     },
     "home": {
