@@ -42,10 +42,10 @@ const Loader = () => {
     //Balise texte à modifier
     const [textIndex, setTextIndex] = useState(0);
 
-    const maxTime = 2300;
+    const maxTime = 1000000000;
     const timeToAppearTexts = 200;
 
-
+    // Autres paramètres
     const textDuration = parseInt((maxTime + timeToAppearTexts) / ( texts.length ));
 
     const [containerIsVisible, setContainerIsVisible] = useState(false);
@@ -55,6 +55,7 @@ const Loader = () => {
     const [isBackgroundVisible, setIsBackgroundVisible] = useState(true);
 
     const imagesToLoad = useRef([]);
+
     useEffect(() => {
 
         animateImageLoading(imagesToLoad.current);
@@ -134,9 +135,9 @@ const Loader = () => {
     return (
         <>
             { isLoading ? (
-                <main id='loaderContainer' style={{ zIndex: containerIsVisible ? "10000" : "-1" }}>
+                <main id='mainLoaderContainer' style={{ zIndex: containerIsVisible ? "10000" : "-1" }}>
                     <div id="background" className={ isBackgroundVisible ? 'visible' : '' }></div>
-                    <div id="container" className={ containerIsVisible ? 'visible' : 'hidden' } onMouseOver={ changeCursor } onMouseOut={ unchangeCursor }>
+                    <div id="mainContainer" className={ containerIsVisible ? 'visible' : 'hidden' } onMouseOver={ changeCursor } onMouseOut={ unchangeCursor }>
                         <div id="left">
                             <div id="title">
                                 <img draggable="false" src={ theme } ref={ (img) => ( imagesToLoad.current.push(img) ) } alt="PortFolio" />

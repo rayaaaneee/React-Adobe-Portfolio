@@ -13,9 +13,7 @@ const HeaderComponent = () => {
 
     const { isDarkTheme, setIsDarkTheme } = useContext(themeContext);
 
-    const changeTheme = () => {
-        setIsDarkTheme(!isDarkTheme);
-    }
+    const changeTheme = () => (setIsDarkTheme(!isDarkTheme));
 
     const { language } = useContext(languageContext);
 

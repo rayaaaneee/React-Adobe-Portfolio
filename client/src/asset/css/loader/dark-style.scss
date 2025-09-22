@@ -1,6 +1,6 @@
 @import '../vars.scss';
 
-body#dark #loaderContainer {
+body#dark #mainLoaderContainer {
     * {
         color: white !important;
     }
@@ -9,7 +9,7 @@ body#dark #loaderContainer {
         background-color: $start-background-color-dark;
     }
     
-    #container {
+    #mainContainer {
         background-color: $loader-background-color-dark;
         box-shadow: $loader-box-shadow-dark;
     }

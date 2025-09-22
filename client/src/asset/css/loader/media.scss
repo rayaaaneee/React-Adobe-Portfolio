@@ -1,27 +1,27 @@
 @media screen and (max-aspect-ratio : 3/2) and (max-width : 1024px) {
     /* On desactive le logo de base pour en placer un deuxieme en bas */
-    #loaderContainer{
+    #mainLoaderContainer{
+
         #logo{
             display : none;
         }
     
         /* On redispose le container */
-        #container{
+        #mainContainer{
             display : flex;
             flex-direction: column;
             justify-content: space-evenly;
-            width: 80vw;
+            width: 85vw;
             height: 90vh;
         }
     
         /* On place les logo Creative Cloud et son texte */
         #logomedia{
             display: flex;
-            align-self: flex-start;
             margin-left: 5vw;
             align-items: center;
             flex-direction: row;
-            column-gap: 1vw ;
+            column-gap: 1vw;
         }
     
         /* On display flex la partie basse et on centre */
