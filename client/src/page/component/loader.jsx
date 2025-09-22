@@ -42,7 +42,7 @@ const Loader = () => {
     //Balise texte à modifier
     const [textIndex, setTextIndex] = useState(0);
 
-    const maxTime = 1000000000;
+    const maxTime = 2300;
     const timeToAppearTexts = 200;
 
     // Autres paramètres
