@@ -1,16 +1,64 @@
 body:not(.index) {
-    @media screen and (max-width: 1100px) {
-        #background3 {
-            bottom: 0vh;
+    @media screen and (max-width: 1250px) {
+
+        #background1 {
+
         }
 
-        @media screen and (max-width: 769px) {
-            #background3 {
-                bottom: -7vh;
+        #background2 {
+
+        }
+        
+        #background3 {
+            top: -6vh;
+        }
+
+        @media screen and (max-width: 1024px) {
+
+            #background1 {
+
             }
-            @media screen and (max-width: 769px) {
+        
+            #background2 {
+                
+            }
+
+            #background3 {
+                top: 0;
+            }
+
+            @media screen and (max-width: 768px) {
+
+                #background1 {
+                    background-image: url(../../../img/backgrounds/background1-reduced.png);
+                    bottom: -20;
+
+                }
+            
+                #background2 {
+                    background-image: url(../../../img/backgrounds/background2-reduced.png);
+                    bottom: -40vh;
+
+                }
+
                 #background3 {
-                    bottom: -4vh;
+                    background-image: url(../../../img/backgrounds/background3-reduced.png);
+                    top: -6vh;
+                }
+            
+                @media screen and (max-width: 425px) {
+
+                    #background1 {
+                        bottom: -20vh;
+                    }
+
+                    #background2 {
+                        bottom: -30vh;
+                    }
+                    
+                    #background3 {
+                        top: 0;
+                    }
                 }
             }
         }

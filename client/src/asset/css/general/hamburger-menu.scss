@@ -7,6 +7,10 @@ $hamburger-bar-height: 5px;
     &.black {
         .hamburger-bar {
             background-color: rgb(59 59 59);
+            
+            &:hover {
+                background-color: #e3d2d2;
+            }
         }
     }
 
@@ -37,6 +41,7 @@ $hamburger-bar-height: 5px;
                 bottom: auto;
             }
             &.middle-bar {
+                width: 60px;
                 opacity: 0;
             }
             &.bottom-bar {
@@ -63,6 +68,10 @@ $hamburger-bar-height: 5px;
 
         &.bottom-bar {
             top: 10px;
+        }
+
+        &:hover {
+            //background-color: #e3d2d2;
         }
 
     }

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
 
@@ -7,12 +7,11 @@ import '../asset/css/index/dark-style.scss';
 import '../asset/css/index/style.scss';
 import '../asset/css/media/index/style.scss';
 
-import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';
-
 import { ManageBody } from '../object/manage-body';
 
 import loaderContext from '../function/context/loader-context';
 import languageContext from '../function/context/language-context';
+import { Logo, LogoColors } from './component/logo';
 
 const Index = () => {
 
@@ -48,7 +47,7 @@ const Index = () => {
 
     return (
         <>
-            <header>
+            <main>
                 <div className="triangle border-triangle header-triangle"></div>
                 <div className="background-container">
                     <div className="triangle triangle-red"></div>
@@ -57,16 +56,10 @@ const Index = () => {
                     <div className="circle circle-one"></div>
                     <div className="circle circle-two"></div>
                 </div>
-                <nav className="menu basic-menu">
                     <div className='left-top-angular'>
-                        <div className="logo">
-                            <img src={ faviconDarkTheme } alt="logo" draggable="false" />
-                        </div>
+                        <Logo color={LogoColors.white} className={"index-logo"}/>
                     </div>
-                </nav>
                 <NavLink to={'/home'} className="get-start one">{ language.index.discover }</NavLink>
-            </header>
-            <main>
                 <div className="container">
                     <div className="title">
                         <h1>Adobe Portfolio</h1>

@@ -48,17 +48,19 @@ export const SelectLanguageButton = ({ className = null }) => {
                 </svg>
                 <div className="options-wrapper">
                     <div className='options' ref={ selectLanguageOptions }>
-                    { ManageWebsiteLanguages.supportedLanguages.map(
-                        ([name, json]) => {
-                            return name !== language.current && 
-                            (<div className='option' onClick={ (_) => {
-                                ManageWebsiteLanguages.setLanguage(name);
-                                setLanguage(json);
-                            } }>
-                                <img alt={`${name}-flag`} src={ require('../../../asset/img/index/flags/' + json.flag_img) }></img>
-                                <p>{ json.denomination }</p>
-                            </div>)
-                        }) 
+                    { ManageWebsiteLanguages.supportedLanguages
+                        .filter(([name]) => name !== language.current)
+                        .map(
+                            ([name, json]) => {
+                                return name !== language.current && 
+                                (<div className='option' onClick={ (_) => {
+                                    ManageWebsiteLanguages.setLanguage(name);
+                                    setLanguage(json);
+                                } }>
+                                    <img alt={`${name}-flag`} src={ require('../../../asset/img/index/flags/' + json.flag_img) }></img>
+                                    <p>{ json.denomination }</p>
+                                </div>)
+                            }) 
                     }
                     </div>
                 </div>

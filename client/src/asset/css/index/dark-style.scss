@@ -44,8 +44,16 @@ body.index#dark{
         background-image: url(../../img/index/download-pink.png);
     }
 
-    .container > .title > h1 {
-        color: #fbe9e9;
+    .container  {
+        & > .title {
+            & > h1 {
+                color: #fbe9e9;
+            }
+
+            & > .main-bar {
+                background-color: #ffffff;
+            }
+        }
     }
 
     .vertical-bar {

@@ -4,50 +4,56 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  	* {
+		box-shadow: none !important;
+  	}
+}
+
 body:not(.index) {
 
   overflow-y: auto;
 
   & {
-      background: $body-background-color;
-      padding:0;
-      margin:0;
+	  background: $body-background-color;
+	  padding:0;
+	  margin:0;
   }
 
   /* Personnalisation du titre de page*/
   .title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    font-weight: $title-font-weight;
-    letter-spacing: 1px;
-    margin: 0 auto;
-    
-    p {
-      color: $title-color;
-    }
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 40px;
+	font-weight: $title-font-weight;
+	letter-spacing: 1px;
+	margin: 0 auto;
+	
+	p {
+	  color: $title-color;
+	}
   }
 
   * {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   h1 {
-      text-align: center;
+	  text-align: center;
   }
 
   h3 {
-      text-align: center;
+	  text-align: center;
   }
 
   li {
-      list-style: none;
+	  list-style: none;
   }
 
   label{
-      margin-bottom: 10px;
+	  margin-bottom: 10px;
   }
 
   a:link { color: unset }          /* Liens non visités */
@@ -57,38 +63,38 @@ body:not(.index) {
   /* Couleur de la selection */
 
   & * {
-    &::selection, &::-moz-selection {
-      color: $selection-color;
-      background-color: $selection-background-color;
-    }
+	&::selection, &::-moz-selection {
+	  color: $selection-color;
+	  background-color: $selection-background-color;
+	}
   }
 
 
   &#dark {
   
-    .title {
-      p {
-        color : $title-color-dark;
-      }
-    } 
+	.title {
+	  p {
+		color : $title-color-dark;
+	  }
+	} 
 
-    & * {
-      color: white;
-    }
+	& * {
+	  color: white;
+	}
 
-    & {
-      background : $body-background-color-dark;
-    }
+	& {
+	  background : $body-background-color-dark;
+	}
 
-    & *::-moz-selection {
-      color: $selection-color-dark;
-      background-color: $selection-background-color-dark;
-    }
+	& *::-moz-selection {
+	  color: $selection-color-dark;
+	  background-color: $selection-background-color-dark;
+	}
 
-    & *::selection {
-      color: $selection-color-dark;
-      background-color: $selection-background-color-dark;
-    }
+	& *::selection {
+	  color: $selection-color-dark;
+	  background-color: $selection-background-color-dark;
+	}
 
   }
 

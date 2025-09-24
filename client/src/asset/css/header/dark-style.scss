@@ -1,8 +1,8 @@
 @import '../vars.scss';
 
-body#dark {
+body {
 
-    &:not(.index) {
+    &#dark {
         .menu {
             background-color: $components-background-color-dark;
             box-shadow: $components-box-shadow-dark;

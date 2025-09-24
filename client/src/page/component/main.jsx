@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import { useLocation } from "react-router-dom";
 
-import FooterComponent from "./footer-component";
+import Backgrounds from "./backgrounds";
 import HeaderComponent from "./header-component";
-
 import Loader from "./loader";
 
 import loaderContext from "../../function/context/loader-context";
@@ -17,7 +16,6 @@ import "../../asset/css/general/presets-animation.scss";
 import "../../asset/css/general/scrollbar.scss";
 import "../../asset/css/media/general/background.scss";
 
-import Backgrounds from "./backgrounds";
 
 const Main = ({ children }) => {
 
@@ -32,22 +30,16 @@ const Main = ({ children }) => {
 
   	return (
     	<>
-    	  	{isRootPage ? (
-    	  	  	<>{children}</>
-    	  	) : (
-    	  	  	<>
-    	  	  	  	{!wasLoaderShowed && (
-    	  	  	  	  	<>
-    	  	  	  	  	  	<Loader />
-    	  	  	  	  	</>
-    	  	  	  	)}
-    	  	  	  	<HeaderComponent />
-    	  	  	  	<Backgrounds />
-    	  	  	  	<div id="pageContent">
-    	  	  	    	{ children }
-    	  	  	  	</div>
-    	  	  	</>
-    	  	)}
+    	  	<HeaderComponent showLogo={ !isRootPage } />
+    	  	{ (!isRootPage && !wasLoaderShowed) && (
+    	  	  	<Loader />
+    	  	) }
+			{ !isRootPage && (
+    	  		<Backgrounds />
+			) }
+    	  	<div id="pageContent">
+    	  		{ children }
+    	  	</div>
     	</>
   	);
 };

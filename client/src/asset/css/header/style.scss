@@ -2,121 +2,102 @@
 
 body {
 
-    &:not(.index) {
-    
-        /*  Ecart du debut de page avec le menu */
-        body {
-            overflow-x : hidden;
-        }
-    
-        /* Mettre droit l'image du menu */
-        .logo {
-            position: absolute;
-            max-width: 60px;
-            left: 1%;
-            width: 50px;
-            height: 50px;
-            background-image: url(../../img/favicon/favicon-light-theme.png);
-            background-size: 100%;
-            background-repeat: no-repeat;
-            background-position: center;
+    /*  Ecart du debut de page avec le menu */
+    & {
+        overflow-x : hidden;
+    }
 
-            &.black {
-                background-image: url(../../img/favicon/favicon-black.png);
-            }
-        }
-    
-        /* Mettre le titre assez bas pour qu'on puisse le voir */
-        .t1 {
-            padding-top: 70px;
-        }
-    
-        .header-media-menu {
+    /* Mettre droit l'image du menu */
+    .logo.menu-logo {
+        position: absolute;
+        max-width: 60px;
+        left: 1%;
+        width: 50px;
+        height: 50px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
 
-            display: flex;
-            cursor: pointer;
-            position: fixed;
-            list-style-type: none;
-            margin: 0;
-            top: 0;
-            right: 0;
+    /* Mettre le titre assez bas pour qu'on puisse le voir */
+    .t1 {
+        padding-top: 70px;
+    }
+
+    .header-media-menu {
+
+        display: flex;
+        cursor: pointer;
+        position: fixed;
+        list-style-type: none;
+        margin: 0;
+        top: 0;
+        right: 0;
+        width: 60px;
+        height: 60px;
+        background-color: rgb(255 235 205 / 60%);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(15px);
+        padding: 25px;
+        border-radius: 50%;
+        translate: 17% -20%;
+        z-index: 2;
+        $transition-duration: 0.6s;
+        $transition-type: cubic-bezier(0.77, 0, 0.175, 1);
+        $transition-mode: $transition-duration $transition-type;
+        transition: width $transition-mode, height $transition-mode, translate $transition-mode, border-radius $transition-mode, padding $transition-mode, background-color $transition-mode;
+        flex-direction: column;
+        row-gap: 3vh;
+        align-items: center;
+        justify-content: center;
+        $corner-space: 25px;
+
+        .footer-menu {
+        }
+
+        .logo.menu-logo {
             width: 60px;
             height: 60px;
-            background-color: rgb(255 235 205 / 60%);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(15px);
-            padding: 25px;
-            border-radius: 50%;
-            translate: 20% -20%;
-            z-index: 2;
-
-            $transition-duration: 0.6s;
-            $transition-type: cubic-bezier(0.77, 0, 0.175, 1);
-            $transition-mode: $transition-duration $transition-type;
-
-            transition: width $transition-mode, height $transition-mode, translate $transition-mode, border-radius $transition-mode, padding $transition-mode, background-color $transition-mode;
-            flex-direction: column;
-            row-gap: 3vh;
-            align-items: center;
-            justify-content: center;
-
-            $corner-space: 25px;
-
-            .footer-menu {
-
-            }
-
-            .logo {
-                width: 60px;
-                height: 60px;
-                bottom: $corner-space;
+            bottom: $corner-space;
+            left: $corner-space;
+        }
+        .select-language {
+            &.onmenu {
+                position: absolute;
+                top: $corner-space;
                 left: $corner-space;
             }
-
-            .select-language {
-                &.onmenu {
-                    position: absolute;
-                    top: $corner-space;
-                    left: $corner-space;
-                }
+        }
+        
+        li {
+            & > a {
+                text-decoration: none;
             }
-            
-            li {
-                & > a {
-                    text-decoration: none;
-                }
-            }
-
+        }
+        * {
+            pointer-events: none;
+            transition: opacity calc($transition-duration/1.4) $transition-type;
+            opacity: 0;
+        }
+        
+        &.active {
+            width: 450px;
+            height: 100vh;
+            translate: 0;
+            border-radius: 0;
+            padding: 0;
+            cursor: unset;
             * {
-                pointer-events: none;
-                transition: opacity calc($transition-duration/2) $transition-type;
-                opacity: 0;
+                opacity: 1;
+                pointer-events: all;
             }
-            
-            &.active {
-                width: 450px;
-                height: 100vh;
-                translate: 0;
-                border-radius: 0;
-                padding: 0;
-                cursor: unset;
-
-                * {
-                    opacity: 1;
-                    pointer-events: all;
-                }
-            }
-
         }
-
-        div.hamburger-container {
-            display: flex;
-            position: fixed;
-            top: 22px;
-            right: 10px;
-            height: fit-content;
-            z-index: 2;
-        }
-
+    }
+    div.hamburger-container {
+        display: flex;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
     }
 }

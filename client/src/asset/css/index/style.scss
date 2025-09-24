@@ -171,20 +171,6 @@ body.index {
 
     /* CSS DU MENU */
 
-    .menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: fit-content;
-        padding: 12px 0;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        margin-right: 5vw;
-    }
-
     .get-start {
         
         width: 140px;
@@ -204,7 +190,7 @@ body.index {
         &.one {
             position: absolute;
             z-index: 1;
-            right: 1.5vw;
+            right: 110px;
             top: 10px;
             display: flex;
         }
@@ -233,12 +219,9 @@ body.index {
         justify-content: center;
         margin-left: 10px;
 
-        .logo {
+        .logo.index-logo {
             width: 70px;
-
-            img {
-                width: 80%;
-            }
+            height: 70px;
         }
     }
 
@@ -264,9 +247,9 @@ body.index {
 
             & > .main-bar {
                 width: 70%;
-                height: 8px;
+                height: 12px;
                 border-radius: 10px;
-                background-color: #fff;
+                background-color: blanchedalmond;
                 box-shadow: 0 0 2.15rem #000000e9;
                 z-index: 0;
             }

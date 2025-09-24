@@ -30,25 +30,15 @@ const HeaderComponent = () => {
 
     useEffect(() => {
 
-        
-        let listButtons = mediaMenu.current && mediaMenu.current.querySelectorAll('li');
         let checkbox = hamburgerMenu.current && hamburgerMenu.current.querySelector("input[type='checkbox']");
-        
-        const onClick = (_) => {
-            checkbox?.click();
-        }
 
         const onClickMenu = (e) => {
             if (!e.currentTarget.classList.contains("active")) {
-                onClick(e);
+                checkbox?.click();
             }
         }
 
         mediaMenu.current?.addEventListener('click', onClickMenu);
-
-        listButtons?.forEach(el => {
-            el.addEventListener('click', onClick);
-        });
 
         const clickOutsideMenu = (e) => {
             if (mediaMenu.current?.classList.contains("active") && !e.target.closest('#menu-container')) {
@@ -63,9 +53,6 @@ const HeaderComponent = () => {
 
             mediaMenu.current?.removeEventListener('click', onClickMenu);
 
-            listButtons?.forEach(el => {
-                el.removeEventListener('click', onClick);
-            });
         };
         
     }, []);

@@ -16,10 +16,6 @@ body.index {
             display: block;
         }
     
-        .logo img {
-            width: 100%;
-        }
-    
         .footer-links a  {
             width: 10vw;
             height: 10vw;
@@ -57,7 +53,7 @@ body.index {
             font-size: 8vw;
         }
     
-        .logo {
+        .logo.index-logo {
             left: 3vw;
             top: 3vw;
         }
@@ -66,15 +62,7 @@ body.index {
             width: 12px;
             height: 9vw;
         }
-    
-        .menu-links {
-            width: 100vw;
-        }
-    
-        .menu li a {
-            font-size: 1.7em;
-        }
-    
+
         .download-img {
             width: 3.5vw;
             height: 3.5vw;
@@ -164,7 +152,7 @@ body.index {
                                 width: 15vw;
                                 height: 15vw;
                             }
-                            .logo  {
+                            .logo.index-logo {
                                 width: 115px;
                                 top: 1vh;
                             }
