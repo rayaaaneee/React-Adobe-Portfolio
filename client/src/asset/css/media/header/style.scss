@@ -1,11 +1,13 @@
 body {
 
     @media (max-width: 768px) {
+        
+        // Eviter le scroll non voulu sur téléphone quand le menu est ouvert
 
-        .menu{
-            display: none;
+        &.full-menu-active {
+            overflow: hidden !important;
         }
-
+        
         // .mediamenu{
         //     list-style-type : none;
         //     display: flex;
@@ -69,51 +71,51 @@ body {
 
         &#dark {
 
-            & .mediamenu {
-                background-color: rgba(0, 0, 0, 0.9);
-                backdrop-filter: blur(5px);
-                box-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
-            }
+            // & .mediamenu {
+            //     background-color: rgba(0, 0, 0, 0.9);
+            //     backdrop-filter: blur(5px);
+            //     box-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
+            // }
     
-            /* Images du menu en dark */
-            & .mediamenu {
+            // /* Images du menu en dark */
+            // & .mediamenu {
 
-                & > #indexsite{
-                    background-image: url(../../../img/favicon/favicon-dark-theme.png) !important;
-                }
+            //     & > #indexsite{
+            //         background-image: url(../../../img/favicon/favicon-dark-theme.png) !important;
+            //     }
                 
-                & > #receptionsite{
-                    background-image: url(../../../img/header/dark-theme/reception_logo.png) !important;
-                }
+            //     & > #receptionsite{
+            //         background-image: url(../../../img/header/dark-theme/reception_logo.png) !important;
+            //     }
         
-                & > #receptionsite:hover{
-                    background-image: url(../../../img/header/dark-theme/reception_logo_hover.png) !important;
-                }
+            //     & > #receptionsite:hover{
+            //         background-image: url(../../../img/header/dark-theme/reception_logo_hover.png) !important;
+            //     }
         
-                & > #contactsite{
-                    background-image: url(../../../img/header/dark-theme/contact_logo.png) !important;
-                }
+            //     & > #contactsite{
+            //         background-image: url(../../../img/header/dark-theme/contact_logo.png) !important;
+            //     }
         
-                & > #contactsite:hover{
-                    background-image: url(../../../img/header/dark-theme/contact_logo_hover.png) !important;
-                }
+            //     & > #contactsite:hover{
+            //         background-image: url(../../../img/header/dark-theme/contact_logo_hover.png) !important;
+            //     }
         
-                & > #personalsite {
-                    background-image: url(../../../img/header/dark-theme/personal_logo.png) !important;
-                }
+            //     & > #personalsite {
+            //         background-image: url(../../../img/header/dark-theme/personal_logo.png) !important;
+            //     }
         
-                & > #personalsite:hover {
-                    background-image: url(../../../img/header/dark-theme/personal_logo_hover.png) !important;
-                }
+            //     & > #personalsite:hover {
+            //         background-image: url(../../../img/header/dark-theme/personal_logo_hover.png) !important;
+            //     }
         
-                & > #backgroundsite {
-                    background-image: url(../../../img/header/dark-theme/cv_logo.png) !important;
-                }
+            //     & > #backgroundsite {
+            //         background-image: url(../../../img/header/dark-theme/cv_logo.png) !important;
+            //     }
         
-                & > #backgroundsite:hover {
-                    background-image: url(../../../img/header/dark-theme/cv_logo_hover.png) !important;
-                }
-            } 
+            //     & > #backgroundsite:hover {
+            //         background-image: url(../../../img/header/dark-theme/cv_logo_hover.png) !important;
+            //     }
+            // } 
         }
 
         .media-theme-form {

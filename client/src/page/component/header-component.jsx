@@ -42,6 +42,14 @@ const HeaderComponent = ({ showLogo = true }) => {
 
         let checkbox = hamburgerMenu.current && hamburgerMenu.current.querySelector("input[type='checkbox']");
 
+        const onClosing = (e) => {
+            
+        }
+
+        const onOpening = (e) => {
+            
+        }
+
         const onClickMenu = (e) => {
             if (!e.currentTarget.classList.contains("active")) {
                 checkbox?.click();
@@ -53,6 +61,16 @@ const HeaderComponent = ({ showLogo = true }) => {
                 checkbox?.click();
             }
         }
+
+        const observer = new MutationObserver(() => {
+            if (mediaMenu.current && mediaMenu.current.classList.contains("active")) {
+                document.body.classList.add("full-menu-active");
+            } else {
+                document.body.classList.remove("full-menu-active");
+            }
+        });
+
+        observer.observe(mediaMenu.current, { attributes: true, attributeFilter: ['class'] });
 
         mediaMenu.current?.addEventListener('click', onClickMenu);
 
