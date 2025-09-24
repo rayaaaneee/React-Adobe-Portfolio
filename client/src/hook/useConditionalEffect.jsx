@@ -5,10 +5,10 @@ import { useEffect, useRef } from "react";
 export const useConditionalEffect = (effect, deps) => {
     const isMounted = useRef(false);
     useEffect(() => {
-      if (isMounted.current) {
-        return effect();
-      } else {
-        isMounted.current = true;
-      }
+      	if (isMounted.current) {
+      	  return effect();
+      	} else {
+      	  isMounted.current = true;
+      	}
     }, deps);
   }

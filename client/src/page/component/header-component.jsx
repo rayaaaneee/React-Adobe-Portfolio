@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import '../../asset/css/header/style.scss';
 import '../../asset/css/header/dark-style.scss';
@@ -11,10 +11,14 @@ import { SwitchThemeButton } from './index/switch-theme-button';
 import { HamburgerMenu } from './hamburger-menu';
 import { MenuLink } from './menu-link';
 import { SelectLanguageButton } from './index/select-language-button';
+import { Logo, LogoColors } from './logo';
+import { useConditionalEffect } from '../../hook/useConditionalEffect';
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ showLogo = true }) => {
 
     const { language } = useContext(languageContext);
+
+    const location = useLocation();
 
     const hamburgerMenu = useRef(null);
     const mediaMenu = useRef(null);
@@ -28,6 +32,12 @@ const HeaderComponent = () => {
         {to: '/about', text: language.index.credentials, isColored: true }
     ]
 
+    // Close menu when changing page
+    useConditionalEffect(() => {
+        (hamburgerMenu.current) && hamburgerMenu.current.querySelector("input[type='checkbox']")?.click();
+    }, [location.pathname]);
+
+    // Handle menu logic
     useEffect(() => {
 
         let checkbox = hamburgerMenu.current && hamburgerMenu.current.querySelector("input[type='checkbox']");
@@ -37,39 +47,42 @@ const HeaderComponent = () => {
                 checkbox?.click();
             }
         }
-
-        mediaMenu.current?.addEventListener('click', onClickMenu);
-
+        
         const clickOutsideMenu = (e) => {
             if (mediaMenu.current?.classList.contains("active") && !e.target.closest('#menu-container')) {
                 checkbox?.click();
             }
         }
 
+        mediaMenu.current?.addEventListener('click', onClickMenu);
+
         window.addEventListener('click', clickOutsideMenu);
 
         return () => {
             window.removeEventListener('click', clickOutsideMenu);
-
             mediaMenu.current?.removeEventListener('click', onClickMenu);
-
         };
         
     }, []);
+
 
     return (
         <header>
             <nav id="menu-container">
                 <ul className={"header-media-menu"} ref={ mediaMenu }>
                     <SelectLanguageButton className={"onmenu"} />
-                    <NavLink to={'/'} className='logo black'></NavLink>
+                    { showLogo && ( 
+                        <NavLink to={'/'}>
+                            <Logo color={LogoColors.black} className="menu-logo" />
+                        </NavLink>
+                    ) }
                     { links.map((link) => (
                         <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ link.text }</MenuLink>
                     )) }
                     <SwitchThemeButton pinkMoon whiteIcons/>
                     <div className='menu-footer'></div>
                 </ul>
-                <HamburgerMenu ref={hamburgerMenu} black menuElements={[mediaMenu.current]}/>
+                <HamburgerMenu ref={hamburgerMenu} black menuElement={mediaMenu.current}/>
             </nav>
         </header>
     );
