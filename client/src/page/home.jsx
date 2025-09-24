@@ -45,6 +45,7 @@ import descriptionIcon from '../asset/img/home/icon/desc-icon-pink.png';
 import useDescriptionIcon from '../asset/img/home/icon/use-desc-icon-pink.png';
 import whiteMemoryIcon from '../asset/img/home/icon/white-memory-icon.png';
 import anchorLink from '../asset/img/home/icon/anchor-link.png';
+import githubIcon from '../asset/img/home/icon/github-pink.png';
 
 import cvImg from '../asset/img/home/frame-cv/CV.png';
 
@@ -372,7 +373,7 @@ const Home = () => {
                             (currentProject.hasRepository() &&
                                 <div className="project-repository text-project-container">
                                   <div className="project-repository-text title-page-project">
-                                    <img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
+                                    <img src={ githubIcon } alt="notice-utilisation-icone" draggable="false" />
                                     <p>{ language.home.projects_frame.repository } :</p>
                                   </div>
                                   <a target='_blank' href={ currentProject.getRepository() } className="project-repository-value page-content">

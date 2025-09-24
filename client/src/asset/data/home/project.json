@@ -287,8 +287,8 @@
             "id": 12,
             "title": "WorldMaster",
             "icon": "worldmaster",
-            "project_desc": "gros caca",
-            "use_desc": "arrete detre une merde",
+            "project_desc": "Coming soon ..",
+            "use_desc": "Coming soon ..",
             "is_link": true,
             "link": "https://worldmaster.vercel.app/",
             "is_download": true,
@@ -301,7 +301,8 @@
                 "SCSS",
                 "NextJS",
                 "NodeJS",
-                "SQL"
+                "SQL",
+                "Typescript"
             ],
             "competences": [
                 "Git",

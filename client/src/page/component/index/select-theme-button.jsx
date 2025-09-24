@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import themeContext from "../../../function/context/theme-context"
 
-export const SwitchThemeButton = ({ className }) => {
+export const SelectThemeButton = ({ className }) => {
 
 	const { setIsDarkTheme } = useContext(themeContext);
 

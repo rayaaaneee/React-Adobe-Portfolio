@@ -50,9 +50,9 @@ body:not(.index) {
       margin-bottom: 10px;
   }
 
-  a:link { color: initial }          /* Liens non visités */
-  a:visited { color: initial }     /* Liens visités */
-  a:active { color: initial }       /*Liens actifs */
+  a:link { color: unset }          /* Liens non visités */
+  a:visited { color: unset }     /* Liens visités */
+  a:active { color: unset }       /*Liens actifs */
 
   /* Couleur de la selection */
 

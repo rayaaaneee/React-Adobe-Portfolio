@@ -20,37 +20,36 @@ import "../../asset/css/media/general/background.scss";
 import Backgrounds from "./backgrounds";
 
 const Main = ({ children }) => {
-  // Si le loader a déjà été chargé on ne l'affiche pas
-  const { wasLoaderShowed } = useContext(loaderContext);
 
-  window.scrollTo(0, 0);
+  	// Si le loader a déjà été chargé on ne l'affiche pas
+  	const { wasLoaderShowed } = useContext(loaderContext);
 
-  // Récupérer l'url de la page actuelle
-  const url = useLocation().pathname;
-  let isRootPage = url === "/";
-  let isBackgroundPage = url.includes("/background");
+  	window.scrollTo(0, 0);
 
-  return (
-    <>
-      {isRootPage ? (
-        <>{children}</>
-      ) : (
-        <>
-          {!wasLoaderShowed && (
-            <>
-              <Loader />
-            </>
-          )}
-          <HeaderComponent />
-          <Backgrounds />
-          <div id="pageContent">
-            { children }
-          </div>
-          {!isBackgroundPage && <FooterComponent />}
-        </>
-      )}
-    </>
-  );
+  	// Récupérer l'url de la page actuelle
+  	const url = useLocation().pathname;
+  	let isRootPage = url === "/";
+
+  	return (
+    	<>
+    	  	{isRootPage ? (
+    	  	  	<>{children}</>
+    	  	) : (
+    	  	  	<>
+    	  	  	  	{!wasLoaderShowed && (
+    	  	  	  	  	<>
+    	  	  	  	  	  	<Loader />
+    	  	  	  	  	</>
+    	  	  	  	)}
+    	  	  	  	<HeaderComponent />
+    	  	  	  	<Backgrounds />
+    	  	  	  	<div id="pageContent">
+    	  	  	    	{ children }
+    	  	  	  	</div>
+    	  	  	</>
+    	  	)}
+    	</>
+  	);
 };
 
 export default Main;

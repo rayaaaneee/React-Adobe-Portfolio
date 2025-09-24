@@ -9,7 +9,6 @@ import '../../asset/css/modal/style.scss';
 import { ModalInformations } from '../../object/modal-informations';
 
 // Utiliser createPortal pour afficher le modal
-
 export const Modal = () => {
 
     const { modalInformations, setModalInformations } = useContext(modalContext);

@@ -1,61 +1,78 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import '../../asset/css/header/style.scss';
 import '../../asset/css/header/dark-style.scss';
 import '../../asset/css/media/header/style.scss';
 
-import themeContext from '../../function/context/theme-context';
-
 import languageContext from '../../function/context/language-context';
+import { SwitchThemeButton } from './index/switch-theme-button';
+import { HamburgerMenu } from './hamburger-menu';
+import { MenuLink } from './menu-link';
+import { SelectLanguageButton } from './index/select-language-button';
 
 const HeaderComponent = () => {
 
-    const { isDarkTheme, setIsDarkTheme } = useContext(themeContext);
-
-    const changeTheme = () => (setIsDarkTheme(!isDarkTheme));
-
     const { language } = useContext(languageContext);
+
+    const hamburgerMenu = useRef(null);
+    const mediaMenu = useRef(null);
+
+    const links = [
+        {to: '/home', text: language.menu.home, isColored: false },
+        {to: '/blog', text: language.menu.blog, isColored: false },
+        {to: '/background', text: language.menu.background, isColored: false },
+        {to: '/myself', text: language.menu.myself, isColored: false },
+        {to: '/contact', text: language.menu.contact, isColored: false },
+        {to: '/about', text: language.index.credentials, isColored: true }
+    ]
+
+    useEffect(() => {
+
+        
+        let listButtons = mediaMenu.current && mediaMenu.current.querySelectorAll('li');
+        let checkbox = hamburgerMenu.current && hamburgerMenu.current.querySelector("input[type='checkbox']");
+        
+        const onClick = (_) => {
+            checkbox?.click();
+        }
+
+        const onClickMenu = (e) => {
+            if (!e.currentTarget.classList.contains("active")) {
+                onClick(e);
+            }
+        }
+
+        mediaMenu.current?.addEventListener('click', onClickMenu);
+
+        listButtons?.forEach(el => {
+            el.addEventListener('click', onClick);
+        });
+
+        return () => {
+
+            mediaMenu.current?.removeEventListener('click', onClickMenu);
+
+            listButtons?.forEach(el => {
+                el.removeEventListener('click', onClick);
+            });
+        };
+        
+    }, []);
 
     return (
         <header>
             <nav id="menu-container">
-                <ul className="menu">
-                    <NavLink to={"/"} className="menu-logo-container">
-                        <div className="logo"></div>
-                    </NavLink>
-                    <li>
-                        <NavLink className="sites s1" to={"/home"}>
-                            <p id="text1">{ language.menu.home }</p>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink className="sites s2" to={"/background"}>
-                            <p id="text2">{ language.menu.background }</p>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink className="sites s3" to={"/myself"}>
-                            <p id="text3">{ language.menu.myself }</p>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink className="sites s4" to={"/contact"}>
-                            <p id="text4">{ language.menu.contact }</p>
-                        </NavLink>
-                    </li>
-                    <div className="theme-form">
-                        <button className="mode-button" onClick={ changeTheme }></button>
-                    </div>
+                <ul className={"header-media-menu"} ref={ mediaMenu}>
+                    <SelectLanguageButton className={"onmenu"} />
+                    <NavLink to={'/'} className='logo black'></NavLink>
+                    { links.map((link) => (
+                        <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ link.text }</MenuLink>
+                    )) }
+                    <SwitchThemeButton whiteIcons/>
+                    <div className='menu-footer'></div>
                 </ul>
-                <ul className="mediamenu">
-                    <NavLink className="mediasites" id="indexsite" to={"/"}></NavLink>
-                    <NavLink className="mediasites" id="receptionsite" to={"/home"}></NavLink>
-                    <NavLink className="mediasites" id="backgroundsite" to={"/background"}></NavLink>
-                    <NavLink className="mediasites" id="personalsite" to={"/myself"}></NavLink>
-                    <NavLink className="mediasites" id="contactsite" to={"/contact"}></NavLink>
-                    <button className="mode-button" onClick={ changeTheme }></button>
-                </ul>
+                <HamburgerMenu ref={hamburgerMenu} black menuElements={[mediaMenu.current]}/>
             </nav>
         </header>
     );

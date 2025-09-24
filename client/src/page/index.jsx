@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
 
@@ -14,9 +14,11 @@ import { ManageBody } from '../object/manage-body';
 import loaderContext from '../function/context/loader-context';
 import languageContext from '../function/context/language-context';
 
-import { CredentialsButton } from './component/index/credentials-button';
 import { SelectLanguageButton } from './component/index/select-language-button';
-import { SwitchThemeButton } from './component/index/switch-theme-button copy';
+import { SelectThemeButton } from './component/index/select-theme-button';
+import { SwitchThemeButton } from './component/index/switch-theme-button';
+import { HamburgerMenu } from './component/hamburger-menu';
+import { MenuLink } from './component/menu-link';
 
 const Index = () => {
 
@@ -50,21 +52,9 @@ const Index = () => {
         ...template
     });
 
-    const [menuClass, setMenuClass] = useState(''); 
-    const toggleMenuClass = () => {
-        if (menuClass === '') {
-            setMenuClass('active');
-        } else {
-            setMenuClass('');
-        }
-        toggleChecked();
-    }
+    const menuElements = useRef([]);
 
     const [checked, setChecked] = useState(false);
-
-    const toggleChecked = () => {
-        setChecked(!checked);
-    }
 
     return (
         <>
@@ -84,45 +74,24 @@ const Index = () => {
                         </div>
                         <SelectLanguageButton className={'one'} />
                     </div>
-                    <ul className={ `menu-links ${menuClass} one` } style={{ pointerEvents: checked ? 'all' : 'none' }}>
-                        <li>
-                            <NavLink to={'/home'}>{ language.menu.home }</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={'/background'}>{ language.menu.background }</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={'/myself'}>{ language.menu.myself }</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={'/contact'}>{ language.menu.contact }</NavLink>
-                        </li>
+                    <ul className={ `menu-links one` } ref={ el => menuElements.current[0] = el } style={{ pointerEvents: checked ? 'all' : 'none' }}>
+                        <MenuLink to={'/home'}>{ language.menu.home }</MenuLink>
+                        <MenuLink to={'/blog'}>{ language.menu.blog }</MenuLink>
+                        <MenuLink to={'/background'}>{ language.menu.background }</MenuLink>
+                        <MenuLink to={'/myself'}>{ language.menu.myself }</MenuLink>
+                        <MenuLink to={'/contact'}>{ language.menu.contact }</MenuLink>
                     </ul>
-                    <ul className={ `menu-links ${menuClass} two` } style={{ pointerEvents: checked ? 'all' : 'none' }}>
+                    <ul className={ `menu-links two` } ref={ el => menuElements.current[1] = el }>
                         <SelectLanguageButton className={'two loaded'} />
-                        <li>
-                            <NavLink to={'/home'}>{ language.menu.home }</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={'/background'}>{ language.menu.background }</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={'/myself'}>{ language.menu.myself }</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={'/contact'}>{ language.menu.contact }</NavLink>
-                        </li>
-                        <li>
-                            <CredentialsButton className={'two loaded'} />
-                        </li>
-                        <SwitchThemeButton className={"two loaded"}/>
+                        <MenuLink to={'/home'}>{ language.menu.home }</MenuLink>
+                        <MenuLink to={'/blog'}>{ language.menu.blog }</MenuLink>
+                        <MenuLink to={'/background'}>{ language.menu.background }</MenuLink>
+                        <MenuLink to={'/myself'}>{ language.menu.myself }</MenuLink>
+                        <MenuLink to={'/contact'}>{ language.menu.contact }</MenuLink>
+                        <MenuLink to={'/about'} className={"loaded two"} isColored>{ language.index.credentials }</MenuLink>
+                        <SwitchThemeButton whiteIcons/>
                     </ul>
-                    <div className="hamburger-container" onClick={ toggleMenuClass }>
-                        <input type="checkbox" id="hamburger-checkbox" checked={ checked } />
-                        <div className="hamburger-bar top-bar"></div>
-                        <div className="hamburger-bar middle-bar"></div>
-                        <div className="hamburger-bar bottom-bar"></div>
-                    </div>
+                    <HamburgerMenu menuElements={ menuElements.current } onCheck={ checked => setChecked(checked) }/>
                 </nav>
                 <NavLink to={'/home'} className="get-start one">{ language.index.discover }</NavLink>
             </header>
@@ -132,7 +101,8 @@ const Index = () => {
                         <h1>Adobe Portfolio</h1>
                         <div className="main-bar"></div>
                         <div className="subtitle">
-                            <h2>{ shortedTextTypeWriter }</h2>{/*  Texte dynamique  */}
+                            <h2 className='one'>{ textTypeWriter }</h2>{/*  Texte dynamique  */}
+                            <h2 className='two'>{ shortedTextTypeWriter }</h2>{/*  Texte dynamique  */}
                             <div className="vertical-bar"></div>
                         </div>
                     </div>
@@ -140,9 +110,9 @@ const Index = () => {
                 </div>
             </main>
             <footer>
-                <SwitchThemeButton className={"one"}/>
+                <SelectThemeButton className={"one"}/>
                 <div className="triangle border-triangle footer-triangle"></div>
-                <CredentialsButton className={'one'} />
+                <MenuLink to={'/about'} className={"one"} isColored>{ language.index.credentials }</MenuLink>
                 <ul className="footer-links">
                     <li title="Linked In">
                         <a className="linkedin-link" href="https://www.linkedin.com/in/rayanemerlin/" target="_blank" rel="noreferrer">

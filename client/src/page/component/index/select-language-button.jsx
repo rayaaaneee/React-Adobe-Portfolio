@@ -1,10 +1,12 @@
 import { useContext, useEffect, useRef } from "react";
 
+import '../../../asset/css/general/select-language-button.scss'
+
 import { ManageWebsiteLanguages } from "../../../object/manage-website-languages";
 
 import languageContext from "../../../function/context/language-context";
 
-export const SelectLanguageButton = ({ className }) => {
+export const SelectLanguageButton = ({ className = null }) => {
 
 	const selectLanguageOptions = useRef(null);
 

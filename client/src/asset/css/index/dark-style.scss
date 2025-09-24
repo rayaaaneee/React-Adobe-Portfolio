@@ -20,20 +20,6 @@ body.index#dark{
         color: rgb(255, 255, 255);
     }
 
-    .about-page {
-        & > p {
-
-            &::after  {
-                background-color: #30052b;
-            }
-
-            &:hover::after {
-                background-color: #510548;
-            }
-
-        }
-    }
-
     .circle-one {
         background-color: $index-circle-one-background-color-dark;
     }
@@ -53,15 +39,6 @@ body.index#dark{
     .triangle-yellow {
         border-bottom-color: $index-triangle-yellow-background-color-dark;
     }
-
-    .menu {
-        ul li a::after {
-            background-color: #ead3d3;
-        }
-        li a:hover {
-            color: #ead3d3;
-        }
-    } 
 
     .dl-img-hover {
         background-image: url(../../img/index/download-pink.png);

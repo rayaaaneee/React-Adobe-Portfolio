@@ -1,0 +1,69 @@
+
+$hamburger-bar-width: 50px;
+$hamburger-bar-height: 5px;
+
+.hamburger-container {
+
+    &.black {
+        .hamburger-bar {
+            background-color: rgb(59 59 59);
+        }
+    }
+
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    row-gap: calc(2 * $hamburger-bar-height);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+
+    input[type="checkbox"] {
+
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+
+        &:checked~.hamburger-bar {
+
+            box-shadow: 0 0 3.15rem #000000e9;
+            &:not(.middle-bar) {
+                position: absolute;
+            }
+            &.top-bar {
+                transform: rotate(-45deg);
+                bottom: auto;
+            }
+            &.middle-bar {
+                opacity: 0;
+            }
+            &.bottom-bar {
+                transform: rotate(45deg);
+                top: auto;
+            }
+        }
+    }
+
+    .hamburger-bar {
+
+        width: $hamburger-bar-width;
+        height: $hamburger-bar-height;
+        background-color: #fff;
+
+        border-radius: 10px;
+        box-shadow: 0 0 2.15rem #000000e9;
+        $transition-hamburger: 0.2s ease;
+        transition: transform $transition-hamburger, opacity $transition-hamburger, box-shadow $transition-hamburger, background-color $transition-hamburger;
+
+        &.top-bar {
+            bottom: 10px;
+        }
+
+        &.bottom-bar {
+            top: 10px;
+        }
+
+    }
+}

@@ -21,7 +21,8 @@
         "home": "Accueil",
         "background": "Parcours",
         "myself": "Perso",
-        "contact": "Contact"
+        "contact": "Contact",
+        "blog": "Blog"
     },
     "footer": {
         "about": "À propos"

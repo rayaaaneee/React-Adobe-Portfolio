@@ -1,0 +1,48 @@
+body {
+
+    /* Used in each page */
+    
+    .theme-form {
+        width: 5%;
+        height: 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mode-button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: 0.3s;
+        background-image: url(../../img/header/dark-mode.png);
+        width: 40px;
+        height: 40px;
+
+        &.white {
+            background-image: url(../../img/header/dark-mode-white.png);
+        }
+
+        &:hover {
+            background-image: url(../../img/header/dark-mode-hover.png);
+        }
+    }
+
+    &#dark {
+        .mode-button {
+
+            background-image: url(../../img/header/light-mode.png);
+            width: 40px;
+            height: 40px;
+
+            &:hover {
+                background-image: url(../../img/header/light-mode-hover.png);
+            }
+        }
+    }
+
+}

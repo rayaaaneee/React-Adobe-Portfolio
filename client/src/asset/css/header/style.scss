@@ -1,143 +1,121 @@
 @import '../vars.scss';
 
-body:not(.index) {
-    /* Base du menu */
-    .menu {
-        list-style-type : none;
-        display: flex;
-        margin-top : 0;
-        font-weight : bold;    
-        background-color: $components-background-color; 
-        transition: background-color $general-transition-switch-mode;
-        backdrop-filter: blur(5px);
-        justify-content : flex-end;
-        height: 67px;
-        align-items: center;
-        letter-spacing: 0.4px;
-        box-shadow: $components-box-shadow;
+body {
 
-        /* Ecart entre les endroits */
-        li {
-
-            display : inline;
-            position: relative;
-            padding-inline: 20px;
-
-            /* Le bas de chaque case survolée s'agrandit de 10px mais pas le reste */
-            &:hover{
+    &:not(.index) {
     
-                $hover-color: black;
-                $bar-height: 3px;
+        /*  Ecart du debut de page avec le menu */
+        body {
+            overflow-x : hidden;
+        }
     
-                &::after {
-                    content: '';
+        /* Mettre droit l'image du menu */
+        .logo {
+            position: absolute;
+            max-width: 60px;
+            left: 1%;
+            width: 50px;
+            height: 50px;
+            background-image: url(../../img/favicon/favicon-light-theme.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            &.black {
+                background-image: url(../../img/favicon/favicon-black.png);
+            }
+        }
+    
+        /* Mettre le titre assez bas pour qu'on puisse le voir */
+        .t1 {
+            padding-top: 70px;
+        }
+    
+        .header-media-menu {
+
+            display: flex;
+            cursor: pointer;
+            position: absolute;
+            list-style-type: none;
+            margin: 0;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background-color: rgb(231 211 173 / 60%);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            border-radius: 50%;
+            translate: 20% -20%;
+            z-index: 1;
+
+            $transition-duration: 0.6s;
+            $transition-type: cubic-bezier(0.77, 0, 0.175, 1);
+            $transition-mode: $transition-duration $transition-type;
+
+            transition: width $transition-mode, height $transition-mode, translate $transition-mode, border-radius $transition-mode, padding $transition-mode, background-color $transition-mode;
+            flex-direction: column;
+            row-gap: 3vh;
+            align-items: center;
+            justify-content: center;
+
+            $corner-space: 25px;
+
+            .footer-menu {
+                
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+                bottom: $corner-space;
+                left: $corner-space;
+            }
+
+            .select-language {
+                &.onmenu {
                     position: absolute;
-                    display: block;
-                    width: 100%;
-                    height: $bar-height;
-                    bottom: 0;
-                    left: 0;
-                    transform: translateY(100%);
-                    $border-radius: 4px;
-                    border-bottom-left-radius: $border-radius;
-                    border-bottom-right-radius: $border-radius;
-                    background-color: $hover-color;
-                    transition: height 0.2s;
-                }
-    
-                p {
-                    color: $hover-color;
+                    top: $corner-space;
+                    left: $corner-space;
                 }
             }
-        }
-
-        /* Disposition et personnification des items */
-        .sites {
-            display : block;
-            min-width: 100px;
-            text-decoration: none;
-            text-transform: uppercase;
-            text-align: center;
-            padding : 5px;
-
-            & > p {
-                color: black;
-                font-family: 'Poppins', sans-serif;
-                letter-spacing: 0.7px;
-                font-weight: bold;
+            
+            li {
+                & > a {
+                    text-decoration: none;
+                }
             }
+
+            * {
+                pointer-events: none;
+                transition: opacity calc($transition-duration/2) $transition-type;
+                opacity: 0;
+            }
+            
+            &.active {
+                width: 100vw;
+                height: 100vh;
+                translate: 0;
+                border-radius: 0;
+                padding: 0;
+                cursor: unset;
+
+                * {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+            }
+
         }
-    }
 
+        div.hamburger-container {
+            display: flex;
+            position: absolute;
+            top: 22px;
+            right: 10px;
+            height: fit-content;
+            z-index: 2;
+        }
 
-    /* Mise en place du menu sticky */
-    header{
-        position : fixed;
-        top : 0;
-        width : 100vw;
-        z-index: 2;
-    }
-
-    /*  Ecart du debut de page avec le menu */
-    body {
-        overflow-x : hidden;
-    }
-
-    /* Mettre droit l'image du menu */
-    .logo {
-        position: absolute;
-        max-width: 60px;
-        left: 1%;
-        width: 50px;
-        height: 50px;
-        background-image: url(../../img/favicon/favicon-light-theme.png);
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
-    /* Mettre le titre assez bas pour qu'on puisse le voir */
-    .t1 {
-        padding-top: 70px;
-    }
-
-    .mediamenu{
-        display: none;
-    }
-
-    /* Disposition de l'icone darkmode */
-
-    .theme-form {
-        width: 5%;
-        height:70px;
-        margin-right: 3.2vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .mode-button{
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        transition: 0.3s;
-        background-image: url(../../img/header/dark-mode.png);
-        width: 40px;
-        height: 40px;
-    }
-
-    .mode-button:hover {
-        background-image: url(../../img/header/dark-mode-hover.png);
-    }
-
-    .menu-logo-container {
-        width: 0;
-        height: 100%;
-        display: flex;
-        align-items: center;
     }
 }

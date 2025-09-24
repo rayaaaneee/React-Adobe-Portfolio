@@ -26,21 +26,9 @@ body:not(.index) {
                 margin-right: 2vw;
             }
 
-            @media screen and (max-width : 500px) {
+            @media screen and (max-width : 700px) {
                 footer {
-                    height: fit-content;
-                }
-                #footer1 {
-                    margin-left: 2vw;
-                }
-
-                #footer2 > a {
-                    width: 3.2vw;
-                    height: 3.2vw;
-                }
-
-                #footer1 p {
-                    font-size: 12px;
+                    display: none;
                 }
             }
         }

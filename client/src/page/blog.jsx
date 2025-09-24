@@ -1,5 +1,6 @@
-const Blog = ({}) => {
-    return (<></>);
+const Blog = () => {
+    return (<>
+    </>);
 }
 
 export default Blog;

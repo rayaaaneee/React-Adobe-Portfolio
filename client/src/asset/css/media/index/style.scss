@@ -1,4 +1,4 @@
-@import '../../index/style.scss';
+@import '../../general/hamburger-menu.scss';
 
 $index-media-menu-margins: 2.5vh;
 
@@ -52,6 +52,7 @@ body.index {
     
         .container > .title > h1 {
             font-size: 13.5vw;
+            line-height: 11vw;
         }
     
         .container > .title {
@@ -208,14 +209,7 @@ body.index {
                 }
 
                 .btn-switch-mode {
-                    &.one {
-                        display: none;
-                    }
-
-                    &.two {
-                        bottom: $index-media-menu-margins;
-                        left: $index-media-menu-margins;
-                    }
+                    display: none;
                 }
             
                 .vertical-bar {
@@ -240,6 +234,17 @@ body.index {
                         .hamburger-container {
                             right: 11vw;
                         }
+
+                        .subtitle > h2 {
+
+                            &.one {
+                                display: none;
+                            }
+
+                            &.two {
+                                display: block !important;
+                            }
+                        }
                     
                         @media screen and (max-width : 425px) {
                             
@@ -259,9 +264,8 @@ body.index {
                             }
 
                             .subtitle {
-                                min-height: calc(1em * 2.5);
-                                height: fit-content;
-                                margin-bottom: 15px;
+                                margin-top: 20px;
+                                margin-bottom: 45px;
                             }
 
                             .hamburger-container {
@@ -287,8 +291,9 @@ body.index {
                             }
 
                             .container {
-                                justify-content: unset;
-                                margin-top: 25vh;
+
+                                justify-content: center;
+
                                 .title {
                                     align-items: center;
                                     justify-content: center;
@@ -303,7 +308,6 @@ body.index {
 
                                     & > .subtitle {
                                         justify-content: center;
-                                        height: fit-content;
                                         column-gap: 2.5vw;
 
                                         $media-sutitle-bar-height: 13vw;

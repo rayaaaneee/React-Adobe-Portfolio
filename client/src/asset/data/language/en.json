@@ -22,7 +22,8 @@
         "background": "Background",
         "myself": "Myself",
         "contact": "Contact",
-        "about": "About"
+        "about": "About",
+        "blog": "Blog"
     },
     "footer": {
         "about": "About"
