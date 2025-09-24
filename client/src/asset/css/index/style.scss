@@ -219,18 +219,11 @@ body.index {
         }
     }
 
-    .media-menu {
-        display: none;
-    }
-
-    .hamburger-container {
-        right: 190px;
-        position: absolute;
-    }
-
     .left-top-angular {
+
         position: absolute;
-        left: 0;
+        top: 10px;
+        left: 10px;
         height: fit-content;
         width: fit-content;
         display: flex;
@@ -239,6 +232,7 @@ body.index {
         align-items: center;
         justify-content: center;
         margin-left: 10px;
+
         .logo {
             width: 70px;
 
@@ -255,34 +249,6 @@ body.index {
         width: 100%;
         height: fit-content;
         z-index: 0;
-    }
-
-    .about-page {
-        position: absolute;
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        bottom: 1.5vw;
-        right: 2vw;
-        width: fit-content;
-        height: fit-content;
-        font-size: 1.5em;
-        font-weight: 600;
-        text-decoration: none;
-        color: #fff;
-        transition: all 0.3s ease;
-        text-shadow: 0 0 1.15rem #000;
-
-        &.one {
-            position: absolute;
-        }
-
-        &.two {
-            position: static;
-        }
-
     }
 
     .container {
@@ -514,110 +480,4 @@ body.index {
         }
     }
 
-    .menu-links {
-
-        display: block;
-        width: 100%;
-        height: fit-content;
-        align-items: center;
-        list-style-type: none;
-        justify-content: center;
-        column-gap: 50px;
-        margin-top: 15px;
-        
-        &.two {
-            margin: 0;
-            z-index: 2;
-            display: none !important;
-            flex-direction: column;
-            row-gap: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: rgb(129 112 128 / 60%);
-            backdrop-filter: blur(20px);
-            width: 100%;
-            height: 100%;
-        }
-
-        &.one {
-            flex-direction: row;
-        }
-
-        &.active {
-            display: flex;
-
-            li {
-                opacity: 1;
-                transform: translateX(0px);
-                transition: transform 0.1s ease, opacity 0.1s ease;
-            }
-        }
-    
-        & li {
-            opacity: 0;
-            transform: translateX(80px);
-            transition: transform 0.1s ease, opacity 0.1s ease;
-        }
-    }
-
-    .btn-switch-mode {
-
-        position: absolute;
-        bottom: 1.7vw;
-        left: 1.7vw;
-        z-index: 3;
-        width: fit-content;
-        height: fit-content;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-
-        button {
-            width: 60px;
-            height: 55px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 2px solid #000000;
-            background-position: center;
-            background-repeat: no-repeat;
-            transition: all 0.2s ease;
-        }
-
-        & > .media-dark-theme-form {
-            transform: translateX(2px);
-
-            & > button {
-                transition: all 0.2s ease;
-                background-color: transparent;
-                background-size: 50%;
-                border-radius: 100% 0 0 100%;
-                background-image: url(../../img/index/dark-black.png);
-
-                &:hover {
-                    background-color: #e6d1be52;
-                    background-image: url(../../img/index/dark-hover-black.png);
-                }
-            }
-        }
-
-        & > .media-light-theme-form {
-            & > button {
-                transition: all 0.2s ease;
-                background-size: 60%;
-                border-radius: 0 100% 100% 0;
-                background-color: #e6d1beb9;
-                background-image: url(../../img/index/light-hover-black.png);
-
-                &:hover {
-                    background-color: #d1af92b9;
-                    background-image: url(../../img/index/light-black.png);
-                }
-            }
-        }
-
-
-    }
 }

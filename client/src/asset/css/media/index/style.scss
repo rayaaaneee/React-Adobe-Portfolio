@@ -16,10 +16,6 @@ body.index {
             display: block;
         }
     
-        // .basic-menu {
-        //     display: none;
-        // }
-    
         .logo img {
             width: 100%;
         }
@@ -37,18 +33,6 @@ body.index {
             border-radius: 60px;
             font-size: 1.7em;
         }
-    
-        .hamburger-container {
-            right: 9.5vw;
-            width: fit-content;
-            height: 4.6vh;
-
-            .hamburger-bar {
-                width: 70px;
-                height: 0.7vh;
-            }
-        }
-    
     
         .container > .title > h1 {
             font-size: 13.5vw;
@@ -145,42 +129,6 @@ body.index {
                     }
                 }
             
-                .hamburger-container {
-                    position: relative;
-                    height: 8.5vh;
-                    z-index: 5;
-                }
-            
-                .menu-links{
-
-                    &.one {
-                        display: none !important;
-                    }
-
-                    &.active.two {
-                        display: flex !important;
-
-                        * {
-                            animation: none 0s 0s forwards;
-                        }
-                    }
-
-                    position: relative;
-                    z-index: 4;
-                }
-
-                .select-language {
-                    &.one {
-                        display: none !important;
-                    }
-
-                    &.two {
-                        position: absolute;
-                        top: $index-media-menu-margins;
-                        left: $index-media-menu-margins;
-                    }
-                }
-            
                 .hide-links {
                     width: 74%;
                     height: 140%;
@@ -190,50 +138,14 @@ body.index {
                     width: 7vw;
                     height: 7vw;
                 }
-
-                .about-page {
-
-                    font-size: 3.5vw;
-
-                    &.one {
-                        display: none;
-                    }
-
-                    &.two {
-                        font-size: 1.35em;
-                    }
-
-                    & > p::after {
-                        height: 10px;
-                    }
-                }
-
-                .btn-switch-mode {
-                    display: none;
-                }
             
                 .vertical-bar {
                     width: 6px;
                 }
             
                 @media screen and (max-width : 600px) {
-                    .hamburger-container {
-                        height: 7.5vh;
-                    }
-                    .about-page {
-                        &.one {
-                            bottom: 9vh;
-                        }
-                    }
-                    
-                    @media screen and (max-width: 520px){
 
-                        .hamburger-container .hamburger-bar {
-                            width: $hamburger-bar-width;
-                        }
-                        .hamburger-container {
-                            right: 11vw;
-                        }
+                    @media screen and (max-width: 520px){
 
                         .subtitle > h2 {
 
@@ -247,12 +159,6 @@ body.index {
                         }
                     
                         @media screen and (max-width : 425px) {
-                            
-                            .about-page {
-                                &.one {
-                                    display: none;
-                                }
-                            }
 
                             .footer-links a {
                                 width: 15vw;
@@ -266,11 +172,6 @@ body.index {
                             .subtitle {
                                 margin-top: 20px;
                                 margin-bottom: 45px;
-                            }
-
-                            .hamburger-container {
-                                position: static !important;
-                                margin-right: calc(($hamburger-bar-width / 2));
                             }
 
                             .get-start {
@@ -360,16 +261,6 @@ body.index {
                             .footer-triangle {
                                 border-bottom-width: 30vw;
                             }
-
-                            .hamburger-container {
-                                
-                                right: 210px;
-
-                                .hamburger-bar {
-                                    width: 50px;
-                                }
-                            }
-                        
                         }
                     }
                 }

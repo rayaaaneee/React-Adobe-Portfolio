@@ -27,6 +27,11 @@ body {
             background-image: url(../../img/header/dark-mode-white.png);
         }
 
+        &.pink-moon {
+            &:hover {
+                background-image: url(../../img/header/dark-mode-pink.png);
+            }
+        }
         &:hover {
             background-image: url(../../img/header/dark-mode-hover.png);
         }

@@ -14,12 +14,6 @@ import { ManageBody } from '../object/manage-body';
 import loaderContext from '../function/context/loader-context';
 import languageContext from '../function/context/language-context';
 
-import { SelectLanguageButton } from './component/index/select-language-button';
-import { SelectThemeButton } from './component/index/select-theme-button';
-import { SwitchThemeButton } from './component/index/switch-theme-button';
-import { HamburgerMenu } from './component/hamburger-menu';
-import { MenuLink } from './component/menu-link';
-
 const Index = () => {
 
     const { setWasLoaderShowed } = useContext(loaderContext);
@@ -52,10 +46,6 @@ const Index = () => {
         ...template
     });
 
-    const menuElements = useRef([]);
-
-    const [checked, setChecked] = useState(false);
-
     return (
         <>
             <header>
@@ -72,26 +62,7 @@ const Index = () => {
                         <div className="logo">
                             <img src={ faviconDarkTheme } alt="logo" draggable="false" />
                         </div>
-                        <SelectLanguageButton className={'one'} />
                     </div>
-                    <ul className={ `menu-links one` } ref={ el => menuElements.current[0] = el } style={{ pointerEvents: checked ? 'all' : 'none' }}>
-                        <MenuLink to={'/home'}>{ language.menu.home }</MenuLink>
-                        <MenuLink to={'/blog'}>{ language.menu.blog }</MenuLink>
-                        <MenuLink to={'/background'}>{ language.menu.background }</MenuLink>
-                        <MenuLink to={'/myself'}>{ language.menu.myself }</MenuLink>
-                        <MenuLink to={'/contact'}>{ language.menu.contact }</MenuLink>
-                    </ul>
-                    <ul className={ `menu-links two` } ref={ el => menuElements.current[1] = el }>
-                        <SelectLanguageButton className={'two loaded'} />
-                        <MenuLink to={'/home'}>{ language.menu.home }</MenuLink>
-                        <MenuLink to={'/blog'}>{ language.menu.blog }</MenuLink>
-                        <MenuLink to={'/background'}>{ language.menu.background }</MenuLink>
-                        <MenuLink to={'/myself'}>{ language.menu.myself }</MenuLink>
-                        <MenuLink to={'/contact'}>{ language.menu.contact }</MenuLink>
-                        <MenuLink to={'/about'} className={"loaded two"} isColored>{ language.index.credentials }</MenuLink>
-                        <SwitchThemeButton whiteIcons/>
-                    </ul>
-                    <HamburgerMenu menuElements={ menuElements.current } onCheck={ checked => setChecked(checked) }/>
                 </nav>
                 <NavLink to={'/home'} className="get-start one">{ language.index.discover }</NavLink>
             </header>
@@ -110,9 +81,7 @@ const Index = () => {
                 </div>
             </main>
             <footer>
-                <SelectThemeButton className={"one"}/>
                 <div className="triangle border-triangle footer-triangle"></div>
-                <MenuLink to={'/about'} className={"one"} isColored>{ language.index.credentials }</MenuLink>
                 <ul className="footer-links">
                     <li title="Linked In">
                         <a className="linkedin-link" href="https://www.linkedin.com/in/rayanemerlin/" target="_blank" rel="noreferrer">

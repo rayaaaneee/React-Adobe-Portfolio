@@ -35,19 +35,20 @@ body {
 
             display: flex;
             cursor: pointer;
-            position: absolute;
+            position: fixed;
             list-style-type: none;
             margin: 0;
             top: 0;
             right: 0;
             width: 60px;
             height: 60px;
-            background-color: rgb(231 211 173 / 60%);
+            background-color: rgb(255 235 205 / 60%);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(15px);
             padding: 25px;
             border-radius: 50%;
             translate: 20% -20%;
-            z-index: 1;
+            z-index: 2;
 
             $transition-duration: 0.6s;
             $transition-type: cubic-bezier(0.77, 0, 0.175, 1);
@@ -62,7 +63,7 @@ body {
             $corner-space: 25px;
 
             .footer-menu {
-                
+
             }
 
             .logo {
@@ -93,7 +94,7 @@ body {
             }
             
             &.active {
-                width: 100vw;
+                width: 450px;
                 height: 100vh;
                 translate: 0;
                 border-radius: 0;
@@ -110,7 +111,7 @@ body {
 
         div.hamburger-container {
             display: flex;
-            position: absolute;
+            position: fixed;
             top: 22px;
             right: 10px;
             height: fit-content;

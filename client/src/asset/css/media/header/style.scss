@@ -1,6 +1,6 @@
 body:not(.index) {
 
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
 
         .menu{
             display: none;
@@ -124,14 +124,14 @@ body:not(.index) {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
 
-        .media-theme-form > button {
-            width: 35px;
-            height: 100%;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
+            & > button {
+                width: 35px;
+                height: 100%;
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+            }
         }
 
         .mediasites {
@@ -141,6 +141,12 @@ body:not(.index) {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+        }
+
+        .header-media-menu {
+            &.active {
+                width: 100vw;
+            }
         }
 
         @media screen and (max-width: 425px) {

@@ -6,6 +6,7 @@ import '../../asset/css/header/dark-style.scss';
 import '../../asset/css/media/header/style.scss';
 
 import languageContext from '../../function/context/language-context';
+
 import { SwitchThemeButton } from './index/switch-theme-button';
 import { HamburgerMenu } from './hamburger-menu';
 import { MenuLink } from './menu-link';
@@ -49,7 +50,16 @@ const HeaderComponent = () => {
             el.addEventListener('click', onClick);
         });
 
+        const clickOutsideMenu = (e) => {
+            if (mediaMenu.current?.classList.contains("active") && !e.target.closest('#menu-container')) {
+                checkbox?.click();
+            }
+        }
+
+        window.addEventListener('click', clickOutsideMenu);
+
         return () => {
+            window.removeEventListener('click', clickOutsideMenu);
 
             mediaMenu.current?.removeEventListener('click', onClickMenu);
 
@@ -63,13 +73,13 @@ const HeaderComponent = () => {
     return (
         <header>
             <nav id="menu-container">
-                <ul className={"header-media-menu"} ref={ mediaMenu}>
+                <ul className={"header-media-menu"} ref={ mediaMenu }>
                     <SelectLanguageButton className={"onmenu"} />
                     <NavLink to={'/'} className='logo black'></NavLink>
                     { links.map((link) => (
                         <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ link.text }</MenuLink>
                     )) }
-                    <SwitchThemeButton whiteIcons/>
+                    <SwitchThemeButton pinkMoon whiteIcons/>
                     <div className='menu-footer'></div>
                 </ul>
                 <HamburgerMenu ref={hamburgerMenu} black menuElements={[mediaMenu.current]}/>

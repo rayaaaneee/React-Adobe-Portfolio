@@ -1,109 +1,130 @@
-.select-language {
+body {
+    
+    & {
+        .select-language {
 
-    position: relative;
-    width: fit-content;
-    height: fit-content;
-    z-index: 1;
-
-    p {
-        font-family: "Poppins", sans-serif !important;
-        margin: 0;
-    }
-
-    .choice {
-
-        & > img {
-            height: auto;
-            width: 90%;
-        }
-
-        display: grid;
-        grid-template-columns: 60px 1fr 15px;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        column-gap: 10px;
-        backdrop-filter: blur(20px);
-        border-radius: 10px;
-        box-shadow: 0 0 2.15rem #00000043;
-        height: 40px;
-        width: 180px;
-        padding: 5px 15px 5px 15px;
-        font-size: 1.2em;
-        font-weight: 600;
-        color: #fff;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        cursor: pointer;
-
-        img {
-
-            height: 35px;
-            border-radius: 5px;
-
-        }
-        .options-wrapper {
-
-            position: absolute;
-            left: 0;
-            top: 100%;
-            height:fit-content;
-            pointer-events: none;
-            width: 100%;
-            overflow: hidden;
-
-        }
-
-        .options {
-
-            width: 100%;
+            position: relative;
+            width: fit-content;
             height: fit-content;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #ffffff33;
-            backdrop-filter: blur(20px);
-            color: black;
-            border-radius: 10px;
-            z-index: -1;
-            pointer-events: none;
-            opacity: 0;
-            transform: translateY(-100%);
-            transition: all 0.15s ease;
+            z-index: 1;
 
-            &.active {
-                opacity: 1;
-                pointer-events: all;
-                transform: translateY(0);
+            p {
+                font-family: "Poppins", sans-serif !important;
+                margin: 0;
             }
 
-            .option {
+            .choice {
 
-                width: 100%;
-                height: 50px;
+                & > img {
+                    height: auto;
+                    width: 90%;
+                }
+
                 display: grid;
-                grid-template-columns: 85px 1fr;
+                grid-template-columns: 60px 1fr 15px;
                 align-items: center;
-                align-content: center;
-                color: #000;
+                justify-content: center;
+                flex-direction: row;
+                column-gap: 10px;
+                backdrop-filter: blur(20px);
+                border-radius: 10px;
+                box-shadow: 0 0 2.15rem #00000043;
+                height: 40px;
+                width: 180px;
+                padding: 5px 15px 5px 15px;
+                font-size: 1.2em;
+                font-weight: 600;
+                color: #fff;
                 text-decoration: none;
                 transition: all 0.3s ease;
                 cursor: pointer;
-                border-radius: 10px;
-                column-gap: 10px;
-                text-shadow: none;*
 
                 img {
-                    align-self: center;
-                    justify-self: center;
+
+                    height: 35px;
+                    border-radius: 5px;
+
+                }
+                .options-wrapper {
+
+                    position: absolute;
+                    left: 0;
+                    top: 100%;
+                    height:fit-content;
+                    pointer-events: none;
+                    width: 100%;
+                    overflow: hidden;
+
                 }
 
-                &:hover {
-                    background-color: hsla(30, 5%, 25%, 0.062);
-                    transition: all 0.3s ease;
+                .options {
+
+                    width: 100%;
+                    height: fit-content;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #ffffff33;
+                    backdrop-filter: blur(20px);
+                    color: black;
+                    border-radius: 10px;
+                    z-index: -1;
+                    pointer-events: none;
+                    opacity: 0;
+                    transform: translateY(-100%);
+                    transition: all 0.15s ease;
+
+                    &.active {
+                        opacity: 1;
+                        pointer-events: all;
+                        transform: translateY(0);
+                    }
+
+                    .option {
+
+                        width: 100%;
+                        height: 50px;
+                        display: grid;
+                        grid-template-columns: 1fr 2fr;
+                        margin-left: 30px;
+                        align-items: center;
+                        align-content: center;
+                        color: #000;
+                        text-decoration: none;
+                        transition: all 0.3s ease;
+                        cursor: pointer;
+                        border-radius: 10px;
+                        column-gap: 10px;
+                        text-shadow: none;*
+
+                        img {
+                            align-self: center;
+                            justify-self: center;
+                        }
+                    
+                        &:hover {
+                            background-color: hsla(30, 5%, 25%, 0.062);
+                            transition: all 0.3s ease;
+                        }
+                    }
+                }
+            }
+        }   
+    }   
+
+    &#dark {
+            .select-language {
+            .choice {
+                background-color: rgba(0, 0, 0, 0.2);
+                .options {
+                    .option {
+                        &:hover {
+                            background-color: #e6c6be38;
+                        }
+                    }
                 }
             }
         }
-    }
+    }    
 }

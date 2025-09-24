@@ -1,6 +1,8 @@
 import { useContext } from "react";
 
-import themeContext from "../../../function/context/theme-context"
+import themeContext from "../../../function/context/theme-context";
+
+import '../../../asset/css/general/select-theme-button.scss';
 
 export const SelectThemeButton = ({ className }) => {
 

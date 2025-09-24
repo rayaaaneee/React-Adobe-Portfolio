@@ -96,6 +96,12 @@ const Myself = () => {
             <div id='bar2' className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
             <article id="references" onMouseOver={ () => colorBar(2) } onMouseLeave={ () => uncolorBar(2) }>
             </article>
+            <div className="title t4">
+                <p>{ language.myself.networks }</p>
+            </div>
+            <div id='bar3' className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
+            <article id="networks" onMouseOver={ () => colorBar(3) } onMouseLeave={ () => uncolorBar(3) }>
+            </article>
         </>
     );
 }
