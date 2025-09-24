@@ -28,12 +28,6 @@ body {
 
             &.active {
                 background-color: rgba(71, 71, 71, 0.6);
-
-                &~.hamburger-container {
-                    .hamburger-bar {
-                        background-color: #fff;
-                    }
-                }
             }
         }
     }
