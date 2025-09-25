@@ -6,8 +6,13 @@ body {
 
         &.full-menu-active {
             overflow: hidden !important;
+            overflow-x: hidden !important;
+            overflow-y: hidden !important;
+            // Pas sur de ça
+            //height: 100vh !important;
+            //width: 100vw !important;
         }
-        
+
         // .mediamenu{
         //     list-style-type : none;
         //     display: flex;

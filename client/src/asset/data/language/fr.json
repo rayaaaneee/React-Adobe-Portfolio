@@ -94,7 +94,8 @@
         "description": "Je suis un étudiant de {{age}} ans, passionné par l'informatique et les nouvelles technologies. Actuellement en deuxième année de BUT informatique, je souhaite poursuivre mes études dans le domaine du développement et du design.",
         "musics": "Mes musiques",
         "musics_description": "Voici quelques musiques qui m'ont marquées. Je me permets d'en parler dans ce PortFolio car la musique possède une place importante dans ma vie et dans la société en général. Ce que nous écoutons représente en quelque sorte qui nous sommes, est une source de créativité influant sur nous : les auditeurs.",
-        "references": "Les réferences"
+        "references": "Les réferences",
+        "networks": "Mes réseaux"
     },
     "contact": {
         "title": "Contact",

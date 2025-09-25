@@ -95,7 +95,8 @@
         "description": "I am a {{age}}-year-old student, passionate about computer science and new technologies. Currently in my second year of a Bachelor's degree in Computer Science, I aim to further my studies in the field of development and design.",
         "musics": "My musics",
         "musics_description": "Here are some songs that have marked me. I allow myself to talk about them in this portfolio because music holds an important place in my life and in general society. What we listen to somehow represents who we are and is a source of creativity that influences us as listeners.",
-        "references": "References"
+        "references": "References",
+        "networks": "My networks"
     },
     "contact": {
         "title": "Contact",

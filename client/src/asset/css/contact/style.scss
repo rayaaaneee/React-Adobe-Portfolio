@@ -7,7 +7,7 @@ body.contact {
       display: flex;
       flex-direction: column;
       row-gap: 15px;
-
+  
       .required{
           color:#ff0000;
       }
@@ -51,10 +51,10 @@ body.contact {
           margin:0px;
           width: 100%;
           backdrop-filter: blur(15px);
-          border: none;
           outline: none;
           border-radius: 10px;
           background-color: transparent;
+          border: 3px solid rgba(210, 168, 135, 0.4);
 
           &::-webkit-scrollbar {
             display: none;
@@ -167,7 +167,6 @@ body.contact {
   /* Flex des principaux elements de la page */
   main#contactPage {
     width: 100%;
-    margin-top : 100px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -185,10 +184,7 @@ body.contact {
     &.pres-container {
       align-items: end;
     }
-
-    &.form-container {
-      align-items: start;
-    }
+    
   }
 
 
@@ -293,7 +289,7 @@ body.contact {
     align-items: center;
     padding: 40px;
     width: fit-content;
-    background-color: rgba(255,255,255,0.5);
+    background-color: $containers-background-color;
     transition: background-color $general-transition-switch-mode;
     backdrop-filter: blur(3px);
     border-radius: 20px;
