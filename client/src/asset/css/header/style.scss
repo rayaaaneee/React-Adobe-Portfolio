@@ -35,9 +35,10 @@ body {
         right: 0;
         width: 60px;
         height: 60px;
-        background-color: rgb(255 235 205 / 60%);
+        background: linear-gradient(rgba(255, 235, 205, 0.6) 100%);
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(15px);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(0px);
         padding: 25px;
         border-radius: 50%;
         translate: 17% -20%;
@@ -45,7 +46,14 @@ body {
         $transition-duration: 0.6s;
         $transition-type: cubic-bezier(0.77, 0, 0.175, 1);
         $transition-mode: $transition-duration $transition-type;
-        transition: width $transition-mode, height $transition-mode, translate $transition-mode, border-radius $transition-mode, padding $transition-mode, background-color $transition-mode;
+        transition: 
+            width $transition-mode, 
+            height $transition-mode, 
+            translate $transition-mode, 
+            border-radius $transition-mode, 
+            padding $transition-mode, 
+            background 1s $transition-mode, 
+            opacity $transition-mode;
         flex-direction: column;
         row-gap: 3vh;
         align-items: center;
@@ -86,7 +94,16 @@ body {
             translate: 0;
             border-radius: 0;
             padding: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 235, 205, 0.6) 0%, 
+                rgba(255, 235, 205, 0.6) 70%, 
+                rgba(255, 235, 205, 0.7) 75%, 
+                rgba(255, 255, 255, 0.7) 90%, 
+                rgba(255, 255, 255, 1) 100%);
+
             cursor: unset;
+
             * {
                 opacity: 1;
                 pointer-events: all;

@@ -30,13 +30,15 @@ body.index {
             font-size: 1.7em;
         }
     
-        .container > .title > h1 {
-            font-size: 13.5vw;
-            line-height: 11vw;
-        }
-    
-        .container > .title {
-            row-gap: 5vw;
+        .container {
+            & > .title  {
+                row-gap: 2vw;
+                & > h1 {
+                    font-size: 13.5vw;
+                    line-height: 11vw;
+                }
+
+            }
         }
 
         .subtitle {
@@ -89,16 +91,66 @@ body.index {
                 right: 2vw;
             }
             .footer-links a {
-                width: 8vw;
-                height: 8vw;
+                width: 10vw;
+                height: 10vw;
             }
             .about-page {
                 font-size: 2em;
                 bottom: 17vh;
                 right: 2vw;
             }
+
+            .triangle {
+                &.triangle-red {
+                    border-left-width: 18vw;
+                    border-right-width: 22vw;
+                    border-bottom-width: 35vw;
+                }
+        
+                &.triangle-orange {
+                    border-left-width: 40vw;
+                    border-right-width: 40vw;
+                    border-bottom-width: 70vw;
+                }
+            }
+
+            .circle {
+
+                &.circle-one {
+                    right: -40%;
+                }
+
+            }
         
             @media screen and (max-width : 768px) {
+
+                *:hover {
+                    background-color: unset !important;
+                }
+
+                .triangle {
+
+                    &.triangle-red {
+                        border-left-width: 290px;
+                        border-right-width: 220px;
+                        border-bottom-width: 415px;
+                    }
+
+                    &.triangle-yellow {
+                        border-left-width: 250px;
+                        border-right-width: 250px;
+                        border-bottom-width: 370px;
+                    }
+                }
+
+                .circle {
+
+                    &.circle-two {
+                        top: -20%;
+                        left: -20%;
+                    }
+
+                }
 
                 .get-start {
 
@@ -107,13 +159,15 @@ body.index {
                     border-radius: 60px;
                     font-size: 1.7em;
                     top: 12vh;
+                    margin-top: 20px;
+                    background-color: #c3703482;
 
                     &.one {
                         display: none !important;
                     }
 
                     &.two {
-                        display: block !important;
+                        display: flex !important;
                     }
                 }
             
@@ -123,8 +177,8 @@ body.index {
                 }
             
                 .footer-links a {
-                    width: 7vw;
-                    height: 7vw;
+                    width: 15vw;
+                    height: 15vw;
                 }
             
                 .vertical-bar {
@@ -132,6 +186,52 @@ body.index {
                 }
             
                 @media screen and (max-width : 600px) {
+
+                    .get-start {
+                        &.two {
+                            width: 175px;
+                            height: 70px;
+                            font-size: 1.4em;
+                        }
+                    }
+
+                    .triangle {
+                        &.triangle-red {
+                            // border-left-width: 30vw;
+                            // border-right-width: 34vw;
+                            // border-bottom-width: 55vw;
+                        }
+
+                        &.triangle-orange {
+                            // border-left-width: 40vw;
+                            // border-right-width: 40vw;
+                            // border-bottom-width: 70vw;
+                        }
+
+                        &.triangle-yellow {
+                            // border-left-width: 35vw;
+                            // border-right-width: 30vw;
+                            // border-bottom-width: 47vw;
+                        }
+                    }
+
+                    .circle {
+
+                        &.circle-one {
+                            width: 400px;
+                            height: 400px;
+                            right: -15%;
+                            top: 50%;
+                        }
+                                        
+                        &.circle-two {
+                            width: 450px;
+                            height: 450px;
+                            top: -12%;
+                            left: -25%;
+                        }
+                    
+                    }
 
                     @media screen and (max-width: 520px){
 
@@ -157,18 +257,12 @@ body.index {
                                 top: 1vh;
                             }
 
-                            .subtitle {
-                                margin-top: 20px;
-                                margin-bottom: 45px;
-                            }
-
                             .get-start {
                                 top: 1vh;
                                 right: 1vh;
                                 width: 120px;
                                 height: 45px;
                                 font-size: 1em;
-                                background-color: #c3703482;
 
                                 &.one {
                                     display: none !important;
@@ -191,7 +285,8 @@ body.index {
                                     }
 
                                     & > h1 {
-                                        font-size: 17vw;
+                                        font-size: 23vw;
+                                        line-height: 15vw;
                                         height: fit-content;
                                     }
 
@@ -199,7 +294,7 @@ body.index {
                                         justify-content: center;
                                         column-gap: 2.5vw;
 
-                                        $media-sutitle-bar-height: 13vw;
+                                        $media-sutitle-bar-height: 14vw;
 
                                         h2 {
                                             font-size: $media-sutitle-bar-height;
@@ -248,6 +343,22 @@ body.index {
 
                             .footer-triangle {
                                 border-bottom-width: 30vw;
+                            }
+
+                            @media screen and (max-width: 320px) {
+                                
+                                .circle {
+                                    
+                                    &.circle-one {
+                                        right: -32%;
+                                        top: 58%;
+                                    }
+
+                                    &.circle-two {
+                                        top: -10%;
+                                        left: -55%;
+                                    }
+                                }
                             }
                         }
                     }

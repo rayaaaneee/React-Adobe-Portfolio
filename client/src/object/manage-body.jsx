@@ -1,18 +1,41 @@
+
+
 export class ManageBody {
 
-    static removeClass(){
+    static pageNames = [];
+
+    static verifyClassName(className) {
+        if (!this.pageNames.includes(className)) {
+            throw new Error(`The class name "${className}" is not in the list of page names.`);
+        } else {
+            return true;
+        }
+    }
+
+    static #removeClass(){
         document.body.classList.forEach(className => {
-            document.body.classList.remove(className);
+            try {
+                if (this.verifyClassName(className)) {
+                    document.body.classList.remove(className);
+                }
+            } catch (_) {
+                // Class name don't have to be removed;
+            }
         });
     }
 
-    static setClass(className){
-        document.body.classList.add(className);
+    static #setClass(className){
+        (this.verifyClassName(className)) && document.body.classList.add(className);
     }
 
     static changeClass(className){
-        ManageBody.removeClass();
-        ManageBody.setClass(className);
+        if (this.pageNames.length === 0) throw new Error("You must set **ManageBody.pageNames** before changing the class.");
+        ManageBody.#removeClass();
+        ManageBody.#setClass(className);
     }
 
+    // Mandatory to use this class
+    static setPageNames(pageNames){
+        ManageBody.pageNames = pageNames;
+    }
 }

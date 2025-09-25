@@ -21,11 +21,17 @@ const Index = () => {
 
     useEffect(() => (setWasLoaderShowed(false)));
 
-    ManageBody.changeClass('index');
+    useEffect(() => {document.title = language.index.title});
 
     useEffect(() => {
-        document.title = language.index.title;
+        const hamburgerMenu = document.body.querySelector('.hamburger-container');
+        hamburgerMenu && hamburgerMenu.classList.remove('black');
+        return () => {
+            hamburgerMenu && hamburgerMenu.classList.add('black');
+        }
     });
+
+    ManageBody.changeClass('index');
 
     const textTab = language.index.description;
     const shortedTextTab = language.index.shorted_description;

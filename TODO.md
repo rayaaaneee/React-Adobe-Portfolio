@@ -1,15 +1,23 @@
-
 # TODO List :
 
 * [ ] Delete border-boxes for all elements in dark mode
 * [ ] Think about new content to add
+* [X] Improve Backgrounds on media
 * [ ] Menu
   * [ ] Page icons
   * [ ] Select-Language background (too much transparent)
   * [ ] Footer (with gradient to white)
+  * [ ] Not sure about gradient color
 * [ ] Change darkmode colors (all pages)
+
+- Check palette.png (/)
+- https://coolors.co/555b6e-89b0ae-bee3db-faf9f9-ffd6ba
+
 * [ ] Media queries for pages & modals
-  * [ ] Index
+  * [X] Index
+    * [X] Change the size of bg shapes (media queries)
+    * [X] Fix appearence animation on menu (media queries)
+    * [X] Fix alignment
   * [ ] Myself
     * [ ] Networks part
   * [ ] Background
@@ -20,7 +28,7 @@
     * [ ] FrameCV
     * [ ] Project
     * [ ] Fill JSON for worldmaster
-* [ ] Blog page
-  * [ ] Fix body background bug
-  * [ ] Create page template
-  * [ ] Create first blog
+  * [ ] Blog page
+    * [X] Fix body background bug
+    * [ ] Create page template
+    * [ ] Create first blog

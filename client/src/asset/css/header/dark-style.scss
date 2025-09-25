@@ -24,10 +24,10 @@ body {
         }
 
         .header-media-menu {
-            background-color: rgba(255, 255, 255, 0.6);
+            background: linear-gradient(rgba(255, 255, 255, 0.6) 100%);
 
             &.active {
-                background-color: rgba(71, 71, 71, 0.6);
+                background: linear-gradient(rgba(71, 71, 71, 0.6) 100%);
             }
         }
     }

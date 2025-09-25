@@ -4,6 +4,7 @@ const handleImageLoad = (event) => {
 
 export const animateImageLoading = (images) => {
     images.forEach((image) => {
+        console.log(image);
         image.classList.add('onloading');
         image.addEventListener('load', handleImageLoad);
     });

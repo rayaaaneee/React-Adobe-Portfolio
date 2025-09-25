@@ -1,27 +1,11 @@
 body:not(.index) {
     @media screen and (max-width: 1250px) {
-
-        #background1 {
-
-        }
-
-        #background2 {
-
-        }
         
         #background3 {
             top: -6vh;
         }
 
         @media screen and (max-width: 1024px) {
-
-            #background1 {
-
-            }
-        
-            #background2 {
-                
-            }
 
             #background3 {
                 top: 0;
@@ -44,6 +28,23 @@ body:not(.index) {
                 #background3 {
                     background-image: url(../../../img/backgrounds/background3-reduced.png);
                     top: -6vh;
+                }
+
+                &#dark {
+
+
+                    #background1 {
+                        background-image: url(../../../img/backgrounds/background1-dark-reduced.png);
+                    }
+                
+                    #background2 {
+                        background-image: url(../../../img/backgrounds/background2-dark-reduced.png);
+                    }
+
+                    #background3 {
+                        background-image: url(../../../img/backgrounds/background3-dark-reduced.png);
+                    }
+
                 }
             
                 @media screen and (max-width: 425px) {

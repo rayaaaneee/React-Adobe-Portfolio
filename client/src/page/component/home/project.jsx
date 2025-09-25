@@ -1,6 +1,6 @@
 import { forwardRef } from "react"
 
-export const Project = forwardRef(({ project, colorBar, uncolorBar, openProjectPage, isDarkTheme, darkLinkImg, darkDownloadImg, linkImg, downloadImg, imageLoadingRef }, ref) => {
+export const Project = forwardRef(({ project, colorBar, uncolorBar, openProjectPage, isDarkTheme, darkLinkImg, darkDownloadImg, linkImg, downloadImg, imageToLoad }, ref) => {
     return (
         <div
         className="main-container"
@@ -12,14 +12,20 @@ export const Project = forwardRef(({ project, colorBar, uncolorBar, openProjectP
             <div className="content">
                 <div className="to_download">
                     <p>{ project.getTitle() }</p>
-                    <img alt='download-link' src={ 
-                      project.isLink() ? 
-                        isDarkTheme ? darkLinkImg : linkImg 
-                          :
-                        isDarkTheme ? darkDownloadImg : downloadImg
-                      } draggable="false" />
+                    <img alt='download-link'
+                      	src={ 
+                      	project.isLink() ? 
+                      	  	isDarkTheme ? darkLinkImg : linkImg 
+                      	  	  	:
+                      	  	isDarkTheme ? darkDownloadImg : downloadImg
+                      	} draggable="false" />
                 </div>
-                <img ref={ imageLoadingRef } alt='project-icon' src={ isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } className="workslogos" draggable="false" />
+                <img alt='project-icon' 
+					src={ isDarkTheme ? project.getDarkReactIcon() : project.getReactIcon() } 
+					className="workslogos" 
+					draggable="false" 
+					ref={ imageToLoad } 
+				/>
             </div>
         </div>
     )

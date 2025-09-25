@@ -2,21 +2,60 @@
 $hamburger-bar-width: 50px;
 $hamburger-bar-height: 5px;
 
+$hamburger-bar-color: rgb(59, 59, 59);
+$hamburger-bar-color-hover: rgb(119 119 119);
+$hamburger-bar-color-dark: white;
+$hamburger-bar-color-dark-hover: rgb(255 221 221);
+
 body {
 
     .hamburger-container {
+
+        .hamburger-bar {
+
+            width: $hamburger-bar-width;
+            height: $hamburger-bar-height;
+    
+            border-radius: 10px;
+            box-shadow: 0 0 2.15rem #000000e9;
+            $transition-hamburger: 0.2s ease;
+            transition: transform $transition-hamburger, opacity $transition-hamburger, box-shadow $transition-hamburger, background-color $transition-hamburger;
+    
+            &.top-bar {
+                bottom: 10px;
+            }
+    
+            &.bottom-bar {
+                top: 10px;
+            }
+            
+        }
 
         &.black {
 
             &:hover {
                 .hamburger-bar {
-                    background-color: rgb(169 149 149);
+                    background-color: $hamburger-bar-color-hover;
                 }
             }
 
             .hamburger-bar {
-                background-color: rgb(59 59 59);
+                background-color: $hamburger-bar-color;
             }
+        }
+
+        @media screen and (max-width: 768px) {
+
+            &.black {
+
+                &:hover {
+                    .hamburger-bar {
+                        background-color: $hamburger-bar-color !important;
+                    }
+                }
+
+            }
+
         }
 
         width: 60px;
@@ -55,31 +94,14 @@ body {
                 }
             }
         }
-
+    
+    }
+    .hamburger-container:not(.black) {
+        
         .hamburger-bar {
-
-            width: $hamburger-bar-width;
-            height: $hamburger-bar-height;
-            background-color: #fff;
-
-            border-radius: 10px;
-            box-shadow: 0 0 2.15rem #000000e9;
-            $transition-hamburger: 0.2s ease;
-            transition: transform $transition-hamburger, opacity $transition-hamburger, box-shadow $transition-hamburger, background-color $transition-hamburger;
-
-            &.top-bar {
-                bottom: 10px;
-            }
-
-            &.bottom-bar {
-                top: 10px;
-            }
-
-            &:hover {
-                //background-color: #e3d2d2;
-            }
-
+            background-color: #fff !important;
         }
+
     }
 
     &#dark {
@@ -87,12 +109,21 @@ body {
             &:hover {
     
                 .hamburger-bar {
-                    background-color: rgb(255 221 221);
+                    background-color: $hamburger-bar-color-dark-hover;
                 }
                 
             }
+
             .hamburger-bar {
-                background-color: white;
+                background-color: $hamburger-bar-color-dark;
+            }
+
+            @media screen and (max-width: 768px) {
+                &:hover {
+                    .hamburger-bar {
+                        background-color: $hamburger-bar-color-dark;
+                    }
+                }
             }
         }
     }

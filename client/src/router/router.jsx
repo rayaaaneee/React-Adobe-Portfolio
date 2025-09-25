@@ -1,28 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Index from "../page/index";
-import Home from "../page/home";
-import Background from "../page/background";
-import Contact from "../page/contact";
-import About from "../page/about";
-import Myself from "../page/myself";
-import NotFound from "../page/notfound";
-import Blog from "../page/blog";
 import Main from "../page/component/main";
+import AppRoutes from "./app.routes";
+import { ManageBody } from "../object/manage-body";
 
 const Router = () => {
+    
+    ManageBody.setPageNames(AppRoutes.map(route => route.name));
+
     return (
         <BrowserRouter>
             <Main>
                 <Routes>
-                    <Route path={'/'} element={<Index/>} />
-                    <Route path={'/home'} element={<Home />} />
-                    <Route path={'/background'} element={<Background />} />
-                    <Route path={'/contact'} element={<Contact />} />
-                    <Route path={'/about'} element={<About />} />
-                    <Route path={'/myself'} element={<Myself />} />
-                    <Route path={'/blog'} element={<Blog />} />
-                    <Route path={'*'} element={<NotFound />} />
+                    { AppRoutes.map(({ path, name, element }) => (
+                        <Route key={name} path={path} element={element} />
+                    )) }
                 </Routes>
             </Main>
         </BrowserRouter>

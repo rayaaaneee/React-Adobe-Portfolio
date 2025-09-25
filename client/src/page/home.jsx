@@ -54,10 +54,17 @@ const Home = () => {
     ManageBody.changeClass('home');
 
     const elementsToAnimate = useRef([]);
-    const imagesToLoad = useRef([]);
+
+	const projectsImagesToLoad = useRef([]);
+	const skillsImagesToLoad = useRef([]);
+
+	let imagesToLoad = [];
+
     useEffect(() => { 
-      animateApparition(elementsToAnimate.current);
-      animateImageLoading(imagesToLoad.current);
+      	(elementsToAnimate.current) && animateApparition(elementsToAnimate.current);
+      	(projectsImagesToLoad.current && skillsImagesToLoad.current) 
+			&& (imagesToLoad = [...projectsImagesToLoad.current, ...skillsImagesToLoad.current])
+	  	 	&& (animateImageLoading(imagesToLoad));
     }, []);
 
     const { isDarkTheme } = useContext(themeContext);
@@ -292,14 +299,19 @@ const Home = () => {
                 </svg>
                 <article className="projects" ref={ projects }>
                     { projectsObjects.map((project, i) => (
-                      	<Project project={ project } colorBar={ () => colorBar(1) }
-                      	ref={ (project) => { elementsToAnimate.current.push(project) } }
-                      	imageLoadingRef={ (image) => { imagesToLoad.current[i] = image } }
-                      	uncolorBar={ () => uncolorBar(1) } 
-                      	openProjectPage={ () => openProjectPage(project) } 
-                      	isDarkTheme={isDarkTheme} darkLinkImg={darkLinkImg} 
-                      	darkDownloadImg={darkDownloadImg} linkImg={linkImg} 
-                      	downloadImg={downloadImg} />
+                      	<Project 
+							project={ project } 
+							colorBar={ () => colorBar(1) }
+							imageToLoad={ (project) => { projectsImagesToLoad.current[i] = project } }
+                      		ref={ (project) => { elementsToAnimate.current.push(project) } }
+                      		uncolorBar={ () => uncolorBar(1) } 
+                      		openProjectPage={ () => openProjectPage(project) } 
+                      		isDarkTheme={isDarkTheme} 
+							darkLinkImg={darkLinkImg} 
+                      		darkDownloadImg={darkDownloadImg} 
+							linkImg={linkImg} 
+                      		downloadImg={downloadImg} 
+						/>
                     ))}
                 </article>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron right" ref={(chevron) => {chevrons.current.right = chevron; elementsToAnimate.current.push(chevron)} }>
@@ -494,7 +506,11 @@ const Home = () => {
                 <div id="bar2" className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
                 <div className="school-competence-container" onMouseOver={ () => colorBar(2) } onMouseLeave={ () => uncolorBar(2)}>
                   	{ schoolCompetenceObjects.map((competence, i) => (
-                  	  	<CompetenceCard competence={ competence } ref={ card => { cards.current[i] = card; elementsToAnimate.current.push(card) } } />
+                  	  	<CompetenceCard 
+							skillImagesToLoad={ (skill) => { skillsImagesToLoad.current[i] = skill } }
+							competence={ competence } 
+							ref={ card => { cards.current[i] = card; elementsToAnimate.current.push(card) } } 
+						/>
                   	))}
                 </div>
             </article>

@@ -42,11 +42,12 @@
         background-color: $start-background-color;
         z-index: -1;
         transition: opacity 0.4s ease;
+        
+        &.visible {
+            opacity: 1;
+        }
     }
 
-    #background.visible {
-        opacity: 1;
-    }
 
     /* Design de la boite */
     #mainContainer{
@@ -72,22 +73,18 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+
+        /* Redimensionner logo de l'image */
+        img{
+            max-width: 80px;
+            height: 80px;
+        }
     }
 
-    /* Redimensionner logo de l'image */
-    #title img{
-        max-width: 80px;
-        height: 80px;
-    }
 
     /* Redimensionnement de l'image */
     #img img{
         max-width: 500px;
-    }
-
-    /* Redimensionner logo Adobe Creative Cloud */
-    #logo img{
-        max-width: 30px;
     }
 
     /* Definition de la police specifique a ce texte */
@@ -97,11 +94,27 @@
         margin-left: 12px;
     }
 
-    /* Definition de la police specifique a ce texte */
-    #logo p{
-        color : #696969;
-        font-family: 'Adobe Bold';
+
+    /* Disposer le logo Creative Cloud et son texte */
+    #logo {
+        display: flex;
+        flex-direction: row;
+        column-gap: 10px;
+        align-items: center;
+        margin-bottom: 15px;
+
+        /* Definition de la police specifique a ce texte */
+        p{
+            color : #696969;
+            font-family: 'Adobe Bold';
+        }
+
+        /* Redimensionner logo Adobe Creative Cloud */
+        img{
+            max-width: 30px;
+        }
     }
+
 
     /* Disposition de la partie droite de la page */
     #right{
@@ -116,15 +129,6 @@
         height: 100%;
         margin: 0;
         padding: 0;
-    }
-
-    /* Disposer le logo Creative Cloud et son texte */
-    #logo {
-        display: flex;
-        flex-direction: row;
-        column-gap: 10px;
-        align-items: center;
-        margin-bottom: 15px;
     }
 
     /* Margin global sur la partie gauche de la page et centrer le contenu*/

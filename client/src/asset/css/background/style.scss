@@ -414,6 +414,7 @@ body.background {
             &:hover, &.focus {
                 .point {
                     box-shadow: 0 0 10px 0 rgb(0, 0, 0);
+                    border: 1px solid $bottom-semester-background-color;
                     background: linear-gradient(160deg, transparent 60%, $bottom-semester-background-color 40%);
                     backdrop-filter: blur(10px);
                 }
@@ -424,6 +425,7 @@ body.background {
                 width: $point-width;
                 border-radius: 50%;
                 box-shadow: 0 0 5px 0 rgb(0, 0, 0);
+                border: 1px solid black;
                 background: linear-gradient(160deg, transparent 60%, rgba(0,0,0,1) 40%);
                 backdrop-filter: blur(5px);
                 transition: box-shadow 0.3s;
