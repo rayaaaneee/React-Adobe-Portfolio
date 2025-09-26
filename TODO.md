@@ -1,11 +1,13 @@
 # TODO List :
 
-* [ ] Delete border-boxes for all elements in dark mode
+* [X] Delete border-boxes for all elements in dark mode
 * [ ] Think about new content to add
 * [X] Improve Backgrounds on media
 * [ ] Menu
   * [ ] Page icons
-  * [ ] Select-Language background (too much transparent)
+  * [ ] Select-Language 
+    * [ ] background (too much transparent)
+    * [X] hover options bug
   * [ ] Footer (with gradient to white)
   * [ ] Not sure about gradient color
 * [ ] Change darkmode colors (all pages)
@@ -32,3 +34,6 @@
     * [X] Fix body background bug
     * [ ] Create page template
     * [ ] Create first blog
+  * [ ] About page
+    * [ ] Remade design
+    * [ ] Media for

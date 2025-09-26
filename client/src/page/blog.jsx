@@ -1,4 +1,5 @@
 import { ManageBody } from "../object/manage-body";
+import { Title } from "./component/general/title";
 
 const Blog = () => {
 
@@ -6,7 +7,7 @@ const Blog = () => {
 
     return (
         <>
-            <h1>Blog</h1>
+            <Title text={"Blog"} index={1} />
         </>
     );
 }

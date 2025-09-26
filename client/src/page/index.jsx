@@ -68,7 +68,7 @@ const Index = () => {
                 <NavLink to={'/home'} className="get-start one">{ language.index.discover }</NavLink>
                 <div className="container">
                     <div className="title">
-                        <h1>Adobe Portfolio</h1>
+                        <h1>{ language.title }</h1>
                         <div className="main-bar"></div>
                         <div className="subtitle">
                             <h2 className='one'>{ textTypeWriter }</h2>{/*  Texte dynamique  */}

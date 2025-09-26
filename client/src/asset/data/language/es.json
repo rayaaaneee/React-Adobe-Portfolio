@@ -25,9 +25,6 @@
         "about": "Acerca de",
         "blog": "Blog"
     },
-    "footer": {
-        "about": "Acerca de"
-    },
     "index": {
         "title": "Adobe Portfolio - Rayane Merlin",
         "discover": "Empezar",
@@ -42,8 +39,7 @@
             "Dev Full-Stack",
             "Diseñador",
             "Estudiante IT"
-        ],
-        "credentials": "Credenciales"
+        ]
     },
     "home": {
         "title": "Inicio",
@@ -91,7 +87,8 @@
         }
     },
     "myself": {
-        "title": "¿Quién soy?",
+        "title": "Sobre mí",
+        "description-title": "¿Quién soy?",
         "description": "Soy un estudiante de {{age}} años, apasionado por la informática y las nuevas tecnologías. Actualmente en mi segundo año de Licenciatura en Ciencias de la Computación, mi objetivo es continuar mis estudios en el campo del desarrollo y diseño.",
         "musics": "Mi Música",
         "musics_description": "Aquí tienes algunas canciones que me han marcado. Me permito hablar de ellas en este portfolio porque la música ocupa un lugar importante en mi vida y en la sociedad en general. Lo que escuchamos de alguna manera representa quiénes somos y es una fuente de creatividad que nos influye como oyentes.",

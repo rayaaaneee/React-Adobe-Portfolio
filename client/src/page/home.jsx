@@ -16,6 +16,7 @@ import { useConditionalEffect } from '../hook/useConditionalEffect';
 
 import { CompetenceCard } from './component/home/competence-card';
 import { Project } from './component/home/project';
+import { Title } from './component/general/title';
 
 import themeContext from '../function/context/theme-context';
 import languageContext from '../function/context/language-context';
@@ -289,9 +290,7 @@ const Home = () => {
             <article id="main">
                 {/* On met le CV dans le rendu, caché dans l'HTML pour s'en servir en cas d'impression */}
                 <iframe ref={cvPdfIframe} src={ `/CV.pdf` } className="hidden" title='CV'></iframe>
-                <div className="title t1" id="firstmid">
-                    <p>{ language.home.projects }</p>
-                </div>
+				<Title id={"firstmid"} index={1} text={language.home.projects} />
                 <div id="bar0" className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar)} }></div>
                 <div className="projects-chevrons-container" onMouseOver={ () => colorBar(0)} onMouseLeave={ () => uncolorBar(0) }>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="chevron left" ref={(chevron) => {chevrons.current.left = chevron; elementsToAnimate.current.push(chevron) } }>
@@ -427,9 +426,7 @@ const Home = () => {
             <h2 className="explicationtext" dangerouslySetInnerHTML={{ __html: language.home.projects_desc }}></h2>
             {/* Page du CV */}
             <article id="cv">
-              	<div className="title t2" id="secondmid">
-                	<p>{ language.home.cv }</p>
-             	</div>
+              	<Title id={"secondmid"} index={2} text={language.home.cv} />
               	<div id="bar1" className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
               	<div id="container-cv" onMouseOver={() => colorBar(1)} onMouseLeave={ () => uncolorBar(1) } ref={ (container) => { elementsToAnimate.current.push(container) } }>
                 	<div id="cv-img" onClick={() => {
@@ -500,9 +497,7 @@ const Home = () => {
               </div>
             </article>
             <article id="realisation">
-                <div className="title t3" id="firstmid">
-                  	<p>{ language.home.skills }</p>
-                </div>
+                <Title id={"firstmid"} index={3} text={language.home.skills} />
                 <div id="bar2" className="horizontal-bars" ref={ bar => { bars.current.push(bar); elementsToAnimate.current.push(bar) } }></div>
                 <div className="school-competence-container" onMouseOver={ () => colorBar(2) } onMouseLeave={ () => uncolorBar(2)}>
                   	{ schoolCompetenceObjects.map((competence, i) => (

@@ -29,7 +29,7 @@ const HeaderComponent = ({ showLogo = true }) => {
         {to: '/background', text: language.menu.background, isColored: false },
         {to: '/myself', text: language.menu.myself, isColored: false },
         {to: '/contact', text: language.menu.contact, isColored: false },
-        {to: '/about', text: language.index.credentials, isColored: true }
+        {to: '/about', text: language.menu.about, isColored: true }
     ]
 
     // Close menu when changing page

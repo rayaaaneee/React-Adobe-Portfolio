@@ -1,12 +1,13 @@
 export const animateApparition = (elementsToAnimate) => {
+
     const intersectionObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add("view");
-              entry.target.classList.remove("hide");
+              	entry.target.classList.add("view");
+              	entry.target.classList.remove("hide");
             } else {
-              entry.target.classList.remove("view");
-              entry.target.classList.add("hide");
+				entry.target.classList.add("hide");
+				entry.target.classList.remove("view");
             }
         });
     });
@@ -15,4 +16,5 @@ export const animateApparition = (elementsToAnimate) => {
     elementsToAnimate.forEach((element) => {
         intersectionObserver.observe(element);
     });
+	
 }

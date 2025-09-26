@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 body {
     
     $light-color: #de8ea7;
@@ -8,7 +10,7 @@ body {
         color: #fff !important;
         font-size: 1.35em;
         font-weight: 600;
-        text-shadow: 0 0 2.15rem #000;
+        text-shadow: $global-text-shadow;
         transition: all 0.3s ease;
 
 

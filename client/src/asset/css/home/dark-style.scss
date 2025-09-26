@@ -61,4 +61,10 @@ body.home#dark {
     .card-top-container {
         box-shadow: $containers-box-shadow-dark;
     }
+
+    .project-page-container {
+        .current-project-viewing {
+            background-color: rgb(235 208 234 / 60%) ;
+        }
+    }
 }

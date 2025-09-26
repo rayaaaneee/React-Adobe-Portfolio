@@ -1,20 +1,5 @@
 @import '../vars.scss';
 
 body.about#dark {
-    * {
-        color: white;
-    }
 
-    .content {
-        background-color: $containers-background-color-dark;
-        box-shadow: $containers-box-shadow;
-    }
-
-    .title, .subtitle {
-        color : $title-color-dark;
-    }
-
-    .bar {
-        background-color: $title-color-dark;
-    }
 }

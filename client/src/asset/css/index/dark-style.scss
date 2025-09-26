@@ -47,7 +47,7 @@ body.index#dark{
     .container  {
         & > .title {
             & > h1 {
-                color: #fbe9e9;
+                color: $main-title-color-dark;
             }
 
             & > .main-bar {
