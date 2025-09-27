@@ -212,8 +212,7 @@
         "school_address" : "Campus Lyontech, 3 Rue Victor Grignard",
         "school_icon" : "cpe.png",
         "icon" : "gear.png",
-        "white_icon" : "gear-white.png",
-        "subjects" : "s6.png"
+        "white_icon" : "gear-white.png"
     },
     {
         "id" : 8,
@@ -239,7 +238,6 @@
         "school_address" : "Campus Lyontech, 3 Rue Victor Grignard",
         "school_icon" : "cpe.png",
         "icon" : "gear.png",
-        "white_icon" : "gear-white.png",
-        "subjects" : "s6.png"
+        "white_icon" : "gear-white.png"
     }
 ]

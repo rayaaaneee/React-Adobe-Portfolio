@@ -1,6 +1,6 @@
 
-$hamburger-bar-width: 50px;
-$hamburger-bar-height: 5px;
+$hamburger-bar-width: 83%;
+$hamburger-bar-height: 9%;
 
 $hamburger-bar-color: rgb(59, 59, 59);
 $hamburger-bar-color-hover: rgb(119 119 119);
@@ -11,10 +11,17 @@ body {
 
     .hamburger-container {
 
+        &:hover {
+            .hamburger-bar {
+                background-color: $hamburger-bar-color-hover !important;
+            }
+        }
+
         .hamburger-bar {
 
             width: $hamburger-bar-width;
             height: $hamburger-bar-height;
+            background-color: $hamburger-bar-color;
     
             border-radius: 10px;
             box-shadow: 0 0 2.15rem #000000e9;
@@ -31,35 +38,10 @@ body {
             
         }
 
-        &.black {
+        $hamburger-size: 60px;
 
-            &:hover {
-                .hamburger-bar {
-                    background-color: $hamburger-bar-color-hover;
-                }
-            }
-
-            .hamburger-bar {
-                background-color: $hamburger-bar-color;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-
-            &.black {
-
-                &:hover {
-                    .hamburger-bar {
-                        background-color: $hamburger-bar-color !important;
-                    }
-                }
-
-            }
-
-        }
-
-        width: 60px;
-        height: 60px;
+        width: $hamburger-size;
+        height: $hamburger-size;
         display: flex;
         flex-direction: column;
         row-gap: calc(2 * $hamburger-bar-height);
@@ -85,7 +67,7 @@ body {
                     bottom: auto;
                 }
                 &.middle-bar {
-                    width: 60px;
+                    width: $hamburger-size;
                     opacity: 0;
                 }
                 &.bottom-bar {
@@ -96,23 +78,9 @@ body {
         }
     
     }
-    .hamburger-container:not(.black) {
-        
-        .hamburger-bar {
-            background-color: #fff !important;
-        }
-
-    }
 
     &#dark {
         .hamburger-container {
-            &:hover {
-    
-                .hamburger-bar {
-                    background-color: $hamburger-bar-color-dark-hover;
-                }
-                
-            }
 
             .hamburger-bar {
                 background-color: $hamburger-bar-color-dark;

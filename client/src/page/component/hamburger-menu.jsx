@@ -3,7 +3,7 @@ import { useState, forwardRef } from "react";
 import '../../asset/css/general/hamburger-menu.scss';
 
 // menuElement : tableau des éléments du menu à faire apparaître/disparaître (pas un seul élément)
-export const HamburgerMenu = forwardRef(({className = null, menuElement = null, onCheck = () => {}, style = {}, black = false,}, ref = null) => {
+export const HamburgerMenu = forwardRef(({className = null, menuElement = null, onCheck = () => {}, style = {}}, ref = null) => {
     
     const toggleMenuClass = () => {
         menuElement.classList.toggle("active");
@@ -19,7 +19,7 @@ export const HamburgerMenu = forwardRef(({className = null, menuElement = null, 
     
     return (
         <div ref={ref}
-            className={`hamburger-container ${className} ${black && "black"}`}
+            className={`hamburger-container ${className}`}
             style={{ ...style }}
             onClick={toggleMenuClass}>
             <input type="checkbox" id="hamburger-checkbox" checked={checked} />

@@ -3,9 +3,10 @@
 * [X] Delete border-boxes for all elements in dark mode
 * [ ] Think about new content to add
 * [X] Improve Backgrounds on media
+* [ ] Delete all hover effects on media
 * [ ] Menu
   * [ ] Page icons
-  * [ ] Select-Language 
+  * [ ] Select-Language
     * [ ] background (too much transparent)
     * [X] hover options bug
   * [ ] Footer (with gradient to white)
@@ -16,7 +17,8 @@
 - https://coolors.co/555b6e-89b0ae-bee3db-faf9f9-ffd6ba
 
 * [ ] Media queries for pages & modals
-  * [X] Index
+  * [ ] Index
+    * [ ] Place correctly header & footer triangles on medias
     * [X] Change the size of bg shapes (media queries)
     * [X] Fix appearence animation on menu (media queries)
     * [X] Fix alignment

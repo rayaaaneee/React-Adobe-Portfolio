@@ -3,7 +3,7 @@
 body.about {
     
     * {
-        // Menu header bug cause
+        // Menu header bug cause (sample on index page)
         // margin: 0;
         // padding: 0;
         // box-sizing: border-box;
@@ -14,6 +14,7 @@ body.about {
         height: 100%;
 
         .grid-container {
+
             height: 100%;
             width: 100%;
             display: grid;
@@ -22,10 +23,13 @@ body.about {
             align-items: center;
             justify-items: center;
 
-            article.illustration {
-
+            & > * {
                 width: 100%;
                 height: 100%;
+            }
+
+            article.illustration {
+
 
                 background: linear-gradient(to right, $index-triangle-header-background-color 0%, $index-triangle-header-background-color 65%, transparent 100%);
 
@@ -36,6 +40,7 @@ body.about {
             }
 
             article.about {
+
                 h1.title {
                     font-size: 3.5rem;
                     margin-bottom: 2rem;
@@ -44,6 +49,7 @@ body.about {
                     padding: 0 2rem;
                     transition: color 0.3s;
                 }
+                
             }
         }
     }

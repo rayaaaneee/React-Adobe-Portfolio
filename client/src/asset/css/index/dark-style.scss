@@ -51,26 +51,26 @@ body.index#dark{
             }
 
             & > .main-bar {
-                background-color: #ffffff;
+                background-color: rgb(241, 232, 239);
             }
         }
     }
 
     .vertical-bar {
-        background-color: #ffffff;
+        // background-color: #ffffff;
     }
 
     .footer-links {
     
-        .github-link {
+        // .github-link {
 
-            background-image: url(../../img/index/icon-github-white.png);
+        //     background-image: url(../../img/index/icon-github-white.png);
 
-            &:hover {
-                background-image: url(../../img/index/icon-github-white-hover.png);
-            }
+        //     &:hover {
+        //         background-image: url(../../img/index/icon-github-white-hover.png);
+        //     }
 
-        }
+        // }
 
     }
 

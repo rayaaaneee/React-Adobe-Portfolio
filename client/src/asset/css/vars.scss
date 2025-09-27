@@ -60,14 +60,40 @@ $dark-scrollbar-color-hover: rgb(181, 178, 188);
 
 $scrollbar-width: 10px;
 
+/* # Index page */
+
+$main-title-color: #fbf6e9;
+$main-title-color-dark: #fbe6e9;
+
+$index-background-color: rgb(255, 255, 255);
+$index-background-color-dark: rgb(244, 238, 238);
+
+$index-triangle-header-background-color: #dca0b153;
+$index-triangle-header-background-color-dark: #ecdfe853;
+$index-triangle-footer-background-color: #e6bdb198;
+$index-triangle-footer-background-color-dark: #dfcbe953;
+
+$index-circle-one-background-color: #e0ded4d0;
+$index-circle-one-background-color-dark: #9b8282d0;
+$index-circle-two-background-color: #decdbde5;
+$index-circle-two-background-color-dark: #534d5cd0;
+
+$index-triangle-yellow-background-color: #f7daa79b;
+$index-triangle-yellow-background-color-dark: #d4bbd0d0;
+$index-triangle-orange-background-color: #f7b07ad1;
+$index-triangle-orange-background-color-dark: #ffffffd0;
+$index-triangle-red-background-color: #df9191a9;
+$index-triangle-red-background-color-dark: rgba(221, 181, 181, 0.816);
+
+
 /* Loader */
 $loader-background-color: rgb(255, 255, 255);
-$loader-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
 $start-background-color: rgb(249, 238, 212);
+$loader-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
 
 $loader-background-color-dark: rgb(35, 34, 37) !important;
-$loader-box-shadow-dark: 0 0 30px 0 rgba(255, 255, 255, 0.3) !important;
-$start-background-color-dark: rgb(181, 178, 188) !important;
+$start-background-color-dark: $index-background-color-dark !important;
+$loader-box-shadow-dark: 0 0 30px 0 rgba(255, 255, 255, 0.3);
 
 /* Home */
 
@@ -86,13 +112,11 @@ $bottom-semester-background-color-dark: $colored-container-background-color-dark
 /* Personal */
 
 /* Contact */
-$form-background-color: rgba(255, 255, 255, 0.5);
 $form-box-shadow: 0 0 30px rgba(0,0,0,0.2);
 $form-submit-button-background-color: $colored-container-background-color;
 $form-submit-button-background-color-hover: $colored-containers-background-color-hover;
 $input-background-color: rgba(255, 255, 255, 0.8);
 
-$form-background-color-dark: rgb(33, 31, 38, 0.75);
 $form-box-shadow-dark: 0 0 23px rgb(255 255 255 / 10%);
 $form-submit-button-background-color-dark: $colored-container-background-color-dark;
 $form-submit-button-background-color-hover-dark: $colored-containers-background-color-hover-dark;
@@ -104,28 +128,3 @@ $input-background-color-dark: rgba(0, 0, 0, 0.8);
 $modal-error-color: #d490908d;
 $modal-success-color: #6dc17083;
 $modal-box-shadow: 0 0 10px rgb(0 0 0 / 15%);
-
-/* # Index page */
-
-$main-title-color: #fbf6e9;
-$main-title-color-dark: #fbe6e9;
-
-$index-background-color: rgb(255, 255, 255);
-$index-background-color-dark: rgb(0, 0, 0);
-
-$index-triangle-header-background-color: #dca0b153;
-$index-triangle-header-background-color-dark: #ecdfe853;
-$index-triangle-footer-background-color: #e6bdb198;
-$index-triangle-footer-background-color-dark: #dfcbe953;
-
-$index-circle-one-background-color: #e0ded4d0;
-$index-circle-one-background-color-dark: #9b8282d0;
-$index-circle-two-background-color: #decdbde5;
-$index-circle-two-background-color-dark: #534d5cd0;
-
-$index-triangle-yellow-background-color: #f7daa79b;
-$index-triangle-yellow-background-color-dark: #d4bbd0d0;
-$index-triangle-orange-background-color: #f7b07ad1;
-$index-triangle-orange-background-color-dark: #ffffffd0;
-$index-triangle-red-background-color: #df9191a9;
-$index-triangle-red-background-color-dark: rgba(221, 181, 181, 0.816);

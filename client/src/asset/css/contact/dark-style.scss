@@ -6,7 +6,7 @@ body.contact#dark {
     }
     
     .formulaire {
-        background-color : $form-background-color-dark;
+        background-color : $components-background-color-dark;
         box-shadow : $form-box-shadow-dark;
     }
     
@@ -27,6 +27,7 @@ body.contact#dark {
     
     input, textarea {
         color: rgb(255, 255, 255) !important;
+        border: 3px solid rgba(255, 255, 255, 0.4);
 
         &:focus {
             animation: appearShadowDark 0.2s forwards;

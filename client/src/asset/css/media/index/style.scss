@@ -24,10 +24,10 @@ body.index {
         .get-start {
             top: 7vh;
             right: 5vw;
-            width: 200px;
-            height: 80px;
+            width: 150px;
+            height: 60px;
             border-radius: 60px;
-            font-size: 1.7em;
+            font-size: 1.3em;
         }
     
         .container {
@@ -124,10 +124,6 @@ body.index {
         
             @media screen and (max-width : 768px) {
 
-                *:hover {
-                    background-color: unset !important;
-                }
-
                 .triangle {
 
                     &.triangle-red {
@@ -154,10 +150,10 @@ body.index {
 
                 .get-start {
 
-                    width: 200px;
-                    height: 80px;
+                    width: 25vw;
+                    height: 10vw;
                     border-radius: 60px;
-                    font-size: 1.7em;
+                    font-size: 1.5em;
                     top: 12vh;
                     margin-top: 20px;
                     background-color: #c3703482;
