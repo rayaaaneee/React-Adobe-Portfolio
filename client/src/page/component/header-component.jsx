@@ -14,7 +14,7 @@ import { SelectLanguageButton } from './select-language-button';
 import { Logo, LogoColors } from './logo';
 import { useConditionalEffect } from '../../hook/useConditionalEffect';
 
-const HeaderComponent = ({ showLogo = true, showGithub = true }) => {
+const HeaderComponent = ({ hasFooter = true }) => {
 
     const { language } = useContext(languageContext);
 
@@ -71,13 +71,13 @@ const HeaderComponent = ({ showLogo = true, showGithub = true }) => {
 
         observer.observe(mediaMenu.current, { attributes: true, attributeFilter: ['class'] });
 
-        mediaMenu.current?.addEventListener('click', onClickMenu);
+        mediaMenu.current && mediaMenu.current.addEventListener('click', onClickMenu);
 
         window.addEventListener('click', clickOutsideMenu);
 
         return () => {
             window.removeEventListener('click', clickOutsideMenu);
-            mediaMenu.current?.removeEventListener('click', onClickMenu);
+            mediaMenu.current && mediaMenu.current.removeEventListener('click', onClickMenu);
         };
         
     }, []);
@@ -88,7 +88,7 @@ const HeaderComponent = ({ showLogo = true, showGithub = true }) => {
             <nav id="menu-container">
                 <ul className={"header-media-menu"} ref={ mediaMenu }>
                     <SelectLanguageButton className={"onmenu"} />
-                    { showLogo && ( 
+                    { hasFooter && ( 
                         <NavLink to={'/'}>
                             <Logo color={LogoColors.black} className="menu-logo" />
                         </NavLink>

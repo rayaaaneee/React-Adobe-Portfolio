@@ -9,6 +9,7 @@ const Blog = () => {
     return (
         <>
             <Title text={"Blog"} index={1} />
+            <h2>Coming soon..</h2>
         </>
     );
 }

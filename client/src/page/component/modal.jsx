@@ -9,7 +9,6 @@ import { ModalInformations } from '../../object/modal-informations';
 
 import '../../asset/scss/modal/style.scss';
 
-// Utiliser createPortal pour afficher le modal
 export const Modal = () => {
 
     const { modalInformations, setModalInformations } = useContext(modalContext);
@@ -46,6 +45,7 @@ export const Modal = () => {
         }
     }, [ modalInformations ]);
 
+    // CreatePortal pour afficher le modal à l'intérieur de body
     return createPortal(
         <>
             { modalInformations.isVisible && (

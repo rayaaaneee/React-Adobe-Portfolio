@@ -1,17 +1,17 @@
 import { useContext } from "react";
 import { useLocation } from "react-router-dom";
 
-import Backgrounds from "./backgrounds";
-import HeaderComponent from "./header-component";
-import Loader from "./loader";
+import Backgrounds from "./page/component/backgrounds";
+import HeaderComponent from "./page/component/header-component";
+import Loader from "./page/component/loader";
 
-import loaderContext from "../../function/context/loader-context";
+import loaderContext from "./function/context/loader-context";
 
-import "../../asset/scss/styles.scss";
-import "../../asset/scss/general/animation.scss";
-import "../../asset/scss/general/dark-scrollbar.scss";
-import "../../asset/scss/general/presets-animation.scss";
-import "../../asset/scss/general/scrollbar.scss";
+import "./asset/scss/styles.scss";
+import "./asset/scss/general/animation.scss";
+import "./asset/scss/general/dark-scrollbar.scss";
+import "./asset/scss/general/presets-animation.scss";
+import "./asset/scss/general/scrollbar.scss";
 
 
 const Main = ({ children }) => {

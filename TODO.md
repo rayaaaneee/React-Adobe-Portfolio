@@ -9,6 +9,7 @@
   * [ ] Select-Language
     * [ ] background (too much transparent)
     * [X] hover options bug
+    * [X] Black text on light mode
   * [ ] Footer (with gradient to white)
   * [ ] Not sure about gradient color
 * [ ] Change darkmode colors (all pages)

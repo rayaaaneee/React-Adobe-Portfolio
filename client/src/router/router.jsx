@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Main from "../page/component/main";
+import Main from "../Main";
 import AppRoutes from "./app.routes";
 import { ManageBody } from "../object/manage-body";
 
