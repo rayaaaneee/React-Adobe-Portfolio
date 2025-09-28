@@ -1,13 +1,19 @@
 import { forwardRef } from "react"
 
-export const Project = forwardRef(({ project, colorBar, uncolorBar, openProjectPage, isDarkTheme, darkLinkImg, darkDownloadImg, linkImg, downloadImg, imageToLoad }, ref) => {
+import linkImg from '../../../asset/img/home/icon/black-link.png';
+import darkLinkImg from '../../../asset/img/home/icon/white-link.png';
+import downloadImg from '../../../asset/img/home/icon/black-download.png';
+import darkDownloadImg from '../../../asset/img/home/icon/white-download.png';
+
+export const Project = forwardRef(({ project, colorBar, uncolorBar, onClick, isDarkTheme, imageToLoad }, ref) => {
+
     return (
         <div
         className="main-container"
         ref={ ref }
         onMouseOver={ colorBar }
         onMouseLeave={ uncolorBar }
-        onClick={ openProjectPage }
+        onClick={ onClick }
         data-date={ project.getFormatDate() } >
             <div className="content">
                 <div className="to_download">

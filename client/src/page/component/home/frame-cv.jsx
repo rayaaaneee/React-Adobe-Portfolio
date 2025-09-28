@@ -1,5 +1,7 @@
-export const FrameCV = () => {
-    return (
-      <div>FrameCV</div>
-    )
-}
+import { forwardRef } from "react";
+
+export const FrameCV = forwardRef(({ }, ref) => {
+  return (
+    <div ref={ref}>FrameCV</div>
+  );
+});

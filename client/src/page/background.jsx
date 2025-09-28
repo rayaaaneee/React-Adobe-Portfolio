@@ -152,7 +152,6 @@ const Background = () => {
 
     const closeSemesterPageOnEscape = useCallback((e) => {
         if (e.key === "Escape") {
-            console.log(isSubjectImageOpen);
             if (isSubjectImageOpen) {
                 setIsSubjectImageOpen(false);
             } else if (semesterPageIsOpen) {

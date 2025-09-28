@@ -2,8 +2,6 @@ import { useContext, useEffect, useState, useRef } from 'react';
 
 import { useConditionalEffect } from '../hook/useConditionalEffect';
 
-import MarkdownPreview from '@uiw/react-markdown-preview';
-
 import { ManageBody } from '../object/manage-body';
 
 import { Project as ProjectObject } from '../object/project';
@@ -22,12 +20,10 @@ import themeContext from '../function/context/theme-context';
 import languageContext from '../function/context/language-context';
 
 import '../asset/scss/home/style.scss';
-import '../asset/scss/home/frame-cv.scss';
-import '../asset/scss/home/project-page.scss';
 import '../asset/scss/home/dark-style.scss';
-
 import '../asset/scss/media/home/style.scss';
-import '../asset/scss/media/home/project-page.scss';
+
+import '../asset/scss/home/frame-cv.scss';
 import '../asset/scss/media/home/frame-cv.scss';
 
 import projectJson from '../asset/data/home/project.json';
@@ -36,18 +32,10 @@ import cvInformationsJson from '../asset/data/home/cv-info.json';
 
 import zoomImg from '../asset/img/home/icon/zoom.png';
 import darkZoomImg from '../asset/img/home/icon/zoom-white.png';
-import downloadImg from '../asset/img/home/icon/black-download.png';
-import darkDownloadImg from '../asset/img/home/icon/white-download.png';
-import linkImg from '../asset/img/home/icon/black-link.png';
-import darkLinkImg from '../asset/img/home/icon/white-link.png';
-import skills from '../asset/img/home/icon/skills.png';
-import languages from '../asset/img/home/icon/language.png';
-import descriptionIcon from '../asset/img/home/icon/desc-icon-pink.png';
-import useDescriptionIcon from '../asset/img/home/icon/use-desc-icon-pink.png';
-import whiteMemoryIcon from '../asset/img/home/icon/white-memory-icon.png';
-import anchorLink from '../asset/img/home/icon/anchor-link.png';
-import githubIcon from '../asset/img/home/icon/github-pink.png';
+
+
 import cvImg from '../asset/img/home/frame-cv/CV.png';
+import { FrameProject } from './component/home/frame-project';
 
 
 const Home = () => {
@@ -114,7 +102,6 @@ const Home = () => {
       	  projectPageRef.current.style.removeProperty('display');
       	}, 400);
     }, []);
-    let projectPageContentRef = useRef(null);
 
     useConditionalEffect(() => {
         if (projectPageIsVisible) {
@@ -135,6 +122,7 @@ const Home = () => {
     let [isProjectViewerVisible, setIsProjectViewerVisible] = useState(false);
 
     let [currentProject, setCurrentProject] = useState(null);
+
     const openProjectPage = (project) => {
         setProjectPageIsVisible(true);
         setCurrentProject(project);
@@ -154,6 +142,7 @@ const Home = () => {
     });
     
     const openProjectViewer = (link) => {
+		console.log("opening");
       	setIsProjectViewerVisible(true);
       	projectViewerContainerRef.current.classList.add('visible');
       	if (link.toLowerCase().endsWith('pdf')) {
@@ -183,15 +172,12 @@ const Home = () => {
 
     const closeProjectPageOnEscape = (e) => {
       	if (e.key === 'Escape') {
-      	  console.log("Escape");
-      	  if (isProjectViewerVisible) {
-      	    console.log('Closing viewer');
-      	    closeProjectViewer();
-      	  } else if (projectPageIsVisible) {
-      	    document.removeEventListener('keydown', closeProjectPageOnEscape);
-      	    closeProjectPage();
-      	    console.log('Closing page');
-      	  }
+      	  	if (isProjectViewerVisible) {
+      	  	  	closeProjectViewer();
+      	  	} else if (projectPageIsVisible) {
+      	  	  	document.removeEventListener('keydown', closeProjectPageOnEscape);
+      	  	  	closeProjectPage();
+      	  	}
       	}
     }
 
@@ -304,12 +290,8 @@ const Home = () => {
 							imageToLoad={ (project) => { projectsImagesToLoad.current[i] = project } }
                       		ref={ (project) => { elementsToAnimate.current.push(project) } }
                       		uncolorBar={ () => uncolorBar(1) } 
-                      		openProjectPage={ () => openProjectPage(project) } 
-                      		isDarkTheme={isDarkTheme} 
-							darkLinkImg={darkLinkImg} 
-                      		darkDownloadImg={darkDownloadImg} 
-							linkImg={linkImg} 
-                      		downloadImg={downloadImg} 
+                      		onClick={ () => openProjectPage(project) } 
+                      		isDarkTheme={ isDarkTheme } 
 						/>
                     ))}
                 </article>
@@ -318,110 +300,16 @@ const Home = () => {
                 </svg>
                 </div>
                 {/* Page des projets */}
-                <div ref={projectPageRef} className="project-page-container">
-                    <div className="project-page-content" ref={projectPageContentRef} >
-                        <div className='background-project-page'></div>
-                        <div className='parts'>
-                          	<div className="title-project-container">
-                          	  	<img alt='link-or-download' className="link-or-download" src={currentProject && (currentProject.isLink() ? darkLinkImg : darkDownloadImg) } draggable="false" />
-                          	  	<p className="title-project">{ currentProject && currentProject.getTitle() }</p>
-                          	</div>
-                          	{currentProject && (currentProject.hasLanguages() &&
-                          	  	<>
-                          	    	<div className="project-languages-skills title-page-project">
-                          	      		<img src={ languages } alt='langages-icones' draggable="false" />
-                          	      		<p className="title-language-skill">{ language.home.projects_frame.languages + (currentProject.getLanguages().length > 1 ? 's' : '') } :</p>
-                          	    	</div>
-                          	    	<div className="project-languages-skills-container page-content">
-                          	      		{currentProject.getLanguages().map((language, index) => {
-                          	        		return (
-                          	          			<div key={index} className="skill-language-container template" style={{backgroundColor: language.color}}>
-                          	            			<p>{language.name}</p>
-                          	          			</div>
-                          	        		);
-                          	      		})}
-                          	    	</div>
-                          	  	</>
-                          	) }
-                          	{currentProject && (currentProject.hasCompetences() &&
-                          	  	<>
-                          	  	  	<div className="project-languages-skills title-page-project">
-                          	  	  	  	<img src={ skills } alt='languages-icone' draggable="false" />
-                          	  	  	  	<p className="title-languages-skill">{
-                          	  	  	    language.home.projects_frame.skills + (currentProject.getCompetences().length > 1 ? 's' : '') } :</p>
-                          	  	  	</div>
-                          	  	  	<div className="project-languages-skills-container page-content">
-                          	  	  	  	{currentProject.getCompetences().map((competence, index) => {
-                          	  	  	    	return (
-                          	  	  	      		<div key={index} className="skill-language-container template" style={{backgroundColor: competence.color}}>
-                          	  	  	        		<p>{competence.name}</p>
-                          	  	  	      		</div>
-                          	  	  	    	);
-                          	  	  	  	})}
-                          	  	  	</div>
-                          	  	</>
-                          	) }
-                          	<div className="project-desc text-project-container">
-                          	  	<div className="project-desc-text title-page-project">
-                          	  	  	<img src={ descriptionIcon } alt="icone-description" draggable="false" />
-                          	  	  	<p>{ language.home.projects_frame.description } :</p>
-                          	  	</div>
-                          	  	<MarkdownPreview className='project-desc-value page-content' source={ currentProject && currentProject.getDescription() } />
-                          	</div>
-                          	{ currentProject && 
-                          	  	(currentProject.hasUseDescription() &&
-                          	  	    <div className="project-use-desc text-project-container">
-                          	  	      	<div className="project-use-desc-text title-page-project">
-                          	  	      	  	<img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
-                          	  	      	  	<p>{ language.home.projects_frame.for_using } :</p>
-                          	  	      	</div>
-                          	  	      	<MarkdownPreview className='project-use-desc-value page-content' source={ currentProject && currentProject.getUseDescription() } />
-                          	  	    </div>
-                          	  	) 
-                          	}
-                          	{ currentProject && 
-                          	  	(currentProject.hasRepository() &&
-                          	      	<div className="project-repository text-project-container">
-                          	        	<div className="project-repository-text title-page-project">
-                          	          		<img src={ githubIcon } alt="notice-utilisation-icone" draggable="false" />
-                          	          		<p>{ language.home.projects_frame.repository } :</p>
-                          	        	</div>
-                          	        	<a target='_blank' href={ currentProject.getRepository() } className="project-repository-value page-content">
-                          	          		<p>{ currentProject.getRepository() }</p>
-                          	          		<img src={ anchorLink } alt="repository-link" draggable="false" />
-                          	        	</a>
-                          	      	</div>
-                          	  	) 
-                          	}
-                        </div>
-                        { currentProject && (currentProject.isLink() &&
-                          	<a onClick={ () => openProjectViewer(currentProject.getLink()) }
-                          	className="link-btn title-page-project" 
-                          	rel='noreferrer'>{ `${language.home.projects_frame.consult} ${currentProject.getTitle()}` }</a>
-                          	)
-                        }
-                        { currentProject && (currentProject.isDownload() &&
-                        	<a href={ `/project/${currentProject.getFile()}` } className="download-btn title-page-project" download>{ `${language.home.projects_frame.download} ${currentProject.getFileName()}`}</a>
-                        ) }
-                        <div className="project-size-container text-project-container">
-                          	<img src={ whiteMemoryIcon } alt="mémoire-icone" draggable="false" />
-                          	<p className="page-content">{language.home.projects_frame.file_size} :</p>
-                          	<p className="project-size-value page-content">{ currentProject && currentProject.getSize() }</p>
-                          	<p className='page-content'> Mo </p>
-                        </div>
-                        <div className='project-viewer-container' ref={ projectViewerContainerRef }>
-                          	<div className='cross-project-viewer' title={ language.home.projects_frame.quit_preview } onClick={ closeProjectViewer }>
-                          	</div>
-                          	<iframe src='' className='project-viewer onloading'></iframe>
-                        </div>
-                    </div>
-                    <a href={ `/project/${currentProject && currentProject.getFile()}` }
-                        className='current-project-viewing' download ref={currentProjectViewingRef} title={`${ language.home.projects_frame.download } ${currentProject && currentProject.getTitle() }`}>
-                        <img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
-                    </a>
-                    <div title={ language.home.projects_frame.quit } className="quit-project-button" onClick={closeProjectPage}>
-                    </div>
-                </div>
+				<FrameProject 
+					project={currentProject} 
+					onClosePage={ closeProjectPage }
+					onOpenViewer={ openProjectViewer }
+					onCloseViewer={ closeProjectViewer }
+					language={ language }
+					ref={projectPageRef}
+					projectViewerRef={projectViewerContainerRef} 
+					currentProjectSquareRef={currentProjectViewingRef}
+				/>
             </article>
             <h2 className="explicationtext" dangerouslySetInnerHTML={{ __html: language.home.projects_desc }}></h2>
             {/* Page du CV */}

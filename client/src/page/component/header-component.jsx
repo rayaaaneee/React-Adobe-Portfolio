@@ -63,7 +63,6 @@ const HeaderComponent = ({ hasFooter = true }) => {
         }
 
         const observer = new MutationObserver(() => {
-            console.log("change");
             if (mediaMenu.current && mediaMenu.current.classList.contains("active")) {
                 onOpening();
             } else onClosing();
