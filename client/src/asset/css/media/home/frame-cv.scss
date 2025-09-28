@@ -38,21 +38,26 @@
     #infos{
         background-color: rgba(240, 193, 193, 0.8);
     }
+
     /* Hover de la croix */
     #cross{
         background-color: rgba(209, 95, 95, 0.8);
         
-        &:hover{
-            background-color: rgba(209, 95, 95);
+        @include hover-safe {
+            &:hover{
+                background-color: rgba(209, 95, 95);
+            }
         }
     }
 
-    #download:hover, #print:hover{
-        background-color: rgba(221, 141, 141);
-    }
-    
-    #infos:hover{
-        background-color: rgba(240, 193, 193);
+    @include hover-safe {
+        #download:hover, #print:hover{
+            background-color: rgba(221, 141, 141);
+        }
+        
+        #infos:hover{
+            background-color: rgba(240, 193, 193);
+        }
     }
     
     /* On change le style des informations */

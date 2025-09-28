@@ -22,13 +22,15 @@ body.contact {
     	      	color: #fff;
     	      	text-align: center;
 
-    	      	&:hover {
-    	      	    background: $form-submit-button-background-color-hover;
-    	      	    box-shadow:none;
-    	      	    -moz-box-shadow:none;
-    	      	    -webkit-box-shadow:none;
-    	      	    color: white;
-    	      	}
+				@include hover-safe {
+    	      		&:hover {
+    	      		    background: $form-submit-button-background-color-hover;
+    	      		    box-shadow:none;
+    	      		    -moz-box-shadow:none;
+    	      		    -webkit-box-shadow:none;
+    	      		    color: white;
+    	      		}
+				}
     	    }
     	}
 

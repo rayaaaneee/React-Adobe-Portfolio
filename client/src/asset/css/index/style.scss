@@ -354,6 +354,10 @@ body.index {
         align-items: center;
         flex-direction: row;
         column-gap: 1vw;
+
+        & > * {
+            white-space: nowrap;
+        }
     }
 
     .vertical-bar {
@@ -425,8 +429,10 @@ body.index {
             background-position: center;
             background-repeat: no-repeat;
 
-            &:hover {
-                transition: all 0.2s ease;
+            @include hover-safe {
+                &:hover {
+                    transition: all 0.2s ease;
+                }
             }
         }
 
@@ -441,9 +447,11 @@ body.index {
 
     .linkedin-link {
         background-image: url(../../img/index/icon-linkedin.png);
-        
-        &:hover {
-            background-image: url(../../img/index/icon-linkedin-hover.png);
+      
+        @include hover-safe {
+            &:hover {
+                background-image: url(../../img/index/icon-linkedin-hover.png);
+            }
         }
     }
 
@@ -452,8 +460,10 @@ body.index {
         
         background-image: url(../../img/index/icon-github.png);
         
-        &:hover {
-            background-image: url(../../img/index/icon-github-hover.png);
+        @include hover-safe {
+            &:hover {
+                background-image: url(../../img/index/icon-github-hover.png);
+            }
         }
 
     }
@@ -469,16 +479,20 @@ body.index {
     .mail-link {
         background-image: url(../../img/index/icon-mail.png);
         
+        @include hover-safe {
             &:hover {
                 background-image: url(../../img/index/icon-mail-hover.png);
             }
+        }
     }
 
     .tel-link {
         background-image: url(../../img/index/icon-tel.png);
 
-        &:hover {
-            background-image: url(../../img/index/icon-tel-hover.png);
+        @include hover-safe {
+            &:hover {
+                background-image: url(../../img/index/icon-tel-hover.png);
+            }
         }
     }
 

@@ -10,8 +10,10 @@ body#dark:not(.index) {
         background-color: $dark-scrollbar-color;
     }
 
-    &::-webkit-scrollbar-thumb:hover {
-        background-color: $dark-scrollbar-color-hover;
+    @include hover-safe {
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: $dark-scrollbar-color-hover;
+        }
     }
 
     /* Browser : Safari, Edge, Opera */

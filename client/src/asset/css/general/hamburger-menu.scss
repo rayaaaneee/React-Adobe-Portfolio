@@ -1,19 +1,18 @@
+@import '../vars.scss';
 
 $hamburger-bar-width: 83%;
 $hamburger-bar-height: 9%;
-
-$hamburger-bar-color: rgb(59, 59, 59);
-$hamburger-bar-color-hover: rgb(119 119 119);
-$hamburger-bar-color-dark: white;
-$hamburger-bar-color-dark-hover: rgb(255 221 221);
 
 body {
 
     .hamburger-container {
 
-        &:hover {
-            .hamburger-bar {
-                background-color: $hamburger-bar-color-hover !important;
+
+        @include hover-safe {
+            &:hover {
+                .hamburger-bar {
+                    background-color: $hamburger-bar-color-hover !important;
+                }
             }
         }
 
@@ -86,7 +85,7 @@ body {
                 background-color: $hamburger-bar-color-dark;
             }
 
-            @media screen and (max-width: 768px) {
+            @include hover-safe {
                 &:hover {
                     .hamburger-bar {
                         background-color: $hamburger-bar-color-dark;

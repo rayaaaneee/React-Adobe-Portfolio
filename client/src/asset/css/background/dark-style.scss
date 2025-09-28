@@ -22,8 +22,10 @@ body.background#dark {
         .explain {
             background-color : $colored-container-background-color-dark;
 
-            a:hover {
-                background-color: $colored-containers-background-color-hover-dark;
+            @include hover-safe {
+                a:hover {
+                    background-color: $colored-containers-background-color-hover-dark;
+                }
             }
         }
         
@@ -38,8 +40,10 @@ body.background#dark {
         }
 
         &:not(.selected) {
-            &:hover {
-                background-color:rgba(245, 239, 239, 0.7);
+            @include hover-safe {
+                &:hover {
+                    background-color:rgba(245, 239, 239, 0.7);
+                }
             }
         }
 
@@ -70,10 +74,20 @@ body.background#dark {
             background: linear-gradient(160deg, transparent 60%, rgb(255, 255, 255) 40%) !important;
         }
 
-        &:hover, &.focus {
+        @mixin point-hover-background {
             .point {
                 background : linear-gradient(160deg, transparent 60%, $bottom-semester-background-color-dark 40%) !important;
             }
+        }
+
+        @include hover-safe {
+            &:hover {
+                @include point-hover-background;
+            }
+        }
+
+        &.focus {
+            @include point-hover-background;
         }
 
 

@@ -7,11 +7,20 @@ body {
             background-color: $components-background-color-dark;
             box-shadow: $components-box-shadow-dark;
     
-            li:hover{
-                &::after {
-                    background-color: white;
+            @include hover-safe {
+
+                &:hover {
+                    background-color: $colored-container-background-color-dark;
+                    box-shadow: $colored-container-box-shadow-dark;
+                }
+                
+                li:hover{
+                    &::after {
+                        background-color: white;
+                    }
                 }
             }
+            
         
             .sites > p {
                 color: white;
@@ -24,10 +33,10 @@ body {
         }
 
         .header-media-menu {
-            background: linear-gradient(rgba(255, 255, 255, 0.6) 100%);
+            background-color: $menu-background-color-dark-one;
 
             &.active {
-                background: linear-gradient(rgba(71, 71, 71, 0.6) 100%);
+                background-color: $menu-background-color-dark-two;
             }
         }
     }

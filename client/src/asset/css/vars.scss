@@ -1,6 +1,33 @@
 /* # Global vars pages */
 
-// Body
+/* Hover mixin */
+@mixin hover-safe {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+/* Menu */
+
+// Header colors
+
+$menu-background-color: rgba(255, 235, 205, 0.6);
+$menu-background-color-dark-one: rgba(255, 255, 255, 0.6);
+$menu-background-color-dark-two: rgba(71, 71, 71, 0.6);
+
+$hamburger-bar-color: rgb(59, 59, 59);
+$hamburger-bar-color-hover: rgb(119 119 119);
+$hamburger-bar-color-dark: white;
+$hamburger-bar-color-dark-hover: rgb(255 221 221);
+
+// Hamburger colors
+
+$hamburger-bar-color: rgb(59, 59, 59);
+$hamburger-bar-color-hover: rgb(119 119 119);
+$hamburger-bar-color-dark: white;
+$hamburger-bar-color-dark-hover: rgb(255 221 221);
+
+/* Body */
 $body-background-color: linear-gradient(to left, blanchedalmond, #f0f0f0);
 $body-background-color-dark: linear-gradient(to left, rgb(73, 71, 78), rgb(105, 101, 117));
 
@@ -9,7 +36,7 @@ $global-text-shadow: 0 0 2.15rem #000; // Used for text with light color on ligh
 // Transition
 $general-transition-switch-mode: 0.2s;
 
-// Coleurs / Box Shadow
+/* Couleurs / Box Shadow */
 $components-background-color: rgba(255, 255, 255, 0.9);
 $components-box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
 $containers-background-color: rgba(255, 255, 255, 0.8) /*!important*/;

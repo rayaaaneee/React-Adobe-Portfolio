@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 body {
     
     & {
@@ -104,10 +106,12 @@ body {
                                 align-self: center;
                                 justify-self: center;
                             }
-                        
-                            &:hover {
-                                background-color: hsla(30, 5%, 25%, 0.062);
-                                transition: all 0.3s ease;
+
+                            @include hover-safe {
+                                &:hover {
+                                    background-color: hsla(30, 5%, 25%, 0.062);
+                                    transition: all 0.3s ease;
+                                }
                             }
                         }
                     }
@@ -124,8 +128,10 @@ body {
                 background-color: rgba(0, 0, 0, 0.2);
                 .options {
                     .option {
-                        &:hover {
-                            background-color: #e6c6be38;
+                        @include hover-safe {
+                            &:hover {
+                                background-color: #e6c6be38;
+                            }
                         }
                     }
                 }

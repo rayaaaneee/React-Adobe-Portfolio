@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 body.home {
     /* Définir la taille du bouton fermer */
     #cross{
@@ -48,18 +50,20 @@ body.home {
     }
 
     /* Définir le hover des boutons imprimer, télécharger & informations */
-    #download:hover, #print:hover{
-        background-color: rgba(221, 141, 141, 0.8);
-    }
+    @include hover-safe {
+        #download:hover, #print:hover{
+            background-color: rgba(221, 141, 141, 0.8);
+        }
 
-    #infos:hover{
-        background-color: rgba(240, 193, 193, 0.8);
-    }
-    /* Hover de la croix */
-    #cross:hover{
-        border: 1px solid transparent;
-        background-color: rgba(209, 95, 95,0.8);
-        transition: 0.2s;
+        #infos:hover{
+            background-color: rgba(240, 193, 193, 0.8);
+        }
+        /* Hover de la croix */
+        #cross:hover{
+            border: 1px solid transparent;
+            background-color: rgba(209, 95, 95,0.8);
+            transition: 0.2s;
+        }
     }
 
     /* Changer la police */

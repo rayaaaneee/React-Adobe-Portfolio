@@ -14,8 +14,10 @@ body.contact#dark {
         & > button {
             background-color : $form-submit-button-background-color-dark;
 
-            &:hover {
-                background-color : $form-submit-button-background-color-hover-dark;
+            @include hover-safe {
+                &:hover {
+                    background-color : $form-submit-button-background-color-hover-dark;
+                }
             }
         }
     }

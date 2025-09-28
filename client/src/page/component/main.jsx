@@ -7,7 +7,7 @@ import Loader from "./loader";
 
 import loaderContext from "../../function/context/loader-context";
 
-import "../../asset/css/general/styles.scss";
+import "../../asset/css/styles.scss";
 import "../../asset/css/general/animation.scss";
 import "../../asset/css/general/background.scss";
 import "../../asset/css/general/dark-background.scss";
@@ -30,7 +30,10 @@ const Main = ({ children }) => {
 
   	return (
     	<>
-    	  	<HeaderComponent showLogo={ !isRootPage } />
+    	  	<HeaderComponent 
+				showLogo={ !isRootPage }
+				showGithub={ !isRootPage }
+			/>
     	  	{ (!isRootPage && !wasLoaderShowed) && (
     	  	  	<Loader />
     	  	) }

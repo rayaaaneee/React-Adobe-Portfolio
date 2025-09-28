@@ -9,7 +9,7 @@ export const CompetenceCard = forwardRef(({ competence, skillImageToLoad }, ref)
     return (
         <div className="card animate" ref={ ref }>
             <div className="card-front">
-                <div className="linear-gradient-circle-container card-top-container">
+                <div className="linear-gradient-circle-container card-top-container" style={{ backgroundColor: competence.getBottomColor() }}>
                     <div className="linear-gradient-circle" style={{ background: competence.getGradient() }}>
                         <img ref={skillImageToLoad} src={ require(`../../../asset/img/home/card/${competence.getImage()}`) } alt="card-image" />
                     </div>

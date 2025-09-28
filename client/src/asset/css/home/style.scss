@@ -2,540 +2,557 @@
 
 body.home {
 
-  /* Placer les projets dans la page, créer automatiquement l'ecart entre les cases et entre les colomnes*/
-  .projects-chevrons-container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto 70% auto;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
+    /* Placer les projets dans la page, créer automatiquement l'ecart entre les cases et entre les colomnes*/
+    .projects-chevrons-container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto 70% auto;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
 
-    .projects {
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      scrollbar-width: none;
-      display: flex;
-      overflow-x: scroll;
-      width: 85%;
-      align-items: center;
-      row-gap: 30px;
-      padding: 50px 30px;
-      column-gap: 30px;
-      box-sizing: border-box;
-      align-self: center;
-      justify-self: center;
-      scroll-behavior: smooth;
+        .projects {
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
-      &:first-child {
-        margin-left: 30px;
-      }
+            scrollbar-width: none;
+            display: flex;
+            overflow-x: scroll;
+            width: 85%;
+            align-items: center;
+            row-gap: 30px;
+            padding: 50px 30px;
+            column-gap: 30px;
+            box-sizing: border-box;
+            align-self: center;
+            justify-self: center;
+            scroll-behavior: smooth;
 
-      &:last-child {
-        margin-right: 30px;
-      }
+            &:first-child {
+                margin-left: 30px;
+            }
 
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
+            &:last-child {
+                margin-right: 30px;
+            }
 
-    .chevron {
-      width: 100px;
-      color: rgb(86 86 86 / 88%);
-      transition: all 0.3s ease;
-      background: #dcb2b200;
-      border-radius: 50%;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
 
-      &.alert {
-        animation: scaleInOut 0.3s ease;
-      }
+      .chevron {
+        width: 100px;
+        color: rgb(86 86 86 / 88%);
+        transition: all 0.3s ease;
+        background: #dcb2b200;
+        border-radius: 50%;
 
-      &:hover {
-        cursor: pointer;
-        color: rgb(40, 40, 40);
-        scale: 1.1;
-      }
+        &.alert {
+          animation: scaleInOut 0.3s ease;
+        }
+        @include hover-safe {
+          &:hover {
+            cursor: pointer;
+            color: rgb(40, 40, 40);
+            scale: 1.1;
+          }
+        }
 
-      &.scale {
-        scale: 1;
-      }
-    }
-  }
-
-  /* Animation des chevrons */
-  @keyframes scaleInOut {
-    0% {
-      scale: 1.1;
-    }
-
-    50% {
-      scale: 1.3;
-      color: rgb(232, 175, 175);
-      background: #dcb2b25c;
-    }
-
-    100% {
-      scale: 1.1;
-    }
-  }
-
-  /* Design d'une case */
-  .content {
-    background-color: $containers-background-color;
-    width: 250px;
-    height: 250px;
-    border-radius: 15px;
-    box-shadow: $containers-box-shadow;
-    transition: box-shadow 0.5s, transform 0.5s,
-      background-color $general-transition-switch-mode;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* Style d'une case de base et lors de son chargement */
-  .main-container {
-    position: relative;
-    transition: 0.5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &:hover {
-      .content {
-        img.workslogos {
-          scale: 1.2;
+        &.scale {
+          scale: 1;
         }
       }
     }
-  }
 
-  .container-seemore-project {
-    transition: 0.5s;
-    transform: scale(1.05) rotate(1deg);
-  }
+    /* Animation des chevrons */
+    @keyframes scaleInOut {
+        0% {
+            scale: 1.1;
+        }
 
-  /* Insertion de l'image lien ou téléchargement a coté du titre du projet */
-  .to_link,
-  .to_download {
-    display: flex;
-    flex-direction: row;
-    column-gap: 10px;
-    justify-content: center;
-    align-items: center;
-  }
+        50% {
+            scale: 1.3;
+            color: rgb(232, 175, 175);
+            background: #dcb2b25c;
+        }
 
-  .to_link img,
-  .to_download img {
-    width: 30px;
-  }
-
-  /* Modification texte de description */
-  .content p {
-    text-align: center;
-    font-size: 20px;
-    line-height: 1.1;
-    letter-spacing: 2px;
-    color: #000;
-    font-weight: 400;
-  }
-
-  /* Mise en place du hover */
-  .content:hover {
-    transform: scale(1.05);
-    transition: 0.5s;
-    box-shadow: 0 0 0 rgba(212, 153, 101, 0.884);
-  }
-
-  /* Redimensionner les logos*/
-  .workslogos {
-    width: 180px;
-    height: 180px;
-    transition: all 0.2s;
-    align-self: center;
-    border-radius: 30%;
-  }
-
-  /* Ne pas souligner le texte */
-  .projects a {
-    text-decoration: none;
-  }
-
-  /* Barre verticale blanche */
-  .horizontal-bars {
-    width: 30%;
-    height: 12px;
-    background-color: $bar-background-color;
-    border-radius: 10px;
-    box-shadow: $bar-box-shadow;
-    transition: box-shadow 0.3s ease,
-      background-color $general-transition-switch-mode;
-
-    &.colored {
-      box-shadow: 0 0 15px rgba(212, 153, 101, 0.5)
+        100% {
+            scale: 1.1;
+        }
     }
 
-    &#bar1 {
-      margin-bottom: 50px;
+    /* Design d'une case */
+    .content {
+        background-color: $containers-background-color;
+        width: 250px;
+        height: 250px;
+        border-radius: 15px;
+        box-shadow: $containers-box-shadow;
+        transition: box-shadow 0.5s, transform 0.5s,
+            background-color $general-transition-switch-mode;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        cursor: pointer;
     }
-  }
 
+    /* Style d'une case de base et lors de son chargement */
+    .main-container {
+        position: relative;
+        transition: 0.5s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-  /* Centrer le texte d'explication et changer sa couleur en blanc*/
-  .explicationtext {
-    font-size: xx-large;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    font-weight: 400;
-  }
-
-  /* Mettre un display flex sur le deuxieme article, tout centrer et mettre un espace entre les elements*/
-  #cv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Mise en place du conteneur en grid avec les deux articles */
-  #container-cv {
-    background-color: $containers-background-color;
-    transition: background-color $general-transition-switch-mode;
-    width: 1100px;
-    height: 700px;
-    border-radius: 15px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    box-shadow: $containers-box-shadow;
-    column-gap: 2%;
-  }
-
-  /* Partie gauche de l'article CV */
-  #cv-img {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 30px;
-    padding-left: 15px;
-  }
-
-  /* Partie droite de l'article CV */
-  #cv-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 30px;
-    padding-right: 40px;
-
-    p {
-      text-align: start;
-      line-height: 1.1;
-      letter-spacing: 1px;
-      color: #000;
-      font-weight: 100;
+        &:hover {
+            .content {
+                img.workslogos {
+                    scale: 1.2;
+                }
+            }
+        }
     }
-  }
+
+    .container-seemore-project {
+        transition: 0.5s;
+        transform: scale(1.05) rotate(1deg);
+    }
+
+    /* Insertion de l'image lien ou téléchargement a coté du titre du projet */
+    .to_link,
+    .to_download {
+        display: flex;
+        flex-direction: row;
+        column-gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .to_link img,
+    .to_download img {
+        width: 30px;
+    }
+
+    /* Modification texte de description */
+    .content p {
+        text-align: center;
+        font-size: 20px;
+        line-height: 1.1;
+        letter-spacing: 2px;
+        color: #000;
+        font-weight: 400;
+    }
+
+    /* Mise en place du hover */
+    .content:hover {
+        transform: scale(1.05);
+        transition: 0.5s;
+        box-shadow: 0 0 0 rgba(212, 153, 101, 0.884);
+    }
+
+    /* Redimensionner les logos*/
+    .workslogos {
+        width: 180px;
+        height: 180px;
+        transition: all 0.2s;
+        align-self: center;
+        border-radius: 30%;
+    }
+
+    /* Ne pas souligner le texte */
+    .projects a {
+        text-decoration: none;
+    }
+
+    /* Barre verticale blanche */
+    .horizontal-bars {
+        width: 30%;
+        height: 12px;
+        background-color: $bar-background-color;
+        border-radius: 10px;
+        box-shadow: $bar-box-shadow;
+        transition: box-shadow 0.3s ease,
+            background-color $general-transition-switch-mode;
+
+        &.colored {
+            box-shadow: 0 0 15px rgba(212, 153, 101, 0.5)
+        }
+
+        &#bar1 {
+            margin-bottom: 50px;
+        }
+    }
 
 
-  /* Changer la taille de l'image et son curseur*/
-  #cv-img img {
-    width: 420px;
-    border-radius: 30px;
-    transition: 0.3s;
-    cursor: pointer;
-  }
+    /* Centrer le texte d'explication et changer sa couleur en blanc*/
+    .explicationtext {
+        font-size: xx-large;
+        text-align: center;
+        color: rgb(0, 0, 0);
+        font-weight: 400;
+    }
 
-  /* Hover du CV */
-  #cv-img img:hover {
-    transform: scale(1.05);
-    transition: 0.3s;
-    border: 2px solid rgba(0, 0, 0, 0.209);
-    filter: grayscale(50%);
-  }
+    /* Mettre un display flex sur le deuxieme article, tout centrer et mettre un espace entre les elements*/
+    #cv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-  /* Changer le style des boutons */
-  .cv-button {
-    background-color: $cv-download-button-background-color;
-    border: none;
-    border-radius: 15px;
-    padding: 10px 20px;
-    padding-left: 50px;
-    background-image: url(../../img/home/icon/black-download-without-line.png);
-    background-repeat: no-repeat;
-    background-position: 20px center;
-    background-size: 15px;
-    font-size: 20px;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-    box-shadow: $cv-download-button-box-shadow;
-    cursor: pointer;
-    transition: 0.1s;
-      /* Hover des boutons */
-      &:hover {
-        background-color: $cv-download-button-background-color-hover;
-        background-image: url(../../img/home/icon/white-download-without-line.png);
-        color: #fff;
+    /* Mise en place du conteneur en grid avec les deux articles */
+    #container-cv {
+        background-color: $containers-background-color;
+        transition: background-color $general-transition-switch-mode;
+        width: 1100px;
+        height: 700px;
+        border-radius: 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        box-shadow: $containers-box-shadow;
+        column-gap: 2%;
+    }
+
+    /* Partie droite de l'article CV */
+    #cv-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 30px;
+        padding-right: 40px;
+
+        p {
+            text-align: start;
+            line-height: 1.1;
+            letter-spacing: 1px;
+            color: #000;
+            font-weight: 100;
+        }
+    }
+
+    /* Partie gauche de l'article CV */
+    #cv-img {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 30px;
+        padding-left: 15px;
+
+        /* Changer la taille de l'image et son curseur*/
+        img {
+            width: 420px;
+            border-radius: 30px;
+            transition: 0.3s;
+            cursor: pointer;
+
+            /* Hover du CV */
+            &:hover {
+                transform: scale(1.05);
+                transition: 0.3s;
+                border: 2px solid rgba(0, 0, 0, 0.209);
+                filter: grayscale(50%);
+            }
+        }
+    }
+
+
+    /* Changer le style des boutons */
+    .cv-button {
+        background-color: $cv-download-button-background-color;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 20px;
+        padding-left: 50px;
+        background-image: url(../../img/home/icon/black-download-without-line.png);
+        background-repeat: no-repeat;
+        background-position: 20px center;
+        background-size: 15px;
+        font-size: 20px;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        box-shadow: $cv-download-button-box-shadow;
+        cursor: pointer;
         transition: 0.1s;
-      }
-  }
 
-
-  /* Barre noire au dessus et au dessous des textes */
-
-  $black-bar-width: 85%;
-
-  .blackbar {
-    width: $black-bar-width;
-    height: 1px;
-    background-color: #000;
-    border-radius: 10px;
-    border: 2px solid rgb(0, 0, 0);
-    transition: all 0.2s ease;
-  }
-
-  /* Afficher l'image zoom et le texte côte à côté */
-  #zoom {
-    display: grid;
-    grid-template-columns: 6fr 1fr;
-    column-gap: 5%;
-    align-items: baseline;
-    align-items: center;
-  }
-
-  /* Regler la taille de l'icone zoom */
-  #zoom img {
-    width: 40px;
-  }
-
-  /* Justifier le texte explicatif du zoom et règler sa taille */
-  #zoom p {
-    font-size: 19px;
-    text-align: justify;
-  }
-
-  .beforebutton {
-    font-size: 21px;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  #main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /* Afficher la date par dessus les projets */
-  $projects-data-date-border-width: 9px;
-  $projects-data-date-transition: 0.3s;
-  $projects-data-date-after-dist-top: -20%;
-  $projects-data-date-height: 40px;
-  $projects-data-date-background-color: rgba(0, 0, 0, 0.884);
-
-  .projects>*{
-    &::before {
-      content: "";
-      border-left: $projects-data-date-border-width solid transparent;
-      border-right: $projects-data-date-border-width solid transparent;
-      border-top: $projects-data-date-border-width solid $projects-data-date-background-color;
-      position: absolute;
-      z-index: 1;
-      top: calc($projects-data-date-after-dist-top + $projects-data-date-height );
-      opacity: 0;
-      transition: $projects-data-date-transition;
-      pointer-events: none;
+        /* Hover des boutons */
+        &:hover {
+            background-color: $cv-download-button-background-color-hover;
+            background-image: url(../../img/home/icon/white-download-without-line.png);
+            color: #fff;
+            transition: 0.1s;
+        }
     }
-    &::after {
-      opacity: 0;
-      content: attr(data-date);
-      position: absolute;
-      z-index: 1;
-      top: $projects-data-date-after-dist-top;
-      font-size: 20px;
-      background-color: $projects-data-date-background-color;
-      padding-right: 25px;
-      padding-left: 45px;
-      background-image: url(../../img/home/icon/calendar.png);
-      background-repeat: no-repeat;
-      background-position: center left 15px;
-      background-size: 20px;
-      color: white;
-      width: fit-content;
-      height: $projects-data-date-height;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: $projects-data-date-transition;
-      pointer-events: none;
+
+
+    /* Barre noire au dessus et au dessous des textes */
+
+    $black-bar-width: 85%;
+
+    .blackbar {
+        width: $black-bar-width;
+        height: 1px;
+        background-color: #000;
+        border-radius: 10px;
+        border: 2px solid rgb(0, 0, 0);
+        transition: all 0.2s ease;
     }
-    &:hover {
-      &::before {
-        opacity: 1;
-        transition: $projects-data-date-transition;
-      }
-      &::after {
-        opacity: 1;
-        transition: $projects-data-date-transition;
-      }
+
+    /* Afficher l'image zoom et le texte côte à côté */
+    #zoom {
+        display: grid;
+        grid-template-columns: 6fr 1fr;
+        column-gap: 5%;
+        align-items: baseline;
+        align-items: center;
     }
-  }
 
-  #realisation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+    /* Regler la taille de l'icone zoom */
+    #zoom img {
+        width: 40px;
+    }
 
-  .school-competence-container {
-    width: 90%;
-    height: fit-content;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    padding-bottom: 70px;
-  }
+    /* Justifier le texte explicatif du zoom et règler sa taille */
+    #zoom p {
+        font-size: 19px;
+        text-align: justify;
+    }
 
-  .school-competence-container .card {
-    width: 280px;
-    height: 400px;
-    background-color: $containers-background-color;
-    border-radius: 30px;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    perspective-origin: top;
-    position: relative;
-    padding: 20px;
-    cursor: pointer;
-    box-shadow: $containers-box-shadow;
-    transform: rotateY(0deg);
-    transition: scale 0.8s, transform 0.3s,
-      background-color $general-transition-switch-mode;
-  }
+    .beforebutton {
+        font-size: 21px;
+    }
 
-  .card:hover {
-    scale: 1.02;
-    transition: scale 0.8s, transform 0.2s;
-  }
+    .hidden {
+        display: none;
+    }
 
-  .card .title-card {
-    font-size: 34px;
-    margin: 0;
-    margin-top: 17px;
-    font-weight: 400;
-    letter-spacing: 3px;
-  }
+    #main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .school-competence-container .card.clicked {
-    transform: rotateY(180deg);
-  }
+    /* Afficher la date par dessus les projets */
+    $projects-data-date-border-width: 9px;
+    $projects-data-date-transition: 0.3s;
+    $projects-data-date-after-dist-top: -20%;
+    $projects-data-date-height: 40px;
+    $projects-data-date-background-color: rgba(0, 0, 0, 0.884);
 
-  .school-competence-container .card.clicked .card-front {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
+    .projects > * {
+      
+        &::before {
+            content: "";
+            border-left: $projects-data-date-border-width solid transparent;
+            border-right: $projects-data-date-border-width solid transparent;
+            border-top: $projects-data-date-border-width solid $projects-data-date-background-color;
+            position: absolute;
+            z-index: 1;
+            top: calc($projects-data-date-after-dist-top + $projects-data-date-height );
+            opacity: 0;
+            transition: $projects-data-date-transition;
+            pointer-events: none;
+        }
+        &::after {
+            opacity: 0;
+            content: attr(data-date);
+            position: absolute;
+            z-index: 1;
+            top: $projects-data-date-after-dist-top;
+            font-size: 20px;
+            background-color: $projects-data-date-background-color;
+            padding-right: 25px;
+            padding-left: 45px;
+            background-image: url(../../img/home/icon/calendar.png);
+            background-repeat: no-repeat;
+            background-position: center left 15px;
+            background-size: 20px;
+            color: white;
+            width: fit-content;
+            height: $projects-data-date-height;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: $projects-data-date-transition;
+            pointer-events: none;
+        }
+        &:hover {
+            &::before {
+                opacity: 1;
+                transition: $projects-data-date-transition;
+            }
+            &::after {
+                opacity: 1;
+                transition: $projects-data-date-transition;
+            }
+        }
+    }
 
-  .card>* {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-  }
+    #realisation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-  .card .card-back {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-  }
+    .school-competence-container {
 
-  .card .card-top-container {
-    width: 100%;
-    height: 120px;
-    border-radius: 30px 30px 0 0;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+        width: 90%;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        padding-bottom: 70px;
 
-  $size-circle: 100px;
-  $size-circle-border: 50%;
+        $size-circle: 100px;
+        $size-circle-border: 50%;
 
+        .card {
+            width: 280px;
+            height: 400px;
+            background-color: $containers-background-color;
+            border-radius: 30px;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            perspective-origin: top;
+            position: relative;
+            padding: 20px;
+            cursor: pointer;
+            box-shadow: $containers-box-shadow;
+            transform: rotateY(0deg);
+            transition: scale 0.8s, transform 0.3s,
+                background-color $general-transition-switch-mode;
 
-  .card .card-top-container>div {
-    width: $size-circle;
-    height: $size-circle;
-    border-radius: $size-circle-border;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+            & > * {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: start;
+            }     
+                
+            .title-card {
+                font-size: 34px;
+                margin: 0;
+                margin-top: 17px;
+                font-weight: 400;
+                letter-spacing: 3px;
+            }
+                
+            &:hover {
+                scale: 1.02;
+                transition: scale 0.8s, transform 0.2s;
+            }
 
-  .card .card-front .linear-gradient-circle-container .linear-gradient-circle img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-  }
+            &.clicked {
 
-  .card .card-description {
-    margin: 15px 25px;
-    text-align: justify;
-    font-size: 20px;
-  }
+                transform: rotateY(180deg);
 
-  .card .card-back .card-top-container img {
-    width: $size-circle;
-    height: $size-circle;
-    border-radius: $size-circle-border;
-    object-fit: cover;
-  }
+                .card-front {
+                    backface-visibility: hidden;
+                    -webkit-backface-visibility: hidden;
+                }
 
-  .card .card-back-title {
-    margin: 0;
-    margin-top: 20px;
-    font-style: italic;
-  }
+            }
+        
+            .card-back {
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+                transform: rotateY(180deg);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: start;
+            }
 
-  .card .card-front .card-bottom-container {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 0 0 30px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
+            .card-top-container {
 
-  .card .card-front .card-bottom-container .card-bottom {
-    position: absolute;
-    bottom: -95px;
-    width: 140%;
-    height: 40%;
-    border-radius: 0 0 30px 30px;
-    opacity: 0.4;
-    rotate: 25deg;
-  }
-}
+                width: 100%;
+                height: 120px;
+                border-radius: 30px 30px 0 0;
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                & >div {
+                    width: $size-circle;
+                    height: $size-circle;
+                    border-radius: $size-circle-border;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            .card-front {
+
+                .card-bottom-container {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0 0 30px 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+
+                    .card-bottom {
+                        position: absolute;
+                        bottom: -95px;
+                        width: 140%;
+                        height: 40%;
+                        border-radius: 0 0 30px 30px;
+                        rotate: 25deg;
+                    }
+                }
+            
+
+                .linear-gradient-circle-container {
+                    .linear-gradient-circle {
+                        img {
+                            width: 50px;
+                            height: 50px;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            } 
+
+            .card-description {
+                margin: 15px 25px;
+                text-align: justify;
+                font-size: 20px;
+            }
+            
+            .card-back {
+                .card-top-container {
+                    img {
+                        width: $size-circle;
+                        height: $size-circle;
+                        border-radius: $size-circle-border;
+                        object-fit: cover;
+                    }
+                } 
+                .card-back-title {
+                    margin: 0;
+                    margin-top: 20px;
+                    font-style: italic;
+                }
+            } 
+        }
+    }
+} 

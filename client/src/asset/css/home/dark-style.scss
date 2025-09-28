@@ -15,9 +15,11 @@ body.home#dark {
     }
 
     .link-btn, .download-btn {
-        &:hover {
-            color: rgb(234, 215, 215) !important;
-            transition: 0.2s;
+        @include hover-safe {
+            &:hover {
+                color: rgb(234, 215, 215) !important;
+                transition: 0.2s;
+            }
         }
     }
 
@@ -34,8 +36,11 @@ body.home#dark {
     .cv-button {
         background-color: $cv-download-button-background-color-dark;
         background-image: url(../../img/home/icon/white-download-without-line.png);
-        &:hover {
-            background-color: $cv-download-button-background-color-hover-dark;
+
+        @include hover-safe {
+            &:hover {
+                background-color: $cv-download-button-background-color-hover-dark;
+            }
         }
     }
 

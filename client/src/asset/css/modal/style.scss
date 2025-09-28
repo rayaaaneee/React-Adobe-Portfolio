@@ -119,10 +119,12 @@ body {
                     }
                 }
 
-                &:hover {
-                    .bar {
-                        background-color: #ececec;
-                        transition: 0.2s;
+                @include hover-safe {
+                    &:hover {
+                        .bar {
+                            background-color: #ececec;
+                            transition: 0.2s;
+                        }
                     }
                 }
             }

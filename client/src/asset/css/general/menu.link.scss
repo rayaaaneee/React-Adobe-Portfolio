@@ -37,16 +37,25 @@ body {
                     transition: width 0.3s ease, opacity 0.3s ease;
                 }
 
-                &:hover, &.active {
-
+                @mixin links-hover-active-styles {
                     color: $light-color;
                     text-shadow: none;
 
                     &::after {
-                        opacity: 1;
-                        width: 120%;
-                        transition: width 0.3s, opacity 0.3s ease;
+                      opacity: 1;
+                      width: 120%;
+                      transition: width 0.3s, opacity 0.3s ease;
                     }
+                }
+
+                @include hover-safe {
+                    &:hover {
+                        @include links-hover-active-styles;
+                    }
+                }
+
+                &.active {
+                    @include links-hover-active-styles;
                 }
             }
 
@@ -62,14 +71,15 @@ body {
                     transition: width 0.1s ease-in, background-color 0.1s ease-in, height 0.1s ease-in, margin-bottom 0.1s ease-in;
                     border-radius: 50px;
                 }
-
-                &:hover {
-                    &::after {
-                        width: 70%;
-                        height: 5px;
-                        margin-bottom: 1px;
-                        background-color: #e5779a;
-                        transition: width 0.1s ease-in, background-color 0.1s ease-in, height 0.1s ease-in, margin-bottom 0.1s ease-in;
+                @include hover-safe {
+                    &:hover {
+                        &::after {
+                            width: 70%;
+                            height: 5px;
+                            margin-bottom: 1px;
+                            background-color: #e5779a;
+                            transition: width 0.1s ease-in, background-color 0.1s ease-in, height 0.1s ease-in, margin-bottom 0.1s ease-in;
+                        }
                     }
                 }
 
@@ -82,6 +92,7 @@ body {
     }
 
     &#dark {
+
         .menu-link {
             color: $dark-color !important;
 
@@ -93,24 +104,44 @@ body {
                         background-color: $dark-color;
                     }
 
-                    &:hover, &.active{
-                        color: $dark-color !important;
+                    @mixin dark-links-hover-active-styles {
+                        color: $dark-color;
                     }
-                    
+
+                    @include hover-safe {
+                        &:hover {
+                            @include dark-links-hover-active-styles;
+                        }
+                    }
+
+                    &.active {
+                        @include dark-links-hover-active-styles;
+                    }
                     
                 }
 
                 &.colored {
+
                     &::after {
                         background-color: $dark-color;
                     }
 
-                    &:hover, &.active{
+                    @mixin dark-links-colored-hover-active-styles {
                         &::after {
                             background-color: #e9bcbc;
                         }
                     }
 
+                    @include hover-safe {
+                        &:hover {
+                            @include dark-links-colored-hover-active-styles;
+                        }
+                    }
+
+                    &.active {
+                        @include dark-links-colored-hover-active-styles;
+                    }
+                    
                     &.active {
                         color: $dark-color;
                         text-shadow: none;

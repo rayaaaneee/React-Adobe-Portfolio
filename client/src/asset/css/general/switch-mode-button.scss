@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 body {
 
     /* Used in each page */
@@ -28,12 +30,17 @@ body {
         }
 
         &.pink-moon {
-            &:hover {
-                background-image: url(../../img/header/dark-mode-pink.png);
+            @include hover-safe {
+                &:hover {
+                    background-image: url(../../img/header/dark-mode-pink.png);
+                }
             }
         }
-        &:hover {
-            background-image: url(../../img/header/dark-mode-hover.png);
+
+        @include hover-safe {
+            &:hover {
+                background-image: url(../../img/header/dark-mode-hover.png);
+            }
         }
     }
 
@@ -44,8 +51,10 @@ body {
             width: 40px;
             height: 40px;
 
-            &:hover {
-                background-image: url(../../img/header/light-mode-hover.png);
+            @include hover-safe {
+                &:hover {
+                    background-image: url(../../img/header/light-mode-hover.png);
+                }
             }
         }
     }

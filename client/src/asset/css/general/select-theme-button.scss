@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 body {
 
     & {
@@ -37,26 +39,34 @@ body {
                     border-radius: 100% 0 0 100%;
                     background-image: url(../../img/index/dark-black.png);
 
-                    &:hover {
-                        background-color: #e6d1be52;
-                        background-image: url(../../img/index/dark-hover-black.png);
+                    @include hover-safe {
+                        &:hover {
+                            background-color: #e6d1be52;
+                            background-image: url(../../img/index/dark-hover-black.png);
+                        }
                     }
                 }
             }
 
             & > .media-light-theme-form {
+
                 & > button {
+
                     transition: all 0.2s ease;
                     background-size: 60%;
                     border-radius: 0 100% 100% 0;
                     background-color: #e6d1beb9;
                     background-image: url(../../img/index/light-hover-black.png);
 
-                    &:hover {
-                        background-color: #d1af92b9;
-                        background-image: url(../../img/index/light-black.png);
+                    @include hover-safe {
+                        &:hover {
+                            background-color: #d1af92b9;
+                            background-image: url(../../img/index/light-black.png);
+                        }
                     }
+
                 }
+                
             }
 
 
@@ -72,21 +82,26 @@ body {
             & > .media-dark-theme-form > button {
                 background-color: #d5c6d83f;
                 background-image: url(../../img/index/dark-hover.png);
-                &:hover {
-                    background-color: #bb93c33f;
-                    background-image: url(../../img/index/dark.png);
+
+                @include hover-safe {
+                    &:hover {
+                        background-color: #bb93c33f;
+                        background-image: url(../../img/index/dark.png);
+                    }
                 }
             }
 
             & > .media-light-theme-form > button{
                 background-color: transparent;
                 background-image: url(../../img/index/light.png);
-                &:hover {
-                    background-color: #e8dfea25;
-                    background-image: url(../../img/index/light-hover.png);
+
+                @include hover-safe {
+                    &:hover {
+                        background-color: #e8dfea25;
+                        background-image: url(../../img/index/light-hover.png);
+                    }
                 }
             }
         }
     }
-
 }

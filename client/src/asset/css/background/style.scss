@@ -57,9 +57,11 @@ body.background {
             color: white;
             transition: background-color $general-transition-switch-mode;
 
-            a:hover {
-                background-color: $colored-containers-background-color-hover;
-                transition: 0.2s;
+            @include hover-safe {
+                a:hover {
+                    background-color: $colored-containers-background-color-hover;
+                    transition: 0.2s;
+                }
             }
 
             p.explain-text {
@@ -228,9 +230,13 @@ body.background {
             cursor: pointer;
             transition: background-color 0.3s, transform 2.5s ease-in-out;
 
-            &:not(.selected):hover{
-                backdrop-filter: blur(7px);
-                background-color:rgb(235 217 210 / 45%);
+            &:not(.selected) {
+                @include hover-safe {
+                    &:hover{
+                        backdrop-filter: blur(7px);
+                        background-color:rgb(235 217 210 / 45%);
+                    }
+                }
             }
 
             p {
@@ -314,9 +320,12 @@ body.background {
                     height: 0;
                     transition: 0.3s;
 
-                    &:hover {
-                        filter: invert(1);
+                    @include hover-safe {
+                        &:hover {
+                            filter: invert(1);
+                        }
                     }
+
                     &.active {
                         width: $arrow-size;
                         height: $arrow-size;
@@ -325,13 +334,15 @@ body.background {
                     }
                 }
 
-                &:hover {
-                    .arrow {
-                        &.active {
-                            opacity: 0.7 !important;
-                            animation: none;
-                            -moz-animation: none;
-                            -webkit-animation: none;
+                @include hover-safe {
+                    &:hover {
+                        .arrow {
+                            &.active {
+                                opacity: 0.7 !important;
+                                animation: none;
+                                -moz-animation: none;
+                                -webkit-animation: none;
+                            }
                         }
                     }
                 }
@@ -406,18 +417,40 @@ body.background {
                 transition: opacity 0.25s;
             }
 
-            &:hover::after, &.focus::after {
-                opacity: 1;
-                transition: opacity 0.25s;
+            @mixin point-container-focused-hover {
+                &::after {
+                    opacity: 1;
+                    transition: opacity 0.25s;
+                }
             }
 
-            &:hover, &.focus {
+            @include hover-safe {
+                &:hover {
+                    @include point-container-focused-hover;
+                }
+            }   
+            
+            &.focus {
+                @include point-container-focused-hover;
+            }
+
+            @mixin point-effect-focused-hover {
                 .point {
                     box-shadow: 0 0 10px 0 rgb(0, 0, 0);
                     border: 1px solid $bottom-semester-background-color;
                     background: linear-gradient(160deg, transparent 60%, $bottom-semester-background-color 40%);
                     backdrop-filter: blur(10px);
                 }
+            }
+
+            @include hover-safe {
+                &:hover {
+                    @include point-effect-focused-hover;
+                }
+            }
+            
+            &.focus {
+                @include point-effect-focused-hover;
             }
 
             .point{

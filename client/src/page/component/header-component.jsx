@@ -14,7 +14,7 @@ import { SelectLanguageButton } from './index/select-language-button';
 import { Logo, LogoColors } from './logo';
 import { useConditionalEffect } from '../../hook/useConditionalEffect';
 
-const HeaderComponent = ({ showLogo = true }) => {
+const HeaderComponent = ({ showLogo = true, showGithub = true }) => {
 
     const { language } = useContext(languageContext);
 

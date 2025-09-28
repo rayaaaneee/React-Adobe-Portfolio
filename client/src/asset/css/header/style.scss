@@ -35,7 +35,7 @@ body {
         right: 0;
         width: 60px;
         height: 60px;
-        background: linear-gradient(rgba(255, 235, 205, 0.6) 100%);
+        background-color: $menu-background-color;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(0px);
@@ -43,25 +43,24 @@ body {
         border-radius: 50%;
         translate: 17% -20%;
         z-index: 2;
+
         $transition-duration: 0.6s;
         $transition-type: cubic-bezier(0.77, 0, 0.175, 1);
         $transition-mode: $transition-duration $transition-type;
+        
         transition: 
             width $transition-mode, 
             height $transition-mode, 
             translate $transition-mode, 
             border-radius $transition-mode, 
             padding $transition-mode, 
-            background 1s $transition-mode, 
+            background-color $transition-mode, 
             opacity $transition-mode;
         flex-direction: column;
         row-gap: 3vh;
         align-items: center;
         justify-content: center;
         $corner-space: 25px;
-
-        .footer-menu {
-        }
 
         .logo.menu-logo {
             width: 60px;
@@ -94,13 +93,6 @@ body {
             translate: 0;
             border-radius: 0;
             padding: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(255, 235, 205, 0.6) 0%, 
-                rgba(255, 235, 205, 0.6) 70%, 
-                rgba(255, 235, 205, 0.7) 75%, 
-                rgba(255, 255, 255, 0.7) 90%, 
-                rgba(255, 255, 255, 1) 100%);
 
             cursor: unset;
 
@@ -110,6 +102,7 @@ body {
             }
         }
     }
+    
     div.hamburger-container {
         display: flex;
         position: fixed;
