@@ -1,16 +1,16 @@
 import { useContext, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import '../../asset/css/header/style.scss';
-import '../../asset/css/header/dark-style.scss';
-import '../../asset/css/media/header/style.scss';
+import '../../asset/scss/header/style.scss';
+import '../../asset/scss/header/dark-style.scss';
+import '../../asset/scss/media/header/style.scss';
 
 import languageContext from '../../function/context/language-context';
 
 import { SwitchThemeButton } from './index/switch-theme-button';
 import { HamburgerMenu } from './hamburger-menu';
 import { MenuLink } from './menu-link';
-import { SelectLanguageButton } from './index/select-language-button';
+import { SelectLanguageButton } from './select-language-button';
 import { Logo, LogoColors } from './logo';
 import { useConditionalEffect } from '../../hook/useConditionalEffect';
 

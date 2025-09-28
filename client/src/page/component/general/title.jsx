@@ -9,4 +9,5 @@ export const Title = ({ text, index = null, id = null }) => {
           </p>
       </div>
     )
+    
 }

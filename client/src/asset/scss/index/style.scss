@@ -49,8 +49,19 @@ body.index {
         transition: background-color $general-transition-switch-mode;
     }
 
-    .hamburger-container {
-        right: 15px !important;
+    .header-media-menu {
+
+        .hamburger-container {
+            right: 15px !important;
+        }
+
+        &:not(.active) {
+            &~.hamburger-container {
+                .hamburger-bar {
+                    background-color: white;
+                }
+            }
+        }
     }
 
     /* Triangles équilateraux */

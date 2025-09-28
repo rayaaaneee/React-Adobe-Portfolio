@@ -1,6 +1,6 @@
 import { useState, forwardRef } from "react";
 
-import '../../asset/css/general/hamburger-menu.scss';
+import '../../asset/scss/general/hamburger-menu.scss';
 
 // menuElement : tableau des éléments du menu à faire apparaître/disparaître (pas un seul élément)
 export const HamburgerMenu = forwardRef(({className = null, menuElement = null, onCheck = () => {}, style = {}}, ref = null) => {

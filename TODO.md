@@ -3,7 +3,7 @@
 * [X] Delete border-boxes for all elements in dark mode
 * [ ] Think about new content to add
 * [X] Improve Backgrounds on media
-* [ ] Delete all hover effects on media
+* [X] Delete all hover effects on media
 * [ ] Menu
   * [ ] Page icons
   * [ ] Select-Language
@@ -22,16 +22,19 @@
     * [X] Change the size of bg shapes (media queries)
     * [X] Fix appearence animation on menu (media queries)
     * [X] Fix alignment
+    * [ ] Remove hamburger hover on dark mode opened menu
   * [ ] Myself
     * [ ] Networks part
   * [ ] Background
-    * [ ] Timeline
+    * [ ] Timeline on semesterPage & simplify bar animation
     * [ ] Set JSON for new semester
     * [ ] Semester Page
   * [ ] Home
-    * [ ] FrameCV
-    * [ ] Project
+    * [ ] FrameCV (medias)
+    * [ ] Project (medias)
+    * [ ] Split FrameCV & ProjectPage on other components
     * [ ] Fill JSON for worldmaster
+    * [ ] Add date on project page for medias
   * [ ] Blog page
     * [X] Fix body background bug
     * [ ] Create page template

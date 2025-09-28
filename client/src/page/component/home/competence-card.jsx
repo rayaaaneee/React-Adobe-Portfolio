@@ -11,7 +11,7 @@ export const CompetenceCard = forwardRef(({ competence, skillImageToLoad }, ref)
             <div className="card-front">
                 <div className="linear-gradient-circle-container card-top-container" style={{ backgroundColor: competence.getBottomColor() }}>
                     <div className="linear-gradient-circle" style={{ background: competence.getGradient() }}>
-                        <img ref={skillImageToLoad} src={ require(`../../../asset/img/home/card/${competence.getImage()}`) } alt="card-image" />
+                        <img alt='competence-card' ref={skillImageToLoad} src={ require(`../../../asset/img/home/card/${competence.getImage()}`) } />
                     </div>
                 </div>
                 <h1 className="title-card" style={{ color: competence.getTitleColor() }}>
@@ -23,7 +23,7 @@ export const CompetenceCard = forwardRef(({ competence, skillImageToLoad }, ref)
             </div>
             <div className="card-back">
                 <div className="info-icon-container card-top-container">
-                    <img src={ require('../../../asset/img/home/card/' + competence.getInfoIcon()) } draggable="false" />
+                    <img alt='competence-card-info-icon' src={ require('../../../asset/img/home/card/' + competence.getInfoIcon()) } draggable="false" />
                 </div>
                 <h2 className="card-back-title" style={{ color: competence.getTitleColor() }}>
                     {competence.getTitle(language.current)} { language.home.is }

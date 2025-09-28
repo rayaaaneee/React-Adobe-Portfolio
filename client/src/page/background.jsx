@@ -8,10 +8,20 @@ import { Semester as SemesterObject } from '../object/semester';
 
 import { useConditionalEffect } from '../hook/useConditionalEffect';
 
-import { main, initHeight, colorPointAssociateToSemester, 
-uncolorPointAssociateToSemester, onclickSemester, setPointsContainers, 
-setSemesters, setTimeline, intervalMoveSemesters, intervalAnimation, onScroll, disclickSemester } 
-from '../function/background-page-functions';
+import { 
+    main, 
+    initHeight, 
+    colorPointAssociateToSemester, 
+    uncolorPointAssociateToSemester, 
+    onclickSemester, 
+    setPointsContainers, 
+    setSemesters, 
+    setTimeline, 
+    intervalMoveSemesters, 
+    intervalAnimation, 
+    onScroll, 
+    disclickSemester 
+} from '../function/background-page-functions';
 
 import languageContext from '../function/context/language-context';
 
@@ -24,9 +34,9 @@ import specialtiesImg from '../asset/img/background/specialties-pink.png';
 import schoolImg from '../asset/img/background/school-pink.png';
 import matterImg from '../asset/img/background/tab.png';
 
-import '../asset/css/background/style.scss';
-import '../asset/css/background/semester-page.scss';
-import '../asset/css/background/dark-style.scss';
+import '../asset/scss/background/style.scss';
+import '../asset/scss/background/semester-page.scss';
+import '../asset/scss/background/dark-style.scss';
 
 import semesterJson from '../asset/data/background/semester.json';
 

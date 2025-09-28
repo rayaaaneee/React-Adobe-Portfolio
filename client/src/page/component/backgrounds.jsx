@@ -3,6 +3,10 @@ import { useEffect, useRef } from 'react';
 import { MoveBackground } from '../../object/move-background';
 import { ParallaxBackground } from '../../object/parallax-background';
 
+import "../../asset/scss/general/background.scss";
+import "../../asset/scss/general/dark-background.scss";
+import "../../asset/scss/media/general/background.scss";
+
 const Backgrounds = () => {
 
     const backgroundsObjects = [
@@ -40,12 +44,17 @@ const Backgrounds = () => {
 
     return (
         <>
-            { backgroundsObjects.map((background, i) => {
-                return (
-                    <div id={ `background${ i + 1 }` } key={ i } ref={ background => backgrounds.current[i] = background } 
-                    className="background" speedparallax={ background.speedparallax } speedtranslate={ background.speedtranslate } position={ background.position }></div>
-                );
-            }) }
+            { backgroundsObjects.map((background, i) => 
+                (<div 
+                    id={ `background${ i + 1 }` } 
+                    key={ i } 
+                    ref={ background => backgrounds.current[i] = background } 
+                    className="background" 
+                    speedparallax={ background.speedparallax } 
+                    speedtranslate={ background.speedtranslate } 
+                    position={ background.position }>
+                </div>)
+            ) }
         </>
     );
 }

@@ -10,9 +10,9 @@ import languageContext from '../function/context/language-context';
 import { Music } from './component/myself/music';
 import { Title } from './component/general/title';
 
-import '../asset/css/myself/style.scss';
-import '../asset/css/myself/dark-style.scss';
-import '../asset/css/media/myself/style.scss';
+import '../asset/scss/myself/style.scss';
+import '../asset/scss/myself/dark-style.scss';
+import '../asset/scss/media/myself/style.scss';
 
 import musicJson from '../asset/data/myself/music.json';
 

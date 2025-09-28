@@ -10,9 +10,9 @@ import languageContext from '../function/context/language-context';
 import { ManageBody } from '../object/manage-body';
 import { ManageThemes } from '../object/manage-themes';
 
-import '../asset/css/contact/style.scss';
-import '../asset/css/contact/dark-style.scss';
-import '../asset/css/media/contact/style.scss';
+import '../asset/scss/contact/style.scss';
+import '../asset/scss/contact/dark-style.scss';
+import '../asset/scss/media/contact/style.scss';
 
 import contactImg from '../asset/img/contact/contact.png';
 import { ModalInformations } from '../object/modal-informations';

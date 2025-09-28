@@ -8,9 +8,9 @@ import languageContext from '../../function/context/language-context';
 
 import { ManageThemes } from '../../object/manage-themes';
 
-import '../../asset/css/loader/style.scss';
-import '../../asset/css/loader/media.scss';
-import '../../asset/css/loader/dark-style.scss';
+import '../../asset/scss/loader/style.scss';
+import '../../asset/scss/loader/media.scss';
+import '../../asset/scss/loader/dark-style.scss';
 
 import adobeIcon from '../../asset/img/loader/adobe.png';
 import loadIcon from '../../asset/img/loader/load.png';

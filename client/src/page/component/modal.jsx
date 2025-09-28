@@ -5,8 +5,9 @@ import modalContext from '../../function/context/modal-context';
 
 import { useConditionalEffect } from '../../hook/useConditionalEffect';
 
-import '../../asset/css/modal/style.scss';
 import { ModalInformations } from '../../object/modal-informations';
+
+import '../../asset/scss/modal/style.scss';
 
 // Utiliser createPortal pour afficher le modal
 export const Modal = () => {

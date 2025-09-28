@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import '../../asset/css/general/menu.link.scss';
+import '../../asset/scss/general/menu.link.scss';
 
 export const MenuLink = ({ className = null, to, children = <></>, isColored }) => {
     return (

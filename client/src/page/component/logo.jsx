@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import "../../asset/css/general/logo.scss";
+import "../../asset/scss/general/logo.scss";
 
 export const LogoColors = Object.freeze({
     light: null,

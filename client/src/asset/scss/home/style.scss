@@ -42,28 +42,28 @@ body.home {
             }
         }
 
-      .chevron {
-        width: 100px;
-        color: rgb(86 86 86 / 88%);
-        transition: all 0.3s ease;
-        background: #dcb2b200;
-        border-radius: 50%;
-
-        &.alert {
-          animation: scaleInOut 0.3s ease;
+        .chevron {
+            width: 100px;
+            color: rgb(86 86 86 / 88%);
+            transition: all 0.3s ease;
+            background: #dcb2b200;
+            border-radius: 50%;
+            
+            &.alert {
+                animation: scaleInOut 0.3s ease;
+            }
+            @include hover-safe {
+                &:hover {
+                    cursor: pointer;
+                    color: rgb(40, 40, 40);
+                    scale: 1.1;
+                }
+            }
+          
+            &.scale {
+                scale: 1;
+            }
         }
-        @include hover-safe {
-          &:hover {
-            cursor: pointer;
-            color: rgb(40, 40, 40);
-            scale: 1.1;
-          }
-        }
-
-        &.scale {
-          scale: 1;
-        }
-      }
     }
 
     /* Animation des chevrons */
@@ -106,10 +106,12 @@ body.home {
         justify-content: center;
         align-items: center;
 
-        &:hover {
-            .content {
-                img.workslogos {
-                    scale: 1.2;
+        @include hover-safe {
+            &:hover {
+                .content {
+                    img.workslogos {
+                        scale: 1.2;
+                    }
                 }
             }
         }
@@ -146,10 +148,12 @@ body.home {
     }
 
     /* Mise en place du hover */
-    .content:hover {
-        transform: scale(1.05);
-        transition: 0.5s;
-        box-shadow: 0 0 0 rgba(212, 153, 101, 0.884);
+    @include hover-safe {
+        .content:hover {
+            transform: scale(1.05);
+            transition: 0.5s;
+            box-shadow: 0 0 0 rgba(212, 153, 101, 0.884);
+        }
     }
 
     /* Redimensionner les logos*/
@@ -250,11 +254,13 @@ body.home {
             cursor: pointer;
 
             /* Hover du CV */
-            &:hover {
-                transform: scale(1.05);
-                transition: 0.3s;
-                border: 2px solid rgba(0, 0, 0, 0.209);
-                filter: grayscale(50%);
+            @include hover-safe {
+                &:hover {
+                    transform: scale(1.05);
+                    transition: 0.3s;
+                    border: 2px solid rgba(0, 0, 0, 0.209);
+                    filter: grayscale(50%);
+                }
             }
         }
     }
@@ -278,12 +284,14 @@ body.home {
         cursor: pointer;
         transition: 0.1s;
 
+        @include hover-safe {
         /* Hover des boutons */
-        &:hover {
-            background-color: $cv-download-button-background-color-hover;
-            background-image: url(../../img/home/icon/white-download-without-line.png);
-            color: #fff;
-            transition: 0.1s;
+            &:hover {
+                background-color: $cv-download-button-background-color-hover;
+                background-image: url(../../img/home/icon/white-download-without-line.png);
+                color: #fff;
+                transition: 0.1s;
+            }
         }
     }
 
@@ -380,14 +388,17 @@ body.home {
             transition: $projects-data-date-transition;
             pointer-events: none;
         }
-        &:hover {
-            &::before {
-                opacity: 1;
-                transition: $projects-data-date-transition;
-            }
-            &::after {
-                opacity: 1;
-                transition: $projects-data-date-transition;
+
+        @include hover-safe {
+            &:hover {
+                &::before {
+                    opacity: 1;
+                    transition: $projects-data-date-transition;
+                }
+                &::after {
+                    opacity: 1;
+                    transition: $projects-data-date-transition;
+                }
             }
         }
     }
@@ -450,10 +461,12 @@ body.home {
                 font-weight: 400;
                 letter-spacing: 3px;
             }
-                
-            &:hover {
-                scale: 1.02;
-                transition: scale 0.8s, transform 0.2s;
+             
+            @include hover-safe {
+                &:hover {
+                    scale: 1.02;
+                    transition: scale 0.8s, transform 0.2s;
+                }
             }
 
             &.clicked {
@@ -555,4 +568,4 @@ body.home {
             } 
         }
     }
-} 
+}

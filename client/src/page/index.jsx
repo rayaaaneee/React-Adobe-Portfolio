@@ -2,10 +2,10 @@ import { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
 
-import '../asset/css/index/appearence.scss';
-import '../asset/css/index/dark-style.scss';
-import '../asset/css/index/style.scss';
-import '../asset/css/media/index/style.scss';
+import '../asset/scss/index/appearence.scss';
+import '../asset/scss/index/dark-style.scss';
+import '../asset/scss/index/style.scss';
+import '../asset/scss/media/index/style.scss';
 
 import { ManageBody } from '../object/manage-body';
 

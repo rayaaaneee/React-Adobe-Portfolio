@@ -7,14 +7,11 @@ import Loader from "./loader";
 
 import loaderContext from "../../function/context/loader-context";
 
-import "../../asset/css/styles.scss";
-import "../../asset/css/general/animation.scss";
-import "../../asset/css/general/background.scss";
-import "../../asset/css/general/dark-background.scss";
-import "../../asset/css/general/dark-scrollbar.scss";
-import "../../asset/css/general/presets-animation.scss";
-import "../../asset/css/general/scrollbar.scss";
-import "../../asset/css/media/general/background.scss";
+import "../../asset/scss/styles.scss";
+import "../../asset/scss/general/animation.scss";
+import "../../asset/scss/general/dark-scrollbar.scss";
+import "../../asset/scss/general/presets-animation.scss";
+import "../../asset/scss/general/scrollbar.scss";
 
 
 const Main = ({ children }) => {

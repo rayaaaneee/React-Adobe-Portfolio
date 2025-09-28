@@ -4,14 +4,13 @@ import { ManageBody } from '../object/manage-body';
 
 import { Title } from './component/general/title';
 
-import themeContext from '../function/context/theme-context';
 import languageContext from '../function/context/language-context';
 
 import { animateApparition } from '../function/appearence';
 
-import '../asset/css/about/style.scss';
-import '../asset/css/about/dark-style.scss';
-import '../asset/css/media/about/style.scss';
+import '../asset/scss/about/style.scss';
+import '../asset/scss/about/dark-style.scss';
+import '../asset/scss/media/about/style.scss';
 
 import { Logo, LogoColors } from './component/logo';
 
@@ -27,8 +26,6 @@ const About = () => {
     ManageBody.changeClass('about');
 
     const { language } = useContext(languageContext);
-    
-    const { isDarkTheme } = useContext(themeContext);
 
     useEffect(() => {
         document.title = language.about.title;

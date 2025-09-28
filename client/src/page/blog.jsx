@@ -1,4 +1,5 @@
 import { ManageBody } from "../object/manage-body";
+
 import { Title } from "./component/general/title";
 
 const Blog = () => {

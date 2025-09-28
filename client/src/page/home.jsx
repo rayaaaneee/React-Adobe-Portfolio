@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState, useRef } from 'react';
 
+import { useConditionalEffect } from '../hook/useConditionalEffect';
+
 import MarkdownPreview from '@uiw/react-markdown-preview';
 
 import { ManageBody } from '../object/manage-body';
@@ -12,8 +14,6 @@ import { animateApparition } from '../function/appearence';
 import { animateCards } from '../function/3d-effect-card';
 import { animateImageLoading } from '../function/animate-image-loading';
 
-import { useConditionalEffect } from '../hook/useConditionalEffect';
-
 import { CompetenceCard } from './component/home/competence-card';
 import { Project } from './component/home/project';
 import { Title } from './component/general/title';
@@ -21,14 +21,14 @@ import { Title } from './component/general/title';
 import themeContext from '../function/context/theme-context';
 import languageContext from '../function/context/language-context';
 
-import '../asset/css/home/style.scss';
-import '../asset/css/home/frame-cv.scss';
-import '../asset/css/home/project-page.scss';
-import '../asset/css/home/dark-style.scss';
+import '../asset/scss/home/style.scss';
+import '../asset/scss/home/frame-cv.scss';
+import '../asset/scss/home/project-page.scss';
+import '../asset/scss/home/dark-style.scss';
 
-import '../asset/css/media/home/style.scss';
-import '../asset/css/media/home/project-page.scss';
-import '../asset/css/media/home/frame-cv.scss';
+import '../asset/scss/media/home/style.scss';
+import '../asset/scss/media/home/project-page.scss';
+import '../asset/scss/media/home/frame-cv.scss';
 
 import projectJson from '../asset/data/home/project.json';
 import schoolCompetenceJson from '../asset/data/home/school_competence.json';
@@ -47,8 +47,8 @@ import useDescriptionIcon from '../asset/img/home/icon/use-desc-icon-pink.png';
 import whiteMemoryIcon from '../asset/img/home/icon/white-memory-icon.png';
 import anchorLink from '../asset/img/home/icon/anchor-link.png';
 import githubIcon from '../asset/img/home/icon/github-pink.png';
-
 import cvImg from '../asset/img/home/frame-cv/CV.png';
+
 
 const Home = () => {
 
