@@ -2,6 +2,7 @@
 
 * [X] Delete border-boxes for all elements in dark mode
 * [ ] Think about new content to add
+* [ ] Regroup all frames crosses in one react element
 * [X] Improve Backgrounds on media
 * [X] Delete all hover effects on media
 * [ ] Menu

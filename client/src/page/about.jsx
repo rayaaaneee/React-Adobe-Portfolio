@@ -36,7 +36,7 @@ const About = () => {
         <div className="grid-container">
             <article className='illustration'>
                 <Logo 
-                    ref={ ref => elementsToAnimate.current[0] = ref } 
+                    ref={ el => elementsToAnimate.current[0] = el } 
                     headerText={language.title} 
                     squared 
                     color={LogoColors.theme} 

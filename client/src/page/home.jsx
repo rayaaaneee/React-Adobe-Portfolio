@@ -50,10 +50,13 @@ const Home = () => {
 	let imagesToLoad = [];
 
     useEffect(() => { 
+
       	(elementsToAnimate.current) && animateApparition(elementsToAnimate.current);
+
       	(projectsImagesToLoad.current && skillsImagesToLoad.current) 
 			&& (imagesToLoad = [...projectsImagesToLoad.current, ...skillsImagesToLoad.current])
 	  	 	&& (animateImageLoading(imagesToLoad));
+
     }, []);
 
     const { isDarkTheme } = useContext(themeContext);
@@ -94,92 +97,9 @@ const Home = () => {
       	bars.current[index].classList.remove('colored');
     }
 
-    let [projectPageIsVisible, setProjectPageIsVisible] = useState(false);
-    let projectPageRef = useRef(null);
-    useEffect(() => {
-      	projectPageRef.current.style.display = 'none';
-      	setTimeout(() => {
-      	  projectPageRef.current.style.removeProperty('display');
-      	}, 400);
-    }, []);
-
-    useConditionalEffect(() => {
-        if (projectPageIsVisible) {
-            document.body.style.overflowY = "hidden";
-            projectPageRef.current.classList.add('visible');
-            document.addEventListener('keydown', closeProjectPageOnEscape);
-        } else {
-          	projectPageRef.current.scrollTo({ top: 0 });
-          	projectPageRef.current.classList.add('hidden');
-          	projectPageRef.current.classList.remove('visible');
-          	setTimeout(() => {
-          	    document.body.style.removeProperty('overflow-y');
-          	    projectPageRef.current.classList.remove('hidden');
-          	}, 500);
-        }
-    }, [projectPageIsVisible]);
-
-    let [isProjectViewerVisible, setIsProjectViewerVisible] = useState(false);
+	// Null when no project is opened, otherwise contains the project object
 
     let [currentProject, setCurrentProject] = useState(null);
-
-    const openProjectPage = (project) => {
-        setProjectPageIsVisible(true);
-        setCurrentProject(project);
-        if (project.isLink()) {
-          	currentProjectViewingRef.current.setAttribute('target', '_blank');
-        } else {
-          	currentProjectViewingRef.current.removeAttribute('target');
-        }
-    }
-
-    const closeProjectPage = () => setProjectPageIsVisible(false);
-    let projectViewerContainerRef = useRef(null);
-    let projectViewer;
-
-    useEffect(() => {
-      	projectViewer = projectViewerContainerRef.current.querySelector('.project-viewer');
-    });
-    
-    const openProjectViewer = (link) => {
-		console.log("opening");
-      	setIsProjectViewerVisible(true);
-      	projectViewerContainerRef.current.classList.add('visible');
-      	if (link.toLowerCase().endsWith('pdf')) {
-      	  link = `./project/${link}`;
-      	}
-      	setTimeout(() => {
-      	  projectViewer.setAttribute('src', link);
-      	  projectViewer.onload = () => {
-      	    projectViewer.classList.remove('onloading');
-      	    projectViewer.removeEventListener('load', projectViewer.onload);
-      	  }
-      	}, 400);
-    }
-
-    const closeProjectViewer = () => {
-      	setIsProjectViewerVisible(false);
-      	projectViewer.removeAttribute('src');
-
-      	projectViewerContainerRef.current.classList.add('hidden');
-      	projectViewerContainerRef.current.classList.remove('visible');
-
-      	setTimeout(() => {
-      	  	projectViewer.classList.add('onloading');
-      	  	projectViewerContainerRef.current.classList.remove('hidden');
-      	}, 300);
-    }
-
-    const closeProjectPageOnEscape = (e) => {
-      	if (e.key === 'Escape') {
-      	  	if (isProjectViewerVisible) {
-      	  	  	closeProjectViewer();
-      	  	} else if (projectPageIsVisible) {
-      	  	  	document.removeEventListener('keydown', closeProjectPageOnEscape);
-      	  	  	closeProjectPage();
-      	  	}
-      	}
-    }
 
     let [cvContainerIsVisible, setCvContainerIsVisible] = useState(false);
 
@@ -248,29 +168,6 @@ const Home = () => {
       	}
     });
 
-    const currentProjectViewingRef = useRef(null);
-    useEffect(() => {
-      	var growing = true;
-      	const animateProjectViewing = () => {
-      	  	switch(growing){
-      	  	    case true:
-      	  	        currentProjectViewingRef.current.classList.add('animate');
-      	  	        break;
-      	  	    case false:
-      	  	        currentProjectViewingRef.current.classList.remove('animate');
-      	  	        break;
-      	  	    default:
-      	  	        break;
-      	  	} 
-      	  	growing = !growing;
-      	}
-      	let intervalAnimationCurrentProjectViewing = setInterval(animateProjectViewing, 3000);
-
-      	return () => {
-      	  	clearInterval(intervalAnimationCurrentProjectViewing);
-      	}
-    });
-
     return (
         <>
             <article id="main">
@@ -290,7 +187,7 @@ const Home = () => {
 							imageToLoad={ (project) => { projectsImagesToLoad.current[i] = project } }
                       		ref={ (project) => { elementsToAnimate.current.push(project) } }
                       		uncolorBar={ () => uncolorBar(1) } 
-                      		onClick={ () => openProjectPage(project) } 
+                      		onClick={ () => setCurrentProject(project) } 
                       		isDarkTheme={ isDarkTheme } 
 						/>
                     ))}
@@ -301,14 +198,9 @@ const Home = () => {
                 </div>
                 {/* Page des projets */}
 				<FrameProject 
-					project={currentProject} 
-					onClosePage={ closeProjectPage }
-					onOpenViewer={ openProjectViewer }
-					onCloseViewer={ closeProjectViewer }
+					project={ currentProject }
+					onClose={ () => setCurrentProject(null) }
 					language={ language }
-					ref={projectPageRef}
-					projectViewerRef={projectViewerContainerRef} 
-					currentProjectSquareRef={currentProjectViewingRef}
 				/>
             </article>
             <h2 className="explicationtext" dangerouslySetInnerHTML={{ __html: language.home.projects_desc }}></h2>
