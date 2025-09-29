@@ -34,7 +34,7 @@
   * [ ] Home
     * [ ] FrameCV (medias)
     * [ ] Project (medias)
-    * [ ] Split FrameCV & ProjectPage on other components
+    * [X] Split FrameCV & ProjectPage on other components
     * [ ] Fill JSON for worldmaster
     * [ ] Add date on project page for medias
   * [ ] Blog page
@@ -44,3 +44,4 @@
   * [ ] About page
     * [ ] Remade design
     * [ ] Media for
+    * [X] Side HTML Logo

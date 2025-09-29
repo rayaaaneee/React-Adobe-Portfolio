@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
+import { useConditionalEffect } from '../../../hook/useConditionalEffect';
+
 import MarkdownPreview from '@uiw/react-markdown-preview';
 
 import darkLinkImg from '../../../asset/img/home/icon/white-link.png';
@@ -14,7 +16,6 @@ import darkDownloadImg from '../../../asset/img/home/icon/white-download.png';
 
 import '../../../asset/scss/home/project-page.scss';
 import '../../../asset/scss/media/home/project-page.scss';
-import { useConditionalEffect } from '../../../hook/useConditionalEffect';
 
 export const FrameProject = ({
 	project,
@@ -23,6 +24,9 @@ export const FrameProject = ({
 }) => {
 
 	const isVisible = useMemo(() => project !== null, [project]);
+	const lastProjectOpened = useRef(null);
+	const currentProject = useMemo(() => project || lastProjectOpened.current, [project]);
+
 	const projectPageRef = useRef(null);
 	const projectViewerRef = useRef(null);
 	const currentProjectSquareRef = useRef(null);
@@ -40,8 +44,9 @@ export const FrameProject = ({
 
 			// On open project page
 
-			if (project) {
-				if (project.isLink()) {
+			lastProjectOpened.current = currentProject;
+			if (currentProject) {
+				if (currentProject.isLink()) {
 					currentProjectSquareRef.current.setAttribute('target', '_blank');
 				} else {
 					currentProjectSquareRef.current.removeAttribute('target');
@@ -139,17 +144,17 @@ export const FrameProject = ({
 				<div className='background-project-page'></div>
 				<div className='parts'>
 					<div className="title-project-container">
-						<img alt='link-or-download' className="link-or-download" src={ project && (project.isLink() ? darkLinkImg : darkDownloadImg) } draggable="false" />
-						<p className="title-project">{ project && project.getTitle() }</p>
+						<img alt='link-or-download' className="link-or-download" src={ currentProject && (currentProject.isLink() ? darkLinkImg : darkDownloadImg) } draggable="false" />
+						<p className="title-project">{ currentProject && currentProject.getTitle() }</p>
 					</div>
-					{ project && (project.hasLanguages() &&
+					{ currentProject && (currentProject.hasLanguages() &&
 						<>
 							<div className="project-languages-skills title-page-project">
 								<img src={ languages } alt='langages-icones' draggable="false" />
-								<p className="title-language-skill">{ language.home.projects_frame.languages + (project.getLanguages().length > 1 ? 's' : '') } :</p>
+								<p className="title-language-skill">{ language.home.projects_frame.languages + (currentProject.getLanguages().length > 1 ? 's' : '') } :</p>
 							</div>
 							<div className="project-languages-skills-container page-content">
-								{project.getLanguages().map((language, index) => {
+								{currentProject.getLanguages().map((language, index) => {
 									return (
 										<div key={index} className="skill-language-container template" style={{backgroundColor: language.color}}>
 											<p>{language.name}</p>
@@ -159,15 +164,15 @@ export const FrameProject = ({
 							</div>
 						</>
 					) }
-					{ project && (project.hasCompetences() &&
+					{ currentProject && (currentProject.hasCompetences() &&
 						(<>
 							<div className="project-languages-skills title-page-project">
 								<img src={ skills } alt='languages-icone' draggable="false" />
 								<p className="title-languages-skill">{
-								language.home.projects_frame.skills + (project.getCompetences().length > 1 ? 's' : '') } :</p>
+								language.home.projects_frame.skills + (currentProject.getCompetences().length > 1 ? 's' : '') } :</p>
 							</div>
 							<div className="project-languages-skills-container page-content">
-								{project.getCompetences().map((competence, index) => {
+								{currentProject.getCompetences().map((competence, index) => {
 									return (
 										<div key={index} className="skill-language-container template" style={{backgroundColor: competence.color}}>
 											<p>{competence.name}</p>
@@ -182,47 +187,47 @@ export const FrameProject = ({
 							<img src={ descriptionIcon } alt="icone-description" draggable="false" />
 							<p>{ language.home.projects_frame.description } :</p>
 						</div>
-						<MarkdownPreview className='project-desc-value page-content' source={ project && project.getDescription() } />
+						<MarkdownPreview className='project-desc-value page-content' source={ currentProject && currentProject.getDescription() } />
 					</div>
-					{ project && 
-						(project.hasUseDescription() &&
+					{ currentProject && 
+						(currentProject.hasUseDescription() &&
 							<div className="project-use-desc text-project-container">
 								<div className="project-use-desc-text title-page-project">
 									<img src={ useDescriptionIcon } alt="notice-utilisation-icone" draggable="false" />
 									<p>{ language.home.projects_frame.for_using } :</p>
 								</div>
-								<MarkdownPreview className='project-use-desc-value page-content' source={ project && project.getUseDescription() } />
+								<MarkdownPreview className='project-use-desc-value page-content' source={ currentProject && currentProject.getUseDescription() } />
 							</div>
 						) 
 					}
-					{ project && 
-						(project.hasRepository() &&
+					{ currentProject && 
+						(currentProject.hasRepository() &&
 							<div className="project-repository text-project-container">
 								<div className="project-repository-text title-page-project">
 									<img src={ githubIcon } alt="notice-utilisation-icone" draggable="false" />
 									<p>{ language.home.projects_frame.repository } :</p>
 								</div>
-								<a target='_blank' href={ project.getRepository() } className="project-repository-value page-content">
-									<p>{ project.getRepository() }</p>
+								<a target='_blank' href={ currentProject.getRepository() } className="project-repository-value page-content">
+									<p>{ currentProject.getRepository() }</p>
 									<img src={ anchorLink } alt="repository-link" draggable="false" />
 								</a>
 							</div>
 						) 
 					}
 				</div>
-				{ project && (project.isLink() &&
-					<a onClick={ () => openProjectViewer(project.getLink()) }
+				{ currentProject && (currentProject.isLink() &&
+					<a onClick={ () => openProjectViewer(currentProject.getLink()) }
 					className="link-btn title-page-project" 
-					rel='noreferrer'>{ `${language.home.projects_frame.consult} ${project.getTitle()}` }</a>
+					rel='noreferrer'>{ `${language.home.projects_frame.consult} ${currentProject.getTitle()}` }</a>
 					)
 				}
-				{ project && (project.isDownload() &&
-					<a href={ `/project/${project.getFile()}` } className="download-btn title-page-project" download>{ `${language.home.projects_frame.download} ${project.getFileName()}`}</a>
+				{ currentProject && (currentProject.isDownload() &&
+					<a href={ `/project/${currentProject.getFile()}` } className="download-btn title-page-project" download>{ `${language.home.projects_frame.download} ${currentProject.getFileName()}`}</a>
 				) }
 				<div className="project-size-container text-project-container">
 					<img src={ whiteMemoryIcon } alt="mémoire-icone" draggable="false" />
 					<p className="page-content">{language.home.projects_frame.file_size} :</p>
-					<p className="project-size-value page-content">{ project && project.getSize() }</p>
+					<p className="project-size-value page-content">{ currentProject && currentProject.getSize() }</p>
 					<p className='page-content'> Mo </p>
 				</div>
 				<div className='project-viewer-container' ref={ projectViewerRef }>
@@ -232,12 +237,12 @@ export const FrameProject = ({
 				</div>
 			</div>
 			<a 
-				href={ `/project/${project && project.getFile()}` }
+				href={ `/project/${currentProject && currentProject.getFile()}` }
 				className='current-project-viewing' 
 				download 
 				ref={currentProjectSquareRef} 
-				title={`${ language.home.projects_frame.download } ${project && project.getTitle() }`}>
-				<img className='img-current-project-viewing' src={ project && (project.getDarkReactIcon()) } alt='project-icon' draggable="false" />
+				title={`${ language.home.projects_frame.download } ${currentProject && currentProject.getTitle() }`}>
+				<img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
 			</a>
 			<div 
 				title={ language.home.projects_frame.quit } 
