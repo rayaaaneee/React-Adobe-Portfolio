@@ -26,15 +26,16 @@ import languageContext from '../function/context/language-context';
 import { Semester } from './component/background/semester';
 import { Point } from './component/background/point';
 
-import { FrameSemester } from './component/background/frame-semester';
-
-import medalImg from '../asset/img/background/medal-white.png';
+import { FrameSemester } from './component/frames/frame-semester';
 
 import '../asset/scss/background/style.scss';
-import '../asset/scss/background/semester-page.scss';
 import '../asset/scss/background/dark-style.scss';
 
 import semesterJson from '../asset/data/background/semester.json';
+
+import medalImg from '../asset/img/background/medal-white.png';
+
+
 
 
 const Background = () => {

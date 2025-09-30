@@ -445,6 +445,49 @@ body.index {
                     transition: all 0.2s ease;
                 }
             }
+
+            &.linkedin-link {
+                background-image: url(../../img/index/icon-linkedin.png);
+                        
+                @include hover-safe {
+                    &:hover {
+                        background-image: url(../../img/index/icon-linkedin-hover.png);
+                    }
+                }
+            }
+        
+        
+            &.github-link {
+
+                background-image: url(../../img/index/icon-github.png);
+
+                @include hover-safe {
+                    &:hover {
+                        background-image: url(../../img/index/icon-github-hover.png);
+                    }
+                }
+            
+            }
+        
+            &.mail-link {
+                background-image: url(../../img/index/icon-mail.png);
+
+                @include hover-safe {
+                    &:hover {
+                        background-image: url(../../img/index/icon-mail-hover.png);
+                    }
+                }
+            }
+        
+            &.phone-link {
+                background-image: url(../../img/index/icon-tel.png);
+            
+                @include hover-safe {
+                    &:hover {
+                        background-image: url(../../img/index/icon-tel-hover.png);
+                    }
+                }
+            }
         }
 
         li {
@@ -452,58 +495,6 @@ body.index {
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-    }
-
-
-    .linkedin-link {
-        background-image: url(../../img/index/icon-linkedin.png);
-      
-        @include hover-safe {
-            &:hover {
-                background-image: url(../../img/index/icon-linkedin-hover.png);
-            }
-        }
-    }
-
-
-    .github-link {
-        
-        background-image: url(../../img/index/icon-github.png);
-        
-        @include hover-safe {
-            &:hover {
-                background-image: url(../../img/index/icon-github-hover.png);
-            }
-        }
-
-    }
-
-    // .gitlab-link {
-    //     background-image: url(../../img/index/icon-gitlab.png);
-    // }
-
-    // .gitlab-link:hover {
-    //     background-image: url(../../img/index/icon-gitlab-hover.png);
-    // }
-
-    .mail-link {
-        background-image: url(../../img/index/icon-mail.png);
-        
-        @include hover-safe {
-            &:hover {
-                background-image: url(../../img/index/icon-mail-hover.png);
-            }
-        }
-    }
-
-    .tel-link {
-        background-image: url(../../img/index/icon-tel.png);
-
-        @include hover-safe {
-            &:hover {
-                background-image: url(../../img/index/icon-tel-hover.png);
-            }
         }
     }
 

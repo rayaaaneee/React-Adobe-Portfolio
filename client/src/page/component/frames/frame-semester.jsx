@@ -2,6 +2,9 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { useConditionalEffect } from '../../../hook/useConditionalEffect';
 
+import '../../../asset/scss/background/frame-semester.scss';
+import '../../../asset/scss/media/background/frame-semester.scss';
+
 import dateImg from '../../../asset/img/background/calendar-pink.png';
 import specialtiesImg from '../../../asset/img/background/specialties-pink.png';
 import schoolImg from '../../../asset/img/background/school-pink.png';
@@ -21,14 +24,20 @@ export const FrameSemester = ({ semester, onClose, language }) => {
     useConditionalEffect(() => {
 
         if (isVisible) {
+            
+            lastSemesterOpened.current = currentSemester;
+            
             document.addEventListener("keydown", closeSemesterPageOnEscape);
             semesterPage.current.scrollTo(0, 0);
             document.body.style.overflow = "hidden";
             semesterPage.current.classList.add("visible");
+
         } else {
+
             semesterPage.current.classList.add("hidden");
             semesterPage.current.classList.remove("visible");
             semesterPage.current.scrollTo({ top: 0 });
+            
             setTimeout(() => {
                 document.body.style.removeProperty("overflow");
                 semesterPage.current.classList.remove("hidden");

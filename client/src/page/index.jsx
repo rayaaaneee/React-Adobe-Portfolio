@@ -51,6 +51,13 @@ const Index = () => {
         ...template
     });
 
+    const footerLinks = [
+        { title: "Linked In", link: "https://www.linkedin.com/in/rayanemerlin/", target: "_blank", rel: "noreferrer" },
+        { title: "Github", link: "https://github.com/rayaaaneee", target: "_blank", rel: "noreferrer" },
+        { title: "Mail", link: "mailto:rayane.merlin8@gmail.com" },
+        { title: "Phone", link: "tel:+33768283277" }
+    ]
+
     return (
         <>
             <main>
@@ -82,22 +89,16 @@ const Index = () => {
             <footer>
                 <div className="triangle border-triangle footer-triangle"></div>
                 <ul className="footer-links">
-                    <li title="Linked In">
-                        <a className="linkedin-link" href="https://www.linkedin.com/in/rayanemerlin/" target="_blank" rel="noreferrer">
-                        </a>
-                    </li>
-                    <li title="Personal Github">
-                        <a className="github-link" href="https://github.com/rayaaaneee" target="_blank" rel="noreferrer">
-                        </a>
-                    </li>
-                    <li title="Mail">
-                        <a className="mail-link" href="mailto:rayane.merlin8@gmail.com">
-                        </a>
-                    </li>
-                    <li title="Phone">
-                        <a className="tel-link" href="tel:+33768283277">
-                        </a>
-                    </li>
+                    { footerLinks.map((footerLink, index) => (
+                        <li key={index} title={footerLink.title}>
+                            <a 
+                                className={`${footerLink.title.toLowerCase().replace(' ', '')}-link`} 
+                                href={footerLink.link} 
+                                target={footerLink.target} 
+                                rel={footerLink.rel}>    
+                            </a>
+                        </li>
+                    ))}
                 </ul>
             </footer>
         </>

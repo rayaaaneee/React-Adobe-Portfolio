@@ -49,10 +49,14 @@ body.index {
         }
 
 
-        .linkedin-link , .github-link, .gitlab-link, .mail-link, .tel-link  {
-            pointer-events: none;
-            opacity: 0;
-            transform: translateY(10px);
+        .footer-links {
+            & > li {
+                & > a {
+                    pointer-events: none;
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+            }
         }
 
         .linkedin-link {
@@ -75,7 +79,7 @@ body.index {
             animation: appearence 0.45s 1s ease-in-out forwards;
         }
 
-        .tel-link {
+        .phone-link {
             pointer-events: none;
             animation: appearence 0.45s 1.2s ease-in-out forwards;
         }

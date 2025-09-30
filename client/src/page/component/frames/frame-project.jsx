@@ -14,8 +14,9 @@ import anchorLink from '../../../asset/img/home/icon/anchor-link.png';
 import githubIcon from '../../../asset/img/home/icon/github-pink.png';
 import darkDownloadImg from '../../../asset/img/home/icon/white-download.png';
 
-import '../../../asset/scss/home/project-page.scss';
-import '../../../asset/scss/media/home/project-page.scss';
+import '../../../asset/scss/home/frame-project.scss';
+import '../../../asset/scss/media/home/frame-project.scss';
+import { ProjectViewing } from './component/project-viewing';
 
 export const FrameProject = ({
 	project,
@@ -29,7 +30,6 @@ export const FrameProject = ({
 
 	const projectPageRef = useRef(null);
 	const projectViewerRef = useRef(null);
-	const currentProjectSquareRef = useRef(null);
 
 	useEffect(() => {
 		projectPageRef.current.style.display = 'none';
@@ -44,15 +44,7 @@ export const FrameProject = ({
 
 			// On open project page
 
-			lastProjectOpened.current = currentProject;
-			if (currentProject) {
-				if (currentProject.isLink()) {
-					currentProjectSquareRef.current.setAttribute('target', '_blank');
-				} else {
-					currentProjectSquareRef.current.removeAttribute('target');
-				}
-			}
-
+			currentProject && (lastProjectOpened.current = currentProject);
 			document.body.style.overflowY = "hidden";
 			projectPageRef.current.classList.add('visible');
 			document.addEventListener('keydown', closeProjectPageOnEscape);
@@ -87,28 +79,6 @@ export const FrameProject = ({
 	}
 
 	let [isProjectViewerVisible, setIsProjectViewerVisible] = useState(false);
-
-	useEffect(() => {
-		var growing = true;
-		const animateProjectViewing = () => {
-			switch(growing){
-				case true:
-					currentProjectSquareRef.current.classList.add('animate');
-					break;
-				case false:
-					currentProjectSquareRef.current.classList.remove('animate');
-					break;
-				default:
-					break;
-			} 
-			growing = !growing;
-		}
-		let intervalAnimationCurrentProjectViewing = setInterval(animateProjectViewing, 3000);
-
-		return () => {
-			clearInterval(intervalAnimationCurrentProjectViewing);
-		}
-	});
 
 	const openProjectViewer = (link) => {
     	setIsProjectViewerVisible(true);
@@ -236,14 +206,10 @@ export const FrameProject = ({
 					<iframe src='' className='project-viewer onloading'></iframe>
 				</div>
 			</div>
-			<a 
-				href={ `/project/${currentProject && currentProject.getFile()}` }
-				className='current-project-viewing' 
-				download 
-				ref={currentProjectSquareRef} 
-				title={`${ language.home.projects_frame.download } ${currentProject && currentProject.getTitle() }`}>
-				<img className='img-current-project-viewing' src={ currentProject && (currentProject.getDarkReactIcon()) } alt='project-icon' draggable="false" />
-			</a>
+			<ProjectViewing 
+				project={ currentProject }
+				title={ currentProject && (`${ language.home.projects_frame.download } ${currentProject.getTitle() }`) }
+			/>
 			<div 
 				title={ language.home.projects_frame.quit } 
 				className="quit-project-button" 

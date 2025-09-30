@@ -14,8 +14,8 @@ import { CompetenceCard } from './component/home/competence-card';
 import { Project } from './component/home/project';
 import { Title } from './component/general/title';
 
-import { FrameProject } from './component/home/frame-project';
-import { FrameCV } from './component/home/frame-cv';
+import { FrameProject } from './component/frames/frame-project';
+import { FrameCV } from './component/frames/frame-cv';
 
 import themeContext from '../function/context/theme-context';
 import languageContext from '../function/context/language-context';
@@ -160,9 +160,9 @@ const Home = () => {
                 	  	<img src={ cvImg } alt="cv" data-lightbox="CV_Rayane_Merlin.png" data-title="Voici mon C.V actuel, celui-ci est amené à être modifié mais restera à jour sur le site." draggable="false" />
                 	</div>
 					<FrameCV 
-						isVisible={cvContainerIsVisible} 
+						isVisible={ cvContainerIsVisible } 
 						onClose={ (_) => setCvContainerIsVisible(false) } 
-						language={language} 
+						language={ language } 
 					/>
                 	<div id="cv-text">
                 	  <div className="blackbar"></div>

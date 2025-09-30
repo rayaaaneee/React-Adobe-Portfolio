@@ -4,7 +4,7 @@ export class ManageBody {
 
     static pageNames = [];
 
-    static verifyClassName(className) {
+    static #verifyClassName(className) {
         if (!this.pageNames.includes(className)) {
             throw new Error(`The class name "${className}" is not in the list of page names.`);
         } else {
@@ -15,9 +15,10 @@ export class ManageBody {
     static #removeClass(){
         document.body.classList.forEach(className => {
             try {
-                if (this.verifyClassName(className)) {
-                    document.body.classList.remove(className);
-                }
+
+                this.#verifyClassName(className)
+                    && (document.body.classList.remove(className));
+
             } catch (_) {
                 // Class name don't have to be removed;
             }
@@ -25,7 +26,7 @@ export class ManageBody {
     }
 
     static #setClass(className){
-        (this.verifyClassName(className)) && document.body.classList.add(className);
+        (this.#verifyClassName(className)) && document.body.classList.add(className);
     }
 
     static changeClass(className){
